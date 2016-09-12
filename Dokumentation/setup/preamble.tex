@@ -200,5 +200,15 @@ bottom=31mm,
 	urlcolor=black,%
 	pdfstartview=FitH%
 }
+
+\usepackage{listings}
+\lstdefinelanguage{Gherkin}{
+	keywords={Og, Givet, Når, Så},
+	ndkeywords={BAGGRUND, EGENSKAB, SCENARIE},
+	sensitive=false,
+	comment=[l]{\#},
+	morestring=[b]',
+	morestring=[b]"
+}
 %\usepackage{svg}
 %\setsvg{svgpath = figures/}
