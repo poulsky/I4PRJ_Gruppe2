@@ -69,6 +69,7 @@ Thumbs.db
 
 
 !/Dokumentation/figures/*.pdf
+!/Dokumentation/figures/*.png
 !/Dokumentation/figures/ApplikationsmodelUC1/*.pdf
 !/Dokumentation/figures/ApplikationsmodelUC2/*.pdf
 !/Dokumentation/figures/ApplikationsmodelUC3/*.pdf
