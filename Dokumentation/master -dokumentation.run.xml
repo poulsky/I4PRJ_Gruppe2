@@ -52,7 +52,11 @@
     </requires>
     <requires type="static">
       <file>blx-compat.def</file>
+<<<<<<< HEAD
       <file>biblatex_legacy.def</file>
+=======
+      <file>biblatex.def</file>
+>>>>>>> 08f2eb47c7c7a3dc0669233f9683e0c5608d8523
       <file>numeric.bbx</file>
       <file>standard.bbx</file>
       <file>numeric.cbx</file>
