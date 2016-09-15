@@ -1,0 +1,31 @@
+\chapter{Accepttestspecifikation}\label{ch:Accepttestspecifikation}
+I følgende afsnit følger accepttesten for de ikke funktionelle krav.
+\section{Ikke funktionelle krav}
+\setlength{\arrayrulewidth}{0.3mm}
+\setlength{\tabcolsep}{16pt}
+\renewcommand{\arraystretch}{1.5}
+%\begin{longtable}[H]
+	\begin{longtable}{ |p{2.3cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}| }
+		\hline
+		\textbf{Ikke-funktionelle krav} & \textbf{Test} & \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/Ikke godkendt} \\
+		\hline
+		Punkt 1 & Der klikkes på  & Brugeren kommer ind på den ønskede annonce &  & \\
+		\hline
+		Punkt 2 & Hjemmesiden bliver tilgået af 10 brugere samtidig & At der ikke sker nogen ændring for de enkelte brugere på hjemmesiden &  &  \\
+		\hline
+		Punkt 3 & Der skrives ''Stol'' i søgefeltet og der trykkes på søg, når der trykkes på søg startes et stop-ur. Uret stoppes når Søgeresultaterne bliver vist på skærmen & Stop-uret viser mindre end 15 sekunder &  &  \\
+		\hline
+		Punkt 4 & To brugere opretter en annonce samtidig på hver sin computer & Begge annoncer bliver oprettet uden nogen form for påvirkning af hinanden  &  & \\
+		\hline
+		Punkt 5 & Der søges efter annoncer inden for 10km & Den annonce, der ligger længst væk fra søgelokationen er mindre end 10100m &  &  \\
+		\hline 
+		Punkt 6 & En bruger skriver ''Hej'' til en anden bruger gennnem det indbygge chat-modul. Når der trykkes på send startes et stop-ur og uret stoppes, når den anden kan se beskeden & Stop-uret står på mindre end 10 sekunder & &  \\
+		\hline
+		Punkt 7 & Skriv en bruger-anmeldelse på over 500 tegn og tryk ''Anmeld'' & Der kommer en pop-up meddelse om, at anmeldelsen er for lang og anmeldelse bliver ikke gemt &  & \\
+		\hline
+		Punkt 8 & Skriv en bruger-anmeldelse på under 500 tegn og tryk ''Anmeld''. Når der trykkes på Anmeld startes et stop-ur og uret stoppes, når bruger-anmeldelsen offentliggøres & Stop-uret viser mindre end 15 sekunder &  & \\
+		\hline
+	\caption{Accepttest af ikke-funktionelle krav}
+	\end{longtable}
+	\label{table:accepttest_ifk}
+%\end{longtable}
