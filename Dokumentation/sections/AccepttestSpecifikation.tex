@@ -1,13 +1,14 @@
 \chapter{Accepttestspecifikation}\label{ch:Accepttestspecifikation}
 I følgende afsnit følger accepttesten for de ikke funktionelle krav.
+
 \section{Ikke funktionelle krav}
 \setlength{\arrayrulewidth}{0.3mm}
-\setlength{\tabcolsep}{16pt}
+\setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1.5}
-%\begin{longtable}[H]
-	\begin{longtable}{ |p{2.3cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}| }
+\begin{table}[H]
+	\begin{tabular}{ |p{2.3cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}| } 
 		\hline
-		\textbf{Ikke-funktionelle krav} & \textbf{Test} & \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/Ikke godkendt} \\
+		\textbf{Ikke-funktionelle krav} & \textbf{Test} & \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ Ikke godkendt} \\
 		\hline
 		Punkt 1 & Der klikkes på  & Brugeren kommer ind på den ønskede annonce &  & \\
 		\hline
@@ -19,13 +20,28 @@ I følgende afsnit følger accepttesten for de ikke funktionelle krav.
 		\hline
 		Punkt 5 & Der søges efter annoncer inden for 10km & Den annonce, der ligger længst væk fra søgelokationen er mindre end 10100m &  &  \\
 		\hline 
+	\end{tabular}
+	\caption{Accepttest af ikke-funktionelle krav del 1}
+	\label{table:accepttest_ifk1}
+\end{table}
+
+	\setlength{\arrayrulewidth}{0.3mm}
+	\setlength{\tabcolsep}{16pt}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{table}[H]
+		\begin{tabular}{ |p{2.3cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}| } 
+			\hline
+			\textbf{Ikke-funktionelle krav} & \textbf{Test} & \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ Ikke godkendt} \\
+			\hline
 		Punkt 6 & En bruger skriver ''Hej'' til en anden bruger gennnem det indbygge chat-modul. Når der trykkes på send startes et stop-ur og uret stoppes, når den anden kan se beskeden & Stop-uret står på mindre end 10 sekunder & &  \\
 		\hline
 		Punkt 7 & Skriv en bruger-anmeldelse på over 500 tegn og tryk ''Anmeld'' & Der kommer en pop-up meddelse om, at anmeldelsen er for lang og anmeldelse bliver ikke gemt &  & \\
 		\hline
 		Punkt 8 & Skriv en bruger-anmeldelse på under 500 tegn og tryk ''Anmeld''. Når der trykkes på Anmeld startes et stop-ur og uret stoppes, når bruger-anmeldelsen offentliggøres & Stop-uret viser mindre end 15 sekunder &  & \\
 		\hline
-	\caption{Accepttest af ikke-funktionelle krav}
-	\end{longtable}
-	\label{table:accepttest_ifk}
-%\end{longtable}
+	\end{tabular}
+	\caption{Accepttest af ikke-funktionelle krav del 2}
+	\label{table:accepttest_ifk2}
+\end{table}
+
+
