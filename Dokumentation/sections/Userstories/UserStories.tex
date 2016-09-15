@@ -1,135 +1,15 @@
 \chapter{Gherkin Userstories}
 
-\section{Oprette en bytteannonce}
-{\color{blue}\textbf{EGENSKAB}:} Oprette en bytteannonce \\
-Som bruger \\
-Ønsker jeg at kunne oprette en bytteannonce \\
-For at kunne bytte med andre brugere af systemet.\\ \\
-{\color{blue}\textbf{BAGGRUND}} \\
-{\color{blue}\textbf{Givet}} at bruger er logget ind \\
-{\color{blue}\textbf{SCENARIE:}} Oprette en bytteannonce \\
-{\color{blue}\textbf{Når}}  bruger ønsker at oprette en bytteannonce i systemet \\
-{\color{blue}\textbf{Så}} navigerer han til menupunktet ”Opret annonce” \\
-{\color{blue}\textbf{Så}} udfylder han bytteannonce-skabelonen \\
-{\color{blue}\textbf{Og}} trykker på ”Opret annonce”-knappen
+\input{sections/Userstories/OpretEnBytteannonce.tex}
+\input{sections/Userstories/OpretEnBrugerprofil.tex}
+\input{sections/Userstories/SeGeografiskLokationForBytteannonce.tex}
+\input{sections/Userstories/GlemtPasswordEllerBrugernavn.tex}
+\input{sections/Userstories/KommentereEnAnnonce.tex}
+\input{sections/Userstories/SoegEfterBytteannoncer.tex}
+\input{sections/Userstories/SeByttehistorik.tex}
+\input{sections/Userstories/KontaktEnBruger.tex}
+\input{sections/Userstories/AnmeldEnByttehandel.tex}
 
-\section{Opret en brugerprofil}
-{\color{blue}\textbf{EGENSKAB}:} Opret en brugerprofil \\
-Som bruger \\
-Ønsker jeg at kunne oprette en brugerprofil på websiden \\
-For at få adgang til websidens funktionalitet\\ \\
-{\color{blue}\textbf{BAGGRUND}} \\
-{\color{blue}\textbf{Givet}} at bruger ønsker en brugerprofil \\
-{\color{blue}\textbf{Og}} han har følgende ønsker til brugernavn og password:\\
-Jakob    Password123 \\\\
-{\color{blue}\textbf{SCENARIE:}} Opret en brugerprofil \\
-{\color{blue}\textbf{Når}} bruger ønsker at oprette sig i systemet \\
-{\color{blue}\textbf{Så}} navigerer han til Menupunktet ”Ny bruger” \\
-{\color{blue}\textbf{Så}} indtaster han brugernavn, e-mail, password mm.\\
-{\color{blue}\textbf{Så}} verificerer Jakob sig på tilknyttede e-mail addresse\\
-{\color{blue}\textbf{Og}} Jakob kan nu logge ind med sin nye brugerprofil
-
-\section{Se geografisk lokation for bytteannonce}
-{\color{blue}\textbf{EGENSKAB}:} Se geografisk lokation for bytteannonce \\
-Som bruger \\
-Ønsker jeg at kunne se hvor den ønskede byttevare er \\
-For at kunne se hvor en evt. byttehandel kunne finde sted\\ \\
-{\color{blue}\textbf{BAGGRUND}} \\
-{\color{blue}\textbf{Givet}} at bruger Jakob er logget ind \\
-{\color{blue}\textbf{Og}} han er inde på et annonceopslag lavet af personen Gitte\\\\
-{\color{blue}\textbf{SCENARIE:}} Jakob vil se Gittes geografiske lokation \\
-{\color{blue}\textbf{Når}} Jakob ønsker at se Gittes lokation
-{\color{blue}\textbf{Så}} kigger han til højre for annoncebilledet \\
-{\color{blue}\textbf{Og}} ser et kort, som angiver Gittes lokation
-
-\section{Glemt Password}
-{\color{blue}\textbf{EGENSKAB}:} Glemt Password \\
-Som bruger \\
-Ønsker jeg at kunne få tilsendt et nyt password \\
-For at kunne komme ind på min bruger på trods af at have glemt mit password\\ \\
-{\color{blue}\textbf{BAGGRUND}} \\
-{\color{blue}\textbf{Givet}} at Bruger er oprettet i systemet og har glemt sit password \\
-{\color{blue}\textbf{Og}} \\\\
-{\color{blue}\textbf{SCENARIE:}} Glemt password – Webapplikationen \\
-{\color{blue}\textbf{Når}} bruger ønsker at få tilsendt et nyt password \\
-{\color{blue}\textbf{Så}} navigerer han til websidepunktet  “Glemt password” \\
-{\color{blue}\textbf{Så}} skriver brugeren enten sit brugernavn eller E-mail adresse ind\\
-{\color{blue}\textbf{Så}} finder brugeren den tilsendte E-mail \\
-{\color{blue}\textbf{Og}} brugeren kan nu logge ind med det tilsendte password
-
-\section{Kommentere en annonce}
-{\color{blue}\textbf{EGENSKAB}:} Kommentere en annonce \\
-Som bruger \\
-Ønsker jeg at kunne kontakte en anden bruger \\
-For at kunne aftale vilkår for en byttehandel\\ \\
-{\color{blue}\textbf{BAGGRUND}} \\
-{\color{blue}\textbf{Givet}} at Bruger er logget ind \\
-{\color{blue}\textbf{Og}} \\\\
-{\color{blue}\textbf{SCENARIE:}} Kommentere en annonce – Webapplikationen \\
-{\color{blue}\textbf{Når}} bruger ønsker at kommentere en annonce
- \\
-{\color{blue}\textbf{Så}} skal bruger navigere ned til en kommentarboks under annoncen \\
-{\color{blue}\textbf{Så}} skal bruger kunne skrive en kommentar i kommentarboksen\\
-{\color{blue}\textbf{Så}} skal bruger trykke “send” ved siden af kommentarboksen \\
-{\color{blue}\textbf{Og}} kommentaren vises da under kommentarboksen
-
-
-\section{Søg efter Bytteannoncer}
-{\color{blue}\textbf{EGENSKAB}:}Søg efter Bytteannoncer \\
-Som bruger \\
-Ønsker jeg at kunne søge efter Bytteannoncer \\
-For at kunne få et overblik over udvalget af bytteannoncer\\ \\
-{\color{blue}\textbf{BAGGRUND}} \\
-{\color{blue}\textbf{Givet}} at Bruger er logget ind \\
-{\color{blue}\textbf{Og}} \\\\
-{\color{blue}\textbf{SCENARIE:}} Søg efter Bytteannoncer – Webapplikationen \\
-{\color{blue}\textbf{Når}}bruger ønsker at søge efter bytteannoncer i systemet\\
-{\color{blue}\textbf{Så}} navigerer han til Menupunktet ”Søg” \\
-{\color{blue}\textbf{Så}} vælger han søgekriterier\\
-{\color{blue}\textbf{Og}} trykker på søg knappen
-
-\section{Se Byttehistorik}
-{\color{blue}\textbf{EGENSKAB}:}Se Byttehistorik \\
-Som bruger \\
-Ønsker jeg at kunne se min Byttehistorik \\
-For  at kunne se, hvilke ting jeg har byttet mig til.\\ \\
-{\color{blue}\textbf{BAGGRUND}} \\
-{\color{blue}\textbf{Givet}} at Bruger er logget ind \\
-{\color{blue}\textbf{Og}} \\\\
-{\color{blue}\textbf{SCENARIE:}} Se Byttehistorik – Webapplikationen \\
-{\color{blue}\textbf{Når}}bruger ønsker at se sin byttehistorik i systemet\\
-{\color{blue}\textbf{Så}} navigerer han til Menupunktet ”Brugerprofil” \\
-{\color{blue}\textbf{Og}} trykker på Byttehistorik knappen
-
-\section{Kontakt en bruger direkte}
-{\color{blue}\textbf{EGENSKAB}:}Kontakt en bruger direkte \\
-Som bruger \\
-Ønsker jeg at kunne kontakte en anden bruger direkte igennem en chat \\
-For at kunne aftale vilkår omkring en byttehandel.\\ \\
-{\color{blue}\textbf{BAGGRUND}} \\
-{\color{blue}\textbf{Givet}} at Bruger er logget ind \\
-{\color{blue}\textbf{Og}} han er inde på en annonce\\\\
-{\color{blue}\textbf{SCENARIE:}} Kontakt en bruger direkte – Webapplikationen \\
-{\color{blue}\textbf{Når}}bruger ønsker at kontakte en anden bruger direkte\\
-{\color{blue}\textbf{Så}} navigerer han til “Start chat” inde på en annonce \\
-{\color{blue}\textbf{Og}} trykker på “Start chat”
-
-\section{Anmeldelse af andre brugere}
-{\color{blue}\textbf{EGENSKAB}:} Anmeldelse af andre brugere \\
-Som bruger \\
-Ønsker  jeg at kunne vurdere og anmelde en anden bruger \\
-For at angivne, hvor trovædig en given bruger er.\\ \\
-{\color{blue}\textbf{BAGGRUND}} \\
-{\color{blue}\textbf{Givet}} at Bruger er logget ind \\
-{\color{blue}\textbf{Og}} han er inde på en anden brugers brugerprofil\\\\
-{\color{blue}\textbf{SCENARIE:}} Anmeldelse af andre brugere – Webapplikationen \\
-{\color{blue}\textbf{Når}}ruger ønsker at vurderer en anden bruger\\
-{\color{blue}\textbf{Så}} navigerer han hen til “Brugervurdering”\\
-{\color{blue}\textbf{Så}} trykker han “Vurder bruger”\\
-{\color{blue}\textbf{Så}} angiver han en score mellem 1 og 10\\
-{\color{blue}\textbf{Så}} skriver han en kommentar (valgfrit)\\
-{\color{blue}\textbf{Så}} trykker han “Send”\\
-{\color{blue}\textbf{Og}} hans anmeldelse vises nu på brugerprofilen
 
 
 
