@@ -2,16 +2,16 @@
 I følgende afsnit følger accepttesten for de ikke funktionelle krav.
 
 \setlength{\arrayrulewidth}{0.3mm}
-\setlength{\tabcolsep}{12pt}
+\setlength{\tabcolsep}{2pt}
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[H]
-	\begin{tabular}{ |p{2.3cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}| } 
+	\begin{tabular}{ |p{1.4cm}|p{5.0cm}|p{5.0cm}|p{3.8cm}|p{1.0cm}| } 
 		\hline
-		\textbf{Ikke-funktionelle krav} & \textbf{Test} & \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ Ikke godkendt} \\
+		\textbf{Krav} & \textbf{Beskrivelse} & \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{\checkmark / X} \\
 		\hline
-		Punkt 1 & Der klikkes på "Annoncer"  & Brugeren kommer ind på den ønskede annonce &  & \\
+		Punkt 1 & Der klikkes på "Annoncer"  & Brugeren kommer ind på en oversigt over alle annoncer &  & \\
 		\hline
-		Punkt 2 & Hjemmesiden bliver tilgået af 10 brugere samtidig & At systemet fungere uændret &  &  \\
+		Punkt 2 & Hjemmesiden bliver tilgået af 10 brugere samtidig & Der sker ikke nogen ændring i funktionaliteten for de enkelte brugere på hjemmesiden &  &  \\
 		\hline
 		Punkt 3 & Der skrives ''Stol'' i søgefeltet og der trykkes på søg, når der trykkes på søg startes et stop-ur. Uret stoppes når Søgeresultaterne bliver vist på skærmen & Stop-uret viser mindre end 15 sekunder &  &  \\
 		\hline
@@ -19,28 +19,15 @@ I følgende afsnit følger accepttesten for de ikke funktionelle krav.
 		\hline
 		Punkt 5 & Der søges efter annoncer inden for 10km & Den annonce, der ligger længst væk fra søgelokationen er mindre end 10100m &  &  \\
 		\hline 
+		Punkt 6 & En bruger skriver ''Hej'' til en anden bruger gennnem det indbyggede chat-modul. Når der trykkes på send startes et stop-ur og uret stoppes, når den anden kan se beskeden & Stop-uret står på mindre end 10 sekunder & &  \\
+		\hline
+		Punkt 7 & Skriv en bruger-vurdering på over 500 tegn og tryk ''Send'' & Der kommer en pop-up meddelse om, at vurdering er for lang og vurderingen bliver ikke gemt &  & \\
+		\hline
+		Punkt 8 & Skriv en bruger-vurdering på under 500 tegn og tryk ''Send''. Når der trykkes på ''Send'' startes et stop-ur og uret stoppes, når bruger-anmeldelsen offentliggøres & Stop-uret viser mindre end 15 sekunder &  & \\
+		\hline
 	\end{tabular}
 	\caption{Accepttest af ikke-funktionelle krav del 1}
 	\label{table:accepttest_ifk1}
-\end{table}
-
-	\setlength{\arrayrulewidth}{0.3mm}
-	\setlength{\tabcolsep}{16pt}
-	\renewcommand{\arraystretch}{1.5}
-	\begin{table}[H]
-		\begin{tabular}{ |p{2.3cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}| } 
-			\hline
-			\textbf{Ikke-funktionelle krav} & \textbf{Test} & \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ Ikke godkendt} \\
-			\hline
-		Punkt 6 & En bruger skriver ''Hej'' til en anden bruger gennnem det indbygge chat-modul. Når der trykkes på send startes et stop-ur og uret stoppes, når den anden kan se beskeden & Stop-uret står på mindre end 10 sekunder & &  \\
-		\hline
-		Punkt 7 & Skriv en bruger-anmeldelse på 500 tegn og prøver at skrive videre & Brugeren kan nu ikke tilføje flere tegn &  & \\
-		\hline
-		Punkt 8 & Skriv en bruger-anmeldelse på under 500 tegn og tryk ''Anmeld''. Når der trykkes på Anmeld startes et stop-ur og uret stoppes, når bruger-anmeldelsen offentliggøres & Stop-uret viser mindre end 15 sekunder &  & \\
-		\hline
-	\end{tabular}
-	\caption{Accepttest af ikke-funktionelle krav del 2}
-	\label{table:accepttest_ifk2}
 \end{table}
 
 
