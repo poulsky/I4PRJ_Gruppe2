@@ -1129,7 +1129,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   , selector: false
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover focus'
-  , title: ''
+  , 
+
+: ''
   , delay: 0
   , html: false
   , container: false
