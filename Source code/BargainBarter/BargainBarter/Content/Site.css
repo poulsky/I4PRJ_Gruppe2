@@ -22,3 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.font-bold {
+font-weight: bold;
+}
+
+.bg-menu{
+    background-color: #f5f5dc;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #000000;
+}
+
+.margin-header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
