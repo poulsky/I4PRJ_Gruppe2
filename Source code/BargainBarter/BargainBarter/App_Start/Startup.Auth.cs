@@ -53,16 +53,17 @@ namespace BargainBarter
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
-
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
-
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            
+            app.UseFacebookAuthentication(
+             appId: "1214096398648349",
+             appSecret: "cd77f1b9f471cefe74fe02bc7165662c");
+            /*
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+               ClientId = "",
+                ClientSecret = ""
+            });
+            */
         }
     }
 }
