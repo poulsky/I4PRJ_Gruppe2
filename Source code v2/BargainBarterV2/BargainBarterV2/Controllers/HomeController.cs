@@ -11,7 +11,6 @@ namespace BargainBarterV2.Controllers
     {
         public ActionResult Index()
         {
-
                 return View();
         }
 
