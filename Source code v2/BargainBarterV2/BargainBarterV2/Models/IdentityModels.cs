@@ -56,5 +56,7 @@ namespace BargainBarterV2.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<BargainBarterV2.Models.BarterAdd> BarterAdds { get; set; }
     }
 }
