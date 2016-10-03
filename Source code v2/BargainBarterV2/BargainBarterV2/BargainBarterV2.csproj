@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BarterAddsController.cs" />
+    <Compile Include="Controllers\BarterAddsV2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -278,6 +279,11 @@
     <Content Include="Views\BarterAdds\Details.cshtml" />
     <Content Include="Views\BarterAdds\Edit.cshtml" />
     <Content Include="Views\BarterAdds\Index.cshtml" />
+    <Content Include="Views\BarterAddsV2\Create.cshtml" />
+    <Content Include="Views\BarterAddsV2\Delete.cshtml" />
+    <Content Include="Views\BarterAddsV2\Details.cshtml" />
+    <Content Include="Views\BarterAddsV2\Edit.cshtml" />
+    <Content Include="Views\BarterAddsV2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
