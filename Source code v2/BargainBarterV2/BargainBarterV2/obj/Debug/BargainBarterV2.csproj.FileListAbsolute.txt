@@ -171,3 +171,8 @@ C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe4\Source code v2\BargainBarterV2\Ba
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe4\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe4\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe4\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csprojResolveAssemblyReference.cache
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.AddDomainClasses.resources
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
