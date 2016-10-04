@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -39,16 +40,24 @@ namespace BargainBarterV2.Controllers
 
         // POST: BarterAds//5
         [HttpPost]
-        public ActionResult UploadPicture(BarterAdd add, HttpPostedFileBase BarterPicture)
+        public ActionResult UploadPicture(HttpPostedFileBase BarterPicture)
         {
+            BarterAdd add=new BarterAdd();
             if (!ModelState.IsValid)
             {
                 return View("Index");
             }
-            if (BarterPicture != null)
+            if (BarterPicture.ContentLength>0)
             {
+                byte[] imgData;
+                using (BinaryReader reader = new BinaryReader(BarterPicture.InputStream))
+                {
+                    imgData = reader.ReadBytes((int) BarterPicture.InputStream.Length);
+                }
                 add.Picture = new byte[BarterPicture.ContentLength];
-                BarterPicture.InputStream.Read(add.Picture, 0, BarterPicture.ContentLength);
+                BarterPicture.InputStream.Read(imgData, 0, BarterPicture.ContentLength);
+
+
             }
             db.BarterAdds.Add(add);
             db.SaveChanges();

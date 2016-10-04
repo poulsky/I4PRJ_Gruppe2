@@ -74,7 +74,17 @@ namespace BargainBarterV2.Controllers
         {
             if (ModelState.IsValid)
             {
-               db.BarterAdds.Add(barterAdd);
+                if (BarterPicture.ContentLength > 0)
+                {
+                    byte[] imgData;
+                    using (BinaryReader reader = new BinaryReader(BarterPicture.InputStream))
+                    {
+                        imgData = reader.ReadBytes((int) BarterPicture.InputStream.Length);
+                    }
+                    barterAdd.Picture = imgData;
+                }
+
+                db.BarterAdds.Add(barterAdd);
                 db.SaveChanges();
             }
 
