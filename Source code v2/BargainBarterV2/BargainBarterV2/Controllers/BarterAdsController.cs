@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -41,18 +42,40 @@ namespace BargainBarterV2.Controllers
             return View();
         }
 
+
+        public ActionResult FileUpload(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                string pic = System.IO.Path.GetFileName(file.FileName);
+                string path = System.IO.Path.Combine(
+                                       Server.MapPath("~/images/profile"), pic);
+                // file is uploaded
+                file.SaveAs(path);
+
+                // save the image path path to the database or you can send image
+                // directly to database
+                // in-case if you want to store byte[] ie. for DB
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    file.InputStream.CopyTo(ms);
+                    byte [] array = ms.GetBuffer();
+                }
+            }
+            return RedirectToAction("Create", "BarterAdsController");
+        }
+
         // POST: BarterAds/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BarterAddId,Titel,Description,Picture,Category")] BarterAdd barterAdd)
+        public ActionResult Create([Bind(Include = "BarterAddId,Titel,Description,Picture,Category")] BarterAdd barterAdd, HttpPostedFileBase BarterPicture)
         {
             if (ModelState.IsValid)
             {
-                db.BarterAdds.Add(barterAdd);
+               db.BarterAdds.Add(barterAdd);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
             return View(barterAdd);
@@ -70,7 +93,7 @@ namespace BargainBarterV2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(barterAdd);
+            return View("Create", "BarterAdsController");
         }
 
         // POST: BarterAds/Edit/5
@@ -123,5 +146,8 @@ namespace BargainBarterV2.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        
     }
 }

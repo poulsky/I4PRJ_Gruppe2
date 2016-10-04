@@ -9,6 +9,9 @@ namespace BargainBarterV2.Controllers
 {
     public class HomeController : Controller
     {
+
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
                 return View();
@@ -26,6 +29,30 @@ namespace BargainBarterV2.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        // GET: Home/UploadPicture
+        public ActionResult UploadPicture()
+        {
+            return View();
+        }
+
+        // POST: BarterAds//5
+        [HttpPost]
+        public ActionResult UploadPicture(BarterAdd add, HttpPostedFileBase BarterPicture)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Index");
+            }
+            if (BarterPicture != null)
+            {
+                add.Picture = new byte[BarterPicture.ContentLength];
+                BarterPicture.InputStream.Read(add.Picture, 0, BarterPicture.ContentLength);
+            }
+            db.BarterAdds.Add(add);
+            db.SaveChanges();
+            return RedirectToAction("Create","BarterAds");
         }
     }
 }

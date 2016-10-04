@@ -274,21 +274,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\BarterAdds\Create.cshtml" />
-    <Content Include="Views\BarterAdds\Delete.cshtml" />
-    <Content Include="Views\BarterAdds\Details.cshtml" />
-    <Content Include="Views\BarterAdds\Edit.cshtml" />
-    <Content Include="Views\BarterAdds\Index.cshtml" />
-    <Content Include="Views\BarterAddsV2\Create.cshtml" />
-    <Content Include="Views\BarterAddsV2\Delete.cshtml" />
-    <Content Include="Views\BarterAddsV2\Details.cshtml" />
-    <Content Include="Views\BarterAddsV2\Edit.cshtml" />
-    <Content Include="Views\BarterAddsV2\Index.cshtml" />
     <Content Include="Views\BarterAds\Create.cshtml" />
     <Content Include="Views\BarterAds\Delete.cshtml" />
     <Content Include="Views\BarterAds\Details.cshtml" />
     <Content Include="Views\BarterAds\Edit.cshtml" />
     <Content Include="Views\BarterAds\Index.cshtml" />
+    <Content Include="Views\Home\UploadPicture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

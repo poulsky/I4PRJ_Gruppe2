@@ -1,7 +1,7 @@
 ﻿@model BargainBarterV2.Models.BarterAdd
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create BarterAdd";
 }
 
 <h2>Create</h2>
@@ -36,8 +36,16 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Picture, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Picture, "", new { @class = "text-danger" })
+                @using (Html.BeginForm("FileUpload", "Home", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+                {
+                    <input type="file" name="BarterPicture" id="BarterPicture" style="width: 100%;"/>
+                    <input type="submit" value="Upload" class="submit" />
+                }
             </div>
         </div>
+        
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
