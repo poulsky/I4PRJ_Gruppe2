@@ -13,9 +13,31 @@ namespace BargainBarterV2.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(string adcatagory, string searchString)
         {
-                return View();
+            var GenreLst = new List<string>();
+
+            var GenreQry = from d in db.BarterAdds
+                           orderby d.Category
+                           select d.Category;
+
+            GenreLst.AddRange(GenreQry.Distinct());
+            ViewBag.adcatagory = new SelectList(GenreLst);
+
+            var ads = from m in db.BarterAdds
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                ads = ads.Where(s => s.Category.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(adcatagory))
+            {
+                ads = ads.Where(x => x.Category == adcatagory);
+            }
+
+            return View(ads);
         }
 
         public ActionResult About()

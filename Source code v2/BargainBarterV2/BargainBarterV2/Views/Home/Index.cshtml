@@ -1,7 +1,21 @@
-﻿@{
+﻿@model IEnumerable<BargainBarterV2.Models.BarterAdd>
+
+@{
     ViewBag.Title = "Bargain Barter";
 }
 
+
+<p id="BarterSearch">
+   
+    @using (Html.BeginForm("Index", "BarterAds", FormMethod.Get))
+    {
+    <p>
+        Catagory: @Html.DropDownList("adcatagory", "All")
+        Title: @Html.TextBox("SearchString")
+        <input type="submit" value="Filter" />
+    </p>
+    }
+</p>
 
 <!-- Page Content -->
 
