@@ -151,7 +151,21 @@ namespace BargainBarterV2.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var address = new Address
+                {
+                    City = model.City,
+                    StreetName = model.StreetName,
+                    StreetNumber = model.StreetNumber,
+                    PostalCode = model.PostalCode
+                };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Firstname = model.FirstName,
+                    Lastname = model.LastName,
+                    Address = address
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
