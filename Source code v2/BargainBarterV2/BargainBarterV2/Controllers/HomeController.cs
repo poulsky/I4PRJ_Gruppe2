@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BargainBarterV2.Models;
+using System.Drawing;
 
 namespace BargainBarterV2.Controllers
 {
+    
     public class HomeController : Controller
     {
 
@@ -15,7 +17,7 @@ namespace BargainBarterV2.Controllers
 
         public ActionResult Index()
         {
-                return View();
+            return View();
         }
 
         public ActionResult About()
@@ -42,26 +44,57 @@ namespace BargainBarterV2.Controllers
         [HttpPost]
         public ActionResult UploadPicture(HttpPostedFileBase BarterPicture)
         {
-            BarterAdd add=new BarterAdd();
+            BarterAdd add = new BarterAdd();
             if (!ModelState.IsValid)
             {
                 return View("Index");
             }
-            if (BarterPicture.ContentLength>0)
+            if (BarterPicture.ContentLength > 0)
             {
-                byte[] imgData;
                 using (BinaryReader reader = new BinaryReader(BarterPicture.InputStream))
                 {
-                    imgData = reader.ReadBytes((int) BarterPicture.InputStream.Length);
+                    add.Picture = reader.ReadBytes((int) BarterPicture.InputStream.Length);
                 }
-                add.Picture = new byte[BarterPicture.ContentLength];
-                BarterPicture.InputStream.Read(imgData, 0, BarterPicture.ContentLength);
-
-
+    
             }
             db.BarterAdds.Add(add);
             db.SaveChanges();
-            return RedirectToAction("Create","BarterAds");
+
+            return RedirectToAction("ShowPicture", "Home", new { id = db.BarterAdds.Count() });
         }
+
+        public ActionResult ShowPicture(int id)
+        {
+            byte[] imagedata = db.BarterAdds.Find(id).Picture;
+            string imagepath = Convert.ToBase64String(imagedata);
+            string imagedataURL = string.Format("data:image/png; base64, {0}", imagepath);
+            ViewBag.image = imagedataURL;
+            return View();
+        }
+
+      
+        public Image byteArrayToImage(byte[] barteraddPicture)
+        {
+            var ms = new MemoryStream(barteraddPicture);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
+        
+    }
+
+    public class ImageHandler: IHttpHandler
+    {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+
+        public void ProcessRequest(HttpContext context)
+        {
+            byte[] pic = db.BarterAdds.Find(12).Picture;
+            context.Response.OutputStream.Write(pic,0, pic.Length);
+            context.Response.ContentType = "image/JPEG";
+        }
+
+        public bool IsReusable { get; }
     }
 }

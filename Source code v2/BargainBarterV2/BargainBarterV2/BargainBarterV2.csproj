@@ -280,6 +280,7 @@
     <Content Include="Views\BarterAds\Edit.cshtml" />
     <Content Include="Views\BarterAds\Index.cshtml" />
     <Content Include="Views\Home\UploadPicture.cshtml" />
+    <Content Include="Views\Home\ShowPicture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

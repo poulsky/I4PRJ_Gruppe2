@@ -76,19 +76,18 @@ namespace BargainBarterV2.Controllers
             {
                 if (BarterPicture.ContentLength > 0)
                 {
-                    byte[] imgData;
                     using (BinaryReader reader = new BinaryReader(BarterPicture.InputStream))
                     {
-                        imgData = reader.ReadBytes((int) BarterPicture.InputStream.Length);
+                        barterAdd.Picture = reader.ReadBytes((int)BarterPicture.InputStream.Length);
                     }
-                    barterAdd.Picture = imgData;
+
                 }
 
                 db.BarterAdds.Add(barterAdd);
                 db.SaveChanges();
             }
 
-            return View(barterAdd);
+            return RedirectToAction("ShowPicture", "Home", new { id = db.BarterAdds.Count() });
         }
 
         // GET: BarterAds/Edit/5
@@ -103,7 +102,7 @@ namespace BargainBarterV2.Controllers
             {
                 return HttpNotFound();
             }
-            return View("Create", "BarterAdsController");
+            return View();
         }
 
         // POST: BarterAds/Edit/5
@@ -111,15 +110,24 @@ namespace BargainBarterV2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BarterAddId,Titel,Description,Picture,Category")] BarterAdd barterAdd)
+        public ActionResult Edit([Bind(Include = "BarterAddId,Titel,Description,Picture,Category")] BarterAdd barterAdd, HttpPostedFileBase BarterAdPicture)
         {
             if (ModelState.IsValid)
             {
+                if (BarterAdPicture.ContentLength > 0)
+                {
+                    using (BinaryReader reader = new BinaryReader(BarterAdPicture.InputStream))
+                    {
+                        barterAdd.Picture = reader.ReadBytes((int)BarterAdPicture.InputStream.Length);
+                    }
+
+                }
+
                 db.Entry(barterAdd).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(barterAdd);
+            return View();
         }
 
         // GET: BarterAds/Delete/5
