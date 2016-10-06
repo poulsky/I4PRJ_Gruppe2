@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace BargainBarterV2.Models
@@ -65,13 +66,23 @@ namespace BargainBarterV2.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Fornavn")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Efternavn")]
+        public string LastName { get; set; }
+
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
+        //Følgende 2 linjer er slået fra til testning
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        //[DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
@@ -79,6 +90,22 @@ namespace BargainBarterV2.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Vejnavn")]
+        public string StreetName { get; set; }
+
+        [Required]
+        [Display(Name = "Husnummer (og evt. etage/side")]
+        public string StreetNumber { get; set; }
+
+        [Required]
+        [Display(Name="Postnummer")]
+        public string PostalCode { get; set; }
+
+        [Required]
+        [Display(Name = "By")]
+        public string City { get; set; }
     }
 
     public class ResetPasswordViewModel
