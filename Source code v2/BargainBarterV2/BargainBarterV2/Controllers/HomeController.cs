@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using BargainBarterV2.Models;
 using System.Drawing;
+using System.Net;
 
 namespace BargainBarterV2.Controllers
 {
@@ -87,8 +88,19 @@ namespace BargainBarterV2.Controllers
             return RedirectToAction("ShowPicture", "Home", new { id = db.BarterAdds.Count() });
         }
 
-        public ActionResult ShowPicture(int id)
+        public ActionResult ShowPicture(int? id)
         {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BarterAdd barterAdd = db.BarterAdds.Find(id);
+            if (barterAdd == null)
+            {
+                return HttpNotFound();
+            }
+
             byte[] imagedata = db.BarterAdds.Find(id).Picture;
             string imagepath = Convert.ToBase64String(imagedata);
             string imagedataURL = string.Format("data:image/png; base64, {0}", imagepath);

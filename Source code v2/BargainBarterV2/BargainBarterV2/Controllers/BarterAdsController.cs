@@ -21,6 +21,17 @@ namespace BargainBarterV2.Controllers
             return View(db.BarterAdds.ToList());
         }
 
+        public ActionResult ViewPhoto(int id)
+        {
+            var photo = db.BarterAdds.Find(id).Picture;
+            if (photo!=null)
+            {
+                return File(photo, "image/jpeg");
+            }
+            return File("~/Content/img/no-photo.jpg", "image/jpeg");
+            
+        }
+
         // GET: BarterAds/Details/5
         public ActionResult Details(int? id)
         {
@@ -93,7 +104,7 @@ namespace BargainBarterV2.Controllers
                 }
             }
 
-            return RedirectToAction("ShowPicture", "Home", new { id = db.BarterAdds.Count() });
+            return RedirectToAction("Index", "BarterAds");
         }
 
         // GET: BarterAds/Edit/5
@@ -108,6 +119,15 @@ namespace BargainBarterV2.Controllers
             {
                 return HttpNotFound();
             }
+
+            byte[] imagedata = db.BarterAdds.Find(id).Picture;
+            if (imagedata != null)
+            {
+                string imagepath = Convert.ToBase64String(imagedata);
+                string imagedataURL = string.Format("data:image/png; base64, {0}", imagepath);
+                ViewBag.image = imagedataURL;
+            }
+
             return View();
         }
 
@@ -116,15 +136,15 @@ namespace BargainBarterV2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BarterAddId,Titel,Description,Picture,Category")] BarterAdd barterAdd, HttpPostedFileBase BarterAdPicture)
+        public ActionResult Edit([Bind(Include = "BarterAddId,Titel,Description,Picture,Category")] BarterAdd barterAdd, HttpPostedFileBase BarterPicture)
         {
             if (ModelState.IsValid)
             {
-                if (BarterAdPicture.ContentLength > 0)
+                if (BarterPicture.ContentLength > 0)
                 {
-                    using (BinaryReader reader = new BinaryReader(BarterAdPicture.InputStream))
+                    using (BinaryReader reader = new BinaryReader(BarterPicture.InputStream))
                     {
-                        barterAdd.Picture = reader.ReadBytes((int)BarterAdPicture.InputStream.Length);
+                        barterAdd.Picture = reader.ReadBytes((int)BarterPicture.InputStream.Length);
                     }
 
                 }
