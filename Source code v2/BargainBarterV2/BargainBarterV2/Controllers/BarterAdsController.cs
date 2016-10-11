@@ -98,10 +98,12 @@ namespace BargainBarterV2.Controllers
                 }
                 catch
                 {
-
+                    return HttpNotFound();
+                }
+                
                     db.BarterAdds.Add(barterAdd);
                     db.SaveChanges();
-                }
+                
             }
 
             return RedirectToAction("Index", "BarterAds");
