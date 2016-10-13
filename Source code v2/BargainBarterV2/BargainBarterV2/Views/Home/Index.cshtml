@@ -10,9 +10,9 @@
     @using (Html.BeginForm("Index", "BarterAds", FormMethod.Get))
     {
     <p>
-        Catagory:  
+        @*Catagory: @Html.DropDownList("adcatagory", "All")
         Title: @Html.TextBox("SearchString")
-        <input type="submit" value="Filter" />
+        <input type="submit" value="Filter" />*@
     </p>
     }
 </p>
@@ -38,8 +38,6 @@
                             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                         </ol>
-
-
 
                         <div class="carousel-inner">
                             <div class="item active">
@@ -68,6 +66,12 @@
 
     </div>
 </div>
+
+<div>
+    @Html.ActionLink("Create BarterAd", "Create", "BarterAds");
+</div>
+
+
 @*<div class="row">
         <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">

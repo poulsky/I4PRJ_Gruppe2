@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using BargainBarterV2.Models;
 
 namespace BargainBarterV2.Controllers
@@ -20,6 +21,22 @@ namespace BargainBarterV2.Controllers
         {
             return View(db.BarterAdds.ToList());
         }
+
+        // GET: BarterAds for a specific User
+        public ActionResult ShowUserAdsResult(string UserId)
+        {
+            List<BarterAdd> BarterAds =new List<BarterAdd>();
+
+            foreach (var ad in db.BarterAdds)
+            {
+                if (ad.ApplicationUser.Id == UserId)
+                    BarterAds.Add(ad);
+
+            }
+            return View(BarterAds.ToList());
+        }
+
+
 
         public ActionResult ViewPhoto(int id)
         {
@@ -100,7 +117,7 @@ namespace BargainBarterV2.Controllers
                 {
                     return HttpNotFound();
                 }
-                
+
                     db.BarterAdds.Add(barterAdd);
                     db.SaveChanges();
                 
