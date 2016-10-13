@@ -21,7 +21,7 @@ namespace BargainBarterV2.Controllers
 
             if (!String.IsNullOrEmpty(searchstring))
                 results = results.Where(s => s.Titel.Contains(searchstring));
-            return View(results);
+            return View(results.ToList());
         }
 
         // GET: Search/Details/5
