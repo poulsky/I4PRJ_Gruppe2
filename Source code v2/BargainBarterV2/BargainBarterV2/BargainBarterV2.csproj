@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201609291319386_AddDomainClasses.Designer.cs">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610130938001_BargainBarter.cs" />
+    <Compile Include="Migrations\201610130938001_BargainBarter.Designer.cs">
+      <DependentUpon>201610130938001_BargainBarter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -305,6 +309,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609291319386_AddDomainClasses.resx">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610130938001_BargainBarter.resx">
+      <DependentUpon>201610130938001_BargainBarter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
