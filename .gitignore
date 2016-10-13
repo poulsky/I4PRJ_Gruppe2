@@ -89,7 +89,7 @@ Thumbs.db
 !/ProcesRapport/figures/*.pdf
 !/Review/*.pdf
 /Source code v2/BargainBarterV2/.vs/BargainBarterV2/v14/.suo
-/Source code v2/BargainBarterV2/BargainBarterV2/App_Data/aspnet-BargainBarterV2-20160929030033.mdf
+!/Source code v2/BargainBarterV2/BargainBarterV2/App_Data/aspnet-BargainBarterV2-20160929030033.mdf
 /Source code v2/BargainBarterV2/BargainBarterV2/App_Data/aspnet-BargainBarterV2-20160929030033_log.ldf
 /Source code/BargainBarter/BargainBarter.Tests/bin/Debug/Microsoft.Owin.Security.Facebook.dll
 /Source code/BargainBarter/BargainBarter.Tests/bin/Debug/Microsoft.Owin.Security.Facebook.xml
