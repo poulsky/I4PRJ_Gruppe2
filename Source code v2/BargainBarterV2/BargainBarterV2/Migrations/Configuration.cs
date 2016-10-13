@@ -1,3 +1,6 @@
+using BargainBarterV2.Models;
+using Microsoft.AspNet.Identity;
+
 namespace BargainBarterV2.Migrations
 {
     using System;
@@ -14,18 +17,30 @@ namespace BargainBarterV2.Migrations
 
         protected override void Seed(BargainBarterV2.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            var passwordHash = new PasswordHasher();
+            string password = passwordHash.HashPassword("Password@123");
+            context.Users.AddOrUpdate(u => u.UserName,
+                new ApplicationUser
+                {
+                    UserName = "Steve@Steve.com",
+                    PasswordHash = password,
+                    PhoneNumber = "12349873",
+                    PhoneNumberConfirmed = true,
+                    Email = "Steve@Steve.com",
+                    EmailConfirmed = true,
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    Firstname = "Steve",
+                    Lastname = "Hansen",
+                    Address = new Address()
+                    {
+                        StreetName = "Jensbaggesensvej",
+                        City = "Aarhus",
+                        PostalCode = "8200",
+                        StreetNumber = "13",
+                    }
+
+                });
         }
     }
 }
