@@ -218,6 +218,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\default.css" />
     <Content Include="Content\css\Home.css" />
+    <Content Include="Content\css\ShowBarterAd.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -282,6 +283,7 @@
     <Content Include="Views\BarterAds\Index.cshtml" />
     <Content Include="Views\Home\UploadPicture.cshtml" />
     <Content Include="Views\Home\ShowPicture.cshtml" />
+    <Content Include="Views\BarterAds\ShowBarterAd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

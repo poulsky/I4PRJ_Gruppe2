@@ -1,0 +1,19 @@
+﻿body {
+    font-size: 10pt;
+    margin-left: 100px;
+}
+
+#content img {
+    float: right;
+    margin-right: 130px;
+    width: 300pt;
+    height: 200pt ;
+    
+  
+}
+
+#content p {
+    font-size: 10pt;
+    margin-left: 50px;
+  
+}

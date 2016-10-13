@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using BargainBarterV2.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace BargainBarterV2.Controllers
 {
@@ -23,7 +25,7 @@ namespace BargainBarterV2.Controllers
         }
 
         // GET: BarterAds for a specific User
-        public ActionResult ShowUserAdsResult(string UserId)
+        public ActionResult Index(string UserId)
         {
             List<BarterAdd> BarterAds =new List<BarterAdd>();
 
@@ -65,6 +67,7 @@ namespace BargainBarterV2.Controllers
         }
 
         // GET: BarterAds/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -117,13 +120,15 @@ namespace BargainBarterV2.Controllers
                 {
                     return HttpNotFound();
                 }
-
+                //ApplicationUser user = System.Web.HttpContext.Current.User.Identity;
+                    //ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                    //barterAdd.ApplicationUser = user;
                     db.BarterAdds.Add(barterAdd);
                     db.SaveChanges();
                 
             }
 
-            return RedirectToAction("Index", "BarterAds");
+            return RedirectToAction("Index", "BarterAds");//new { id = db.BarterAdds.Last().ApplicationUser.Id }
         }
 
         // GET: BarterAds/Edit/5
@@ -200,6 +205,29 @@ namespace BargainBarterV2.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult ShowBarterAd(int ? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BarterAdd CurrentAd = db.BarterAdds.Find(id);
+
+            if (CurrentAd == null)
+            {
+                return HttpNotFound();
+            }
+            ViewData["Titel"] = CurrentAd.Titel;
+            ViewData["Description"] = CurrentAd.Description;
+            ViewBag.Id = CurrentAd.BarterAddId;
+            ViewData["Category"] = CurrentAd.Category;
+            
+
+            return View();
+        }
+
 
         protected override void Dispose(bool disposing)
         {
