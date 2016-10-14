@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { cols = 40, @rows = 5, @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -40,22 +40,46 @@
         
         <div class="form-group">
             @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-            @*<div class="col-md-10">
-                <select name="Kategori">
-                    <option value="A">Dyr</option>
-                    <option value="B">Børn</option>
-                    <option value="-">Hustruer</option>
-                </select>
-                <input type="text" name="other">
-                
-                <div class="demo-container size-narrow">
-                    <h2>Filtering</h2>
-                    <telerik:RadComboBox RenderMode="Lightweight" ID="RadComboBox2" AllowCustomText="true" runat="server" Width="500" Height="400px"
-                                         DataSourceID="SqlDataSource1" DataTextField="ContactName" EmptyMessage="Search for people...">
-                    </telerik:RadComboBox>
-                </div>*@
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>
+                    {
+            new SelectListItem
+                        {
+                            Text = "---Vælg kategori---",
+                            Value = "---Vælg kategori---",
+                            Selected = true,
+                            Disabled = true
+                        },
+                        new SelectListItem
+                        {
+                            Text = "Diverse",
+                            Value = "Diverse"
+                        },
+                        new SelectListItem
+                        {
+                            Text = "Interiør",
+                            Value = "Interiør"
+                        },
+                        new SelectListItem
+                        {
+                            Text = "Elektronik",
+                            Value = "Elektronik"
+                        },
+                        new SelectListItem
+                        {
+                            Text = "Sport",
+                            Value = "Sport"
+                        },
+                        new SelectListItem
+                        {
+                            Text = "Tøj",
+                            Value = "Tøj"
+                        }
+                    };
+                }
+
+                @Html.DropDownListFor(model => model.Category, listItems, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
             </div>
         </div>

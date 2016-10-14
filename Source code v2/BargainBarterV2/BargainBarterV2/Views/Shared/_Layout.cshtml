@@ -45,6 +45,7 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
             </ul>
             @Html.Partial("_LoginPartial")
+            
            
             @if (Request.IsAuthenticated)
             {
@@ -67,7 +68,18 @@
 
                     </ul>
                 </div>
-            }
+                }
+            <li>
+                <p id="barterSearch">
+                    @using (Html.BeginForm("Index", "Search", FormMethod.Get))
+                    {
+                    <p>
+                        Title: @Html.TextBox("SearchString")
+                        <input type="submit" value="Search" />
+                    </p>
+                    }
+                    </p>
+                </li>
         </div>
     </div>
 </nav>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -33,6 +34,9 @@ namespace BargainBarterV2.Models
         public byte[] Picture{ get; set; }
         public string Category { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
+        [Required]
+        public DateTime CreatedDateTime { get; set; } = DateTime.Now;
     }
 
     public class Address

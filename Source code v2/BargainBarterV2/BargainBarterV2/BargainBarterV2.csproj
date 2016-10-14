@@ -199,12 +199,17 @@
     <Compile Include="Controllers\BarterAdsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201609291319386_AddDomainClasses.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.Designer.cs">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610130938001_BargainBarter.cs" />
+    <Compile Include="Migrations\201610130938001_BargainBarter.Designer.cs">
+      <DependentUpon>201610130938001_BargainBarter.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -283,7 +288,15 @@
     <Content Include="Views\BarterAds\Index.cshtml" />
     <Content Include="Views\Home\UploadPicture.cshtml" />
     <Content Include="Views\Home\ShowPicture.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\BarterAds\ShowBarterAd.cshtml" />
+=======
+    <Content Include="Views\Search\Create.cshtml" />
+    <Content Include="Views\Search\Delete.cshtml" />
+    <Content Include="Views\Search\Details.cshtml" />
+    <Content Include="Views\Search\Edit.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+>>>>>>> cee9c73c7e2cb9e9658786aa787b3c34db8d5720
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -301,6 +314,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609291319386_AddDomainClasses.resx">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610130938001_BargainBarter.resx">
+      <DependentUpon>201610130938001_BargainBarter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
