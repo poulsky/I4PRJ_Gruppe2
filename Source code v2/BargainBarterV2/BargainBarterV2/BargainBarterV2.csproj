@@ -288,15 +288,15 @@
     <Content Include="Views\BarterAds\Index.cshtml" />
     <Content Include="Views\Home\UploadPicture.cshtml" />
     <Content Include="Views\Home\ShowPicture.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Views\BarterAds\ShowBarterAd.cshtml" />
-=======
+
     <Content Include="Views\Search\Create.cshtml" />
     <Content Include="Views\Search\Delete.cshtml" />
     <Content Include="Views\Search\Details.cshtml" />
     <Content Include="Views\Search\Edit.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
->>>>>>> cee9c73c7e2cb9e9658786aa787b3c34db8d5720
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
