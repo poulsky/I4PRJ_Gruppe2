@@ -587,3 +587,4 @@ C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\Ba
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.BargainBarter.resources
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Manglendemigration.resources
