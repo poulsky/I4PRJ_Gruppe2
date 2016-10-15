@@ -207,9 +207,21 @@
     <Compile Include="Migrations\201609291319386_AddDomainClasses.Designer.cs">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610130938001_BargainBarter.cs" />
-    <Compile Include="Migrations\201610130938001_BargainBarter.Designer.cs">
-      <DependentUpon>201610130938001_BargainBarter.cs</DependentUpon>
+    <Compile Include="Migrations\201610140925433_Opdatering.cs" />
+    <Compile Include="Migrations\201610140925433_Opdatering.Designer.cs">
+      <DependentUpon>201610140925433_Opdatering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610140953185_NoListOfBarterAds.cs" />
+    <Compile Include="Migrations\201610140953185_NoListOfBarterAds.Designer.cs">
+      <DependentUpon>201610140953185_NoListOfBarterAds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610141310198_NoListOfBarterAds1.cs" />
+    <Compile Include="Migrations\201610141310198_NoListOfBarterAds1.Designer.cs">
+      <DependentUpon>201610141310198_NoListOfBarterAds1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610141317197_NoListOfBarterAds2.cs" />
+    <Compile Include="Migrations\201610141317197_NoListOfBarterAds2.Designer.cs">
+      <DependentUpon>201610141317197_NoListOfBarterAds2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -288,15 +300,12 @@
     <Content Include="Views\BarterAds\Index.cshtml" />
     <Content Include="Views\Home\UploadPicture.cshtml" />
     <Content Include="Views\Home\ShowPicture.cshtml" />
-
     <Content Include="Views\BarterAds\ShowBarterAd.cshtml" />
-
     <Content Include="Views\Search\Create.cshtml" />
     <Content Include="Views\Search\Delete.cshtml" />
     <Content Include="Views\Search\Details.cshtml" />
     <Content Include="Views\Search\Edit.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -315,8 +324,17 @@
     <EmbeddedResource Include="Migrations\201609291319386_AddDomainClasses.resx">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610130938001_BargainBarter.resx">
-      <DependentUpon>201610130938001_BargainBarter.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610140925433_Opdatering.resx">
+      <DependentUpon>201610140925433_Opdatering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610140953185_NoListOfBarterAds.resx">
+      <DependentUpon>201610140953185_NoListOfBarterAds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610141310198_NoListOfBarterAds1.resx">
+      <DependentUpon>201610141310198_NoListOfBarterAds1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610141317197_NoListOfBarterAds2.resx">
+      <DependentUpon>201610141317197_NoListOfBarterAds2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

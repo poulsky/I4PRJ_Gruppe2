@@ -25,7 +25,7 @@ namespace BargainBarterV2.Controllers
         }
 
         // GET: BarterAds for a specific User
-        public ActionResult Index(string UserId)
+        public ActionResult ShowUsersBarterAds(string UserId)
         {
             List<BarterAdd> BarterAds =new List<BarterAdd>();
 
@@ -121,8 +121,8 @@ namespace BargainBarterV2.Controllers
                     return HttpNotFound();
                 }
                 //ApplicationUser user = System.Web.HttpContext.Current.User.Identity;
-                    //ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-                    //barterAdd.ApplicationUser = user;
+                    ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                    barterAdd.ApplicationUser = user;
                     db.BarterAdds.Add(barterAdd);
                     db.SaveChanges();
                 
@@ -214,7 +214,6 @@ namespace BargainBarterV2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             BarterAdd CurrentAd = db.BarterAdds.Find(id);
-
             if (CurrentAd == null)
             {
                 return HttpNotFound();
