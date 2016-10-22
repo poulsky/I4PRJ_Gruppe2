@@ -1,3 +1,18 @@
 ﻿#BarterSearch {
     background-color: #00008b;
 }
+
+.list-group-item a:link{
+
+    color: Brown;
+}
+
+/*.list-group-item{
+
+    color: Brown;
+}*/
+
+.list-group a:link{
+
+    color: Brown;
+}
