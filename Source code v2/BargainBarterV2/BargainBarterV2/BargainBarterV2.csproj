@@ -203,6 +203,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helperfunctions\Helper.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.Designer.cs">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
@@ -210,6 +211,10 @@
     <Compile Include="Migrations\201610151033261_Manglendemigration.cs" />
     <Compile Include="Migrations\201610151033261_Manglendemigration.Designer.cs">
       <DependentUpon>201610151033261_Manglendemigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610221549094_thumbnails.cs" />
+    <Compile Include="Migrations\201610221549094_thumbnails.Designer.cs">
+      <DependentUpon>201610221549094_thumbnails.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -320,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610151033261_Manglendemigration.resx">
       <DependentUpon>201610151033261_Manglendemigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610221549094_thumbnails.resx">
+      <DependentUpon>201610221549094_thumbnails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

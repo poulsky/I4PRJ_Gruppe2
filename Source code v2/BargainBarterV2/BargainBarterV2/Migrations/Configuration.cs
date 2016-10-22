@@ -130,6 +130,8 @@ namespace BargainBarterV2.Migrations
                 CreatedDateTime = new DateTime(2016, 8, 4, 12, 30, 45),
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\bosch-gron-boremaskine.png"),
+
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\bosch-gron-boremaskine.png"), 320, 150),
                 ApplicationUser = context.Users.First()
 
         });
@@ -147,7 +149,9 @@ namespace BargainBarterV2.Migrations
                 CreatedDateTime = new DateTime(2016, 8, 9, 12, 30, 45),
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\ArduinoNanoFront.jpg"),
-                
+
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\ArduinoNanoFront.jpg"), 320, 150)
+
             });
 
             context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
@@ -167,6 +171,8 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\ArduinoMega.jpg"),
 
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\ArduinoMega.jpg"), 320, 150)
+
             });
 
             context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
@@ -178,6 +184,8 @@ namespace BargainBarterV2.Migrations
                 CreatedDateTime = new DateTime(2016, 9, 11, 12, 30, 45),
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\t-shirt.jpg"),
+
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\t-shirt.jpg"), 320, 150)
 
             });
 
@@ -191,6 +199,8 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sweatshirt.jpg"),
 
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sweatshirt.jpg"), 320, 150)
+
             });
 
             context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
@@ -202,6 +212,8 @@ namespace BargainBarterV2.Migrations
                 CreatedDateTime = new DateTime(2016, 10, 12, 12, 30, 45),
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\jeans.jpg"),
+
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\jeans.jpg"), 320, 150)
 
             });
 
@@ -218,6 +230,8 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\hættetrøje.jpg"),
 
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\hættetrøje.jpg"), 320, 150)
+
             });
 
 
@@ -231,6 +245,7 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\klaverstol.jpg"),
 
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\klaverstol.jpg"), 320, 150)
             });
 
             context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
@@ -246,6 +261,7 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\spisebord.jpg"),
 
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\spisebord.jpg"), 320, 150)
             });
 
             context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
@@ -259,10 +275,10 @@ namespace BargainBarterV2.Migrations
                               " jeg vil, og den vil altid passe ind. ",
                 Category = "Interiør",
                 CreatedDateTime = new DateTime(2016, 04, 03, 12, 29, 45),
-
+                
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sofa.jpg"),
 
-                
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sofa.jpg"), 320,150)
 
             });
 

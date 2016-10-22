@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -42,7 +43,7 @@ namespace BargainBarterV2.Controllers
 
         public ActionResult ViewPhoto(int id)
         {
-            var photo = db.BarterAdds.Find(id).Picture;
+            var photo = db.BarterAdds.Find(id).Thumbnail;
             if (photo!=null)
             {
                 return File(photo, "image/jpeg");
@@ -112,6 +113,7 @@ namespace BargainBarterV2.Controllers
                         using (BinaryReader reader = new BinaryReader(BarterPicture.InputStream))
                         {
                             barterAdd.Picture = reader.ReadBytes((int) BarterPicture.InputStream.Length);
+                            barterAdd.Thumbnail = Helperfunctions.Helper.MakeThumbnail(barterAdd.Picture, 320, 150);
                         }
 
                     }
@@ -238,7 +240,9 @@ namespace BargainBarterV2.Controllers
             base.Dispose(disposing);
         }
 
+       
 
-        
     }
 }
+
+
