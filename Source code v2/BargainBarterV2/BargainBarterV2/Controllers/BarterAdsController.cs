@@ -19,26 +19,32 @@ namespace BargainBarterV2.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: BarterAds
+        // GET: BarterAds - Show all BarterAds
         public ActionResult Index()
         {
             return View(db.BarterAdds.ToList());
         }
-        /*
+        
+
         // GET: BarterAds for a specific User
-        public ActionResult Index(string UserId)
+        public ActionResult UserList(string userId)
         {
-            List<BarterAdd> BarterAds =new List<BarterAdd>();
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            List<BarterAdd> barterAds =new List<BarterAdd>();
 
             foreach (var ad in db.BarterAdds)
             {
-                if (ad.ApplicationUser.Id == UserId)
-                    BarterAds.Add(ad);
+                if (ad.ApplicationUser.Id == userId)
+                    barterAds.Add(ad);
 
             }
-            return View(BarterAds.ToList());
+            return View(barterAds.ToList());
         }
-        */
+        
 
 
         public ActionResult ViewPhoto(int id)

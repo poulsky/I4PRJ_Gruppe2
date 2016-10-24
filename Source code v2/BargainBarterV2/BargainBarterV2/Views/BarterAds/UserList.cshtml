@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BargainBarterV2.Models.BarterAdd>
+
+@{
+    ViewBag.Title = "UserList";
+}
+
+<h2>Dine BarterAds</h2>
+
+<div id="wrapper">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <img src='@Url.Action("ViewPhoto", new { id = item.BarterAddId })' width="260" height="200" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BarterAddId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.BarterAddId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BarterAddId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

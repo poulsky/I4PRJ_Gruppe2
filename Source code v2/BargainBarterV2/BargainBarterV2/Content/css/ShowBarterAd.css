@@ -1,19 +1,33 @@
 ﻿body {
-    font-size: 10pt;
-    margin-left: 100px;
+    background-color: #ffffcc;
+    color: #330000;
+    font-family: Verdana,Arial, sans-serif;
+    margin-left: 10%;
+    margin-right: 10%;
 }
+
 
 #content img {
     float: right;
     margin-right: 130px;
     width: 300pt;
     height: 200pt ;
-    
-  
 }
 
 #content p {
     font-size: 10pt;
-    margin-left: 50px;
-  
+    margin-left: 50px; 
 }
+
+#wrapper {
+    margin-right: auto;
+    background-color: white;
+    min-width: 700px;
+    -webkit-box-shadow: 5px 5px 5px #828282;
+    -moz-box-shadow: 5px 5px 5px #828282;
+    box-shadow: 5px 5px 5px #828282;
+}
+
+
+
+

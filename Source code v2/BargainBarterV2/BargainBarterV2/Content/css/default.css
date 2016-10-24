@@ -15,6 +15,25 @@
     font-size: 30px;
 }
 
+body {
+    background-color: #ffffcc;
+    color: #330000;
+    font-family: Verdana,Arial, sans-serif;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+table tr:nth-of-type(even) 
+{ 
+    background: yellow;
+}
+
+table tr:nth-of-type(odd) 
+{
+     background: orange;
+}
+
+
 @media (max-width: 767px) {
     .navbar-fixed-top {
         min-height: 0;

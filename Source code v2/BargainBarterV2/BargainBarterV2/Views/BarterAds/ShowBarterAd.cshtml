@@ -13,42 +13,43 @@
     @Html.AntiForgeryToken()
 
     <link href="~/Content/css/ShowBarterAd.css" rel="stylesheet">
+    <body>
+        <div class="form-horizontal">
+            <div id="wrapper">
 
-    <div class="form-horizontal">
-        <h4>Barter Add</h4>
-        <hr />
-        
-        <div class="form-group">
-            <div class="col-md-12"  Style="font-size: 21pt">
-                @ViewData["Titel"]
+                <div class="form-group">
+                    <div class="col-md-12" Style="font-size: 21pt">
+                        @ViewData["Titel"]
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12" Style="font-size: 15pt">
+                        @Html.DisplayNameFor(model => model.Description)
+                        @ViewData["Description"]
+                    </div>
+                </div>
+
+                <div class="form-group" id="content">
+                    <div class="col-md-12" Style="font-size: 15pt">
+                        <img src='@Url.Action("ViewPhoto", new {id = ViewBag.Id})' width="260" height="200" alt="@ViewData["Titel"]" />
+                        <p>Billedtekst</p>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-12" Style="font-size: 15pt">
+                        @Html.DisplayNameFor(model => model.Category)
+                        @ViewData["Category"]
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
-        <div class="form-group" >
-            <div class="col-md-12" Style="font-size: 15pt">
-                @Html.DisplayNameFor(model => model.Description)
-                @ViewData["Description"]
-            </div>
-       </div>
-
-        <div class="form-group" id="content">
-            <div class="col-md-12" Style="font-size: 15pt">
-                <img src='@Url.Action("ViewPhoto", new {id = ViewBag.Id})' width="260" height="200" alt="@ViewData["Titel"]"/>
-                <p>Billedtekst</p>
-            </div>
-        </div>
- 
-
-        <div class="form-group">
-            <div class="col-md-12" Style="font-size: 15pt">
-                @Html.DisplayNameFor(model => model.Category)
-                @ViewData["Category"]
-            </div>
-
-       </div>
-
-        
-    </div>
+    </body>
 }
 
 
