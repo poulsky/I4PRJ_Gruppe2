@@ -24,7 +24,7 @@ namespace BargainBarterV2.Controllers
         {
             return View(db.BarterAdds.ToList());
         }
-
+        /*
         // GET: BarterAds for a specific User
         public ActionResult Index(string UserId)
         {
@@ -38,7 +38,7 @@ namespace BargainBarterV2.Controllers
             }
             return View(BarterAds.ToList());
         }
-
+        */
 
 
         public ActionResult ViewPhoto(int id)
