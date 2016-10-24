@@ -4,11 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Alle annoncer</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<<<<<<< HEAD
 <body>
     <div id="wrapper">
         <table class="table">
@@ -28,6 +29,28 @@
                 <th></th>
             </tr>
 
+=======
+
+<body>
+    <div id="wrapper">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Picture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th></th>
+            </tr>
+
+>>>>>>> NewBranch
             @foreach (var item in Model)
             {
                 <tr>
@@ -53,4 +76,8 @@
 
         </table>
     </div>
+<<<<<<< HEAD
 </body>
+=======
+</body>
+>>>>>>> NewBranch

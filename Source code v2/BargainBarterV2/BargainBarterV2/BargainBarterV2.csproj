@@ -208,6 +208,22 @@
     <Compile Include="Migrations\201609291319386_AddDomainClasses.Designer.cs">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610140925433_Opdatering.cs" />
+    <Compile Include="Migrations\201610140925433_Opdatering.Designer.cs">
+      <DependentUpon>201610140925433_Opdatering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610140953185_NoListOfBarterAds.cs" />
+    <Compile Include="Migrations\201610140953185_NoListOfBarterAds.Designer.cs">
+      <DependentUpon>201610140953185_NoListOfBarterAds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610141310198_NoListOfBarterAds1.cs" />
+    <Compile Include="Migrations\201610141310198_NoListOfBarterAds1.Designer.cs">
+      <DependentUpon>201610141310198_NoListOfBarterAds1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610141317197_NoListOfBarterAds2.cs" />
+    <Compile Include="Migrations\201610141317197_NoListOfBarterAds2.Designer.cs">
+      <DependentUpon>201610141317197_NoListOfBarterAds2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201610151033261_Manglendemigration.cs" />
     <Compile Include="Migrations\201610151033261_Manglendemigration.Designer.cs">
       <DependentUpon>201610151033261_Manglendemigration.cs</DependentUpon>
@@ -323,6 +339,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609291319386_AddDomainClasses.resx">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610140925433_Opdatering.resx">
+      <DependentUpon>201610140925433_Opdatering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610140953185_NoListOfBarterAds.resx">
+      <DependentUpon>201610140953185_NoListOfBarterAds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610141310198_NoListOfBarterAds1.resx">
+      <DependentUpon>201610141310198_NoListOfBarterAds1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610141317197_NoListOfBarterAds2.resx">
+      <DependentUpon>201610141317197_NoListOfBarterAds2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610151033261_Manglendemigration.resx">
       <DependentUpon>201610151033261_Manglendemigration.cs</DependentUpon>

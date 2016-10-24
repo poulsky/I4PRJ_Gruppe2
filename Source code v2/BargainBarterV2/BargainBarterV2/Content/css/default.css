@@ -8,6 +8,28 @@
     width: auto;
 }
 
+table {
+    height: 100px;
+
+}
+
+table tr:nth-of-type(odd){
+    background-color: #ffa07a;
+}
+
+table tr:nth-of-type(even){
+    background-color: #7cfc00;
+}
+
+body {
+    font-size: 10pt;
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: #ffffcc;
+    color: #330000;
+    font-family: Verdana,Arial, sans-serif;
+}
+
 .navbar-nav > li > a {
     padding-top: 0;
     padding-bottom: 0;
