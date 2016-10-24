@@ -8,8 +8,8 @@
     @Scripts.Render("~/bundles/modernizr")
     
     
-    
     <link href="~/Content/css/default.css" rel="stylesheet">
+
     
     
 
@@ -31,7 +31,7 @@
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("BargainBarter", "Index", "Home")</li>
                 @if (Request.IsAuthenticated)
-                    {
+                {
                     <li>@Html.ActionLink("New Ad","Create","BarterAds")</li>
                         
                                 @*<li>@Html.ActionLink("Manage Account","Index","Manage")</li>
@@ -43,7 +43,20 @@
 
                 @*<li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+
+    <li>
+                    <p id="barterSearch">
+                        @using (Html.BeginForm("Index", "Search", FormMethod.Get))
+                        {
+                            <p>
+                                Title: @Html.TextBox("SearchString")
+                                <input type="submit" value="Search" />
+                            </p>
+                        }
+                    </p>
+                </li>
             </ul>
+
             @Html.Partial("_LoginPartial")
             
            
@@ -69,17 +82,7 @@
                     </ul>
                 </div>
                 }
-            <li>
-                <p id="barterSearch">
-                    @using (Html.BeginForm("Index", "Search", FormMethod.Get))
-                    {
-                    <p>
-                        Title: @Html.TextBox("SearchString")
-                        <input type="submit" value="Search" />
-                    </p>
-                    }
-                    </p>
-                </li>
+            
         </div>
     </div>
 </nav>
