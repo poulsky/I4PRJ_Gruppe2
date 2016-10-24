@@ -32,6 +32,8 @@ namespace BargainBarterV2.Models
         public string Titel { get; set; }
         public string Description { get; set; }
         public byte[] Picture{ get; set; }
+
+        public byte[] Thumbnail { get; set; }
         public string Category { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
