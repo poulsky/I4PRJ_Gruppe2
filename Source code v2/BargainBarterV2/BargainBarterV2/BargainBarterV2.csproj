@@ -199,12 +199,38 @@
     <Compile Include="Controllers\BarterAdsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helperfunctions\Helper.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.Designer.cs">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610140925433_Opdatering.cs" />
+    <Compile Include="Migrations\201610140925433_Opdatering.Designer.cs">
+      <DependentUpon>201610140925433_Opdatering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610140953185_NoListOfBarterAds.cs" />
+    <Compile Include="Migrations\201610140953185_NoListOfBarterAds.Designer.cs">
+      <DependentUpon>201610140953185_NoListOfBarterAds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610141310198_NoListOfBarterAds1.cs" />
+    <Compile Include="Migrations\201610141310198_NoListOfBarterAds1.Designer.cs">
+      <DependentUpon>201610141310198_NoListOfBarterAds1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610141317197_NoListOfBarterAds2.cs" />
+    <Compile Include="Migrations\201610141317197_NoListOfBarterAds2.Designer.cs">
+      <DependentUpon>201610141317197_NoListOfBarterAds2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610151033261_Manglendemigration.cs" />
+    <Compile Include="Migrations\201610151033261_Manglendemigration.Designer.cs">
+      <DependentUpon>201610151033261_Manglendemigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610221549094_thumbnails.cs" />
+    <Compile Include="Migrations\201610221549094_thumbnails.Designer.cs">
+      <DependentUpon>201610221549094_thumbnails.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -214,10 +240,15 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-BargainBarterV2-20160929030033.mdf" />
+    <Content Include="App_Data\aspnet-BargainBarterV2-20160929030033_log.ldf">
+      <DependentUpon>aspnet-BargainBarterV2-20160929030033.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\default.css" />
     <Content Include="Content\css\Home.css" />
+    <Content Include="Content\css\ShowBarterAd.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -241,12 +272,15 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -282,10 +316,15 @@
     <Content Include="Views\BarterAds\Index.cshtml" />
     <Content Include="Views\Home\UploadPicture.cshtml" />
     <Content Include="Views\Home\ShowPicture.cshtml" />
+    <Content Include="Views\BarterAds\ShowBarterAd.cshtml" />
+    <Content Include="Views\Search\Create.cshtml" />
+    <Content Include="Views\Search\Delete.cshtml" />
+    <Content Include="Views\Search\Details.cshtml" />
+    <Content Include="Views\Search\Edit.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Content\img\" />
+    <Folder Include="Content\img\SeedingAdsPictures\" />
     <Folder Include="Content\js\" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +338,24 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609291319386_AddDomainClasses.resx">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610140925433_Opdatering.resx">
+      <DependentUpon>201610140925433_Opdatering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610140953185_NoListOfBarterAds.resx">
+      <DependentUpon>201610140953185_NoListOfBarterAds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610141310198_NoListOfBarterAds1.resx">
+      <DependentUpon>201610141310198_NoListOfBarterAds1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610141317197_NoListOfBarterAds2.resx">
+      <DependentUpon>201610141317197_NoListOfBarterAds2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610151033261_Manglendemigration.resx">
+      <DependentUpon>201610151033261_Manglendemigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610221549094_thumbnails.resx">
+      <DependentUpon>201610221549094_thumbnails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

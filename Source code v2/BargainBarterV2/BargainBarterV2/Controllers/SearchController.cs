@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -11,17 +10,21 @@ using BargainBarterV2.Models;
 
 namespace BargainBarterV2.Controllers
 {
-    public class BarterAddsController : Controller
+    public class SearchController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: BarterAdds
-        public ActionResult Index()
+        // GET: Search
+        public ActionResult Index(string searchstring)
         {
-            return View(db.BarterAdds.ToList());
+            var results = from m in db.BarterAdds select m;
+
+            if (!String.IsNullOrEmpty(searchstring))
+                results = results.Where(s => s.Titel.Contains(searchstring));
+            return View(results.ToList());
         }
 
-        // GET: BarterAdds/Details/5
+        // GET: Search/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,14 +39,13 @@ namespace BargainBarterV2.Controllers
             return View(barterAdd);
         }
 
-        // GET: BarterAdds/Create
+        // GET: Search/Create
         public ActionResult Create()
         {
-            BarterAdd add1=new BarterAdd();
-            return View(add1);
+            return View();
         }
 
-        // POST: BarterAdds/Create
+        // POST: Search/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -60,7 +62,7 @@ namespace BargainBarterV2.Controllers
             return View(barterAdd);
         }
 
-        // GET: BarterAdds/Edit/5
+        // GET: Search/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -75,39 +77,23 @@ namespace BargainBarterV2.Controllers
             return View(barterAdd);
         }
 
-        // POST: BarterAdds/Edit/5
+        // POST: Search/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BarterAddId,Titel,Description,Category")] BarterAdd barterAdd, HttpPostedFileBase image1)
+        public ActionResult Edit([Bind(Include = "BarterAddId,Titel,Description,Picture,Category")] BarterAdd barterAdd)
         {
             if (ModelState.IsValid)
-                {
-                    if (image1 != null && image1.ContentLength > 0)
-                    {
-                        var picture = new File
-                        {
-                            FileName = System.IO.Path.GetFileName(image1.FileName);
-                            ContentType = image1.ContentType;
-                        };
-                        using (var reader = new System.IO.BinaryReader(image1.InputStream))
-                        {
-                            picture.Content = reader.ReadBytes(image1.ContentLength);
-                        }
-
-                        barterAdd.Files = new List<File> {picture};
-
-                    }
-                    //db.Entry(barterAdd).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            return View("Index");
-
+            {
+                db.Entry(barterAdd).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(barterAdd);
         }
 
-        // GET: BarterAdds/Delete/5
+        // GET: Search/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -122,7 +108,7 @@ namespace BargainBarterV2.Controllers
             return View(barterAdd);
         }
 
-        // POST: BarterAdds/Delete/5
+        // POST: Search/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -133,13 +119,15 @@ namespace BargainBarterV2.Controllers
             return RedirectToAction("Index");
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        
     }
 }

@@ -11,38 +11,20 @@ using System.Net;
 namespace BargainBarterV2.Controllers
 {
     
+
+
     public class HomeController : Controller
     {
+
+       
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult Index(string adcatagory, string searchString)
         {
-            return View();
-            var GenreLst = new List<string>();
-
-            var GenreQry = from d in db.BarterAdds
-                           orderby d.Category
-                           select d.Category;
-
-            GenreLst.AddRange(GenreQry.Distinct());
-            ViewBag.adcatagory = new SelectList(GenreLst);
-
-            var ads = from m in db.BarterAdds
-                         select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                ads = ads.Where(s => s.Category.Contains(searchString));
-            }
-
-            if (!string.IsNullOrEmpty(adcatagory))
-            {
-                ads = ads.Where(x => x.Category == adcatagory);
-            }
-
-            return View(ads);
-
+            var results = from m in db.BarterAdds select m;
+            
+            return View(results.ToList());
         }
 
         public ActionResult About()

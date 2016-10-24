@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using BargainBarterV2.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace BargainBarterV2.Controllers
 {
@@ -21,9 +25,25 @@ namespace BargainBarterV2.Controllers
             return View(db.BarterAdds.ToList());
         }
 
+        // GET: BarterAds for a specific User
+        public ActionResult ShowUsersBarterAds(string UserId)
+        {
+            List<BarterAdd> BarterAds =new List<BarterAdd>();
+
+            foreach (var ad in db.BarterAdds)
+            {
+                if (ad.ApplicationUser.Id == UserId)
+                    BarterAds.Add(ad);
+
+            }
+            return View(BarterAds.ToList());
+        }
+
+
+
         public ActionResult ViewPhoto(int id)
         {
-            var photo = db.BarterAdds.Find(id).Picture;
+            var photo = db.BarterAdds.Find(id).Thumbnail;
             if (photo!=null)
             {
                 return File(photo, "image/jpeg");
@@ -48,6 +68,7 @@ namespace BargainBarterV2.Controllers
         }
 
         // GET: BarterAds/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -92,6 +113,7 @@ namespace BargainBarterV2.Controllers
                         using (BinaryReader reader = new BinaryReader(BarterPicture.InputStream))
                         {
                             barterAdd.Picture = reader.ReadBytes((int) BarterPicture.InputStream.Length);
+                            barterAdd.Thumbnail = Helperfunctions.Helper.MakeThumbnail(barterAdd.Picture, 320, 150);
                         }
 
                     }
@@ -100,13 +122,15 @@ namespace BargainBarterV2.Controllers
                 {
                     return HttpNotFound();
                 }
-                
+                //ApplicationUser user = System.Web.HttpContext.Current.User.Identity;
+                    ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                    barterAdd.ApplicationUser = user;
                     db.BarterAdds.Add(barterAdd);
                     db.SaveChanges();
                 
             }
 
-            return RedirectToAction("Index", "BarterAds");
+            return RedirectToAction("Index", "BarterAds");//new { id = db.BarterAdds.Last().ApplicationUser.Id }
         }
 
         // GET: BarterAds/Edit/5
@@ -184,6 +208,28 @@ namespace BargainBarterV2.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public ActionResult ShowBarterAd(int ? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BarterAdd CurrentAd = db.BarterAdds.Find(id);
+            if (CurrentAd == null)
+            {
+                return HttpNotFound();
+            }
+            ViewData["Titel"] = CurrentAd.Titel;
+            ViewData["Description"] = CurrentAd.Description;
+            ViewBag.Id = CurrentAd.BarterAddId;
+            ViewData["Category"] = CurrentAd.Category;
+            
+
+            return View();
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -193,7 +239,9 @@ namespace BargainBarterV2.Controllers
             base.Dispose(disposing);
         }
 
+       
 
-        
     }
 }
+
+
