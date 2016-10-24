@@ -33,6 +33,18 @@ table tr:nth-of-type(odd)
      background: orange;
 }
 
+footer {
+    background-color: #ccaa66;
+    color: #000000;
+    font-size: .60em;
+    font-style: italic;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    clear: both;
+}
+
+
 
 @media (max-width: 767px) {
     .navbar-fixed-top {
