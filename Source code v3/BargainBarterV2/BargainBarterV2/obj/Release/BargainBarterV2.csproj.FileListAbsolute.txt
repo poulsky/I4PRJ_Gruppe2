@@ -1,0 +1,3 @@
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Release\BargainBarterV2.csprojResolveAssemblyReference.cache
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Release\BargainBarterV2.Migrations.AddDomainClasses.resources
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\obj\Release\BargainBarterV2.csproj.GenerateResource.Cache
