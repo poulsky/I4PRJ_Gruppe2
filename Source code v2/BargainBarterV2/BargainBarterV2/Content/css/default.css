@@ -37,6 +37,37 @@ body {
     font-size: 30px;
 }
 
+body {
+    background-color: #ffffcc;
+    color: #330000;
+    font-family: Verdana,Arial, sans-serif;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+table tr:nth-of-type(even) 
+{ 
+    background: yellow;
+}
+
+table tr:nth-of-type(odd) 
+{
+     background: orange;
+}
+
+footer {
+    background-color: #ccaa66;
+    color: #000000;
+    font-size: .60em;
+    font-style: italic;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    clear: both;
+}
+
+
+
 @media (max-width: 767px) {
     .navbar-fixed-top {
         min-height: 0;

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+    
+    
+    <link href="~/Content/css/default.css" rel="stylesheet">
+    
+    
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href=@Url.Action("Index","Home")><img class="hidden-xs" src="~/Content/img/BargainBarter.png" alt="BargainBarter"><span class="visible-xs">BargainBarter</span> </a>
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("BargainBarter", "Index", "Home")</li>
+                @if (Request.IsAuthenticated)
+                    {
+                    <li>@Html.ActionLink("New Ad","Create","BarterAds")</li>
+                        
+                                @*<li>@Html.ActionLink("Manage Account","Index","Manage")</li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>*@                               
+                }
+                @*<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                    aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>*@
+
+
+                @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+            </ul>
+            @Html.Partial("_LoginPartial")
+            
+           
+            @if (Request.IsAuthenticated)
+            {
+                <div class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Manage Account", "Index", "Manage")</li>
+                                <li>@Html.ActionLink("Manage adds", "Index", "Home")</li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Personal settings</li>
+                                <li><a href="#">User Settings</a></li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                }
+            <li>
+                <p id="barterSearch">
+                    @using (Html.BeginForm("Index", "Search", FormMethod.Get))
+                    {
+                    <p>
+                        Title: @Html.TextBox("SearchString")
+                        <input type="submit" value="Search" />
+                    </p>
+                    }
+                    </p>
+                </li>
+        </div>
+    </div>
+</nav>
+
+    <br/>
+    <br/>
+    <br/>
+@RenderBody()
+        
+    
+    
+    
+
+        <footer>
+            Copyright &copy; 2016 BargainBarter<br>
+            <a href="mailto:per@ergud.com">PER@ergud.com</a>
+        </footer>
+  
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
