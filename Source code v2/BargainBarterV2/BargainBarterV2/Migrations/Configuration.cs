@@ -132,7 +132,7 @@ namespace BargainBarterV2.Migrations
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\bosch-gron-boremaskine.png"),
 
                 Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\bosch-gron-boremaskine.png"), 320, 150),
-                ApplicationUser = context.Users.First()
+                
 
         });
 
