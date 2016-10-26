@@ -44,6 +44,8 @@ namespace BargainBarterV2.Controllers
             }
             return View(barterAds.ToList());
         }
+
+
         
 
 
@@ -246,8 +248,19 @@ namespace BargainBarterV2.Controllers
             base.Dispose(disposing);
         }
 
-       
 
+        public ActionResult ManageAds()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var barterAds = from r in db.BarterAdds
+                            where r.ApplicationUserId == userId
+                            select r;
+
+            if(barterAds.Any())
+                return View(barterAds.ToList());
+            return View("ManageAdsNoAds");
+        }
     }
 }
 

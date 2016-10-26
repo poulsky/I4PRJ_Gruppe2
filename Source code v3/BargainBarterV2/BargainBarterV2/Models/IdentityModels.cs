@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace BargainBarterV2.Models
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public Address Address { get; set; }
-        public List<BarterAdd> BarterAdds { get; set; }
+        public virtual List<BarterAdd> BarterAdds { get; set; }
     }
 
     public class BarterAdd
@@ -35,7 +36,9 @@ namespace BargainBarterV2.Models
 
         public byte[] Thumbnail { get; set; }
         public string Category { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         [Required]
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
