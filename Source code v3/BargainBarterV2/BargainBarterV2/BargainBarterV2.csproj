@@ -200,6 +200,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Distance.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,6 +220,10 @@
     <Compile Include="Migrations\201610261608336_LazyLoadingAdd.cs" />
     <Compile Include="Migrations\201610261608336_LazyLoadingAdd.Designer.cs">
       <DependentUpon>201610261608336_LazyLoadingAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610270851040_CoordinatesAddedToAdress.cs" />
+    <Compile Include="Migrations\201610270851040_CoordinatesAddedToAdress.Designer.cs">
+      <DependentUpon>201610270851040_CoordinatesAddedToAdress.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -333,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610261608336_LazyLoadingAdd.resx">
       <DependentUpon>201610261608336_LazyLoadingAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610270851040_CoordinatesAddedToAdress.resx">
+      <DependentUpon>201610270851040_CoordinatesAddedToAdress.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,6 +20,33 @@ namespace BargainBarterV2.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
 
+        // GET: BarterAds - Show all BarterAds
+        public ActionResult Index()
+        {
+            return View(db.BarterAdds.ToList());
+        }
+        
+
+        // GET: BarterAds for a specific User
+        public ActionResult UserList(string userId)
+        {
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            List<BarterAdd> barterAds =new List<BarterAdd>();
+
+            foreach (var ad in db.BarterAdds)
+            {
+                if (ad.ApplicationUser.Id == userId)
+                    barterAds.Add(ad);
+
+            }
+            return View(barterAds.ToList());
+        }
+        
+
         public ActionResult ViewPhoto(int id)
         {
             var photo = db.BarterAdds.Find(id).Thumbnail;
@@ -230,6 +257,8 @@ namespace BargainBarterV2.Controllers
             if(barterAds.Any())
                 return View(barterAds.ToList());
             return View("ManageAdsNoAds");
+
+
         }
     }
 }
