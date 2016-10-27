@@ -130,10 +130,10 @@ namespace BargainBarterV2.Controllers
                 {
                     return HttpNotFound();
                 }
-                //ApplicationUser user = System.Web.HttpContext.Current.User.Identity;
-                    //ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-                    //barterAdd.ApplicationUser = user;
-                    db.BarterAdds.Add(barterAdd);
+
+                    ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                    ApplicationUser User= db.Users.Find(user.Id);
+                    User.BarterAdds.Add(barterAdd);
                     db.SaveChanges();
                 
             }
