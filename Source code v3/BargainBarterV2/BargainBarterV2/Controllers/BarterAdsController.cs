@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -105,15 +105,15 @@ namespace BargainBarterV2.Controllers
                 return HttpNotFound();
             }
 
-            byte[] imagedata = db.BarterAdds.Find(id).Picture;
-            if (imagedata != null)
-            {
-                string imagepath = Convert.ToBase64String(imagedata);
-                string imagedataURL = string.Format("data:image/png; base64, {0}", imagepath);
-                ViewBag.image = imagedataURL;
-            }
+            //byte[] imagedata = db.BarterAdds.Find(id).Picture;
+            //if (imagedata != null)
+            //{
+            //    string imagepath = Convert.ToBase64String(imagedata);
+            //    string imagedataURL = string.Format("data:image/png; base64, {0}", imagepath);
+            //    ViewBag.image = imagedataURL;
+            //}
 
-            return View();
+            return View(barterAdd);
         }
 
         // POST: BarterAds/Edit/5
@@ -131,11 +131,27 @@ namespace BargainBarterV2.Controllers
                     using (BinaryReader reader = new BinaryReader(BarterPicture.InputStream))
                     {
                         barterAdd.Picture = reader.ReadBytes((int)BarterPicture.InputStream.Length);
+                        barterAdd.Thumbnail = Helperfunctions.Helper.MakeThumbnail(barterAdd.Picture, 320, 150);
                     }
 
                 }
 
-                db.Entry(barterAdd).State = EntityState.Modified;
+                //db.Entry(barterAdd).State = EntityState.Modified;
+
+                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                ApplicationUser user1 =
+                    db.Users.Include(b => b.BarterAdds).Single(u => u.Id == user.Id);
+
+                var temp = user1.BarterAdds.Single(b => b.BarterAddId == barterAdd.BarterAddId);
+
+                temp.Description = barterAdd.Description;
+                temp.Titel = barterAdd.Titel;
+                temp.Category = barterAdd.Category;
+                temp.Picture = barterAdd.Picture;
+                temp.Thumbnail = barterAdd.Thumbnail;
+
+                db.Users.AddOrUpdate(user1);
+                
                 db.SaveChanges();
                 return RedirectToAction("ManageAds");
             }
