@@ -33,13 +33,11 @@ namespace BargainBarterV2.Models
         public string Titel { get; set; }
         public string Description { get; set; }
         public byte[] Picture{ get; set; }
-
         public byte[] Thumbnail { get; set; }
         public string Category { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
-
         [Required]
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
     }
@@ -52,6 +50,7 @@ namespace BargainBarterV2.Models
         public string PostalCode { get; set; }
         public string City { get; set; }
         public List<ApplicationUser> Users { get; set; }
+        //public Coordinates Coordinate{get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -19,6 +19,8 @@ namespace BargainBarterV2.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
         // GET: BarterAds - Show all BarterAds
         public ActionResult Index()
         {
@@ -44,11 +46,13 @@ namespace BargainBarterV2.Controllers
             }
             return View(barterAds.ToList());
         }
-
-
         
+=======
 
+>>>>>>> d6c0f916b0ec8ae96fe1bb2f85e88b818990dbe3
+=======
 
+>>>>>>> d6c0f916b0ec8ae96fe1bb2f85e88b818990dbe3
         public ActionResult ViewPhoto(int id)
         {
             var photo = db.BarterAdds.Find(id).Thumbnail;
@@ -83,27 +87,6 @@ namespace BargainBarterV2.Controllers
         }
 
 
-        public ActionResult FileUpload(HttpPostedFileBase file)
-        {
-            if (file != null)
-            {
-                string pic = System.IO.Path.GetFileName(file.FileName);
-                string path = System.IO.Path.Combine(
-                                       Server.MapPath("~/images/profile"), pic);
-                // file is uploaded
-                file.SaveAs(path);
-
-                // save the image path path to the database or you can send image
-                // directly to database
-                // in-case if you want to store byte[] ie. for DB
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    file.InputStream.CopyTo(ms);
-                    byte [] array = ms.GetBuffer();
-                }
-            }
-            return RedirectToAction("Create", "BarterAdsController");
-        }
 
         // POST: BarterAds/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -138,10 +121,11 @@ namespace BargainBarterV2.Controllers
                 
             }
 
-            return RedirectToAction("Index", "BarterAds");//new { id = db.BarterAdds.Last().ApplicationUser.Id }
+            return RedirectToAction("ManageAds", "BarterAds");//new { id = db.BarterAdds.Last().ApplicationUser.Id }
         }
 
         // GET: BarterAds/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -168,6 +152,7 @@ namespace BargainBarterV2.Controllers
         // POST: BarterAds/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "BarterAddId,Titel,Description,Picture,Category")] BarterAdd barterAdd, HttpPostedFileBase BarterPicture)
@@ -185,12 +170,13 @@ namespace BargainBarterV2.Controllers
 
                 db.Entry(barterAdd).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ManageAds");
             }
             return View();
         }
 
         // GET: BarterAds/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -206,6 +192,7 @@ namespace BargainBarterV2.Controllers
         }
 
         // POST: BarterAds/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -213,7 +200,7 @@ namespace BargainBarterV2.Controllers
             BarterAdd barterAdd = db.BarterAdds.Find(id);
             db.BarterAdds.Remove(barterAdd);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ManageAds");
         }
 
 
@@ -260,6 +247,8 @@ namespace BargainBarterV2.Controllers
             if(barterAds.Any())
                 return View(barterAds.ToList());
             return View("ManageAdsNoAds");
+
+
         }
     }
 }
