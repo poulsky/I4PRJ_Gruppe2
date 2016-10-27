@@ -158,6 +158,10 @@ namespace BargainBarterV2.Controllers
                     StreetNumber = model.StreetNumber,
                     PostalCode = model.PostalCode
                 };
+
+                Coordinates _Coordinates = CoordinatesDistanceExtensions.GetCoordinates(address);
+                //address.Coordinate = _Coordinates;
+
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
@@ -185,6 +189,8 @@ namespace BargainBarterV2.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        
 
         //
         // GET: /Account/ConfirmEmail

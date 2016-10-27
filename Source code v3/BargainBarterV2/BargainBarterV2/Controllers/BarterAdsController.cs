@@ -44,11 +44,7 @@ namespace BargainBarterV2.Controllers
             }
             return View(barterAds.ToList());
         }
-
-
         
-
-
         public ActionResult ViewPhoto(int id)
         {
             var photo = db.BarterAdds.Find(id).Thumbnail;
@@ -260,6 +256,8 @@ namespace BargainBarterV2.Controllers
             if(barterAds.Any())
                 return View(barterAds.ToList());
             return View("ManageAdsNoAds");
+
+
         }
     }
 }
