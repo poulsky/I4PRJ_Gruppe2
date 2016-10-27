@@ -20,6 +20,7 @@ namespace BargainBarterV2.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // GET: BarterAds - Show all BarterAds
         public ActionResult Index()
         {
@@ -46,6 +47,9 @@ namespace BargainBarterV2.Controllers
             return View(barterAds.ToList());
         }
         
+=======
+
+>>>>>>> d6c0f916b0ec8ae96fe1bb2f85e88b818990dbe3
 =======
 
 >>>>>>> d6c0f916b0ec8ae96fe1bb2f85e88b818990dbe3
