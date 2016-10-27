@@ -1,4 +1,5 @@
-﻿@model BargainBarterV2.Models.BarterAdd
+﻿@using BargainBarterV2.Helperfunctions
+@model BargainBarterV2.Models.BarterAdd
 
 @{
     ViewBag.Title = "Create BarterAdd";
@@ -41,45 +42,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @{
-                    List<SelectListItem> listItems = new List<SelectListItem>
-                    {
-            new SelectListItem
-                        {
-                            Text = "---Vælg kategori---",
-                            Value = "---Vælg kategori---",
-                            Selected = true,
-                            Disabled = true
-                        },
-                        new SelectListItem
-                        {
-                            Text = "Diverse",
-                            Value = "Diverse"
-                        },
-                        new SelectListItem
-                        {
-                            Text = "Interiør",
-                            Value = "Interiør"
-                        },
-                        new SelectListItem
-                        {
-                            Text = "Elektronik",
-                            Value = "Elektronik"
-                        },
-                        new SelectListItem
-                        {
-                            Text = "Sport",
-                            Value = "Sport"
-                        },
-                        new SelectListItem
-                        {
-                            Text = "Tøj",
-                            Value = "Tøj"
-                        }
-                    };
-                }
-
-                @Html.DropDownListFor(model => model.Category, listItems, new { @class = "form-control" })
+              
+                @Html.DropDownListFor(model => model.Category, new CategoryList(), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -1026,3 +1026,4 @@ C:\Users\Jeppe\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\Bar
 C:\Users\Jeppe\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Jeppe\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Jeppe\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.CoordinatesAddedToAdress.resources
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.CoordinatesAddedToAdress.resources
