@@ -19,35 +19,6 @@ namespace BargainBarterV2.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: BarterAds - Show all BarterAds
-        //public ActionResult Index()
-        //{
-        //    return View(db.BarterAdds.ToList());
-        //}
-        
-
-        // GET: BarterAds for a specific User
-        //public ActionResult UserList(string userId)
-        //{
-        //    if (userId == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-
-        //    List<BarterAdd> barterAds =new List<BarterAdd>();
-
-        //    foreach (var ad in db.BarterAdds)
-        //    {
-        //        if (ad.ApplicationUser.Id == userId)
-        //            barterAds.Add(ad);
-
-        //    }
-        //    return View(barterAds.ToList());
-        //}
-
-
-        
-
 
         public ActionResult ViewPhoto(int id)
         {
@@ -83,27 +54,6 @@ namespace BargainBarterV2.Controllers
         }
 
 
-        //public ActionResult FileUpload(HttpPostedFileBase file)
-        //{
-        //    if (file != null)
-        //    {
-        //        string pic = System.IO.Path.GetFileName(file.FileName);
-        //        string path = System.IO.Path.Combine(
-        //                               Server.MapPath("~/images/profile"), pic);
-        //        // file is uploaded
-        //        file.SaveAs(path);
-
-        //        // save the image path path to the database or you can send image
-        //        // directly to database
-        //        // in-case if you want to store byte[] ie. for DB
-        //        using (MemoryStream ms = new MemoryStream())
-        //        {
-        //            file.InputStream.CopyTo(ms);
-        //            byte [] array = ms.GetBuffer();
-        //        }
-        //    }
-        //    return RedirectToAction("Create", "BarterAdsController");
-        //}
 
         // POST: BarterAds/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
