@@ -160,7 +160,7 @@ namespace BargainBarterV2.Controllers
                 };
 
                 Coordinates _Coordinates = CoordinatesDistanceExtensions.GetCoordinates(address);
-                //address.Coordinate = _Coordinates;
+                address.Coordinate = _Coordinates;
 
                 var user = new ApplicationUser
                 {

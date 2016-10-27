@@ -14,7 +14,7 @@ namespace BargainBarterV2.Tests
     {
 
         [Test]
-        public void GetCoordinates_Test()
+        public void GetDistance_Test()
         {
             Address A1 = new Address
             {
@@ -24,8 +24,19 @@ namespace BargainBarterV2.Tests
                 StreetNumber = "10"
             };
 
-            Coordinates coordinates = CoordinatesDistanceExtensions.GetCoordinates(A1);
+            Address A2 = new Address
+            {
+                City = "Aarhus N",
+                PostalCode = "8200",
+                StreetName = "Kalmargade",
+                StreetNumber = "42"
+            };
 
+            A1.Coordinate = CoordinatesDistanceExtensions.GetCoordinates(A1);
+            A2.Coordinate= CoordinatesDistanceExtensions.GetCoordinates(A2);
+            double distance= A1.Coordinate.DistanceTo(A2.Coordinate);
+
+            Assert.That(distance,Is.LessThan(10));
 
         }
 
