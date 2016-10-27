@@ -4,8 +4,63 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<link href="~/Content/css/Home.css" rel="stylesheet"/>
 
+<section class="fill-section">
+    @*<div class="container-fluid">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+
+                <div class="panel-heading">Catagories</div>
+
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">Elektronik <span class="badge">12</span></li>
+                        <li class="list-group-item">interiør <span class="badge">5</span></li>
+                        <li class="list-group-item">diverse <span class="badge">11</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>*@
+    @section Sidebar {
+        <link href="~/Views/Shared/CatagorySiderbar.cshtml" />
+    }
+
+        <div class="col-md-9" id="myscrollwheel">
+            <div class="row text-center">
+                @foreach (var item in Model)
+            {
+                    <div class="col-md-6" id="thump">
+                        <div class="thumbnail">
+                            <img src='@Url.Action("ViewPhoto","BarterAds", new { id = item.BarterAddId })' height="500" alt="">
+                            <div class="caption">
+                                <h3>@Html.DisplayFor(modelItem => item.Titel)</h3>
+                                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+
+
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-left">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<h2>Index</h2>
+    
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -48,4 +103,4 @@
     </tr>
 }
 
-</table>
+</table>*@
