@@ -33,7 +33,7 @@
                         <div class="thumbnail">
                             <img src='@Url.Action("ViewPhoto","BarterAds", new { id = item.BarterAddId })' height="500" alt="">
                             <div class="caption">
-                                <h3>@Html.DisplayFor(modelItem => item.Titel)</h3>
+                                <h3>@Html.ActionLink(item.Titel, "Details", "BarterAds", new { id = item.BarterAddId }, null)</h3>
                                 <p>@Html.DisplayFor(modelItem => item.Description)</p>
 
 
