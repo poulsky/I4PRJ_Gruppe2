@@ -7,32 +7,38 @@
 
 
 <div class="container">
-    <div class="well">
-        <div class="row">
-            <strong>@Model.Titel</strong>
-            <i class="pull-right">@Model.Category</i>
-            <hr/>
-        </div>
-        <div class="row">
-            @if (Model.ApplicationUser != null)
-            {
-                <p>@Model.ApplicationUser.Firstname @Model.ApplicationUser.Lastname</p>
-            }
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <img src='@Url.Action("ViewPhoto", new {id = Model.BarterAddId})' width="260" height="200" />
+    <div class="row">
+        <div class="well well-lg col-md-8 col-md-offset-2">
+            <div class="row">
+                <strong>@Model.Titel</strong>
+                <i class="pull-right">@Model.Category</i>
             </div>
-            <div class="col-md-6">
-                <p>Map goes here</p>
+            <hr />
+
+            <div class="row">
+                @if (Model.ApplicationUser != null)
+                {
+                    <p>@Model.ApplicationUser.Firstname @Model.ApplicationUser.Lastname</p>
+                }
             </div>
-        </div>
-        <div class="row">
-            @Model.Description
+            <div class="row">
+                <div class="col-md-6">
+                    <img src='@Url.Action("ViewPhoto", new {id = Model.BarterAddId})' width="260" height="200" />
+                </div>
+                <div class="col-md-6">
+                    <p>Map goes here</p>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                @Model.Description
+            </div>
         </div>
     </div>
-    <p>
-        @Html.ActionLink("Tilbage til forsiden", "Index","Home")
-    </p>
+    <div class="row">
+        <p>
+            @Html.ActionLink("Tilbage til forsiden", "Index", "Home")
+        </p>
+    </div>
 </div>
 
