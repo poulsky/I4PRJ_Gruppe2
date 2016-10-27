@@ -216,6 +216,10 @@
     <Compile Include="Migrations\201610221549094_thumbnails.Designer.cs">
       <DependentUpon>201610221549094_thumbnails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610261608336_LazyLoadingAdd.cs" />
+    <Compile Include="Migrations\201610261608336_LazyLoadingAdd.Designer.cs">
+      <DependentUpon>201610261608336_LazyLoadingAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -232,6 +236,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\default.css" />
     <Content Include="Content\css\Home.css" />
+    <Content Include="Content\css\shared.css" />
     <Content Include="Content\css\ShowBarterAd.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -285,12 +290,12 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Home\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Home\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Home\Manage\Index.cshtml" />
-    <Content Include="Views\Home\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Home\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Home\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\BarterAds\Create.cshtml" />
@@ -307,6 +312,8 @@
     <Content Include="Views\Search\Edit.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\BarterAds\UserList.cshtml" />
+    <Content Include="Views\BarterAds\ManageAds.cshtml" />
+    <None Include="Views\BarterAds\ManageAdsNoAds.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\SeedingAdsPictures\" />
@@ -329,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610221549094_thumbnails.resx">
       <DependentUpon>201610221549094_thumbnails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610261608336_LazyLoadingAdd.resx">
+      <DependentUpon>201610261608336_LazyLoadingAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

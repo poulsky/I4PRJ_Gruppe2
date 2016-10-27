@@ -1,18 +1,31 @@
-﻿#BarterSearch {
-    background-color: #00008b;
+﻿.caption {
+height: 128px;
+overflow: hidden;
 }
 
-.list-group-item a:link{
-
-    color: Brown;
+#menujumpatron p {
+	font-size: 100%;
+	font-family: arial;
+	color: blue;
 }
 
-/*.list-group-item{
 
-    color: Brown;
-}*/
+#myscrollwheel{
+	height: 500px;
+	overflow: scroll;
+}
 
-.list-group a:link{
-
-    color: Brown;
+#mainjumpotron{
+	height: 180px;
+	margin-bottom: 10px;
+}
+#thump {
+    /*padding-top: 30px;*/
+    padding: 30px;
+    padding-top: 0px;
+}
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
 }
