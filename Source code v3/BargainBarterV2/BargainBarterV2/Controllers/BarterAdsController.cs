@@ -27,24 +27,24 @@ namespace BargainBarterV2.Controllers
         }
         
 
-        // GET: BarterAds for a specific User
-        public ActionResult UserList(string userId)
-        {
-            if (userId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        //// GET: BarterAds for a specific User
+        //public ActionResult UserList(string userId)
+        //{
+        //    if (userId == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
 
-            List<BarterAdd> barterAds =new List<BarterAdd>();
+        //    List<BarterAdd> barterAds =new List<BarterAdd>();
 
-            foreach (var ad in db.BarterAdds)
-            {
-                if (ad.ApplicationUser.Id == userId)
-                    barterAds.Add(ad);
+        //    foreach (var ad in db.BarterAdds)
+        //    {
+        //        if (ad.ApplicationUser.Id == userId)
+        //            barterAds.Add(ad);
 
-            }
-            return View(barterAds.ToList());
-        }
+        //    }
+        //    return View(barterAds.ToList());
+        //}
         
 
         public ActionResult ViewPhoto(int id)
@@ -259,6 +259,14 @@ namespace BargainBarterV2.Controllers
             return View("ManageAdsNoAds");
 
 
+        }
+
+        public ActionResult ShowUserProfile(string id)
+        {
+            var applicationUser = db.Users.Include(a => a.Address).Single(u => u.Id == id);
+            if (id == User.Identity.GetUserId())
+                return View("ShowOwnUserProfile",applicationUser);
+            return View(applicationUser);
         }
     }
 }

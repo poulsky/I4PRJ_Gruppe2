@@ -314,6 +314,8 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\BarterAds\ManageAds.cshtml" />
     <None Include="Views\BarterAds\ManageAdsNoAds.cshtml" />
+    <Content Include="Views\BarterAds\ShowUserProfile.cshtml" />
+    <Content Include="Views\BarterAds\ShowOwnUserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\SeedingAdsPictures\" />

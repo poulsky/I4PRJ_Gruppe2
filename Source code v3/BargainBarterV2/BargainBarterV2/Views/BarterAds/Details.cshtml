@@ -18,7 +18,7 @@
             <div class="row">
                 @if (Model.ApplicationUser != null)
                 {
-                    <p>@Model.ApplicationUser.Firstname @Model.ApplicationUser.Lastname</p>
+                    @Html.ActionLink(Model.ApplicationUser.Firstname + " " + Model.ApplicationUser.Lastname, "ShowUserProfile",new { id = Model.ApplicationUserId},new {@class = ""})
                 }
             </div>
             <div class="row">
