@@ -5,10 +5,6 @@
     }
 
     <h2>ManageAds</h2>
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <body>
         <div id="wrapper">
             <table class="table">
@@ -45,7 +41,7 @@
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.BarterAddId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.BarterAddId }) |
+                            @Html.ActionLink("Preview", "Details", new { id = item.BarterAddId }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.BarterAddId })
                         </td>
                     </tr>

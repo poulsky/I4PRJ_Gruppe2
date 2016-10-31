@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -27,24 +27,24 @@ namespace BargainBarterV2.Controllers
         }
         
 
-        // GET: BarterAds for a specific User
-        public ActionResult UserList(string userId)
-        {
-            if (userId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        //// GET: BarterAds for a specific User
+        //public ActionResult UserList(string userId)
+        //{
+        //    if (userId == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
 
-            List<BarterAdd> barterAds =new List<BarterAdd>();
+        //    List<BarterAdd> barterAds =new List<BarterAdd>();
 
-            foreach (var ad in db.BarterAdds)
-            {
-                if (ad.ApplicationUser.Id == userId)
-                    barterAds.Add(ad);
+        //    foreach (var ad in db.BarterAdds)
+        //    {
+        //        if (ad.ApplicationUser.Id == userId)
+        //            barterAds.Add(ad);
 
-            }
-            return View(barterAds.ToList());
-        }
+        //    }
+        //    return View(barterAds.ToList());
+        //}
         
 
         public ActionResult ViewPhoto(int id)
@@ -132,15 +132,15 @@ namespace BargainBarterV2.Controllers
                 return HttpNotFound();
             }
 
-            byte[] imagedata = db.BarterAdds.Find(id).Picture;
-            if (imagedata != null)
-            {
-                string imagepath = Convert.ToBase64String(imagedata);
-                string imagedataURL = string.Format("data:image/png; base64, {0}", imagepath);
-                ViewBag.image = imagedataURL;
-            }
+            //byte[] imagedata = db.BarterAdds.Find(id).Picture;
+            //if (imagedata != null)
+            //{
+            //    string imagepath = Convert.ToBase64String(imagedata);
+            //    string imagedataURL = string.Format("data:image/png; base64, {0}", imagepath);
+            //    ViewBag.image = imagedataURL;
+            //}
 
-            return View();
+            return View(barterAdd);
         }
 
         // POST: BarterAds/Edit/5
@@ -158,15 +158,55 @@ namespace BargainBarterV2.Controllers
                     using (BinaryReader reader = new BinaryReader(BarterPicture.InputStream))
                     {
                         barterAdd.Picture = reader.ReadBytes((int)BarterPicture.InputStream.Length);
+                        barterAdd.Thumbnail = Helperfunctions.Helper.MakeThumbnail(barterAdd.Picture, 320, 150);
                     }
 
                 }
 
-                db.Entry(barterAdd).State = EntityState.Modified;
+                //db.Entry(barterAdd).State = EntityState.Modified;
+
+                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                ApplicationUser user1 =
+                    db.Users.Include(b => b.BarterAdds).Single(u => u.Id == user.Id);
+
+                var temp = user1.BarterAdds.Single(b => b.BarterAddId == barterAdd.BarterAddId);
+
+                temp.Description = barterAdd.Description;
+                temp.Titel = barterAdd.Titel;
+                temp.Category = barterAdd.Category;
+                temp.Picture = barterAdd.Picture;
+                temp.Thumbnail = barterAdd.Thumbnail;
+
+                db.Users.AddOrUpdate(user1);
+                
                 db.SaveChanges();
                 return RedirectToAction("ManageAds");
             }
             return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Comment(int? id , string commentstring)
+        {
+            if (id == null || commentstring == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = new Comment()
+            {
+                CommentText = commentstring,
+                ApplicationUser = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId())
+                //System.Web.HttpContext.Current.GetOwinContext()
+                //    .GetUserManager<ApplicationUserManager>()
+                //    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId())
+            };
+
+            BarterAdd ad2 = db.BarterAdds.Find(id);
+            ad2.Comments.Add(comment);
+            db.SaveChanges();
+
+            return RedirectToAction("Details", "BarterAds", new { id = id});
         }
 
         // GET: BarterAds/Delete/5
@@ -197,27 +237,27 @@ namespace BargainBarterV2.Controllers
             return RedirectToAction("ManageAds");
         }
 
+        //Details bliver brugt i stedet
+        //public ActionResult ShowBarterAd(int ? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    BarterAdd CurrentAd = db.BarterAdds.Find(id);
 
-        public ActionResult ShowBarterAd(int ? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BarterAdd CurrentAd = db.BarterAdds.Find(id);
-
-            if (CurrentAd == null)
-            {
-                return HttpNotFound();
-            }
-            ViewData["Titel"] = CurrentAd.Titel;
-            ViewData["Description"] = CurrentAd.Description;
-            ViewBag.Id = CurrentAd.BarterAddId;
-            ViewData["Category"] = CurrentAd.Category;
+        //    if (CurrentAd == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewData["Titel"] = CurrentAd.Titel;
+        //    ViewData["Description"] = CurrentAd.Description;
+        //    ViewBag.Id = CurrentAd.BarterAddId;
+        //    ViewData["Category"] = CurrentAd.Category;
             
 
-            return View();
-        }
+        //    return View();
+        //}
 
 
         protected override void Dispose(bool disposing)
@@ -243,6 +283,14 @@ namespace BargainBarterV2.Controllers
             return View("ManageAdsNoAds");
 
 
+        }
+
+        public ActionResult ShowUserProfile(string id)
+        {
+            var applicationUser = db.Users.Include(a => a.Address).Single(u => u.Id == id);
+            if (id == User.Identity.GetUserId())
+                return View("ShowOwnUserProfile",applicationUser);
+            return View(applicationUser);
         }
     }
 }

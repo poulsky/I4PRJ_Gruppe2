@@ -1,4 +1,5 @@
-﻿@model BargainBarterV2.Models.BarterAdd
+﻿@using BargainBarterV2.Helperfunctions
+@model BargainBarterV2.Models.BarterAdd
 
 @{
     ViewBag.Title = "Edit";
@@ -10,17 +11,16 @@
 @using (Html.BeginForm("Edit", "BarterAds", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>BarterAdd</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.BarterAddId)
-
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Titel, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Titel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Titel, new { htmlAttributes = new { @class = "form-control", @placeholder = Model.Titel } })
                 @Html.ValidationMessageFor(model => model.Titel, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { cols = 40, @rows = 5, @class = "form-control", @placeholder = Model.Description })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,26 +36,26 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="BarterPicture" id="BarterPicture" style="width: 100%;" />
-                <img src="@ViewBag.image" width="300" height="200" />
+                <input type="file" name="BarterPicture" id="BarterPicture" style="width: 100%;" required />
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.DropDownListFor(model => model.Category, new CategoryList(), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Opret Annonce" class="btn btn-default" />
             </div>
         </div>
     </div>
-}
+                    }
 
 <div>
     @Html.ActionLink("Back to List", "ManageAds")

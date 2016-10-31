@@ -204,6 +204,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helperfunctions\CatagoryList.cs" />
     <Compile Include="Helperfunctions\Helper.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.Designer.cs">
@@ -224,6 +225,14 @@
     <Compile Include="Migrations\201610270851040_CoordinatesAddedToAdress.cs" />
     <Compile Include="Migrations\201610270851040_CoordinatesAddedToAdress.Designer.cs">
       <DependentUpon>201610270851040_CoordinatesAddedToAdress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610310814284_Comments.cs" />
+    <Compile Include="Migrations\201610310814284_Comments.Designer.cs">
+      <DependentUpon>201610310814284_Comments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610310900217_tokens.cs" />
+    <Compile Include="Migrations\201610310900217_tokens.Designer.cs">
+      <DependentUpon>201610310900217_tokens.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -313,6 +322,8 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\BarterAds\ManageAds.cshtml" />
     <None Include="Views\BarterAds\ManageAdsNoAds.cshtml" />
+    <Content Include="Views\BarterAds\ShowUserProfile.cshtml" />
+    <Content Include="Views\BarterAds\ShowOwnUserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\SeedingAdsPictures\" />
@@ -341,6 +352,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610270851040_CoordinatesAddedToAdress.resx">
       <DependentUpon>201610270851040_CoordinatesAddedToAdress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610310814284_Comments.resx">
+      <DependentUpon>201610310814284_Comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610310900217_tokens.resx">
+      <DependentUpon>201610310900217_tokens.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

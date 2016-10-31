@@ -22,3 +22,12 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.bargainbarter-border-bottom {
+    border-bottom: solid;
+}
+
+.no-gutter > [class*='row'] {
+    padding-top:0;
+    padding-bottom:0;
+}
