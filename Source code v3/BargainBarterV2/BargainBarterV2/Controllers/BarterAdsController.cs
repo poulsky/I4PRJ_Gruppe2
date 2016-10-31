@@ -204,7 +204,7 @@ namespace BargainBarterV2.Controllers
             ad2.Comments.Add(comment);
             db.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Details", "BarterAds", new { id = id});
         }
 
         // GET: BarterAds/Delete/5
