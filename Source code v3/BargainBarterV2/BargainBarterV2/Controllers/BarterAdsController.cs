@@ -185,15 +185,15 @@ namespace BargainBarterV2.Controllers
             return View();
         }
 
-        public ActionResult Comment(int? id)
+        public ActionResult Comment(int? id , string commentstring)
         {
-            if (id == null)
+            if (id == null || commentstring == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Comment comment = new Comment()
             {
-                CommentText = "Dette er den første kommentar",
+                CommentText = commentstring,
                 ApplicationUser = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId())
                 //System.Web.HttpContext.Current.GetOwinContext()
                 //    .GetUserManager<ApplicationUserManager>()
