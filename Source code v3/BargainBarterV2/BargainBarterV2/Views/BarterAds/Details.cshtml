@@ -1,4 +1,5 @@
-﻿@model BargainBarterV2.Models.BarterAdd
+﻿@using Jmelosegui.Mvc.GoogleMap
+@model BargainBarterV2.Models.BarterAdd
 
 @{
     ViewBag.Title = "Details";
@@ -25,8 +26,14 @@
                 <div class="col-md-6">
                     <img src='@Url.Action("ViewPhoto", new {id = Model.BarterAddId})' width="260" height="200" />
                 </div>
+
                 <div class="col-md-6">
-                    <p>Map goes here</p>
+                @(Html.GoogleMap().Name("map")
+                            .Height(200)
+                            .ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
+                            .Center(c => c.Latitude(Model.ApplicationUser.Address.Coordinate.Latitude)
+                                .Longitude(Model.ApplicationUser.Address.Coordinate.Longitude))
+                              .Markers(m => m.Add().Title(Model.Titel)))
                 </div>
             </div>
             <br />
@@ -73,3 +80,8 @@
     </div>
 </div>
 
+
+@section scripts
+{
+    @(Html.GoogleMap().ScriptRegistrar())
+}
