@@ -1207,3 +1207,7 @@ C:\Users\Lars Hjerrild\Documents\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\Ba
 C:\Users\Lars Hjerrild\Documents\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 C:\Users\Lars Hjerrild\Documents\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Lars Hjerrild\Documents\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.LazyLoadingAdd.resources
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.CoordinatesAddedToAdress.resources
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Comments.resources
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.tokens.resources
