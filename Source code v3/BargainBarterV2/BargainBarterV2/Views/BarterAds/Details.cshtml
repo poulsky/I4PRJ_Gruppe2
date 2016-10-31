@@ -32,6 +32,15 @@
             <br />
             <div class="row">
                 @Model.Description
+                <h3> @Html.ActionLink("comment", "Comment", "BarterAds", new { id = Model.BarterAddId }, null)</h3>
+
+
+                @foreach (var item in Model.Comments)
+                {
+                    <h3>@Html.DisplayFor(modelItem => item.CommentText)</h3>
+                        <h2><h3>@Html.DisplayFor(modelItem => item.ApplicationUser.Firstname)</h3> </h2>
+
+                }
             </div>
         </div>
     </div>

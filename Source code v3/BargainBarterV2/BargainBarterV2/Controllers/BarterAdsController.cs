@@ -185,6 +185,28 @@ namespace BargainBarterV2.Controllers
             return View();
         }
 
+        public ActionResult Comment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = new Comment()
+            {
+                CommentText = "Dette er den første kommentar",
+                ApplicationUser = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId())
+                //System.Web.HttpContext.Current.GetOwinContext()
+                //    .GetUserManager<ApplicationUserManager>()
+                //    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId())
+            };
+
+            BarterAdd ad2 = db.BarterAdds.Find(id);
+            ad2.Comments.Add(comment);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
         // GET: BarterAds/Delete/5
         [Authorize]
         public ActionResult Delete(int? id)

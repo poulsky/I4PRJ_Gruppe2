@@ -29,6 +29,10 @@ namespace BargainBarterV2.Models
 
     public class BarterAdd
     {
+        public BarterAdd()
+        {
+            Comments = new List<Comment>();
+        }
         public int BarterAddId { get; set; }
         public string Titel { get; set; }
         public string Description { get; set; }
@@ -40,6 +44,8 @@ namespace BargainBarterV2.Models
         public virtual ApplicationUser ApplicationUser { get; set; }
         [Required]
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 
     public class Address
@@ -53,6 +59,14 @@ namespace BargainBarterV2.Models
         public Coordinates Coordinate{get; set; }
     }
 
+    public class Comment
+    {
+        public int CommentId { get; set; }
+        public string CommentText { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+        public DateTime CreatedDateTime { get; set; } = DateTime.Now;
+
+    }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

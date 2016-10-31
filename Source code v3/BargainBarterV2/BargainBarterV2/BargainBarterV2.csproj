@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201610270851040_CoordinatesAddedToAdress.Designer.cs">
       <DependentUpon>201610270851040_CoordinatesAddedToAdress.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610310814284_Comments.cs" />
+    <Compile Include="Migrations\201610310814284_Comments.Designer.cs">
+      <DependentUpon>201610310814284_Comments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -344,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610270851040_CoordinatesAddedToAdress.resx">
       <DependentUpon>201610270851040_CoordinatesAddedToAdress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610310814284_Comments.resx">
+      <DependentUpon>201610310814284_Comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
