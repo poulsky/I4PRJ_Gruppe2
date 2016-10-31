@@ -27,26 +27,6 @@ namespace BargainBarterV2.Controllers
         }
         
 
-        //// GET: BarterAds for a specific User
-        //public ActionResult UserList(string userId)
-        //{
-        //    if (userId == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-
-        //    List<BarterAdd> barterAds =new List<BarterAdd>();
-
-        //    foreach (var ad in db.BarterAdds)
-        //    {
-        //        if (ad.ApplicationUser.Id == userId)
-        //            barterAds.Add(ad);
-
-        //    }
-        //    return View(barterAds.ToList());
-        //}
-        
-
         public ActionResult ViewPhoto(int id)
         {
             var photo = db.BarterAdds.Find(id).Thumbnail;
@@ -65,11 +45,17 @@ namespace BargainBarterV2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             BarterAdd barterAdd = db.BarterAdds.Find(id);
+
             if (barterAdd == null)
             {
                 return HttpNotFound();
             }
+            //ViewData["Longitude"]= barterAdd.ApplicationUser.Address.Coordinate.Longitude;
+            //ViewData["Latitude"] = barterAdd.ApplicationUser.Address.Coordinate.Latitude;
+            ApplicationUser user = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
+          
             return View(barterAdd);
         }
 

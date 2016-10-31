@@ -1,4 +1,5 @@
-﻿@using Jmelosegui.Mvc.GoogleMap
+﻿@using System.Drawing
+@using Jmelosegui.Mvc.GoogleMap
 @model BargainBarterV2.Models.BarterAdd
 
 @{
@@ -20,6 +21,7 @@
                 @if (Model.ApplicationUser != null)
                 {
                     @Html.ActionLink(Model.ApplicationUser.Firstname + " " + Model.ApplicationUser.Lastname, "ShowUserProfile",new { id = Model.ApplicationUserId},new {@class = ""})
+                    <p>Distance til byttehandel: </p>
                 }
             </div>
             <div class="row">
@@ -31,9 +33,13 @@
                 @(Html.GoogleMap().Name("map")
                             .Height(200)
                             .ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
-                            .Center(c => c.Latitude(Model.ApplicationUser.Address.Coordinate.Latitude)
-                                .Longitude(Model.ApplicationUser.Address.Coordinate.Longitude))
-                              .Markers(m => m.Add().Title(Model.Titel)))
+                            .Center(c => c.Latitude(56.1424842)
+                                .Longitude(10.2003147))
+                            .Zoom(13)
+                            .Markers
+                                (m => m.Add().Title(Model.Titel)
+                            )
+                )
                 </div>
             </div>
             <br />
