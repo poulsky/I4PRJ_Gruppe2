@@ -185,6 +185,8 @@ namespace BargainBarterV2.Controllers
             return View();
         }
 
+        [Authorize]
+        [HttpPost]
         public ActionResult Comment(int? id , string commentstring)
         {
             if (id == null || commentstring == null)

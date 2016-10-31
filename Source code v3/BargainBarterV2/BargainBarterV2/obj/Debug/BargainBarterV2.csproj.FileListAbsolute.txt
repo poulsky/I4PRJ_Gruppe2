@@ -1116,6 +1116,4 @@ C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarter
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Comments.resources
-C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.CoordinatesAddedToAdress.resources
-C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Comments.resources
-C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.pk.resources
+C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.tokens.resources
