@@ -70,7 +70,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                <li>@Html.ActionLink("Manage Account", "ShowUserProfile", "BarterAds", new {id = User.Identity.GetUserId()},new {@class = ""})</li>
+                                <li>@Html.ActionLink("Manage Account", "ShowUserProfile", "UserProfile", new {id = User.Identity.GetUserId()},new {@class = ""})</li>
                                 <li>@Html.ActionLink("Manage adds", "ManageAds", "BarterAds")</li>
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">Personal settings</li>

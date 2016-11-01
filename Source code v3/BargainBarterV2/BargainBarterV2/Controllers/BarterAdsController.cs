@@ -281,14 +281,6 @@ namespace BargainBarterV2.Controllers
 
 
         }
-
-        public ActionResult ShowUserProfile(string id)
-        {
-            var applicationUser = db.Users.Include(a => a.Address).Single(u => u.Id == id);
-            if (id == User.Identity.GetUserId())
-                return View("ShowOwnUserProfile",applicationUser);
-            return View(applicationUser);
-        }
     }
 }
 
