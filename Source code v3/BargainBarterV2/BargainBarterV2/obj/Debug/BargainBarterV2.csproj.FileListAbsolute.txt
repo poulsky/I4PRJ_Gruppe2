@@ -1,4 +1,4 @@
-C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\bin\ApplicationInsights.config
+﻿C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\bin\ApplicationInsights.config
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\bin\roslyn\csc.exe
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v2\BargainBarterV2\BargainBarterV2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -1207,7 +1207,6 @@ C:\Users\Lars Hjerrild\Documents\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\Ba
 C:\Users\Lars Hjerrild\Documents\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 C:\Users\Lars Hjerrild\Documents\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Lars Hjerrild\Documents\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
-<<<<<<< HEAD
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\ApplicationInsights.config
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\roslyn\csc.exe
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -1299,9 +1298,7 @@ C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarte
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Jmelosegui.Mvc.GoogleMap.dll
-=======
 C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.LazyLoadingAdd.resources
 C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.CoordinatesAddedToAdress.resources
 C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Comments.resources
 C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.tokens.resources
->>>>>>> 6ff82ad7406fd5bc663252b9238badd72e51d211
