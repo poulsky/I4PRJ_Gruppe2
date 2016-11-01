@@ -253,10 +253,11 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\BarteradDetails.css" />
     <Content Include="Content\css\default.css" />
     <Content Include="Content\css\Home.css" />
-    <Content Include="Content\css\shared.css" />
     <Content Include="Content\css\ShowBarterAd.css" />
+    <Content Include="Content\js\index.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -336,7 +337,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\SeedingAdsPictures\" />
-    <Folder Include="Content\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
