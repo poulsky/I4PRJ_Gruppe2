@@ -1,5 +1,11 @@
 \chapter{Ansvarsbeskrivelse for controllere}\label{ch:Controllere}
 
+\section{Home}
+Denne controller er ansvarlig for at vise de generelle ting for hjemmesiden. Dette vil sige hovedsiden, kontakt og . 
+
+Actions
+
+
 \section{BarterAd}
 Denne controller er overodnet ansvarlig for, at brugeren kan oprette og opdatere Barteradds annoncer på hjemmesiden. Sammenfattet: CRUD operationerne på BarterAds.
 
@@ -25,5 +31,10 @@ Actions
 \end{itemize}
 
 
-\section{Home}
-Denne controller er ansvarlig for at vise hjemmesiden.
+\section{Search}
+Search-controlleren er ansvarlig for søgning i annoncerne. 
+
+Actions 
+\begin{itemize}
+	\item Index(bedre navn) skal tage en tekststreng og søge i annoncerne efter match og vise en side med de matchene annoncer.
+\end{itemize}

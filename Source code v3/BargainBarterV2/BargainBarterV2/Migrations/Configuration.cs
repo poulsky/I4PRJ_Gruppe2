@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BargainBarterV2.Models;
 using Microsoft.AspNet.Identity;
 
@@ -28,96 +29,105 @@ namespace BargainBarterV2.Migrations
 
             var passwordHash = new PasswordHasher();
             string password = passwordHash.HashPassword("Password@123");
+            
 
             #region SeedingUsers
 
-            context.Users.AddOrUpdate(u => u.UserName,
-                new ApplicationUser
+            ApplicationUser user1 = new ApplicationUser
+            {
+                UserName = "Steve@Steve.com",
+                PasswordHash = password,
+                PhoneNumber = "12349873",
+                PhoneNumberConfirmed = true,
+                Email = "Steve@Steve.com",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                Firstname = "Steve",
+                Lastname = "Hansen",
+                Address = new Address()
                 {
-                    UserName = "Steve@Steve.com",
-                    PasswordHash = password,
-                    PhoneNumber = "12349873",
-                    PhoneNumberConfirmed = true,
-                    Email = "Steve@Steve.com",
-                    EmailConfirmed = true,
-                    SecurityStamp = Guid.NewGuid().ToString(),
-                    Firstname = "Steve",
-                    Lastname = "Hansen",
-                    Address = new Address()
-                    {
-                        StreetName = "Jensbaggesensvej",
-                        City = "Aarhus",
-                        PostalCode = "8200",
-                        StreetNumber = "13"
-                    }
+                    StreetName = "Jensbaggesensvej",
+                    City = "Aarhus",
+                    PostalCode = "8200",
+                    StreetNumber = "13",
+                    Coordinate = new Coordinates()
+                    
+                },
+                BarterAdds = new List<BarterAdd>()
 
-                });
-            context.Users.AddOrUpdate(u => u.UserName,
-                new ApplicationUser
-                {
-                    UserName = "Jens@go.com",
-                    PasswordHash = password,
-                    PhoneNumber = "15150882",
-                    PhoneNumberConfirmed = true,
-                    Email = "Jens@go.com",
-                    EmailConfirmed = true,
-                    SecurityStamp = Guid.NewGuid().ToString(),
-                    Firstname = "Jens",
-                    Lastname = "Didriksen",
-                    Address = new Address()
-                    {
-                        StreetName = "Bredgade",
-                        City = "Tilst",
-                        PostalCode = "4200",
-                        StreetNumber = "111"
-                    }
-                });
-            context.Users.AddOrUpdate(u => u.UserName,
-                new ApplicationUser
-                {
-                    UserName = "Jakob@go.com",
-                    PasswordHash = password,
-                    PhoneNumber = "15150883",
-                    PhoneNumberConfirmed = true,
-                    Email = "Jakob@go.com",
-                    EmailConfirmed = true,
-                    SecurityStamp = Guid.NewGuid().ToString(),
-                    Firstname = "Jakob",
-                    Lastname = "Andersen",
-                    Address = new Address()
-                    {
-                        StreetName = "Nygade",
-                        City = "Aalborg",
-                        PostalCode = "8410",
-                        StreetNumber = "7"
-                    }
-                });
-            context.Users.AddOrUpdate(u => u.UserName,
-                new ApplicationUser
-                {
-                    UserName = "Søren@go.com",
-                    PasswordHash = password,
-                    PhoneNumber = "15150884",
-                    PhoneNumberConfirmed = true,
-                    Email = "Søren@go.com",
-                    EmailConfirmed = true,
-                    SecurityStamp = Guid.NewGuid().ToString(),
-                    Firstname = "Søren",
-                    Lastname = "Holm",
-                    Address = new Address()
-                    {
-                        StreetName = "Berstoftvej",
-                        City = "Malling",
-                        PostalCode = "8290",
-                        StreetNumber = "265"
-                    }
-                });
+            }; 
 
+            ApplicationUser user2 = new ApplicationUser
+            {
+                UserName = "Jens@go.com",
+                PasswordHash = password,
+                PhoneNumber = "15150882",
+                PhoneNumberConfirmed = true,
+                Email = "Jens@go.com",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                Firstname = "Jens",
+                Lastname = "Didriksen",
+                Address = new Address()
+                {
+                    StreetName = "Bredgade",
+                    City = "Tilst",
+                    PostalCode = "4200",
+                    StreetNumber = "111",
+                    Coordinate = new Coordinates()
+                },
+                 BarterAdds = new List<BarterAdd>()
+            };
+
+
+            ApplicationUser user3 = new ApplicationUser
+            {
+                UserName = "Jakob@go.com",
+                PasswordHash = password,
+                PhoneNumber = "15150883",
+                PhoneNumberConfirmed = true,
+                Email = "Jakob@go.com",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                Firstname = "Jakob",
+                Lastname = "Andersen",
+                Address = new Address()
+                {
+                    StreetName = "Nygade",
+                    City = "Aalborg",
+                    PostalCode = "8410",
+                    StreetNumber = "7",
+                    Coordinate = new Coordinates()
+                },
+                 BarterAdds = new List<BarterAdd>()
+            };
+
+            ApplicationUser user4 = new ApplicationUser
+            {
+                UserName = "Søren@go.com",
+                PasswordHash = password,
+                PhoneNumber = "15150884",
+                PhoneNumberConfirmed = true,
+                Email = "Søren@go.com",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                Firstname = "Søren",
+                Lastname = "Holm",
+                Address = new Address()
+                {
+                    StreetName = "Berstoftvej",
+                    City = "Malling",
+                    PostalCode = "8290",
+                    StreetNumber = "265",
+                    Coordinate = new Coordinates()
+                },
+                 BarterAdds = new List<BarterAdd>()
+            };        
             #endregion
 
             #region SeedingAds
 
-            context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
+            BarterAdd ad1 = new BarterAdd()
             {
                 Titel = "Boremaskine",
                 Description = "Bosch reklamerer selv med at den er til gør-det-selv manden," +
@@ -125,18 +135,20 @@ namespace BargainBarterV2.Migrations
                               " og holdbarhed. Jeg har selv haft flere grønne fra Bosch og kan" +
                               " konstatere at pris og kvalitet hænger sammen. Eksempelvis har jeg" +
                               " nogle gange oplevet at aklsen er blevet skæv, og så er det umuligt" +
-                              " at bore et lige hul.",            
+                              " at bore et lige hul.",
                 Category = "Elektronik",
                 CreatedDateTime = new DateTime(2016, 8, 4, 12, 30, 45),
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\bosch-gron-boremaskine.png"),
 
-                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\bosch-gron-boremaskine.png"), 320, 150),
-                
+                Thumbnail =
+                    Helperfunctions.Helper.MakeThumbnail(
+                        Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\bosch-gron-boremaskine.png"), 320,
+                        150)
+            };
 
-        });
 
-            context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
+            BarterAdd ad2 = new BarterAdd()
             {
                 Titel = "Arduino nano",
                 Description = "The Arduino Nano is a small, complete, and breadboard-friendly" +
@@ -150,11 +162,12 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\ArduinoNanoFront.jpg"),
 
-                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\ArduinoNanoFront.jpg"), 320, 150)
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\ArduinoNanoFront.jpg"), 320, 150),
+                
+            };
 
-            });
 
-            context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
+            BarterAdd ad3 = new BarterAdd()
             {
                 Titel = "Arduino Mega",
                 Description = "The Mega 2560 is a microcontroller board based on the ATmega2560." +
@@ -172,10 +185,8 @@ namespace BargainBarterV2.Migrations
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\ArduinoMega.jpg"),
 
                 Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\ArduinoMega.jpg"), 320, 150)
-
-            });
-
-            context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
+            };
+            BarterAdd ad4 = new BarterAdd()
             {
                 Titel = "T-Shirt",
                 Description = "Lækker hvid trøje fra H&M som er i helt vildt god stand," +
@@ -186,10 +197,10 @@ namespace BargainBarterV2.Migrations
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\t-shirt.jpg"),
 
                 Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\t-shirt.jpg"), 320, 150)
+            };
 
-            });
 
-            context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
+            BarterAdd ad5 = new BarterAdd()
             {
                 Titel = "Sweatshirt",
                 Description = "Det er en sweatshirt i ret tøsede farver størrelsen er large" +
@@ -199,11 +210,23 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sweatshirt.jpg"),
 
-                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sweatshirt.jpg"), 320, 150)
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sweatshirt.jpg"), 320, 150),
 
-            });
+            };
+            BarterAdd ad6 = new BarterAdd()
+            {
+                Titel = "Sweatshirt",
+                Description = "Det er en sweatshirt i ret tøsede farver størrelsen er large" +
+                              ", Den er lettere brugt og har et par huller",
+                Category = "Tøj",
+                CreatedDateTime = new DateTime(2016, 10, 11, 12, 30, 45),
 
-            context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
+                Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sweatshirt.jpg"),
+
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sweatshirt.jpg"), 320, 150),
+
+            };
+            BarterAdd ad7 = new BarterAdd()
             {
                 Titel = "Jeans",
                 Description = "Usle dårlige jeans, som bare ikke er ret pæne, men de kan måske" +
@@ -213,12 +236,12 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\jeans.jpg"),
 
-                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\jeans.jpg"), 320, 150)
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\jeans.jpg"), 320, 150),
 
-            });
-
-            context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
+            };
+            BarterAdd ad8 = new BarterAdd()
             {
+
                 Titel = "Hættetrøje",
                 Description = " bluse med lange ærmer og rund hals, fremstillet i kraftig " +
                               "bomuld med en lodden vrangside, der bæres ind mod kroppen." +
@@ -230,13 +253,13 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\hættetrøje.jpg"),
 
-                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\hættetrøje.jpg"), 320, 150)
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\hættetrøje.jpg"), 320, 150),
 
-            });
+            };
 
-
-            context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
+            BarterAdd ad9 = new BarterAdd()
             {
+
                 Titel = "Klaverstol",
                 Description = "En standard klaverstol, den kan justeres i højden og er rigtig god. " +
                               "Træet er lidt mørt men stolen har mange år i sig endnu",
@@ -245,11 +268,11 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\klaverstol.jpg"),
 
-                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\klaverstol.jpg"), 320, 150)
-            });
-
-            context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\klaverstol.jpg"), 320, 150),
+            };
+            BarterAdd ad10 = new BarterAdd()
             {
+
                 Titel = "Spisebord",
                 Description = "Et bord er et møbel bestående af en vandret flade af varierende materiale, " +
                               "som er hævet fra gulvhøjde, typisk vha. fire bordben. Bordet har det" +
@@ -261,11 +284,13 @@ namespace BargainBarterV2.Migrations
 
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\spisebord.jpg"),
 
-                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\spisebord.jpg"), 320, 150)
-            });
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\spisebord.jpg"), 320, 150),
 
-            context.BarterAdds.AddOrUpdate(add => add.CreatedDateTime, new BarterAdd
+            };
+
+            BarterAdd ad11 = new BarterAdd()
             {
+
                 Titel = "To mands Sofa",
                 Description = "Min sofa er der som sådan ikke noget galt med, den er jeg vildt glad " +
                               "for, både i design og funktion. Det var DEN sofa jeg ville have også " +
@@ -275,13 +300,30 @@ namespace BargainBarterV2.Migrations
                               " jeg vil, og den vil altid passe ind. ",
                 Category = "Interiør",
                 CreatedDateTime = new DateTime(2016, 04, 03, 12, 29, 45),
-                
+
                 Picture = Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sofa.jpg"),
 
-                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sofa.jpg"), 320,150)
+                Thumbnail = Helperfunctions.Helper.MakeThumbnail(Readpicture(@"BargainBarterV2\Content\img\SeedingAdsPictures\sofa.jpg"), 320, 150),
 
-            });
+            };
 
+            user1.BarterAdds.Add(ad1);
+            user1.BarterAdds.Add(ad2);
+            user2.BarterAdds.Add(ad3);
+            user2.BarterAdds.Add(ad4);
+            user2.BarterAdds.Add(ad5);
+            user2.BarterAdds.Add(ad6);
+            user3.BarterAdds.Add(ad7);
+            user3.BarterAdds.Add(ad8);
+            user4.BarterAdds.Add(ad9);
+            user4.BarterAdds.Add(ad10);
+            user4.BarterAdds.Add(ad11);
+
+            context.Users.AddOrUpdate(u => u.UserName, user1);
+            context.Users.AddOrUpdate(u => u.UserName, user2);
+            context.Users.AddOrUpdate(u => u.UserName, user3);
+            context.Users.AddOrUpdate(u => u.UserName, user4);
+          
             #endregion
 
         }
