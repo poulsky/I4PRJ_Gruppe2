@@ -19,7 +19,6 @@ namespace BargainBarterV2.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-
         // GET: BarterAds - Show all BarterAds
         public ActionResult Index()
         {
@@ -52,10 +51,22 @@ namespace BargainBarterV2.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewData["Longitude"]= barterAdd.ApplicationUser.Address.Coordinate.Longitude;
-            //ViewData["Latitude"] = barterAdd.ApplicationUser.Address.Coordinate.Latitude;
-            ApplicationUser user = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
-          
+           
+            ApplicationUser tempuser = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            ApplicationUser user = db.Users.Where(M => M.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
+            ApplicationUser LogUser = db.Users.Where(M => M.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
+
+
+            if (user!=null)
+            {
+                double distance=user.Address.Coordinate.DistanceTo(LogUser.Address.Coordinate);
+                ViewData["Distance"] = distance;
+            }
+
+            ViewData["Longitude"] = LogUser.Address.Coordinate.Longitude;
+            ViewData["Latitude"] = LogUser.Address.Coordinate.Latitude;
+
+
             return View(barterAdd);
         }
 

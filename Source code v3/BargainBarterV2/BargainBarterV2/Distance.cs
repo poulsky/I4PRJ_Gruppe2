@@ -78,6 +78,34 @@ namespace BargainBarterV2
             return cord;
         }
 
+        public static Coordinates GetCoordinates(string address)
+        {
+            Coordinates cord = new Coordinates(0, 0);
+
+            var requestUri = string.Format("http://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=false",
+                Uri.EscapeDataString(address));
+            var request = WebRequest.Create(requestUri);
+            var response = request.GetResponse();
+            var xdoc = XDocument.Load(response.GetResponseStream());
+
+            var xElement = xdoc.Element("GeocodeResponse");
+            if (xElement != null)
+            {
+                var result = xElement.Element("result");
+                var locationElement = result.Element("geometry").Element("location");
+                var lat = locationElement.Element("lat");
+                var lng = locationElement.Element("lng");
+
+
+                cord.Latitude = ((double)lat);
+                cord.Longitude = ((double)lng);
+
+            }
+
+            return cord;
+        }
+
+
 
     }
 

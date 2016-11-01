@@ -21,7 +21,7 @@
                 @if (Model.ApplicationUser != null)
                 {
                     @Html.ActionLink(Model.ApplicationUser.Firstname + " " + Model.ApplicationUser.Lastname, "ShowUserProfile",new { id = Model.ApplicationUserId},new {@class = ""})
-                    <p>Distance til byttehandel: </p>
+                    <p style="font-size: 8pt">Afstand til byttehandel: @ViewData["Distance"]</p>
                 }
             </div>
             <div class="row">
@@ -30,16 +30,17 @@
                 </div>
 
                 <div class="col-md-6">
-                @(Html.GoogleMap().Name("map")
-                            .Height(200)
-                            .ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
-                            .Center(c => c.Latitude(56.1424842)
-                                .Longitude(10.2003147))
-                            .Zoom(13)
-                            .Markers
-                                (m => m.Add().Title(Model.Titel)
-                            )
-                )
+                    @(Html.GoogleMap().Name("map")
+                          .Height(200)
+                          .ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
+                          .Center(c => c.Latitude((double) @ViewData["Latitude"])
+                              .Longitude((double)@ViewData["Longitude"]))
+                          //.Center(c => c.Latitude(56.1424842)
+                          //    .Longitude(10.2003147))
+                          .Zoom(13)
+                          .Markers
+                          (m => m.Add().Title(Model.Titel)
+                          ))
                 </div>
             </div>
             <br />
@@ -47,7 +48,7 @@
                 @Model.Description
                 @*<h3> @Html.ActionLink("comment", "Comment", "BarterAds", new { id = Model.BarterAddId }, null)</h3>*@
             </div>
-                <hr/>
+            <hr/>
             
           
             <div class="jumbotron">
@@ -87,6 +88,24 @@
         </p>
     </div>
 </div>
+
+<script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+    
+    function showPosition(position) {
+        window.BargainBarter.Latitude= position.coords.latitude;
+        window.BargainBarter.Longitude= position.coords.longitude;
+    }
+
+    jQuery(function() {getLocation();
+});
+</Script>
 
 
 @section scripts
