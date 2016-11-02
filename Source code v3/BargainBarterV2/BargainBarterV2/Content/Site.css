@@ -1,6 +1,74 @@
-﻿body {
+﻿
+
+
+/*Navbar Section*/
+
+.navbar {
+    position: relative;   
+    font-size: 17px;
+    color: #f1f1f1;
+    background-color: grey;
+    padding: 0;
+    letter-spacing: 2px;
+    border-bottom: solid 2px #00001D;
+    height: 42px;
+}
+
+
+.navbar a {
+    padding: 10px 15px 9px 15px;
+    display: inline-block;
+    font-family: "Segoe UI", Arial;
+}
+
+.navbar-nav li a.active {
+    background-color: #800000;
+    color: #ffffff;
+}
+
+.navbar-brand img {
+    height: 35px;
+    width: auto;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+
+#navbar-main {
+  /* Added `.affix-top` class css when the element is top */
+  /* Added `.affix` class css when the element is >= 170px (Look: line 8 html) */
+  /* Added `.affix-bottom` class css when the element is footer */
+}
+#navbar-main.affixed-top {
+  background: black;
+}
+#navbar-main.affix {
+    background: gray;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#navbar-main.affix-bottom {
+  background: red;
+}
+
+/* Not important */
+.footer {
+  background: #eee;
+  height: 1000px;
+}
+
+
+
+/*Body Section*/
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #ffffff;
+    color: #330000;
+    font-family: Verdana,Arial, sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -30,4 +98,55 @@ textarea {
 .no-gutter > [class*='row'] {
     padding-top:0;
     padding-bottom:0;
+}
+
+
+footer {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-size: .60em;
+    font-style: italic;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    clear: both;
+}
+
+
+#Barterdetailsaddescription {
+     font-family: auto;
+    font-size: 17px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#adDetailsCommentTArea {
+    max-width: 100%;
+    margin-bottom: 2px;
+}
+
+/*@media (max-width: 767px) {
+    .navbar-fixed-top {
+        min-height: 0;
+    }
+
+    .navbar-nav > li > a {
+        line-height: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 14px;
+    }
+}*/
+
+.bargainbarter-margin-all {
+    margin: 1em;
+}
+
+.bargainbarter-margin-top {
+    margin-top: 1em;
+}
+
+.bargainbarter-border-all {
+    border-style: solid;
+    border-width: 1pt;
 }

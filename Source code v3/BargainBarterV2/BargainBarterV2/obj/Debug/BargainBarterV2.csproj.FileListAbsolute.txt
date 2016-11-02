@@ -1302,3 +1302,8 @@ C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarte
 C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.CoordinatesAddedToAdress.resources
 C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Comments.resources
 C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.tokens.resources
+C:\Users\Lars Hjerrild\Documents\Skole\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Jmelosegui.Mvc.GoogleMap.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Jmelosegui.Mvc.GoogleMap.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Comments.resources
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.tokens.resources
+

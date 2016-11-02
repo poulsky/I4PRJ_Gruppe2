@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using BargainBarterV2.Models;
 using Microsoft.AspNet.Identity;
+using BargainBarterV2;
 
 namespace BargainBarterV2.Migrations
 {
@@ -50,9 +51,10 @@ namespace BargainBarterV2.Migrations
                     City = "Aarhus",
                     PostalCode = "8200",
                     StreetNumber = "13",
-                    Coordinate = new Coordinates()
-                    
+                    Coordinate = CoordinatesDistanceExtensions.GetCoordinates("13 Jensbaggesensvej, 8200")
+
                 },
+
                 BarterAdds = new List<BarterAdd>()
 
             }; 
@@ -70,11 +72,11 @@ namespace BargainBarterV2.Migrations
                 Lastname = "Didriksen",
                 Address = new Address()
                 {
-                    StreetName = "Bredgade",
-                    City = "Tilst",
-                    PostalCode = "4200",
-                    StreetNumber = "111",
-                    Coordinate = new Coordinates()
+                    StreetName = "Dalgas Avenue",
+                    City = "Aarhus C",
+                    PostalCode = "8000",
+                    StreetNumber = "10",
+                    Coordinate = CoordinatesDistanceExtensions.GetCoordinates("10 Dalgas Avenue, 8000")
                 },
                  BarterAdds = new List<BarterAdd>()
             };
@@ -93,11 +95,11 @@ namespace BargainBarterV2.Migrations
                 Lastname = "Andersen",
                 Address = new Address()
                 {
-                    StreetName = "Nygade",
-                    City = "Aalborg",
-                    PostalCode = "8410",
-                    StreetNumber = "7",
-                    Coordinate = new Coordinates()
+                    StreetName = "Søllerødvej",
+                    City = "Holte",
+                    PostalCode = "2840",
+                    StreetNumber = "90",
+                    Coordinate = CoordinatesDistanceExtensions.GetCoordinates("90 Søllerødvej, 2840")
                 },
                  BarterAdds = new List<BarterAdd>()
             };
@@ -115,11 +117,11 @@ namespace BargainBarterV2.Migrations
                 Lastname = "Holm",
                 Address = new Address()
                 {
-                    StreetName = "Berstoftvej",
-                    City = "Malling",
-                    PostalCode = "8290",
-                    StreetNumber = "265",
-                    Coordinate = new Coordinates()
+                    StreetName = "Vintervej",
+                    City = "Aarhus V",
+                    PostalCode = "8210",
+                    StreetNumber = "23",
+                    Coordinate = CoordinatesDistanceExtensions.GetCoordinates("23 Vintervej, 8210")
                 },
                  BarterAdds = new List<BarterAdd>()
             };        
