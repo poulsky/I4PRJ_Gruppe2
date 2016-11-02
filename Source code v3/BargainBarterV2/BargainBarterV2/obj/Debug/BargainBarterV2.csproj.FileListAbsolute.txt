@@ -1312,3 +1312,13 @@ C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\Ba
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.CoordinatesAddedToAdress.resources
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Comments.resources
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.tokens.resources
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Jmelosegui.Mvc.GoogleMap.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\SendGrid.CSharp.HTTP.Client.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\SendGrid.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\SendGrid.SmtpApi.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\SendGridMail.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\System.Net.Http.Formatting.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\System.Net.Http.Formatting.xml
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Comments.resources
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.tokens.resources
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.dataannotations.resources
