@@ -34,13 +34,16 @@ namespace BargainBarterV2.Models
             Comments = new List<Comment>();
         }
         public int BarterAddId { get; set; }
+        [Required]
         public string Titel { get; set; }
         public string Description { get; set; }
         public byte[] Picture{ get; set; }
         public byte[] Thumbnail { get; set; }
         public string Category { get; set; }
         [ForeignKey("ApplicationUser")]
+        [Required]
         public string ApplicationUserId { get; set; }
+        [Required]
         public virtual ApplicationUser ApplicationUser { get; set; }
         [Required]
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
@@ -62,7 +65,7 @@ namespace BargainBarterV2.Models
     public class Comment
     {
         public int CommentId { get; set; }
-        [MaxLength(500)]
+        [MinLength(1),MaxLength(500)]
         public string CommentText { get; set; }
         [Required]
         public virtual ApplicationUser ApplicationUser { get; set; }
