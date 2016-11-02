@@ -80,6 +80,11 @@ namespace BargainBarterV2.Models
         public string Email { get; set; }
 
         [Required]
+        [Phone]
+        [Display(Name = "Telefonnummer")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         //Følgende 2 linjer er slået fra til testning
         //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         //[DataType(DataType.Password)]
@@ -96,7 +101,7 @@ namespace BargainBarterV2.Models
         public string StreetName { get; set; }
 
         [Required]
-        [Display(Name = "Husnummer (og evt. etage/side")]
+        [Display(Name = "Husnummer (og evt. etage/side)")]
         public string StreetNumber { get; set; }
 
         [Required]

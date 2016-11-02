@@ -178,7 +178,8 @@ namespace BargainBarterV2.Controllers
                     Email = model.Email,
                     Firstname = model.FirstName,
                     Lastname = model.LastName,
-                    Address = address
+                    Address = address,
+                    PhoneNumber = model.PhoneNumber
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
