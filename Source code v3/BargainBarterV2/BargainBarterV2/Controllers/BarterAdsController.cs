@@ -24,7 +24,12 @@ namespace BargainBarterV2.Controllers
         {
             return View(db.BarterAdds.ToList());
         }
-        
+
+        public ActionResult ShowBarterAdsOnMap()
+        {
+            return View(db.BarterAdds.ToList());
+        }
+
 
         public ActionResult ViewPhoto(int id)
         {
