@@ -5,18 +5,18 @@
     <div class="col-md-3">
         <div class="panel panel-default">
 
-            <div class="panel-heading">Catagories</div>
+            <div class="panel-heading">Kategorier</div>
 
             <div class="panel-body">
-                <ul class="list-group">
+                <div class="list-group">
                     
                    @{var catagories = new BargainBarterV2.Helperfunctions.CategoryList();
                     foreach(var item in catagories){
                     
-                    <li class="list-group-item"> @item.Text <span class="badge">3</span></li>
+                    @Html.ActionLink(@item.Text,"CategorySearch","Search",new {searchstring = item.Text},new {@class = "list-group-item"})
                     }                  
                 }                                     
-                </ul>
+                </div>
             </div>
 
         </div>

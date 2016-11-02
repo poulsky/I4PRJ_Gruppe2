@@ -210,7 +210,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helperfunctions\CatagoryList.cs" />
+    <Compile Include="Helperfunctions\CategoryList.cs" />
     <Compile Include="Helperfunctions\Helper.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.Designer.cs">
@@ -333,13 +333,13 @@
     <Content Include="Views\BarterAds\Edit.cshtml" />
     <Content Include="Views\Home\UploadPicture.cshtml" />
     <Content Include="Views\Home\ShowPicture.cshtml" />
-    <Content Include="Views\BarterAds\ShowBarterAd.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\BarterAds\ManageAds.cshtml" />
     <None Include="Views\BarterAds\ManageAdsNoAds.cshtml" />
     <Content Include="Views\UserProfile\ShowUserProfile.cshtml" />
     <Content Include="Views\UserProfile\ShowOwnUserProfile.cshtml" />
     <Content Include="Views\UserProfile\Edit.cshtml" />
+    <Content Include="Views\Shared\Frontpage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\SeedingAdsPictures\" />
