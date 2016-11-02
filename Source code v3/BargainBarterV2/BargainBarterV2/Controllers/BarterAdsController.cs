@@ -19,7 +19,12 @@ namespace BargainBarterV2.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-       
+
+        public ActionResult ShowBarterAdsOnMap()
+        {
+            return View(db.BarterAdds.ToList());
+        }
+
 
         public ActionResult ViewPhoto(int id)
         {

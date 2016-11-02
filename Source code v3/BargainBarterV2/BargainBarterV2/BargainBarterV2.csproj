@@ -340,6 +340,7 @@
     <Content Include="Views\UserProfile\ShowOwnUserProfile.cshtml" />
     <Content Include="Views\UserProfile\Edit.cshtml" />
     <Content Include="Views\Shared\Frontpage.cshtml" />
+    <Content Include="Views\BarterAds\ShowBarterAdsOnMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\SeedingAdsPictures\" />
