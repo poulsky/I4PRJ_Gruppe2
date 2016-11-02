@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<BargainBarterV2.Models.BarterAdd>
 
     @{
-        ViewBag.Title = "Annoncer";
+        ViewBag.Title = "Mine annoncer";
     }
     <body>
     <div class="container">
         <header class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h2>Overblik</h2>
-                <p>På denne side kan du få et overblik over alle de annoncer du har lavet</p>
+                <div class="row">
+                    <h2>Mine annoncer</h2>
+                    <p>På denne side kan du få et overblik over alle de annoncer du har lavet</p>
+                    <p class="pull-right">@Model.Count() Annoncer</p>
+                </div>
             </div>
         </header>
         @foreach (var item in Model)
@@ -39,14 +42,23 @@
                             </a>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            @Html.DisplayFor(modelItem => item.Description)
+
+                        <div class="row">
+                            <div class="col-md-7">
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </div>
+                            <div class="col-md-5">
+                                <img class="bargainbarter-margin-all" src='@Url.Action("ViewPhoto", new {id = item.BarterAddId})' width="260" height="200" />
+                            </div>
                         </div>
-                        <div class="col-md-5">
-                            <img class="bargainbarter-margin-all" src='@Url.Action("ViewPhoto", new {id = item.BarterAddId})' width="260" height="200"/>
+                        <div class="row">
+
+                                    <a href="@Url.Action("Details", "BarterAds", new {id = item.BarterAddId})" class="btn btn-success bargainbarter-margin-all">
+                                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                        @item.Comments.Count Kommentarer
+                                    </a>
+
                         </div>
-                    </div>
                 </div>
             </section>
 

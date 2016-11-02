@@ -59,7 +59,7 @@
                 <div class="media">
                     <div class="media-body">
                         <h4 class="media-heading">
-                            @Html.ActionLink(item.ApplicationUser.UserName, "ShowUserProfile", new { id = item.ApplicationUser.Id }, new { @class = "" })
+                            @Html.ActionLink(item.ApplicationUser.UserName, "ShowUserProfile","UserProfile", new { id = item.ApplicationUser.Id }, new { @class = "" })
                             @*@Html.DisplayFor(modelItem => item.ApplicationUser.UserName)*@
                             <small>
                                 @Html.DisplayFor(modelItem => item.CreatedDateTime)
