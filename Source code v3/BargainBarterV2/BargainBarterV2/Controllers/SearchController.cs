@@ -21,23 +21,31 @@ namespace BargainBarterV2.Controllers
 
             if (!String.IsNullOrEmpty(searchstring))
                 results = results.Where(s => s.Titel.Contains(searchstring));
-            return View(results.ToList());
+            return View("Frontpage", results.ToList());
         }
 
-        // GET: Search/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult CategorySearch(string searchstring)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BarterAdd barterAdd = db.BarterAdds.Find(id);
-            if (barterAdd == null)
-            {
-                return HttpNotFound();
-            }
-            return View(barterAdd);
+            var results = from m in db.BarterAdds
+                          where (m.Category == searchstring)
+                          select m;
+
+            return View("Frontpage", results.ToList());
         }
+        //// GET: Search/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    BarterAdd barterAdd = db.BarterAdds.Find(id);
+        //    if (barterAdd == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(barterAdd);
+        //}
 
         //// GET: Search/Create
         //public ActionResult Create()
@@ -119,15 +127,15 @@ namespace BargainBarterV2.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-        
+
     }
 }

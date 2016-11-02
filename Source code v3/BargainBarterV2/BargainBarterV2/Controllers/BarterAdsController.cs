@@ -19,12 +19,12 @@ namespace BargainBarterV2.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: BarterAds - Show all BarterAds
-        public ActionResult Index()
+
+        public ActionResult ShowBarterAdsOnMap()
         {
             return View(db.BarterAdds.ToList());
         }
-        
+
 
         public ActionResult ViewPhoto(int id)
         {
@@ -234,27 +234,6 @@ namespace BargainBarterV2.Controllers
             return RedirectToAction("ManageAds");
         }
 
-        //Details bliver brugt i stedet
-        //public ActionResult ShowBarterAd(int ? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    BarterAdd CurrentAd = db.BarterAdds.Find(id);
-
-        //    if (CurrentAd == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewData["Titel"] = CurrentAd.Titel;
-        //    ViewData["Description"] = CurrentAd.Description;
-        //    ViewBag.Id = CurrentAd.BarterAddId;
-        //    ViewData["Category"] = CurrentAd.Category;
-            
-
-        //    return View();
-        //}
 
 
         protected override void Dispose(bool disposing)
@@ -280,14 +259,6 @@ namespace BargainBarterV2.Controllers
             return View("ManageAdsNoAds");
 
 
-        }
-
-        public ActionResult ShowUserProfile(string id)
-        {
-            var applicationUser = db.Users.Include(a => a.Address).Single(u => u.Id == id);
-            if (id == User.Identity.GetUserId())
-                return View("ShowOwnUserProfile",applicationUser);
-            return View(applicationUser);
         }
     }
 }
