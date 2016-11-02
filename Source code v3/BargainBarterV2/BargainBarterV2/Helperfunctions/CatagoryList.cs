@@ -10,13 +10,13 @@ namespace BargainBarterV2.Helperfunctions
     {
         public CategoryList()
         {
-            Add(new SelectListItem
-            {
-                Text = "---Vælg kategori---",
-                Value = "---Vælg kategori---",
-                Selected = true,
-                Disabled = true
-            });
+            //Add(new SelectListItem
+            //{
+            //    Text = "---Vælg kategori---",
+            //    Value = "---Vælg kategori---",
+            //    Selected = true,
+            //    Disabled = true
+            //});
 
             Add(new SelectListItem
             {

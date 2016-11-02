@@ -76,6 +76,17 @@ namespace BargainBarterV2.Models
         {
         }
 
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<ApplicationUser>()
+        //    .HasOptional(a=> a.BarterAdds)
+        //    .WithOptionalDependent()
+        //    .WillCascadeOnDelete(true);                              
+        //}
+
+
+
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

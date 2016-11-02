@@ -9,11 +9,13 @@
 
             <div class="panel-body">
                 <ul class="list-group">
-                    <li class="list-group-item">Elektronik <span class="badge">3</span></li>
-                    <li class="list-group-item">Interiør <span class="badge">5</span></li>
-                    <li class="list-group-item">Sport <span class="badge">5</span></li>
-                    <li class="list-group-item">Tøj <span class="badge">5</span></li>
-                    <li class="list-group-item">diverse <span class="badge">11</span></li>
+                    
+                   @{var catagories = new BargainBarterV2.Helperfunctions.CategoryList();
+                    foreach(var item in catagories){
+                    
+                    <li class="list-group-item"> @item.Text <span class="badge">3</span></li>
+                    }                  
+                }                                     
                 </ul>
             </div>
 
