@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
-=======
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
->>>>>>> 5301dde3deaf1b781961e5e29ad9f6604a49a5a3
-using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using BargainBarterV2.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -34,7 +28,7 @@ namespace BargainBarterV2.Models
     }
 
 
-    }
+    
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
