@@ -25,6 +25,10 @@ namespace BargainBarterV2.Models
         public string Lastname { get; set; }
         public Address Address { get; set; }
         public virtual List<BarterAdd> BarterAdds { get; set; }
+
+        public virtual List<TradeRequest> TradeRequests { get; set; }
+
+        public virtual List<TradeHistory> TradeHistories { get; set; }
     }
 
     public class BarterAdd
@@ -49,6 +53,9 @@ namespace BargainBarterV2.Models
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual List<TradeRequest> TradeRequests { get; set; } = new List<TradeRequest>();
+        public virtual List<TradeHistory> TradeHistories { get; set; } = new List<TradeHistory>();
     }
 
     public class Address
@@ -71,6 +78,38 @@ namespace BargainBarterV2.Models
         public virtual ApplicationUser ApplicationUser { get; set; }
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
 
+    }
+
+    public class TradeRequest
+    {
+        public int TradeRequestId { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
+        [EnumDataType(typeof(States))]
+        public States RequestStates { get; set; }
+
+
+        public enum States { Traded, Pending, Received }
+        
+        public virtual List<BarterAdd> BarterAdds { get; set; } = new List<BarterAdd>();
+
+        public virtual List<TradeHistory> TradeHistories { get; set; } = new List<TradeHistory>();
+
+    }
+
+    public class TradeHistory
+    {
+        public int TradeHistoryId { get; set; }
+
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
+        public virtual List<TradeRequest> TradeRequests { get; set; } = new List<TradeRequest>();
+
+      
     }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -96,5 +135,7 @@ namespace BargainBarterV2.Models
         }
 
         public System.Data.Entity.DbSet<BargainBarterV2.Models.BarterAdd> BarterAdds { get; set; }
+        public System.Data.Entity.DbSet<BargainBarterV2.Models.TradeRequest> TradeRequests { get; set; }
+        public System.Data.Entity.DbSet<BargainBarterV2.Models.TradeHistory> TradeHistory { get; set; }
     }
 }
