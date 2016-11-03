@@ -268,9 +268,13 @@
     <Compile Include="Migrations\201611030741140_fix.Designer.cs">
       <DependentUpon>201611030741140_fix.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611030839531_TradeHistory.cs" />
-    <Compile Include="Migrations\201611030839531_TradeHistory.Designer.cs">
-      <DependentUpon>201611030839531_TradeHistory.cs</DependentUpon>
+    <Compile Include="Migrations\.cs" />
+    <Compile Include="Migrations\.Designer.cs">
+      <DependentUpon>.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611030901350_TradeHistory.cs" />
+    <Compile Include="Migrations\201611030901350_TradeHistory.Designer.cs">
+      <DependentUpon>201611030901350_TradeHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -412,8 +416,11 @@
     <EmbeddedResource Include="Migrations\201611030741140_fix.resx">
       <DependentUpon>201611030741140_fix.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611030839531_TradeHistory.resx">
-      <DependentUpon>201611030839531_TradeHistory.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\.resx">
+      <DependentUpon>.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611030901350_TradeHistory.resx">
+      <DependentUpon>201611030901350_TradeHistory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

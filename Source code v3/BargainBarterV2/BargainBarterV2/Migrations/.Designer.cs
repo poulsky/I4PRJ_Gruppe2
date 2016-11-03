@@ -7,13 +7,13 @@ namespace BargainBarterV2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class TradeHistory : IMigrationMetadata
+    public sealed partial class TradeTest : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TradeHistory));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TradeTest));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611030839531_TradeHistory"; }
+            get { return "201611030857541_TradeTest"; }
         }
         
         string IMigrationMetadata.Source

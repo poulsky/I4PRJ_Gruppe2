@@ -1431,4 +1431,5 @@ C:\Users\Søren\Desktop\Skole\4. Semester\I4PRJ\Test2\I4PRJ_Gruppe2\Source code 
 C:\Users\Søren\Desktop\Skole\4. Semester\I4PRJ\Test2\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 C:\Users\Søren\Desktop\Skole\4. Semester\I4PRJ\Test2\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Søren\Desktop\Skole\4. Semester\I4PRJ\Test2\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
+C:\Users\Søren\Desktop\Skole\4. Semester\I4PRJ\Test2\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.TradeTest.resources
 C:\Users\Søren\Desktop\Skole\4. Semester\I4PRJ\Test2\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.TradeHistory.resources
