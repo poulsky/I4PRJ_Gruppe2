@@ -20,7 +20,7 @@ namespace BargainBarterV2.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index(string adcatagory, string searchString)
+        public ActionResult Index()
         {
             var results = from m in db.BarterAdds select m;
             

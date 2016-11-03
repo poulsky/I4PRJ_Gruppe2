@@ -75,6 +75,8 @@
                                 <li>@Html.ActionLink("Forside", "Index", "Home")</li>
                                 <li>@Html.ActionLink("Profil", "ShowUserProfile", "UserProfile", new {id = User.Identity.GetUserId()},new {@class = ""})</li>
                                 <li>@Html.ActionLink("Mine annoncer", "ManageAds", "BarterAds")</li>
+                                <li>@Html.ActionLink("Show Trade Requests", "ShowTrades", "BarterAds")</li>
+                                <li>@Html.ActionLink("Trade History", "ShowHistory", "BarterAds")</li>
                                 <li role="separator" class="divider"></li>
                                 @*<li class="dropdown-header">Personal settings</li>
                                 <li><a href="#">User Settings</a></li>*@

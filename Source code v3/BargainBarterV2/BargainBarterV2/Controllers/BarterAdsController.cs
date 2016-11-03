@@ -40,6 +40,20 @@ namespace BargainBarterV2.Controllers
         // GET: BarterAds/Details/5
         public ActionResult Details(int? id)
         {
+            ApplicationUser User =
+                   System.Web.HttpContext.Current.GetOwinContext()
+                       .GetUserManager<ApplicationUserManager>()
+                       .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            //ApplicationUser User = db.Users.Find(user.Id);
+
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            foreach (var Ad in User.BarterAdds)
+            {
+                items.Add(new SelectListItem { Text = Ad.Titel, Value = Ad.Titel.ToString() });
+            }
+            ViewBag.myAds = items;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -259,6 +273,162 @@ namespace BargainBarterV2.Controllers
             return View("ManageAdsNoAds");
 
 
+        }
+
+        public ActionResult RequestTrade(int id, string myAds)
+        {
+            try
+            {
+                TradeRequest tradeRequest = new TradeRequest();
+
+                ApplicationUser user =
+                    System.Web.HttpContext.Current.GetOwinContext()
+                        .GetUserManager<ApplicationUserManager>()
+                        .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                ApplicationUser User = db.Users.Find(user.Id);
+
+                int tradeId = id;
+                string dropValue = myAds;
+
+
+
+                BarterAdd myAd = db.BarterAdds
+                   .Single(p => p.Titel == dropValue);
+
+                BarterAdd tradeAdd = db.BarterAdds
+                  .Single(p => p.BarterAddId == tradeId);
+                tradeRequest.BarterAdds.Add(myAd);
+                tradeRequest.BarterAdds.Add(tradeAdd);
+                tradeRequest.RequestStates = TradeRequest.States.Received;
+
+                ApplicationUser otherUser = db.Users.Find(tradeAdd.ApplicationUserId);
+                if (otherUser.Id == User.Id)
+                    return RedirectToAction("ManageAds");
+
+                //User.TradeRequests.Add(tradeRequest);
+                otherUser.TradeRequests.Add(tradeRequest);
+                db.SaveChanges();
+                //return View(User.TradeRequests.ToList());
+                return RedirectToAction("ManageAds");
+            }
+            catch (Exception)
+            {
+
+                return HttpNotFound();
+            }
+
+        }
+
+        public ActionResult AcceptTrade(int Id)
+        {
+            try
+            {
+
+
+                TradeRequest tradeRequest = db.TradeRequests.Find(Id);
+                if (tradeRequest.RequestStates == TradeRequest.States.Received)
+                {
+                    tradeRequest.RequestStates = TradeRequest.States.Pending;
+
+                    foreach (var ad in tradeRequest.BarterAdds)
+                    {
+                        if (ad.ApplicationUserId != tradeRequest.ApplicationUserId)
+                        {
+                            tradeRequest.ApplicationUserId = ad.ApplicationUserId;
+
+                            db.SaveChanges();
+                            break;
+                        }
+
+                    }
+
+                }
+                else
+                {
+
+                    TradeHistory myHistory = new TradeHistory();
+                    TradeHistory theirHistory = new TradeHistory();
+
+                    BarterAdd myAd = (tradeRequest.ApplicationUserId == tradeRequest.BarterAdds[0].ApplicationUserId
+                        ? tradeRequest.BarterAdds[0]
+                        : tradeRequest.BarterAdds[1]);
+                    BarterAdd theirAd = (tradeRequest.ApplicationUserId == tradeRequest.BarterAdds[0].ApplicationUserId
+                        ? tradeRequest.BarterAdds[1]
+                        : tradeRequest.BarterAdds[0]);
+
+                    ApplicationUser myUser = new ApplicationUser();
+                    ApplicationUser theirUser = new ApplicationUser();
+
+                    myUser = db.Users.Find(myAd.ApplicationUserId);
+                    theirUser = db.Users.Find(theirAd.ApplicationUserId);
+
+
+
+                    bool checkMyUser = false;
+                    bool checkTheirUser = false;
+                    foreach (var th in db.TradeHistory)
+                    {
+                        if (th.ApplicationUserId == myUser.Id)
+                        {
+                            myHistory = th;
+                            checkMyUser = true;
+                        }
+                        if (th.ApplicationUserId == theirUser.Id)
+                        {
+                            theirHistory = th;
+                            checkTheirUser = true;
+                        }
+                    }
+
+                    myHistory.TradeRequests.Add(tradeRequest);
+                    //myHistory.BarterAdds.Add(theirAd);
+                    // theirHistory.BarterAdds.Add(theirAd);
+                    theirHistory.TradeRequests.Add(tradeRequest);
+
+                    if (checkMyUser != true)
+                        myUser.TradeHistories.Add(myHistory);
+
+                    if (checkTheirUser != true)
+                        theirUser.TradeHistories.Add(theirHistory);
+
+                    tradeRequest.RequestStates = TradeRequest.States.Traded;
+                    db.SaveChanges();
+                }
+                return RedirectToAction("ManageAds");
+            }
+            catch (Exception)
+            {
+
+                return HttpNotFound();
+            }
+        }
+
+        public ActionResult ShowTrades()
+        {
+            var userId = User.Identity.GetUserId();
+            var tradeRequests = from r in db.TradeRequests
+                                where r.ApplicationUserId == userId && r.RequestStates != TradeRequest.States.Traded
+                                select r;
+
+
+            return View(tradeRequests.ToList());
+        }
+
+        public ActionResult ShowHistory()
+        {
+
+
+            ApplicationUser user =
+                    System.Web.HttpContext.Current.GetOwinContext()
+                        .GetUserManager<ApplicationUserManager>()
+             .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            
+            List<TradeHistory> myH = new List<TradeHistory>();
+
+            
+
+
+            return View(user.TradeHistories);
         }
     }
 }

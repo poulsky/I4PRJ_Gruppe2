@@ -268,6 +268,14 @@
     <Compile Include="Migrations\201611030741140_fix.Designer.cs">
       <DependentUpon>201611030741140_fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\.cs" />
+    <Compile Include="Migrations\.Designer.cs">
+      <DependentUpon>.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611030901350_TradeHistory.cs" />
+    <Compile Include="Migrations\201611030901350_TradeHistory.Designer.cs">
+      <DependentUpon>201611030901350_TradeHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -287,10 +295,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-BargainBarterV2-20160929030033.mdf" />
-    <Content Include="App_Data\aspnet-BargainBarterV2-20160929030033_log.ldf">
-      <DependentUpon>aspnet-BargainBarterV2-20160929030033.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\default.css" />
@@ -380,8 +384,11 @@
     <Content Include="Views\UserProfile\ShowOwnUserProfile.cshtml" />
     <Content Include="Views\UserProfile\ShowUserProfile.cshtml" />
     <Content Include="Views\BarterAds\ShowBarterAdsOnMap.cshtml" />
+    <Content Include="Views\BarterAds\ShowTrades.cshtml" />
+    <Content Include="Views\BarterAds\ShowHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Content\img\SeedingAdsPictures\" />
     <Folder Include="Content\js\" />
   </ItemGroup>
@@ -419,6 +426,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611030741140_fix.resx">
       <DependentUpon>201611030741140_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\.resx">
+      <DependentUpon>.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611030901350_TradeHistory.resx">
+      <DependentUpon>201611030901350_TradeHistory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
