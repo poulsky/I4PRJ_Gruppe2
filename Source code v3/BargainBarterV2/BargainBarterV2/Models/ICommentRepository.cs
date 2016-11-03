@@ -6,7 +6,7 @@ namespace BargainBarterV2.Models
     public interface ICommentRepository : IDisposable
     {
         IEnumerable<Comment> GetComments();
-        Address GetCommentById(int commentId);
+        Comment GetCommentById(int commentId);
         void InsertComment(Comment comment);
         void DeleteComment(int commentId);
         void UpdateComment(Comment comment);

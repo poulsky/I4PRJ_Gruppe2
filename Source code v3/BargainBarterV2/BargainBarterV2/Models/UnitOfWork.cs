@@ -7,6 +7,10 @@ namespace BargainBarterV2.Models
         private ApplicationDbContext context = ApplicationDbContext.Create();
         private GenericRepository<BarterAdd> barterAddRepository;
         private GenericRepository<Address> addressRepository;
+        private GenericRepository<Comment> commentRepository;
+        private GenericRepository<TradeRequest> tradeReqeustRepository;
+
+
 
         public GenericRepository<BarterAdd> BarterAddRepository
         {
@@ -32,6 +36,32 @@ namespace BargainBarterV2.Models
                 return addressRepository;
             }
         }
+
+        public GenericRepository<Comment> CommentRepository
+        {
+            get
+            {
+                if (this.commentRepository == null)
+                {
+                    this.commentRepository = new GenericRepository<Comment>(context);
+                }
+                return commentRepository;
+            }
+        }
+
+        public GenericRepository<TradeRequest> TradeRequestRepository
+        {
+            get
+            {
+
+                if (this.tradeReqeustRepository == null)
+                {
+                    this.tradeReqeustRepository = new GenericRepository<TradeRequest>(context);
+                }
+                return tradeReqeustRepository;
+            }
+        }
+
 
         public void Save()
         {

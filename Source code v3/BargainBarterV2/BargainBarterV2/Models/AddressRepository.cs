@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace BargainBarterV2.Models
 {
@@ -15,27 +17,28 @@ namespace BargainBarterV2.Models
 
         public IEnumerable<Address> GetAddressess()
         {
-            throw new NotImplementedException();
+            return context.Addresses.ToList();
         }
 
         public Address GetAddressById(int addressId)
         {
-            throw new NotImplementedException();
+            return context.Addresses.Find(addressId);
         }
 
         public void InsertAddress(Address address)
         {
-            throw new NotImplementedException();
+            context.Addresses.Add(address);
         }
 
         public void DeleteAddress(int addressId)
         {
-            throw new NotImplementedException();
+            Address address = context.Addresses.Find(addressId);
+            context.Addresses.Remove(address);
         }
 
         public void UpdateAddress(Address address)
         {
-            throw new NotImplementedException();
+            context.Entry(address).State = EntityState.Modified;
         }
 
         public void Save()

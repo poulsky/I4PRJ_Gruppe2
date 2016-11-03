@@ -15,11 +15,11 @@ namespace BargainBarterV2.Models
         [Required]
         public string Titel { get; set; }
         public string Description { get; set; }
-        public byte[] Picture{ get; set; }
+        public byte[] Picture { get; set; }
         public byte[] Thumbnail { get; set; }
         public string Category { get; set; }
         [ForeignKey("ApplicationUser")]
-        
+
         public string ApplicationUserId { get; set; }
         [Required]
         public virtual ApplicationUser ApplicationUser { get; set; }
@@ -27,5 +27,8 @@ namespace BargainBarterV2.Models
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual List<TradeRequest> TradeRequests { get; set; } = new List<TradeRequest>();
+        public virtual List<TradeHistory> TradeHistories { get; set; } = new List<TradeHistory>();
     }
 }

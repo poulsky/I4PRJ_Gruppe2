@@ -5,39 +5,40 @@ using System.Linq;
 
 namespace BargainBarterV2.Models
 {
-    class CommentRepository : ICommentRepository, IDisposable
+    public class TradeHistoryRepository : IDisposable, ITradeHistoryRepository
     {
         private ApplicationDbContext context;
 
-        public CommentRepository(ApplicationDbContext context)
+        public TradeHistoryRepository(ApplicationDbContext context)
         {
             this.context = context;
         }
 
-        public IEnumerable<Comment> GetComments()
+        public IEnumerable<TradeHistory> GetTradeHistories()
         {
-            return context.Comments.ToList();
+            return context.TradeHistory.ToList();
         }
 
-        public Comment GetCommentById(int commentId)
+        public TradeHistory GetTradeHistoryById(int tradehisoryId)
         {
-            return context.Comments.Find(commentId);
+            return context.TradeHistory.Find(tradehisoryId);
         }
 
-        public void InsertComment(Comment comment)
+        public void InsertTradeHistory(TradeHistory tradeHistory)
         {
-            context.Comments.Add(comment);
+            context.TradeHistory.Add(tradeHistory);
         }
 
-        public void DeleteComment(int commentId)
+        public void DeleteTradeHistory(int tradehisoryId)
         {
-            Comment comment = context.Comments.Find(commentId);
-            context.Comments.Find(comment);
+            TradeHistory tradeHistory = context.TradeHistory.Find(tradehisoryId);
+            context.TradeHistory.Remove(tradeHistory);
         }
 
-        public void UpdateComment(Comment comment)
+        public void UpdateTradeHistory(TradeHistory tradeHistory)
         {
-            context.Entry(comment).State = EntityState.Modified;
+            context.Entry(tradeHistory).State = EntityState.Modified;
+
         }
 
         public void Save()

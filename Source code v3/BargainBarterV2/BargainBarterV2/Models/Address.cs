@@ -10,7 +10,7 @@ namespace BargainBarterV2.Models
         public string PostalCode { get; set; }
         public string City { get; set; }
         public List<ApplicationUser> Users { get; set; }
-        public Coordinates Coordinate{get; set; }
+        public Coordinates Coordinate { get; set; }
     }
 
 

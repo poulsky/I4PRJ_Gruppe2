@@ -289,7 +289,13 @@
     <Compile Include="Models\IBarterAdRepository.cs" />
     <Compile Include="Models\ICommentRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ITradeHistoryRepository.cs" />
+    <Compile Include="Models\ITradeRequestRepository.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TradeHistory.cs" />
+    <Compile Include="Models\TradeHistoryRepository.cs" />
+    <Compile Include="Models\TradeRequest.cs" />
+    <Compile Include="Models\TradeRequestRepository.cs" />
     <Compile Include="Models\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
