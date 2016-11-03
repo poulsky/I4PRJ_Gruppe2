@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -26,55 +28,6 @@ namespace BargainBarterV2.Models
         public virtual List<TradeRequest> TradeRequests { get; set; }
 
         public virtual List<TradeHistory> TradeHistories { get; set; }
-    }
-
-    public class BarterAdd
-    {
-        public BarterAdd()
-        {
-            Comments = new List<Comment>();
-        }
-        public int BarterAddId { get; set; }
-        [Required]
-        public string Titel { get; set; }
-        public string Description { get; set; }
-        public byte[] Picture{ get; set; }
-        public byte[] Thumbnail { get; set; }
-        public string Category { get; set; }
-        [ForeignKey("ApplicationUser")]
-        
-        public string ApplicationUserId { get; set; }
-        [Required]
-        public virtual ApplicationUser ApplicationUser { get; set; }
-        [Required]
-        public DateTime CreatedDateTime { get; set; } = DateTime.Now;
-
-        public virtual ICollection<Comment> Comments { get; set; }
-
-        public virtual List<TradeRequest> TradeRequests { get; set; } = new List<TradeRequest>();
-        public virtual List<TradeHistory> TradeHistories { get; set; } = new List<TradeHistory>();
-    }
-
-    public class Address
-    {
-        public int AddressId { get; set; }
-        public string StreetName { get; set; }
-        public string StreetNumber { get; set; }
-        public string PostalCode { get; set; }
-        public string City { get; set; }
-        public List<ApplicationUser> Users { get; set; }
-        public Coordinates Coordinate{get; set; }
-    }
-
-    public class Comment
-    {
-        public int CommentId { get; set; }
-        [MinLength(1),MaxLength(500)]
-        public string CommentText { get; set; }
-        [Required]
-        public virtual ApplicationUser ApplicationUser { get; set; }
-        public DateTime CreatedDateTime { get; set; } = DateTime.Now;
-
     }
 
     public class TradeRequest
