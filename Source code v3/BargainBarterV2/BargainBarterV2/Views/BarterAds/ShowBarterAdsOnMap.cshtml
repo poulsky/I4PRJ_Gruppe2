@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BargainBarterV2.Models.BarterAdd>
+@using Jmelosegui.Mvc.GoogleMap
+@using WebGrease.Css.Extensions
+
+@{
+    ViewBag.Title = "ShowBarterAdsOnMap";
+}
+
+<h2>BarterAds i nærheden</h2>
+
+<div class="col-md-12">
+    @(Html.GoogleMap().Name("map")
+                          .Height(200)
+                          .ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
+                          .Center(c => c.Latitude((double)@ViewData["Latitude"])
+                              .Longitude((double)@ViewData["Longitude"]))
+                          .FitToMarkersBounds(true)
+                         .Zoom(13)
+                          .BindTo < BargainBarterV2.Models.BarterAdd, Marker >
+                          ( Model, mappings=> mappings.For < BargainBarterV2.Models.BarterAdd >
+                            (binding=> binding.ItemDataBound
+                                (
+                                    (marker, barteradd)=>
+                                    {
+                                        marker.Latitude = barteradd.ApplicationUser.Address.Coordinate.Latitude;
+                                        marker.Longitude = barteradd.ApplicationUser.Address.Coordinate.Longitude;
+                                        marker.Title = barteradd.Titel;
+                                    }
+                            )
+                          )
+    )
+    )
+</div>
+
+

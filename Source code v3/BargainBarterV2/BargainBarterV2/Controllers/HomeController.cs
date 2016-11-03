@@ -24,7 +24,7 @@ namespace BargainBarterV2.Controllers
         {
             var results = from m in db.BarterAdds select m;
             
-            return View(results.ToList());
+            return View("Frontpage",results.ToList());
         }
 
         public ActionResult About()
@@ -34,6 +34,7 @@ namespace BargainBarterV2.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

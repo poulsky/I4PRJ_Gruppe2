@@ -5,16 +5,18 @@
     <div class="col-md-3">
         <div class="panel panel-default">
 
-            <div class="panel-heading">Catagories</div>
+            <div class="panel-heading">Kategorier</div>
 
             <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">Elektronik <span class="badge">3</span></li>
-                    <li class="list-group-item">Interiør <span class="badge">5</span></li>
-                    <li class="list-group-item">Sport <span class="badge">5</span></li>
-                    <li class="list-group-item">Tøj <span class="badge">5</span></li>
-                    <li class="list-group-item">diverse <span class="badge">11</span></li>
-                </ul>
+                <div class="list-group">
+                    
+                   @{var catagories = new BargainBarterV2.Helperfunctions.CategoryList();
+                    foreach(var item in catagories){
+                    
+                    @Html.ActionLink(@item.Text,"CategorySearch","Search",new {searchstring = item.Text},new {@class = "list-group-item"})
+                    }                  
+                }                                     
+                </div>
             </div>
 
         </div>

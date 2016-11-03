@@ -11,15 +11,43 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using BargainBarterV2.Models;
+using SendGrid;
+using System.Net;
+using System.Configuration;
+using System.Diagnostics;
+using System.Net.Mail;
 
 namespace BargainBarterV2
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            await configSendGridAsync(message);
+        }
+
+        private async Task configSendGridAsync(IdentityMessage message)
+        {
+            var myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            myMessage.From = new MailAddress("officialbargainbarter@gmail.com", "BargainBarter");
+            myMessage.Subject = message.Subject;
+            myMessage.Text = message.Body;
+            myMessage.Html = message.Body;
+
+            var apikey = "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";
+            //var credentials = new NetworkCredential(apikey);
+            var transportWeb = new Web(apikey);
+            if (transportWeb != null)
+            {
+                await transportWeb.DeliverAsync(myMessage);
+            }
+            else
+            {
+                Trace.TraceError("Failed to create Web transport.");
+                await Task.FromResult(0);
+            }
         }
     }
 
