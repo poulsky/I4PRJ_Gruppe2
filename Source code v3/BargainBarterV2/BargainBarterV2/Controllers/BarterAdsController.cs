@@ -18,11 +18,12 @@ namespace BargainBarterV2.Controllers
     public class BarterAdsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        private UnitOfWork unitOfWork = new UnitOfWork();
 
         public ActionResult ShowBarterAdsOnMap()
         {
-            return View(db.BarterAdds.ToList());
+            var ads = unitOfWork.BarterAddRepository.Get();
+            return View(ads.ToList());
         }
 
 

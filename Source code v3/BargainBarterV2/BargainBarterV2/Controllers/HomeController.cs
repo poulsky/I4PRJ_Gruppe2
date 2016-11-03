@@ -16,14 +16,15 @@ namespace BargainBarterV2.Controllers
     public class HomeController : Controller
     {
 
-       
 
+        private UnitOfWork unitOfWork = new UnitOfWork();
         private ApplicationDbContext db = new ApplicationDbContext();
+
 
         public ActionResult Index()
         {
-            var results = from m in db.BarterAdds select m;
-            
+            //var results = from m in db.BarterAdds select m;
+            var results = unitOfWork.BarterAddRepository.Get();
             return View("Frontpage",results.ToList());
         }
 
