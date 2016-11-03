@@ -41,19 +41,7 @@ namespace BargainBarterV2.Controllers
         // GET: BarterAds/Details/5
         public ActionResult Details(int? id)
         {
-            ApplicationUser User =
-                   System.Web.HttpContext.Current.GetOwinContext()
-                       .GetUserManager<ApplicationUserManager>()
-                       .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            //ApplicationUser User = db.Users.Find(user.Id);
-
-            List<SelectListItem> items = new List<SelectListItem>();
-
-            foreach (var Ad in User.BarterAdds)
-            {
-                items.Add(new SelectListItem { Text = Ad.Titel, Value = Ad.Titel.ToString() });
-            }
-            ViewBag.myAds = items;
+            
 
             if (id == null)
             {
@@ -80,6 +68,22 @@ namespace BargainBarterV2.Controllers
 
             ViewData["Longitude"] = LogUser.Address.Coordinate.Longitude;
             ViewData["Latitude"] = LogUser.Address.Coordinate.Latitude;
+
+            ApplicationUser User =
+                  System.Web.HttpContext.Current.GetOwinContext()
+                      .GetUserManager<ApplicationUserManager>()
+                      .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            if (User != null)
+            {
+                List<SelectListItem> items = new List<SelectListItem>();
+
+                foreach (var Ad in User.BarterAdds)
+                {
+                    items.Add(new SelectListItem { Text = Ad.Titel, Value = Ad.Titel.ToString() });
+                }
+                ViewBag.myAds = items;
+            }
 
 
             return View(barterAdd);
