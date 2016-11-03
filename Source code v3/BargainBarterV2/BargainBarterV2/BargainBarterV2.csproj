@@ -264,6 +264,10 @@
     <Compile Include="Migrations\201611020856486_dataannotations.Designer.cs">
       <DependentUpon>201611020856486_dataannotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611030741140_fix.cs" />
+    <Compile Include="Migrations\201611030741140_fix.Designer.cs">
+      <DependentUpon>201611030741140_fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -401,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611020856486_dataannotations.resx">
       <DependentUpon>201611020856486_dataannotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611030741140_fix.resx">
+      <DependentUpon>201611030741140_fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
