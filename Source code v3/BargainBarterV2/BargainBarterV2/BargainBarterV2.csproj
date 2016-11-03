@@ -284,16 +284,161 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="android-icon-144x144.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="android-icon-192x192.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="android-icon-36x36.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="android-icon-48x48.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="android-icon-72x72.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="android-icon-96x96.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon-114x114.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon-120x120.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon-144x144.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon-152x152.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon-180x180.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon-57x57.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon-60x60.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon-72x72.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon-76x76.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon-precomposed.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="apple-icon.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\default.css" />
     <Content Include="Content\css\Home.css" />
     <Content Include="Content\css\shared.css" />
     <Content Include="Content\css\ShowBarterAd.css" />
+    <Content Include="Content\img\Favicon\android-icon-144x144.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\android-icon-192x192.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\android-icon-36x36.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\android-icon-48x48.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\android-icon-72x72.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\android-icon-96x96.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon-114x114.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon-120x120.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon-144x144.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon-152x152.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon-180x180.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon-57x57.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon-60x60.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon-72x72.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon-76x76.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon-precomposed.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\apple-icon.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\favicon-16x16.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\favicon-32x32.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\favicon-96x96.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\favicon.ico" />
+    <Content Include="Content\img\Favicon\ms-icon-144x144.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\ms-icon-150x150.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\ms-icon-310x310.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="Content\img\Favicon\ms-icon-70x70.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="favicon-16x16.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="favicon-32x32.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="favicon-96x96.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ms-icon-144x144.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="ms-icon-150x150.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="ms-icon-310x310.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
+    <Content Include="ms-icon-70x70.png">
+      <DependentUpon>favicon.ico</DependentUpon>
+    </Content>
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
