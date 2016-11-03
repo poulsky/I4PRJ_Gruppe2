@@ -276,6 +276,10 @@
     <Compile Include="Migrations\201611030901350_TradeHistory.Designer.cs">
       <DependentUpon>201611030901350_TradeHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611031044331_QuickFixMorten.cs" />
+    <Compile Include="Migrations\201611031044331_QuickFixMorten.Designer.cs">
+      <DependentUpon>201611031044331_QuickFixMorten.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -583,6 +587,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611030901350_TradeHistory.resx">
       <DependentUpon>201611030901350_TradeHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611031044331_QuickFixMorten.resx">
+      <DependentUpon>201611031044331_QuickFixMorten.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
