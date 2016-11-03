@@ -12,10 +12,7 @@
     @(Html.GoogleMap().Name("map")
                           .Height(200)
                           .ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
-                          .Center(c => c.Latitude((double)@ViewData["Latitude"])
-                              .Longitude((double)@ViewData["Longitude"]))
                           .FitToMarkersBounds(true)
-                         .Zoom(13)
                           .BindTo < BargainBarterV2.Models.BarterAdd, Marker >
                           ( Model, mappings=> mappings.For < BargainBarterV2.Models.BarterAdd >
                             (binding=> binding.ItemDataBound
