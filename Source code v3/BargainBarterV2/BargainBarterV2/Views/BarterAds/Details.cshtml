@@ -50,7 +50,15 @@
                 @*<h3> @Html.ActionLink("comment", "Comment", "BarterAds", new { id = Model.BarterAddId }, null)</h3>*@
             </div>
             <hr/>
-            
+            <div>
+                @using (Html.BeginForm("RequestTrade", "BarterAds", new { id = Model.BarterAddId }, FormMethod.Get))
+                {
+
+                    @Html.DropDownList("myAds", (IEnumerable<SelectListItem>)ViewBag.myAds, "Select your ad")
+                    <input type="submit" value="Submit" />
+
+                }
+            </div>
          
             
             @foreach (var item in Model.Comments)

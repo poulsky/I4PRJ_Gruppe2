@@ -1,0 +1,57 @@
+﻿
+@model IEnumerable<BargainBarterV2.Models.TradeRequest>
+
+
+@{
+    ViewBag.Title = "Trade History";
+}
+
+<h2>Trade History</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Titel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Titel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Picture)
+        </th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @foreach (var ad in item.BarterAdds)
+                {
+                <td>
+                    @Html.DisplayFor(modelItem => ad.Titel)
+                </td>
+                <td>
+                    <img src='@Url.Action("ViewPhoto", new { id = ad.BarterAddId })' width="260" height="200" />
+                </td>
+
+            }
+            <td>
+                @using (Html.BeginForm("AcceptTrade", "BarterAds", new { Id = item.TradeRequestId }, FormMethod.Get))
+                {
+
+
+                    <input type="submit" value="Accept Trade" />
+
+                }
+            </td>
+        </tr>
+    }
+
+</table>
