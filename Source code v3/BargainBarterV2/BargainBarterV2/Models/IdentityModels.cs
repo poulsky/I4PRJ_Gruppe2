@@ -41,7 +41,7 @@ namespace BargainBarterV2.Models
         public byte[] Thumbnail { get; set; }
         public string Category { get; set; }
         [ForeignKey("ApplicationUser")]
-        [Required]
+        
         public string ApplicationUserId { get; set; }
         [Required]
         public virtual ApplicationUser ApplicationUser { get; set; }
