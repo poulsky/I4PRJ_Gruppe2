@@ -54,8 +54,11 @@
                 @using (Html.BeginForm("RequestTrade", "BarterAds", new { id = Model.BarterAddId }, FormMethod.Get))
                 {
 
-                    @Html.DropDownList("myAds", (IEnumerable<SelectListItem>)ViewBag.myAds, "Select your ad")
-                    <input type="submit" value="Submit" />
+                    if (ViewBag.myAds != null)
+                    {
+                        @Html.DropDownList("myAds", (IEnumerable<SelectListItem>)ViewBag.myAds, "Select your ad")
+                        <input type="submit" value="Submit" />
+                    }
 
                 }
             </div>
