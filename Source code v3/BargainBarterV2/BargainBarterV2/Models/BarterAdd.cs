@@ -21,7 +21,7 @@ namespace BargainBarterV2.Models
         [ForeignKey("ApplicationUser")]
 
         public string ApplicationUserId { get; set; }
-        [Required]
+        //[Required] brækker opret barteradsiden
         public virtual ApplicationUser ApplicationUser { get; set; }
         [Required]
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;

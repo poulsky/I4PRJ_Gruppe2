@@ -280,6 +280,10 @@
     <Compile Include="Migrations\201611031044331_QuickFixMorten.Designer.cs">
       <DependentUpon>201611031044331_QuickFixMorten.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611041004192_Requiredtag fjernet.cs" />
+    <Compile Include="Migrations\201611041004192_Requiredtag fjernet.Designer.cs">
+      <DependentUpon>201611041004192_Requiredtag fjernet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -590,6 +594,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611031044331_QuickFixMorten.resx">
       <DependentUpon>201611031044331_QuickFixMorten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611041004192_Requiredtag fjernet.resx">
+      <DependentUpon>201611041004192_Requiredtag fjernet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
