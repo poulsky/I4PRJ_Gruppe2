@@ -1,13 +1,10 @@
-<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-=======
 ﻿using System;
 using System.Collections.Generic;
->>>>>>> dd62508ae6b9079c7b48a315a3fcf2ab7bf10c51
 using System.Security.Claims;
 using System.Threading.Tasks;
 using BargainBarterV2.Models;
@@ -36,10 +33,6 @@ namespace BargainBarterV2.Models
     }
 
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> dd62508ae6b9079c7b48a315a3fcf2ab7bf10c51
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
