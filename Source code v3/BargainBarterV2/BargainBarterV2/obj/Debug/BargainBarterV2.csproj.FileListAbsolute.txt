@@ -199,8 +199,8 @@ C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarter
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.fix.resources
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.TradeTest.resources
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.TradeHistory.resources
-C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.QuickFixMorten.resources
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Requiredtagfjernet.resources
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
+C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.201611031044331_QuickFixMorten.resources

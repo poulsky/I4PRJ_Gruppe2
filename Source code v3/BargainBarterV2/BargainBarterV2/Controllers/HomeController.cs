@@ -15,10 +15,18 @@ namespace BargainBarterV2.Controllers
 
     public class HomeController : Controller
     {
-
-
         private UnitOfWork unitOfWork = new UnitOfWork();
         private ApplicationDbContext db = new ApplicationDbContext();
+        public HomeController(ApplicationDbContext dbase, UnitOfWork unit)
+        {
+            unitOfWork = unit;
+            db = dbase;
+        }
+
+        public HomeController()
+        {
+            
+        }
 
 
         public ActionResult Index()

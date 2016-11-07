@@ -8,6 +8,7 @@ using BargainBarterV2.Controllers;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using BargainBarterV2.Models;
+using NSubstitute;
 
 
 namespace BargainBarterV2.Tests.Controllers
@@ -15,14 +16,32 @@ namespace BargainBarterV2.Tests.Controllers
     [TestFixture]
     public class HomeControllerTestUNitTest
     {
+        private ApplicationDbContext _db;
+        private HomeController _controller;
+        private UnitOfWork _unitOfWork;
+        [SetUp]
+        public void Init()
+        {
+            _unitOfWork = Substitute.For<UnitOfWork>();
+            _db = Substitute.For<ApplicationDbContext>();
+            _controller = new HomeController(_db,_unitOfWork);        
+        }
+
+
+        [Test]
+        public void Index_BarterAddRepository_Get_IsCalled()
+        {
+            _controller.Index();
+            _unitOfWork.Received().BarterAddRepository.Get();
+        }
+      
         [Test]
         public void Index_DoesNotReturnNull()
         {
             // Arrange
-            HomeController controller = new HomeController();
 
             // Act
-             ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = _controller.Index() as ViewResult;
 
             // Assert
             Assert.That(result, Is.Not.Null);
@@ -32,26 +51,23 @@ namespace BargainBarterV2.Tests.Controllers
         [Test]
         public void AboutViewBagDoesNotContainCorrectString()
         {
-            // Arrange
-            HomeController controller = new HomeController();
-
+            // Arrange         
             // Act
-            ViewResult result = controller.About() as ViewResult;
+            ViewResult result = _controller.About() as ViewResult;
 
             // Assert
             //Assert.AreEqual("Your application description page.", result.ViewBag.Message);
             Assert.That("Your application description page.", Is.EqualTo(result.ViewBag.Message));
-
         }
 
         [Test]
         public void ContactDoesNotReturnNull()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            
 
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = _controller.Contact() as ViewResult;
 
             // Assert
             //Assert.IsNotNull(result);
@@ -61,9 +77,9 @@ namespace BargainBarterV2.Tests.Controllers
         [Test]
         public void ContactViewBagDoesNotContainCorrectString()
         {
-            HomeController controller = new HomeController();
+           
 
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = _controller.Contact() as ViewResult;
 
             Assert.That("Your contact page.", Is.EqualTo(result.ViewBag.Message));
         }
@@ -71,9 +87,9 @@ namespace BargainBarterV2.Tests.Controllers
         [Test]
         public void UploadPictureDoesNotReturnNull()
         {
-            HomeController controller = new HomeController();
+           
 
-            ViewResult result = controller.UploadPicture() as ViewResult;
+            ViewResult result = _controller.UploadPicture() as ViewResult;
 
             Assert.That(result, Is.Not.Null);
         }
