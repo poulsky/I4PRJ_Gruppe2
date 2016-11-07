@@ -9,7 +9,7 @@ using BargainBarterV2.Controllers;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using BargainBarterV2.Models;
-
+using NSubstitute;
 
 
 namespace BargainBarterV2.Tests.Controllers
@@ -18,11 +18,15 @@ namespace BargainBarterV2.Tests.Controllers
     [TestFixture]
     public class BarterAdsControllerUnitTest    
     {
+        private ApplicationDbContext _db;
+        private UnitOfWork _unitOfWork;
         private BarterAdsController _controller; 
 
         [SetUp]
         public void Init()
         {
+            _unitOfWork = Substitute.For<UnitOfWork>();
+            _db = Substitute.For<ApplicationDbContext>();
             _controller = new BarterAdsController();
         }
 
@@ -32,11 +36,23 @@ namespace BargainBarterV2.Tests.Controllers
             var result = _controller.Index() as RedirectToRouteResult;
 
             if (result == null)
-                Assert.Fail("should have redirected");
+                Assert.Fail("");
 
             Assert.That(result.RouteValues["Controller"], Is.EqualTo("Home"));
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
 
+        }
+        [Test]
+        public void ShowBarterAdsOnMap_BarterAddRepository_Get_IsCalled()
+        {
+            _controller.Index();
+            _unitOfWork.Received().BarterAddRepository.Get();
+        }
+        [Test]
+        public void ShowBarterAdsOnMap_BarterAddRepository_Get_ToList_IsCalled()
+        {
+            _controller.Index();
+            _unitOfWork.Received().BarterAddRepository.Get().ToList();
         }
 
         [Test]

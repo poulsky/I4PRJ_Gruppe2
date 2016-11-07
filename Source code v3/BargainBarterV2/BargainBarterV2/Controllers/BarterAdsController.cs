@@ -20,6 +20,16 @@ namespace BargainBarterV2.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private UnitOfWork unitOfWork = new UnitOfWork();
 
+        public BarterAdsController(ApplicationDbContext dbase, UnitOfWork unit)
+        {
+            unitOfWork = unit;
+            db = dbase;
+        }
+
+        public BarterAdsController()
+        {
+            
+        }
 
         public ActionResult Index()
         {

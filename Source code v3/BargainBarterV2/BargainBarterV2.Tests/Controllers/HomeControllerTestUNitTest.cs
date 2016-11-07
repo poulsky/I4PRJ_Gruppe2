@@ -17,8 +17,9 @@ namespace BargainBarterV2.Tests.Controllers
     public class HomeControllerTestUNitTest
     {
         private ApplicationDbContext _db;
-        private HomeController _controller;
         private UnitOfWork _unitOfWork;
+        private HomeController _controller;
+       
         [SetUp]
         public void Init()
         {

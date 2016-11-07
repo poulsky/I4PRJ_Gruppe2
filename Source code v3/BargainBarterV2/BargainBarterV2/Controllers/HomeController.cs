@@ -10,8 +10,6 @@ using System.Net;
 
 namespace BargainBarterV2.Controllers
 {
-    
-
 
     public class HomeController : Controller
     {
