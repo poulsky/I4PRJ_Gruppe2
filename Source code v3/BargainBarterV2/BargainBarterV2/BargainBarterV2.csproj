@@ -360,6 +360,10 @@
     <Content Include="apple-icon.png">
       <DependentUpon>favicon.ico</DependentUpon>
     </Content>
+    <Content Include="App_Data\aspnet-BargainBarterV2-20160929030033.mdf" />
+    <Content Include="App_Data\aspnet-BargainBarterV2-20160929030033_log.ldf">
+      <DependentUpon>aspnet-BargainBarterV2-20160929030033.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\default.css" />
@@ -547,7 +551,6 @@
     <Content Include="Views\BarterAds\ShowHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\img\SeedingAdsPictures\" />
     <Folder Include="Content\js\" />
   </ItemGroup>
