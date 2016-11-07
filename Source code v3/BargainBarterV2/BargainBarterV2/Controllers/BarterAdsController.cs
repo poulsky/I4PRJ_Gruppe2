@@ -20,13 +20,17 @@ namespace BargainBarterV2.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private UnitOfWork unitOfWork = new UnitOfWork();
 
+
+        public ActionResult Index()
+        {
+            return (RedirectToAction("Index", "Home"));
+        }
         public ActionResult ShowBarterAdsOnMap()
         {
             var ads = unitOfWork.BarterAddRepository.Get();
             return View(ads.ToList());
         }
-
-
+   
         public ActionResult ViewPhoto(int id)
         {
             var photo = db.BarterAdds.Find(id).Thumbnail;
