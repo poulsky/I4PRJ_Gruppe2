@@ -23,13 +23,27 @@ namespace BargainBarterV2.Tests.Controllers
             _controller = new UserProfileController();
         }
 
-        [Test]
-        public void Index_NullId_Returns_BadRequest()
-        {
-            var result = _controller.Index();
 
-            Assert.That(result, Is.InstanceOf(typeof(HttpStatusCodeResult)));
+        [Test]
+        public void Index_RedirectsToController_HomeActionIndex()
+        {
+            var result = _controller.Index() as RedirectToRouteResult;
+
+            if (result == null)
+                Assert.Fail("should have redirected");
+
+            Assert.That(result.RouteValues["Controller"], Is.EqualTo("Home"));
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+
         }
+
+        //[Test]
+        //public void Index_NullId_Returns_BadRequest()
+        //{
+        //    var result = _controller.Index();
+
+        //    Assert.That(result, Is.InstanceOf(typeof(HttpStatusCodeResult)));
+        //}
 
 
 

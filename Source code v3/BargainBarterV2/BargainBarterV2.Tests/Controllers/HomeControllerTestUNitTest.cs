@@ -16,7 +16,7 @@ namespace BargainBarterV2.Tests.Controllers
     public class HomeControllerTestUNitTest
     {
         [Test]
-        public void IndexDoesNotReturnNull()
+        public void Index_DoesNotReturnNull()
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -25,7 +25,6 @@ namespace BargainBarterV2.Tests.Controllers
              ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-
             Assert.That(result, Is.Not.Null);
             //Assert.IsNotNull(result);
         }

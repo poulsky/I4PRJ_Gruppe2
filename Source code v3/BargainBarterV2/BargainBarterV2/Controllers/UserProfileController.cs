@@ -17,7 +17,7 @@ namespace BargainBarterV2.Controllers
         // GET: UserProfile
         public ActionResult Index()
         {
-            return View();
+            return (RedirectToAction("Index", "Home"));
         }
 
         //GET: UserProfile/Edit
