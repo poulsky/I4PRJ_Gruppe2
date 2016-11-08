@@ -43,7 +43,7 @@ namespace BargainBarterV2.Controllers
    
         public ActionResult ViewPhoto(int id)
         {
-            var photo = db.BarterAdds.Find(id).Thumbnail;
+            var photo = unitOfWork.BarterAddRepository.GetByID(id).Thumbnail;
             if (photo!=null)
             {
                 return File(photo, "image/jpeg");
@@ -62,14 +62,14 @@ namespace BargainBarterV2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            BarterAdd barterAdd = db.BarterAdds.Find(id);
+            BarterAdd barterAdd = unitOfWork.BarterAddRepository.GetByID(id);
 
             if (barterAdd == null)
             {
                 return HttpNotFound();
             }
            
-            ApplicationUser tempuser = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            ApplicationUser tempuser = unitOfWork.UserRepository.GetByID(System.Web.HttpContext.Current.User.Identity.GetUserId());
             ApplicationUser user = db.Users.Where(M => M.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
             ApplicationUser LogUser = db.Users.Where(M => M.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
 
@@ -139,9 +139,9 @@ namespace BargainBarterV2.Controllers
                 }
 
                     ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-                    ApplicationUser User= db.Users.Find(user.Id);
+                    ApplicationUser User= unitOfWork.UserRepository.GetByID(user.Id);
                     User.BarterAdds.Add(barterAdd);
-                    db.SaveChanges();
+                    unitOfWork.Save();
                 
             }
 
@@ -156,7 +156,8 @@ namespace BargainBarterV2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BarterAdd barterAdd = db.BarterAdds.Find(id);
+
+            BarterAdd barterAdd = unitOfWork.BarterAddRepository.GetByID(id);
             if (barterAdd == null)
             {
                 return HttpNotFound();
