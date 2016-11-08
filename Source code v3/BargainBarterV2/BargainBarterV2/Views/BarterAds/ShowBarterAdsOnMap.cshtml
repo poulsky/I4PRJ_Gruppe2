@@ -1,6 +1,5 @@
-﻿@model IEnumerable<BargainBarterV2.Models.BarterAdd>
+﻿@model IEnumerable<BargainBarterV2.Models.ApplicationUser>
 @using Jmelosegui.Mvc.GoogleMap
-@using WebGrease.Css.Extensions
 
 @{
     ViewBag.Title = "ShowBarterAdsOnMap";
@@ -8,25 +7,41 @@
 
 <h2>BarterAds i nærheden</h2>
 
-<div class="col-md-12">
-    @(Html.GoogleMap().Name("map")
-                          .Height(200)
-                          .ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
-                          .FitToMarkersBounds(true)
-                          .BindTo < BargainBarterV2.Models.BarterAdd, Marker >
-                          ( Model, mappings=> mappings.For < BargainBarterV2.Models.BarterAdd >
-                            (binding=> binding.ItemDataBound
-                                (
-                                    (marker, barteradd)=>
-                                    {
-                                        marker.Latitude = barteradd.ApplicationUser.Address.Coordinate.Latitude;
-                                        marker.Longitude = barteradd.ApplicationUser.Address.Coordinate.Longitude;
-                                        marker.Title = barteradd.Titel;
-                                    }
-                            )
-                          )
+
+<div class="row col-md-12">
+    <div class="col-md-10">
+        @(Html.GoogleMap().Name("map")
+        .Height(500)
+        .ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
+        .FitToMarkersBounds(true)
+        .BindTo<BargainBarterV2.Models.ApplicationUser, Marker>
+            (Model, mappings =>
+                mappings.For<BargainBarterV2.Models.ApplicationUser>(
+                    binding =>
+                        binding.ItemDataBound(
+               (marker, user) =>
+               {
+                   marker.Latitude = user.Address.Coordinate.Latitude;
+                   marker.Longitude = user.Address.Coordinate.Longitude;
+                   marker.Title = user.UserName;
+                   marker.Window = new InfoWindow(marker)
+                   {
+                       Template =
+                       {
+                            Content = () => ViewContext.Writer.Write(user.BarterAdds.First().Description)
+                       }
+                   };
+               }
+           )
+     )
     )
-    )
+        )
+    </div>
+
 </div>
 
 
+@section scripts
+{
+    @(Html.GoogleMap().ScriptRegistrar())
+}

@@ -313,6 +313,7 @@
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\BarterAddViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="android-icon-144x144.png">
@@ -538,8 +539,6 @@
     <Content Include="Views\BarterAds\Delete.cshtml" />
     <Content Include="Views\BarterAds\Details.cshtml" />
     <Content Include="Views\BarterAds\Edit.cshtml" />
-    <Content Include="Views\Home\UploadPicture.cshtml" />
-    <Content Include="Views\Home\ShowPicture.cshtml" />
     <Content Include="Views\BarterAds\ShowBarterAd.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\BarterAds\ManageAds.cshtml" />

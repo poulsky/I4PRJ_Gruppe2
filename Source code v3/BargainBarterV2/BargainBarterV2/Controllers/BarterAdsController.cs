@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -10,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using BargainBarterV2.Models;
+using BargainBarterV2.ViewModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
@@ -35,12 +37,13 @@ namespace BargainBarterV2.Controllers
         {
             return (RedirectToAction("Index", "Home"));
         }
+
         public ActionResult ShowBarterAdsOnMap()
         {
-            var ads = unitOfWork.BarterAddRepository.Get();
-            return View(ads.ToList());
+            IEnumerable<ApplicationUser> users = db.Users.Include(b => b.BarterAdds).Include(b => b.Address).ToList();
+            return View(users);
         }
-   
+        
         public ActionResult ViewPhoto(int id)
         {
             var photo = unitOfWork.BarterAddRepository.GetByID(id).Thumbnail;
