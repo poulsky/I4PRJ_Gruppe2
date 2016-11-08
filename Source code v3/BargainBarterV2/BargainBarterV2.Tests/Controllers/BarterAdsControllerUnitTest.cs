@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using BargainBarterV2.Models;
 using NSubstitute;
+using NSubstitute.ReturnsExtensions;
 
 
 namespace BargainBarterV2.Tests.Controllers
@@ -66,7 +67,11 @@ namespace BargainBarterV2.Tests.Controllers
         //[Test]
         //public void Details_ReturnsHttpNotFoundResult()
         //{
-        //    var result = _controller.Details(Int32.MaxValue);
+        //    _controller = new BarterAdsController(_db,_unitOfWork);
+
+        //    _db.BarterAdds.Find(3).Returns(new BarterAdd());
+
+        //    var result = _controller.Details(3);
 
         //    Assert.That(result, Is.TypeOf(typeof(HttpNotFoundResult)));
         //}
