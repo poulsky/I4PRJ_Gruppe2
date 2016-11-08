@@ -1,4 +1,5 @@
 ﻿using System;
+using BargainBarterV2.Repository;
 
 namespace BargainBarterV2.Models
 {
@@ -9,8 +10,20 @@ namespace BargainBarterV2.Models
         private GenericRepository<Address> addressRepository;
         private GenericRepository<Comment> commentRepository;
         private GenericRepository<TradeRequest> tradeReqeustRepository;
+        private GenericRepository<ApplicationUser> userRepository;
 
 
+        public GenericRepository<ApplicationUser> UserRepository
+        {
+            get
+            {
+                if (this.userRepository == null)
+                {
+                    this.userRepository = new GenericRepository<ApplicationUser>(context);
+                }
+                return userRepository;
+            }
+        }
 
         public GenericRepository<BarterAdd> BarterAddRepository
         {
@@ -28,7 +41,6 @@ namespace BargainBarterV2.Models
         {
             get
             {
-
                 if (this.addressRepository == null)
                 {
                     this.addressRepository = new GenericRepository<Address>(context);

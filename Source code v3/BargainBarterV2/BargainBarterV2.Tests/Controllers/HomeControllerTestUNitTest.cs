@@ -75,37 +75,10 @@ namespace BargainBarterV2.Tests.Controllers
 
         [Test]
         public void ContactViewBagDoesNotContainCorrectString()
-        {
-           
-
+        {           
             ViewResult result = _controller.Contact() as ViewResult;
 
             Assert.That("Your contact page.", Is.EqualTo(result.ViewBag.Message));
         }
-
-        //[Test]
-        //public void UploadPictureDoesNotReturnNull()
-        //{
-           
-
-        //    ViewResult result = _controller.UploadPicture() as ViewResult;
-
-        //    Assert.That(result, Is.Not.Null);
-        //}
-
-        //[Test]
-        //public void ShowPictureDoesNotReturnNull()
-        //{
-        //    int dummy = 6;
-
-        //    HomeController controller = new HomeController();
-
-        //    ViewResult result = controller.ShowPicture(dummy) as ViewResult;
-
-        //    Assert.That(result, Is.Not.Null);
-
-        //}
-
-
     }
 }

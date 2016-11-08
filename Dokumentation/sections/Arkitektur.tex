@@ -13,4 +13,10 @@ View:
 
 MVC blev valgt på baggrund af, at det er en integreret del af ASP.NET, der blev set som et spændende udfordring og framework af gruppen. 
 
-\section{title}
+\section{Repository Pattern}
+Repository er et pattern, der indføres et ekstra lag (Repository-lag), der virker som DAL mellem buisness-logikken og databasen. Dette medfører at buisness-logikken ikke skriver direkte ned i databasen, så dette ikke bliver afhængig af databasen. Buisness-laget kalder bare ned i repository-laget, der så sørger for transaktionen med databasen. 
+Repository pattern er blevet anvendt for at opnå en lavere kobling i systemet mellem databasen og buisness-logikken. Den lavere kobling gør systemet mere robust for ændre og gør samtidig også, at man kan teste på, at buisness-logikken der skal skrive ned i databasen. Da man kan stubbe/mocke repository-laget ud.
+
+\section{Unit Of Work}
+Unit of Work er et design pattern, der holder styr på in-memory opdateringer og skriver disse opdateringer til databasen. Dette er dermed den eneste klasse, der taler sammen med databasen.
+Dette opnås ved at den vedlige holder en liste af alle objekter, der er bevet ændret i en database-transaction og sørge for at databasen bliver opdateret, når en transaction er færdig.

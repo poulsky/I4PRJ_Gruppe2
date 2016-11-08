@@ -13,6 +13,7 @@ namespace BargainBarterV2.Controllers
     public class UserProfileController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private UnitOfWork _unitOfWork=new UnitOfWork();
 
         // GET: UserProfile
         public ActionResult Index()
@@ -26,6 +27,7 @@ namespace BargainBarterV2.Controllers
         {
             if (User.Identity.GetUserId() == id)
             {
+                //var user=_unitOfWork.UserRepository.Get()
                 var user = db.Users.Include(a => a.Address).Single(u => u.Id == id);
                 return View(user);
             }
@@ -50,6 +52,8 @@ namespace BargainBarterV2.Controllers
             user.Address.City = postedUser.Address.City;
             user.Address.PostalCode = user.Address.PostalCode;
 
+            //_unitOfWork.UserRepository.Update(user);
+            //_unitOfWork.Save();
             db.Users.AddOrUpdate(user);
             db.SaveChanges();
 

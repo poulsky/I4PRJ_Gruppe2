@@ -35,8 +35,6 @@
                           .ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
                           .Center(c => c.Latitude((double) @ViewData["Latitude"])
                               .Longitude((double)@ViewData["Longitude"]))
-                          //.Center(c => c.Latitude(56.1424842)
-                          //    .Longitude(10.2003147))
                           .Zoom(13)
                           .Markers
                           (m => m.Add().Title(Model.Titel)

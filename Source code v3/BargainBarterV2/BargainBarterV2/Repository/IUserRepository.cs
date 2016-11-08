@@ -7,7 +7,7 @@ namespace BargainBarterV2.Repository
     public interface IUserRepository : IDisposable
     {
         IEnumerable<ApplicationUser> GetUsers();
-        ApplicationUser GetUserById(int userId);
+        ApplicationUser GetUserById(string userId);
         void InsertUser(ApplicationUser user);
         void DeleteUser(int userId);
         void UpdateUser(ApplicationUser user);
