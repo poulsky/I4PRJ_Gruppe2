@@ -280,6 +280,14 @@
     <Compile Include="Migrations\201611041004192_Requiredtag fjernet.Designer.cs">
       <DependentUpon>201611041004192_Requiredtag fjernet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611081132194_RatingAdd.cs" />
+    <Compile Include="Migrations\201611081132194_RatingAdd.Designer.cs">
+      <DependentUpon>201611081132194_RatingAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611081133380_RatingCanBeNull.cs" />
+    <Compile Include="Migrations\201611081133380_RatingCanBeNull.Designer.cs">
+      <DependentUpon>201611081133380_RatingCanBeNull.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -593,6 +601,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611041004192_Requiredtag fjernet.resx">
       <DependentUpon>201611041004192_Requiredtag fjernet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611081132194_RatingAdd.resx">
+      <DependentUpon>201611081132194_RatingAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611081133380_RatingCanBeNull.resx">
+      <DependentUpon>201611081133380_RatingCanBeNull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -30,6 +30,7 @@ namespace BargainBarterV2.Models
         public virtual List<BarterAdd> BarterAdds { get; set; }
         public virtual List<TradeRequest> TradeRequests { get; set; }
         public virtual List<TradeHistory> TradeHistories { get; set; }
+        public double? Rating { get; set; }
     }
 
 
