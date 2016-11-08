@@ -10,7 +10,6 @@ C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\Bargain
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.fix.resources
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.TradeTest.resources
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.TradeHistory.resources
-C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.QuickFixMorten.resources
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\ApplicationInsights.config
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\roslyn\csc.exe

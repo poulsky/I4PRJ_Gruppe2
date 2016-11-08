@@ -125,3 +125,5 @@ C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarter
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\obj\Debug\BargainBarterV2.Tests.pdb
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\EntityFramework.SqlServer.xml
