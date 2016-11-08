@@ -14,18 +14,16 @@ namespace BargainBarterV2.Controllers
     public class HomeController : Controller
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
-        private ApplicationDbContext db = new ApplicationDbContext();
-        public HomeController(ApplicationDbContext dbase, UnitOfWork unit)
+
+        public HomeController(UnitOfWork unit)
         {
             unitOfWork = unit;
-            db = dbase;
         }
 
         public HomeController()
         {
             
         }
-
 
         public ActionResult Index()
         {
@@ -47,80 +45,8 @@ namespace BargainBarterV2.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        // GET: Home/UploadPicture
-        public ActionResult UploadPicture()
-        {
-            return View();
-        }
-
-        // POST: BarterAds//5
-        [HttpPost]
-        public ActionResult UploadPicture(HttpPostedFileBase BarterPicture)
-        {
-            BarterAdd add = new BarterAdd();
-            if (!ModelState.IsValid)
-            {
-                return View("Index");
-            }
-            if (BarterPicture.ContentLength > 0)
-            {
-                using (BinaryReader reader = new BinaryReader(BarterPicture.InputStream))
-                {
-                    add.Picture = reader.ReadBytes((int) BarterPicture.InputStream.Length);
-                }
-    
-            }
-            db.BarterAdds.Add(add);
-            db.SaveChanges();
-
-            return RedirectToAction("ShowPicture", "Home", new { id = db.BarterAdds.Count() });
-        }
-
-        public ActionResult ShowPicture(int? id)
-        {
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BarterAdd barterAdd = db.BarterAdds.Find(id);
-            if (barterAdd == null)
-            {
-                return HttpNotFound();
-            }
-
-            byte[] imagedata = db.BarterAdds.Find(id).Picture;
-            string imagepath = Convert.ToBase64String(imagedata);
-            string imagedataURL = string.Format("data:image/png; base64, {0}", imagepath);
-            ViewBag.image = imagedataURL;
-            return View();
-        }
-
-      
-        public Image byteArrayToImage(byte[] barteraddPicture)
-        {
-            var ms = new MemoryStream(barteraddPicture);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
-
+        }     
         
     }
 
-    public class ImageHandler: IHttpHandler
-    {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-
-        public void ProcessRequest(HttpContext context)
-        {
-            byte[] pic = db.BarterAdds.Find(12).Picture;
-            context.Response.OutputStream.Write(pic,0, pic.Length);
-            context.Response.ContentType = "image/JPEG";
-        }
-
-        public bool IsReusable { get; }
-    }
 }

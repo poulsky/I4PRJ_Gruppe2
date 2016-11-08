@@ -16,7 +16,6 @@ namespace BargainBarterV2.Tests.Controllers
     [TestFixture]
     public class HomeControllerTestUNitTest
     {
-        private ApplicationDbContext _db;
         private UnitOfWork _unitOfWork;
         private HomeController _controller;
        
@@ -24,8 +23,7 @@ namespace BargainBarterV2.Tests.Controllers
         public void Init()
         {
             _unitOfWork = Substitute.For<UnitOfWork>();
-            _db = Substitute.For<ApplicationDbContext>();
-            _controller = new HomeController(_db,_unitOfWork);        
+            _controller = new HomeController(_unitOfWork);        
         }
 
 
@@ -85,15 +83,15 @@ namespace BargainBarterV2.Tests.Controllers
             Assert.That("Your contact page.", Is.EqualTo(result.ViewBag.Message));
         }
 
-        [Test]
-        public void UploadPictureDoesNotReturnNull()
-        {
+        //[Test]
+        //public void UploadPictureDoesNotReturnNull()
+        //{
            
 
-            ViewResult result = _controller.UploadPicture() as ViewResult;
+        //    ViewResult result = _controller.UploadPicture() as ViewResult;
 
-            Assert.That(result, Is.Not.Null);
-        }
+        //    Assert.That(result, Is.Not.Null);
+        //}
 
         //[Test]
         //public void ShowPictureDoesNotReturnNull()
