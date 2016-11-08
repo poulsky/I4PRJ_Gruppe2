@@ -4,7 +4,7 @@
 /*Navbar Section*/
 
 .navbar {
-    position: relative;   
+    /*position: relative;*/   
     font-size: 17px;
     color: #f1f1f1;
     background-color: grey;
@@ -12,6 +12,8 @@
     letter-spacing: 2px;
     border-bottom: solid 2px #00001D;
     height: 42px;
+    border-radius: 0;
+    border-width: 0;
 }
 
 
@@ -154,4 +156,8 @@ footer {
 
 .bargainbarter-clickable-list {
     display: block;
+}
+
+.menu-wrapper {
+    height: 84px;
 }
