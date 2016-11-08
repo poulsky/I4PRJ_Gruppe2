@@ -55,9 +55,7 @@ namespace BargainBarterV2.Controllers
         // GET: BarterAds/Details/5
         public ActionResult Details(int? id)
         {
-            
-
-            if (id == null)
+          if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -68,21 +66,28 @@ namespace BargainBarterV2.Controllers
             {
                 return HttpNotFound();
             }
-           
-            ApplicationUser tempuser = unitOfWork.UserRepository.GetByID(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            ApplicationUser user = db.Users.Where(M => M.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
-            ApplicationUser LogUser = db.Users.Where(M => M.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
+            //ApplicationUser tempuser = unitOfWork.UserRepository.GetByID(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            //ApplicationUser user = null;
+            //if(tempuser!=null)
+            //    user = unitOfWork.UserRepository.GetByID(tempuser.Id);
+            //ApplicationUser logUser = unitOfWork.UserRepository.GetByID(barterAdd.ApplicationUserId);
 
+            ApplicationUser tempuser = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            ApplicationUser user = null;
+            if (tempuser != null)
+                user = db.Users.Where(u=> u.Id==tempuser.Id).Include("Address").FirstOrDefault();
+            ApplicationUser logUser = db.Users.Where(u => u.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
 
             if (user!=null)
             {
-                double distance=user.Address.Coordinate.DistanceTo(LogUser.Address.Coordinate);
+                double distance=user.Address.Coordinate.DistanceTo(logUser.Address.Coordinate);
                 ViewData["Distance"] = distance;
             }
-
-            ViewData["Longitude"] = LogUser.Address.Coordinate.Longitude;
-            ViewData["Latitude"] = LogUser.Address.Coordinate.Latitude;
-
+            if (logUser.Address != null)
+            {
+                ViewData["Longitude"] = logUser.Address.Coordinate.Longitude;
+                ViewData["Latitude"] = logUser.Address.Coordinate.Latitude;
+            }
             ApplicationUser User =
                   System.Web.HttpContext.Current.GetOwinContext()
                       .GetUserManager<ApplicationUserManager>()
@@ -98,7 +103,6 @@ namespace BargainBarterV2.Controllers
                 }
                 ViewBag.myAds = items;
             }
-
 
             return View(barterAdd);
         }
@@ -130,7 +134,6 @@ namespace BargainBarterV2.Controllers
                             barterAdd.Picture = reader.ReadBytes((int) BarterPicture.InputStream.Length);
                             barterAdd.Thumbnail = Helperfunctions.Helper.MakeThumbnail(barterAdd.Picture, 320, 150);
                         }
-
                     }
                 }
                 catch
@@ -141,11 +144,10 @@ namespace BargainBarterV2.Controllers
                     ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
                     ApplicationUser User= unitOfWork.UserRepository.GetByID(user.Id);
                     User.BarterAdds.Add(barterAdd);
-                    unitOfWork.Save();
-                
+                    unitOfWork.Save();               
             }
 
-            return RedirectToAction("ManageAds", "BarterAds");//new { id = db.BarterAdds.Last().ApplicationUser.Id }
+            return RedirectToAction("ManageAds", "BarterAds");
         }
 
         // GET: BarterAds/Edit/5
@@ -163,15 +165,7 @@ namespace BargainBarterV2.Controllers
                 return HttpNotFound();
             }
 
-            //byte[] imagedata = db.BarterAdds.Find(id).Picture;
-            //if (imagedata != null)
-            //{
-            //    string imagepath = Convert.ToBase64String(imagedata);
-            //    string imagedataURL = string.Format("data:image/png; base64, {0}", imagepath);
-            //    ViewBag.image = imagedataURL;
-            //}
-
-            return View(barterAdd);
+           return View(barterAdd);
         }
 
         // POST: BarterAds/Edit/5
@@ -227,15 +221,17 @@ namespace BargainBarterV2.Controllers
             Comment comment = new Comment()
             {
                 CommentText = commentstring,
-                ApplicationUser = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId())
+                ApplicationUser = unitOfWork.UserRepository.GetByID(System.Web.HttpContext.Current.User.Identity.GetUserId())
                 //System.Web.HttpContext.Current.GetOwinContext()
                 //    .GetUserManager<ApplicationUserManager>()
                 //    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId())
             };
 
-            BarterAdd ad2 = db.BarterAdds.Find(id);
+            //BarterAdd ad2 = db.BarterAdds.Find(id);
+            BarterAdd ad2 = unitOfWork.BarterAddRepository.GetByID(id);
             ad2.Comments.Add(comment);
-            db.SaveChanges();
+            //db.SaveChanges();
+            unitOfWork.Save();
 
             return RedirectToAction("Details", "BarterAds", new { id = id});
         }
@@ -248,7 +244,8 @@ namespace BargainBarterV2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BarterAdd barterAdd = db.BarterAdds.Find(id);
+            //BarterAdd barterAdd = db.BarterAdds.Find(id);
+            BarterAdd barterAdd = unitOfWork.BarterAddRepository.GetByID(id);
             if (barterAdd == null)
             {
                 return HttpNotFound();
@@ -262,9 +259,11 @@ namespace BargainBarterV2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BarterAdd barterAdd = db.BarterAdds.Find(id);
-            db.BarterAdds.Remove(barterAdd);
-            db.SaveChanges();
+            //BarterAdd barterAdd = db.BarterAdds.Find(id);
+            //db.BarterAdds.Remove(barterAdd);
+            unitOfWork.BarterAddRepository.Delete(id);
+            unitOfWork.Save();
+            //db.SaveChanges();
             return RedirectToAction("ManageAds");
         }
 
@@ -284,9 +283,11 @@ namespace BargainBarterV2.Controllers
         {
             var userId = User.Identity.GetUserId();
 
-            var barterAds = from r in db.BarterAdds
-                            where r.ApplicationUserId == userId
-                            select r;
+            //var barterAds = from r in db.BarterAdds
+            //                where r.ApplicationUserId == userId
+            //                select r;
+
+            var barterAds = unitOfWork.BarterAddRepository.Get(r => r.ApplicationUserId == userId);
 
             if(barterAds.Any())
                 return View(barterAds.ToList());

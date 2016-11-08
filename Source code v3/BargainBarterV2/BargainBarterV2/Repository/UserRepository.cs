@@ -15,9 +15,9 @@ namespace BargainBarterV2.Repository
             return context.Users.ToList();
         }
 
-        public ApplicationUser GetUserById(int userId)
+        public ApplicationUser GetUserById(string userId)
         {
-            return context.Users.Find(userId);
+            return context.Users.Where(b=>b.Id==userId).Include("Address").FirstOrDefault(); ;
         }
 
         public void InsertUser(ApplicationUser user)
