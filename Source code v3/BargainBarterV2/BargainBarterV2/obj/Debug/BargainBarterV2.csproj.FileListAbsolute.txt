@@ -202,7 +202,6 @@ C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarter
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
-C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.QuickFixMorten.resources
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\ApplicationInsights.config
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\roslyn\csc.exe
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -305,6 +304,7 @@ C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarte
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
+<<<<<<< HEAD
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\ApplicationInsights.config
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\roslyn\csc.exe
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -409,3 +409,12 @@ C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\Ba
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Mikkel\Documents\GitHub\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
+=======
+<<<<<<< HEAD
+C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.RatingAdd.resources
+C:\Users\Lars Hjerrild\Documents\temp\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.RatingCanBeNull.resources
+=======
+C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.RatingAdd.resources
+C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.RatingCanBeNull.resources
+>>>>>>> ebd558f62df478ad62f518202fd6107fa28e5a59
+>>>>>>> 826e8156ac985218b70fe20f44df0d499a7cb067
