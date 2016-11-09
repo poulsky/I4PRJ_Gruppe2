@@ -23,7 +23,7 @@
                {
                    marker.Latitude = user.Address.Coordinate.Latitude;
                    marker.Longitude = user.Address.Coordinate.Longitude;
-                   marker.Title = user.UserName;
+                   marker.Title = user.BarterAdds.First().Titel;
                    marker.Window = new InfoWindow(marker)
                    {
                        Template =
