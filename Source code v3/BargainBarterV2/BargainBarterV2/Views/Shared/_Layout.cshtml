@@ -53,6 +53,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li> <a href=@Url.Action("Index", "Home") class="active" title="HTML Tutorial">Forside</a></li>
+                        <li> <a href=@Url.Action("ShowBarterAdsOnMap", "BarterAds") class="active" title="HTML">Kort</a></li>
                         @if (Request.IsAuthenticated)
                         {
                             <li>@Html.ActionLink("Ny annonce", "Create", "BarterAds")</li>

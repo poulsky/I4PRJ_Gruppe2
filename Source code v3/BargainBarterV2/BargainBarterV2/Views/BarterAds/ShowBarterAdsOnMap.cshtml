@@ -5,7 +5,7 @@
     ViewBag.Title = "ShowBarterAdsOnMap";
 }
 
-<h2>BarterAds i nærheden</h2>
+<h2>BarteAds på Kort</h2>
 
 
 <div class="row col-md-12">
@@ -24,13 +24,13 @@
                    marker.Latitude = user.Address.Coordinate.Latitude;
                    marker.Longitude = user.Address.Coordinate.Longitude;
                    marker.Title = user.BarterAdds.First().Titel;
-                   marker.Window = new InfoWindow(marker)
-                   {
-                       Template =
-                       {
-                            Content = () => ViewContext.Writer.Write(user.BarterAdds.First().Description)
-                       }
-                   };
+                   //marker.Window = new InfoWindow(marker)
+                   //{
+                   //    Template =
+                   //    {
+                   //         Content = () => ViewContext.Writer.Write(user.BarterAdds.First().Description)
+                   //    }
+                   //};
                }
            )
      )
