@@ -18,8 +18,6 @@ namespace BargainBarterV2.Models
         public enum States { Traded, Pending, Received }
         
         public virtual List<BarterAdd> BarterAdds { get; set; } = new List<BarterAdd>();
-
-        public virtual List<TradeHistory> TradeHistories { get; set; } = new List<TradeHistory>();
-
+        
     }
 }

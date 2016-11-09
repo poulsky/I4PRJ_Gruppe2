@@ -29,7 +29,7 @@ namespace BargainBarterV2.Models
         public Address Address { get; set; }
         public virtual List<BarterAdd> BarterAdds { get; set; }
         public virtual List<TradeRequest> TradeRequests { get; set; }
-        public virtual List<TradeHistory> TradeHistories { get; set; }
+        public TradeHistory TradeHistory { get; set; } = new TradeHistory();
         public double? Rating { get; set; }
     }
 

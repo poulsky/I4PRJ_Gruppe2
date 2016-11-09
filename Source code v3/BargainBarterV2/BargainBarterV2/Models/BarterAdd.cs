@@ -29,6 +29,8 @@ namespace BargainBarterV2.Models
         public virtual ICollection<Comment> Comments { get; set; }
 
         public virtual List<TradeRequest> TradeRequests { get; set; } = new List<TradeRequest>();
-        public virtual List<TradeHistory> TradeHistories { get; set; } = new List<TradeHistory>();
+        public bool Traded { get; set; }
+
+
     }
 }

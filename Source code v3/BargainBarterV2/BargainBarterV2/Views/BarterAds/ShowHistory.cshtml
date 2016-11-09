@@ -1,61 +1,45 @@
 ﻿
-@model IEnumerable<BargainBarterV2.Models.TradeHistory>
+
+@model IEnumerable<BargainBarterV2.Models.FinishedTrade>
 
 
 @{
-    ViewBag.Title = "Trade History";
+    ViewBag.Title = "Byttehistorik";
 }
 
-<h2>Trade History</h2>
+<h2>Byttehistorik</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
-
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TradeRequests[1].BarterAdds.GetEnumerator().Current.Titel)
+            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Titel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TradeRequests[1].BarterAdds.GetEnumerator().Current.Picture)
+            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Picture)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TradeRequests[1].BarterAdds.GetEnumerator().Current.Titel)
+            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Titel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TradeRequests[1].BarterAdds.GetEnumerator().Current.Picture)
+            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Picture)
         </th>
     </tr>
-
-
     @foreach (var item in Model)
     {
-        foreach (var trades in item.TradeRequests)
-        {
+        <tr>
 
-
-            for (int i = 0; i < trades.BarterAdds.Count; i += 2)
+            @foreach (var trades in item.BarterAdds)
             {
-                <tr>
-                    <td>
 
-                        @Html.DisplayFor(modelItem => trades.BarterAdds[i].Titel)
-                    </td>
-                    <td>
-                        <img src='@Url.Action("ViewPhoto", new {id = trades.BarterAdds[i].BarterAddId})' width="260" height="200" />
-                    </td>
-                    <td>
+                <td>
 
-                        @Html.DisplayFor(modelItem => trades.BarterAdds[i + 1].Titel)
-                    </td>
-                    <td>
-                        <img src='@Url.Action("ViewPhoto", new {id = trades.BarterAdds[i + 1].BarterAddId})' width="260" height="200" />
-                    </td>
-                </tr>
+                    @Html.DisplayFor(modelItem => trades.Titel)
+                </td>
+                <td>
+                    <img src='@Url.Action("ViewPhoto", new {id = trades.BarterAddId})' width="260" height="200" />
+                </td>
             }
-
-        }
+        </tr>
     }
 
 </table>

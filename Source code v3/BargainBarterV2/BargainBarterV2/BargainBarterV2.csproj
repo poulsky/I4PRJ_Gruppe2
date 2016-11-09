@@ -288,13 +288,19 @@
     <Compile Include="Migrations\201611081133380_RatingCanBeNull.Designer.cs">
       <DependentUpon>201611081133380_RatingCanBeNull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611092029371_FinishedTradeAndRating.cs" />
+    <Compile Include="Migrations\201611092029371_FinishedTradeAndRating.Designer.cs">
+      <DependentUpon>201611092029371_FinishedTradeAndRating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\BarterAdd.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\FinishedTrade.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\TradeHistory.cs" />
     <Compile Include="Models\TradeRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -555,6 +561,7 @@
     <Content Include="Views\BarterAds\ShowBarterAdsOnMap.cshtml" />
     <Content Include="Views\BarterAds\ShowTrades.cshtml" />
     <Content Include="Views\BarterAds\ShowHistory.cshtml" />
+    <Content Include="Views\BarterAds\ShowTheirTradeHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\SeedingAdsPictures\" />
@@ -609,6 +616,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611081133380_RatingCanBeNull.resx">
       <DependentUpon>201611081133380_RatingCanBeNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611092029371_FinishedTradeAndRating.resx">
+      <DependentUpon>201611092029371_FinishedTradeAndRating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

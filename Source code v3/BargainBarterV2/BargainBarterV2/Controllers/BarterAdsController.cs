@@ -343,6 +343,15 @@ namespace BargainBarterV2.Controllers
 
         }
 
+        public ActionResult DeclineTrade(int Id)
+        {
+            TradeRequest tradeRequest = db.TradeRequests.Find(Id);
+            tradeRequest.BarterAdds.Clear();
+            db.TradeRequests.Remove(tradeRequest);
+            db.SaveChanges();
+            return RedirectToAction("ShowTrades");
+        }
+
         public ActionResult AcceptTrade(int Id)
         {
             try
@@ -379,6 +388,11 @@ namespace BargainBarterV2.Controllers
                     BarterAdd theirAd = (tradeRequest.ApplicationUserId == tradeRequest.BarterAdds[0].ApplicationUserId
                         ? tradeRequest.BarterAdds[1]
                         : tradeRequest.BarterAdds[0]);
+                    myAd.Traded = true;
+                    theirAd.Traded = true;
+                    FinishedTrade finTrade = new FinishedTrade();
+                    finTrade.BarterAdds.Add(myAd);
+                    finTrade.BarterAdds.Add(theirAd);
 
                     ApplicationUser myUser = new ApplicationUser();
                     ApplicationUser theirUser = new ApplicationUser();
@@ -392,30 +406,31 @@ namespace BargainBarterV2.Controllers
                     bool checkTheirUser = false;
                     foreach (var th in db.TradeHistory)
                     {
-                        if (th.ApplicationUserId == myUser.Id)
+                        if (th.ApplicationUser == myUser)
                         {
                             myHistory = th;
                             checkMyUser = true;
                         }
-                        if (th.ApplicationUserId == theirUser.Id)
+                        if (th.ApplicationUser == theirUser)
                         {
                             theirHistory = th;
                             checkTheirUser = true;
                         }
                     }
 
-                    myHistory.TradeRequests.Add(tradeRequest);
-                    //myHistory.BarterAdds.Add(theirAd);
-                    // theirHistory.BarterAdds.Add(theirAd);
-                    theirHistory.TradeRequests.Add(tradeRequest);
+                    myHistory.FinishedTrades.Add(finTrade);
+                    theirHistory.FinishedTrades.Add(finTrade);
 
                     if (checkMyUser != true)
-                        myUser.TradeHistories.Add(myHistory);
+
+                        myUser.TradeHistory = myHistory;
 
                     if (checkTheirUser != true)
-                        theirUser.TradeHistories.Add(theirHistory);
+                        theirUser.TradeHistory = theirHistory;
 
                     tradeRequest.RequestStates = TradeRequest.States.Traded;
+                    tradeRequest.BarterAdds.Clear();
+                    db.TradeRequests.Remove(tradeRequest);
                     db.SaveChanges();
                 }
                 return RedirectToAction("ManageAds");
@@ -440,19 +455,31 @@ namespace BargainBarterV2.Controllers
 
         public ActionResult ShowHistory()
         {
-
-
             ApplicationUser user =
                     System.Web.HttpContext.Current.GetOwinContext()
                         .GetUserManager<ApplicationUserManager>()
              .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            
-            List<TradeHistory> myH = new List<TradeHistory>();
+            var item = db.TradeHistory.First(i => i.ApplicationUser.Id == user.Id);
 
-            
+            return View(item.FinishedTrades);
+        }
+
+        public ActionResult ShowTheirTradeHistory(string id)
+        {
+
+            var item = db.TradeHistory
+                .FirstOrDefault(b => b.ApplicationUser.Id == id);
 
 
-            return View(user.TradeHistories);
+            if (id == User.Identity.GetUserId())
+                return RedirectToAction("ShowHistory");
+
+            if (item == null)
+                item = new TradeHistory();
+
+            item.ApplicationUser = db.Users.Find(id);
+
+            return View(item);
         }
     }
 }

@@ -1,0 +1,45 @@
+﻿
+
+@model BargainBarterV2.Models.TradeHistory
+
+
+@{
+    ViewBag.Title = "Byttehistorik";
+}
+
+<h3 class="title">@Model.ApplicationUser.Firstname @Model.ApplicationUser.Lastname's byttehistorik</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FinishedTrades.GetEnumerator().Current.BarterAdds.GetEnumerator().Current.Titel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinishedTrades.GetEnumerator().Current.BarterAdds.GetEnumerator().Current.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinishedTrades.GetEnumerator().Current.BarterAdds.GetEnumerator().Current.Titel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinishedTrades.GetEnumerator().Current.BarterAdds.GetEnumerator().Current.Picture)
+        </th>
+    </tr>
+    @foreach (var item in Model.FinishedTrades)
+    {
+        <tr>
+
+            @foreach (var trades in item.BarterAdds)
+            {
+
+                <td>
+
+                    @Html.DisplayFor(modelItem => trades.Titel)
+                </td>
+                <td>
+                    <img src='@Url.Action("ViewPhoto", new {id = trades.BarterAddId})' width="260" height="200" />
+                </td>
+            }
+        </tr>
+    }
+
+</table>
