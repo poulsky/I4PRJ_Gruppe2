@@ -459,9 +459,13 @@ namespace BargainBarterV2.Controllers
                     System.Web.HttpContext.Current.GetOwinContext()
                         .GetUserManager<ApplicationUserManager>()
              .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var item = db.TradeHistory.First(i => i.ApplicationUser.Id == user.Id);
+            var item = db.TradeHistory
+                .FirstOrDefault(b => b.ApplicationUser.Id == user.Id);
 
-            return View(item.FinishedTrades);
+            if (item == null)
+                item = new TradeHistory();
+
+            return View(item);
         }
 
         public ActionResult ShowTheirTradeHistory(string id)

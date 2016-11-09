@@ -1,6 +1,6 @@
 ﻿
 
-@model IEnumerable<BargainBarterV2.Models.FinishedTrade>
+@model BargainBarterV2.Models.TradeHistory
 
 
 @{
@@ -12,19 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Titel)
+            @Html.DisplayNameFor(model => model.FinishedTrades.GetEnumerator().Current.BarterAdds.GetEnumerator().Current.Titel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Picture)
+            @Html.DisplayNameFor(model => model.FinishedTrades.GetEnumerator().Current.BarterAdds.GetEnumerator().Current.Picture)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Titel)
+            @Html.DisplayNameFor(model => model.FinishedTrades.GetEnumerator().Current.BarterAdds.GetEnumerator().Current.Titel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BarterAdds.GetEnumerator().Current.Picture)
+            @Html.DisplayNameFor(model => model.FinishedTrades.GetEnumerator().Current.BarterAdds.GetEnumerator().Current.Picture)
         </th>
     </tr>
-    @foreach (var item in Model)
+    @foreach (var item in Model.FinishedTrades)
     {
         <tr>
 
