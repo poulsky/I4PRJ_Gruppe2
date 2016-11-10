@@ -9,6 +9,7 @@ using BargainBarterV2.Controllers;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using BargainBarterV2.Models;
+using NSubstitute;
 
 namespace BargainBarterV2.Tests.Controllers
 {
@@ -16,11 +17,13 @@ namespace BargainBarterV2.Tests.Controllers
     public class SearchControllerUnitTest
     {
         private SearchController _controller;
+        private UnitOfWork _unitOfWork;
 
         [SetUp]
         public void Init()
         {
-            _controller = new SearchController();
+            _unitOfWork = Substitute.For<UnitOfWork>();
+            _controller = new SearchController(_unitOfWork);
         }
 
         //[Test]

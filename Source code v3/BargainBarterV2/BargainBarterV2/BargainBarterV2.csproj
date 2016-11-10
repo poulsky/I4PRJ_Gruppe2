@@ -456,6 +456,7 @@
     <Content Include="Content\img\Favicon\ms-icon-70x70.png">
       <DependentUpon>favicon.ico</DependentUpon>
     </Content>
+    <Content Include="Content\img\hand-shake-icon-256x256.png" />
     <Content Include="favicon-16x16.png">
       <DependentUpon>favicon.ico</DependentUpon>
     </Content>
