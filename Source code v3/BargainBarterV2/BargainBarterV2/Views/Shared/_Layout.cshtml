@@ -26,11 +26,18 @@
 
 
     <!--Header section -->
-    <div class="container">
-        <header class="jumbotron" id="mainjumpotron">
-            <h1> BargainBarter v2.0</h1>
-        </header>
+
+<header class="row bargainbarter-header-section">
+    <div class="col-md-4">
+        <h1 class="title-text">BargainBarter</h1>
     </div>
+    <div class="col-md-7">
+        <h4 class="pull-right text-align-bottom text-muted">Det er altså noget andet end den blå avis</h4>
+    </div>
+    <div class="col-md-1">
+        <img class="pull-right bargainbarter-top-picture" src="~/Content/img/hand-shake-icon-256x256.png" height="63" />
+    </div>
+</header>
  
 
 @*<div id="Sidebar">
@@ -107,8 +114,6 @@
         </nav>
     </div>
     <br />
-    <br />
-    <br />
 
     @RenderBody()
 
@@ -130,10 +135,10 @@
                 //.log to determine when you want the 
                 //nav bar to stick.  
                 //console.log($(window).scrollTop())
-                if ($(window).scrollTop() > 240) {
+                if ($(window).scrollTop() > 85) {
                     $('#navbar-main').addClass('navbar-fixed-top');
                 }
-                if ($(window).scrollTop() < 241) {
+                if ($(window).scrollTop() < 86) {
                     $('#navbar-main').removeClass('navbar-fixed-top');
                 }
             });

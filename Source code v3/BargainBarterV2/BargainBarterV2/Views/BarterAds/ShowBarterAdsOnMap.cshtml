@@ -5,37 +5,31 @@
     ViewBag.Title = "ShowBarterAdsOnMap";
 }
 
-<h2>BarteAds på Kort</h2>
+<h2>BarterAds-oversigt på Kort</h2>
 
 
 <div class="row col-md-12">
-    <div class="col-md-10">
-        @(Html.GoogleMap().Name("map")
-        .Height(500)
-        .ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
-        .FitToMarkersBounds(true)
-        .BindTo<BargainBarterV2.Models.ApplicationUser, Marker>
-            (Model, mappings =>
-                mappings.For<BargainBarterV2.Models.ApplicationUser>(
-                    binding =>
-                        binding.ItemDataBound(
-               (marker, user) =>
-               {
-                   marker.Latitude = user.Address.Coordinate.Latitude;
-                   marker.Longitude = user.Address.Coordinate.Longitude;
-                   marker.Title = user.BarterAdds.First().Titel;
-                   //marker.Window = new InfoWindow(marker)
-                   //{
-                   //    Template =
-                   //    {
-                   //         Content = () => ViewContext.Writer.Write(user.BarterAdds.First().Description)
-                   //    }
-                   //};
-               }
-           )
-     )
-    )
-        )
+  <div class="container" id="BarterAdsMap">
+        @(Html.GoogleMap().Name("map").Height(500).ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU").FitToMarkersBounds(true).BindTo<BargainBarterV2.Models.ApplicationUser, Marker>(Model, mappings =>
+              mappings.For<BargainBarterV2.Models.ApplicationUser>(
+                  binding =>
+                      binding.ItemDataBound(
+                          (marker, user) =>
+                          {
+                              marker.Latitude = user.Address.Coordinate.Latitude;
+                              marker.Longitude = user.Address.Coordinate.Longitude;
+                              marker.Title = user.BarterAdds.First().Titel;
+                              //marker.Window = new InfoWindow(marker)
+                              //{
+                              //    Template =
+                              //    {
+                              //         Content = () => ViewContext.Writer.Write(user.BarterAdds.First().Description)
+                              //    }
+                              //};
+                          }
+                          )
+                  )
+              ))
     </div>
 
 </div>

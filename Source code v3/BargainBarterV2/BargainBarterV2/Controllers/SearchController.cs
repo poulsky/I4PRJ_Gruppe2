@@ -14,13 +14,21 @@ namespace BargainBarterV2.Controllers
     {
         private UnitOfWork unitOfWork=new UnitOfWork();
 
+        public SearchController(UnitOfWork unit)
+        {
+            unitOfWork = unit;
+        }
+
+        public SearchController()
+        { }
+
         // GET: Search
         public ActionResult Index(string searchstring)
         {
             var results = unitOfWork.BarterAddRepository.Get();
 
             if (!String.IsNullOrEmpty(searchstring))
-                results = unitOfWork.BarterAddRepository.Get(p=> p.Titel.Contains(searchstring));
+                results = unitOfWork.BarterAddRepository.Get(p=> p.Titel.Contains(searchstring) && p.Traded != true);
            
             return View("Frontpage", results.ToList());
         }
