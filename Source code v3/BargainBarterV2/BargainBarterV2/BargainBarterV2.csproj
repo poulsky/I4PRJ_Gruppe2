@@ -546,9 +546,9 @@
     <Content Include="Views\BarterAds\Delete.cshtml" />
     <Content Include="Views\BarterAds\Details.cshtml" />
     <Content Include="Views\BarterAds\Edit.cshtml" />
-    <Content Include="Views\BarterAds\ShowBarterAd.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\BarterAds\ManageAds.cshtml" />
+    <Content Include="Views\BarterAds\DetailsOwn.cshtml" />
     <None Include="Views\BarterAds\ManageAdsNoAds.cshtml" />
     <Content Include="Views\BarterAds\ShowUserProfile.cshtml" />
     <Content Include="Views\BarterAds\ShowOwnUserProfile.cshtml" />
