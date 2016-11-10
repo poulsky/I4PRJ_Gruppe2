@@ -85,28 +85,38 @@ namespace BargainBarterV2.Controllers
             {
                 double distance=user.Address.Coordinate.DistanceTo(logUser.Address.Coordinate);
                 ViewData["Distance"] = distance;
-            }
-            if (logUser.Address != null)
-            {
-                ViewData["Longitude"] = logUser.Address.Coordinate.Longitude;
-                ViewData["Latitude"] = logUser.Address.Coordinate.Latitude;
-            }
-            ApplicationUser User =
-                  System.Web.HttpContext.Current.GetOwinContext()
-                      .GetUserManager<ApplicationUserManager>()
-                      .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
-            if (User != null)
-            {
                 List<SelectListItem> items = new List<SelectListItem>();
 
-                foreach (var Ad in User.BarterAdds)
+                foreach (var Ad in user.BarterAdds)
                 {
                     items.Add(new SelectListItem { Text = Ad.Titel, Value = Ad.Titel.ToString() });
                 }
                 ViewBag.myAds = items;
             }
 
+            if (logUser.Address != null)
+            {
+                ViewData["Longitude"] = logUser.Address.Coordinate.Longitude;
+                ViewData["Latitude"] = logUser.Address.Coordinate.Latitude;
+            }
+          
+            if (user == logUser)
+                return RedirectToAction("DetailsOwn", "BarterAds", new { id = barterAdd.BarterAddId});
+
+            return View(barterAdd);
+        }
+
+        // GET: BarterAds/Details/5
+        public ActionResult DetailsOwn(int? id)
+        {
+            BarterAdd barterAdd= unitOfWork.BarterAddRepository.GetByID(id);
+            ApplicationUser logUser = db.Users.Where(u => u.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
+            if (logUser.Address != null)
+            {
+                ViewData["Longitude"] = logUser.Address.Coordinate.Longitude;
+                ViewData["Latitude"] = logUser.Address.Coordinate.Latitude;
+            }
             return View(barterAdd);
         }
 
