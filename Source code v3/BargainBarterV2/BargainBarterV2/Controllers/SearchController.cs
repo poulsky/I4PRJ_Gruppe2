@@ -14,6 +14,14 @@ namespace BargainBarterV2.Controllers
     {
         private UnitOfWork unitOfWork=new UnitOfWork();
 
+        public SearchController(UnitOfWork unit)
+        {
+            unitOfWork = unit;
+        }
+
+        public SearchController()
+        { }
+
         // GET: Search
         public ActionResult Index(string searchstring)
         {
