@@ -20,7 +20,7 @@ namespace BargainBarterV2.Controllers
             var results = unitOfWork.BarterAddRepository.Get();
 
             if (!String.IsNullOrEmpty(searchstring))
-                results = unitOfWork.BarterAddRepository.Get(p=> p.Titel.Contains(searchstring));
+                results = unitOfWork.BarterAddRepository.Get(p=> p.Titel.Contains(searchstring) && p.Traded != true);
            
             return View("Frontpage", results.ToList());
         }
