@@ -28,7 +28,7 @@ namespace BargainBarterV2.Controllers
         public ActionResult Index()
         {
             //var results = from m in db.BarterAdds select m;
-            var results = unitOfWork.BarterAddRepository.Get();
+            var results = unitOfWork.BarterAddRepository.Get((p => p.Traded != true));
             return View("Frontpage",results.ToList());
         }
 
