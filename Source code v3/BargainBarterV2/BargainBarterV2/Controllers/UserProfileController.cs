@@ -12,7 +12,7 @@ namespace BargainBarterV2.Controllers
 {
     public class UserProfileController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        //private ApplicationDbContext db = new ApplicationDbContext();
         private UnitOfWork _unitOfWork=new UnitOfWork();
 
         // GET: UserProfile
@@ -27,8 +27,8 @@ namespace BargainBarterV2.Controllers
         {
             if (User.Identity.GetUserId() == id)
             {
-                //var user=_unitOfWork.UserRepository.Get()
-                var user = db.Users.Include(a => a.Address).Single(u => u.Id == id);
+                var user = _unitOfWork.UserRepository.Get(u => u.Id == id, includeProperties: "Address").First();
+                //var user = db.Users.Include(a => a.Address).Single(u => u.Id == id);
                 return View(user);
             }
 
@@ -42,7 +42,8 @@ namespace BargainBarterV2.Controllers
         {
             string id = User.Identity.GetUserId();
 
-            var user = db.Users.Include(a => a.Address).Single(u => u.Id == id);
+            //var user = db.Users.Include(a => a.Address).Single(u => u.Id == id);
+            var user = _unitOfWork.UserRepository.Get(u => u.Id == id, includeProperties:"Address").First();
 
             user.Firstname = postedUser.Firstname;
             user.Lastname = postedUser.Lastname;
@@ -52,17 +53,18 @@ namespace BargainBarterV2.Controllers
             user.Address.City = postedUser.Address.City;
             user.Address.PostalCode = user.Address.PostalCode;
 
-            //_unitOfWork.UserRepository.Update(user);
-            //_unitOfWork.Save();
-            db.Users.AddOrUpdate(user);
-            db.SaveChanges();
+            _unitOfWork.UserRepository.Update(user);
+            _unitOfWork.Save();
+            //db.Users.AddOrUpdate(user);
+            //db.SaveChanges();
 
             return RedirectToAction("ShowUserProfile","UserProfile",new {id = id});
         }
 
         public ActionResult ShowUserProfile(string id)
         {
-            var applicationUser = db.Users.Include(a => a.Address).Single(u => u.Id == id);
+            //var applicationUser = db.Users.Include(a => a.Address).Single(u => u.Id == id);
+            var applicationUser = _unitOfWork.UserRepository.Get(u => u.Id == id, includeProperties:"Address").First();
             if (id == User.Identity.GetUserId())
                 return View("ShowOwnUserProfile", applicationUser);
             return View(applicationUser);
