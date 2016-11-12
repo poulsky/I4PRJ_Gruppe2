@@ -20,7 +20,7 @@
                 @if (Model.ApplicationUser != null)
                 {
                     @Html.ActionLink(Model.ApplicationUser.Firstname + " " + Model.ApplicationUser.Lastname, "ShowUserProfile", "UserProfile", new { id = Model.ApplicationUserId }, new { @class = "" })
-                    <p style="font-size: 8pt">Afstand til byttehandel: @ViewData["Distance"]</p>
+                    <p style="font-size: 8pt">Afstand til byttehandel: @ViewData["Distance"] km </p>
                 }
             </div>
             <div>

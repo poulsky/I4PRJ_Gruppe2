@@ -85,7 +85,7 @@ namespace BargainBarterV2.Controllers
             if (user!=null)
             {
                 double distance=user.Address.Coordinate.DistanceTo(logUser.Address.Coordinate);
-                ViewData["Distance"] = distance;
+                ViewData["Distance"] = distance.ToString("#.##");
 
                 List<SelectListItem> items = new List<SelectListItem>();
 
