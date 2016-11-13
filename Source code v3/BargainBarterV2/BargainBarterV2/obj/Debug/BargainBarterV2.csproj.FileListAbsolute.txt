@@ -417,3 +417,4 @@ C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\Bargain
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.FinishedTradeAndRating.resources
+C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csprojResolveAssemblyReference.cache

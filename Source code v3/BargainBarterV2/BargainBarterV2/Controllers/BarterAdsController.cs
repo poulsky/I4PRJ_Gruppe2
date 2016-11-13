@@ -70,17 +70,20 @@ namespace BargainBarterV2.Controllers
             {
                 return HttpNotFound();
             }
-            //ApplicationUser tempuser = unitOfWork.UserRepository.GetByID(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            //ApplicationUser user = null;
-            //if(tempuser!=null)
-            //    user = unitOfWork.UserRepository.GetByID(tempuser.Id);
-            //ApplicationUser logUser = unitOfWork.UserRepository.GetByID(barterAdd.ApplicationUserId);
-
-            ApplicationUser tempuser = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            ApplicationUser tempuser = unitOfWork.UserRepository.GetByID(System.Web.HttpContext.Current.User.Identity.GetUserId());
             ApplicationUser user = null;
             if (tempuser != null)
-                user = db.Users.Where(u=> u.Id==tempuser.Id).Include("Address").FirstOrDefault();
-            ApplicationUser logUser = db.Users.Where(u => u.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
+                user = unitOfWork.UserRepository.Get(b => b.Id == tempuser.Id, includeProperties: "Address").FirstOrDefault();
+            ApplicationUser logUser = unitOfWork.UserRepository.Get(b=> b.Id==barterAdd.ApplicationUserId, includeProperties:"Address").FirstOrDefault();
+
+            if (user == logUser)
+                return RedirectToAction("DetailsOwn", "BarterAds", new { id = barterAdd.BarterAddId });
+
+            //ApplicationUser tempuser = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            //ApplicationUser user = null;
+            //if (tempuser != null)
+            //    user = db.Users.Where(u=> u.Id==tempuser.Id).Include("Address").FirstOrDefault();
+            //ApplicationUser logUser = db.Users.Where(u => u.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
 
             if (user!=null)
             {
@@ -102,17 +105,15 @@ namespace BargainBarterV2.Controllers
                 ViewData["Latitude"] = logUser.Address.Coordinate.Latitude;
             }
           
-            if (user == logUser)
-                return RedirectToAction("DetailsOwn", "BarterAds", new { id = barterAdd.BarterAddId});
-
-            return View(barterAdd);
+           return View(barterAdd);
         }
 
         // GET: BarterAds/Details/5
         public ActionResult DetailsOwn(int? id)
         {
             BarterAdd barterAdd= unitOfWork.BarterAddRepository.GetByID(id);
-            ApplicationUser logUser = db.Users.Where(u => u.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
+            //ApplicationUser logUser = db.Users.Where(u => u.Id == barterAdd.ApplicationUserId).Include("Address").FirstOrDefault();
+            ApplicationUser logUser = unitOfWork.UserRepository.Get(u => u.Id == barterAdd.ApplicationUserId, includeProperties:"Address").FirstOrDefault();
             if (logUser.Address != null)
             {
                 ViewData["Longitude"] = logUser.Address.Coordinate.Longitude;
@@ -205,8 +206,10 @@ namespace BargainBarterV2.Controllers
                 //db.Entry(barterAdd).State = EntityState.Modified;
 
                 ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                //ApplicationUser user1 =
+                //    db.Users.Include(b => b.BarterAdds).Single(u => u.Id == user.Id);
                 ApplicationUser user1 =
-                    db.Users.Include(b => b.BarterAdds).Single(u => u.Id == user.Id);
+                    unitOfWork.UserRepository.Get(b => b.Id == user.Id, includeProperties: "BarterAdds").Single();
 
                 var temp = user1.BarterAdds.Single(b => b.BarterAddId == barterAdd.BarterAddId);
 
@@ -216,9 +219,11 @@ namespace BargainBarterV2.Controllers
                 temp.Picture = barterAdd.Picture;
                 temp.Thumbnail = barterAdd.Thumbnail;
 
-                db.Users.AddOrUpdate(user1);
+                //db.Users.AddOrUpdate(user1);
                 
-                db.SaveChanges();
+                //db.SaveChanges();
+                unitOfWork.UserRepository.Update(user1);
+                unitOfWork.Save();
                 return RedirectToAction("ManageAds");
             }
             return View();
@@ -320,18 +325,23 @@ namespace BargainBarterV2.Controllers
                     System.Web.HttpContext.Current.GetOwinContext()
                         .GetUserManager<ApplicationUserManager>()
                         .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-                ApplicationUser User = db.Users.Find(user.Id);
+                //ApplicationUser User = db.Users.Find(user.Id);
+                ApplicationUser User = unitOfWork.UserRepository.GetByID(user.Id);
 
                 int tradeId = id;
                 string dropValue = myAds;
 
 
 
-                BarterAdd myAd = db.BarterAdds
-                   .Single(p => p.Titel == dropValue);
+                //BarterAdd myAd = db.BarterAdds
+                //   .Single(p => p.Titel == dropValue);
 
-                BarterAdd tradeAdd = db.BarterAdds
-                  .Single(p => p.BarterAddId == tradeId);
+                //BarterAdd tradeAdd = db.BarterAdds
+                //  .Single(p => p.BarterAddId == tradeId);
+
+                BarterAdd myAd = unitOfWork.BarterAddRepository.Get(p => p.Titel == dropValue).Single();
+                BarterAdd tradeAdd = unitOfWork.BarterAddRepository.Get(p => p.BarterAddId == tradeId).Single();
+
                 tradeRequest.BarterAdds.Add(myAd);
                 tradeRequest.BarterAdds.Add(tradeAdd);
                 tradeRequest.RequestStates = TradeRequest.States.Received;
@@ -340,9 +350,10 @@ namespace BargainBarterV2.Controllers
                 if (otherUser.Id == User.Id)
                     return RedirectToAction("ManageAds");
 
-                //User.TradeRequests.Add(tradeRequest);
+                User.TradeRequests.Add(tradeRequest);
                 otherUser.TradeRequests.Add(tradeRequest);
-                db.SaveChanges();
+                //db.SaveChanges();
+                unitOfWork.Save();
                 //return View(User.TradeRequests.ToList());
                 return RedirectToAction("ManageAds");
             }
@@ -356,10 +367,13 @@ namespace BargainBarterV2.Controllers
 
         public ActionResult DeclineTrade(int Id)
         {
-            TradeRequest tradeRequest = db.TradeRequests.Find(Id);
+            //TradeRequest tradeRequest = db.TradeRequests.Find(Id);
+            //tradeRequest.BarterAdds.Clear();
+            //db.TradeRequests.Remove(tradeRequest);
+            //db.SaveChanges();
+            TradeRequest tradeRequest = unitOfWork.TradeRequestRepository.GetByID(Id);
             tradeRequest.BarterAdds.Clear();
-            db.TradeRequests.Remove(tradeRequest);
-            db.SaveChanges();
+            unitOfWork.TradeRequestRepository.Delete(tradeRequest.TradeRequestId);
             return RedirectToAction("ShowTrades");
         }
 
@@ -369,7 +383,8 @@ namespace BargainBarterV2.Controllers
             {
 
 
-                TradeRequest tradeRequest = db.TradeRequests.Find(Id);
+                //TradeRequest tradeRequest = db.TradeRequests.Find(Id);
+                TradeRequest tradeRequest = unitOfWork.TradeRequestRepository.GetByID(Id);
                 if (tradeRequest.RequestStates == TradeRequest.States.Received)
                 {
                     tradeRequest.RequestStates = TradeRequest.States.Pending;
@@ -380,7 +395,8 @@ namespace BargainBarterV2.Controllers
                         {
                             tradeRequest.ApplicationUserId = ad.ApplicationUserId;
 
-                            db.SaveChanges();
+                            //db.SaveChanges();
+                            unitOfWork.Save();
                             break;
                         }
 
@@ -408,10 +424,10 @@ namespace BargainBarterV2.Controllers
                     ApplicationUser myUser = new ApplicationUser();
                     ApplicationUser theirUser = new ApplicationUser();
 
-                    myUser = db.Users.Find(myAd.ApplicationUserId);
-                    theirUser = db.Users.Find(theirAd.ApplicationUserId);
-
-
+                    //myUser = db.Users.Find(myAd.ApplicationUserId);
+                    //theirUser = db.Users.Find(theirAd.ApplicationUserId);
+                    myUser = unitOfWork.UserRepository.GetByID(myAd.ApplicationUserId);
+                    theirUser = unitOfWork.UserRepository.GetByID(theirAd.ApplicationUserId);
 
                     bool checkMyUser = false;
                     bool checkTheirUser = false;
