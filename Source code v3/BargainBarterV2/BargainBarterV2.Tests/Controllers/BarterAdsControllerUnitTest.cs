@@ -47,13 +47,14 @@ namespace BargainBarterV2.Tests.Controllers
         public void ShowBarterAdsOnMap_BarterAddRepository_Get_IsCalled()
         {
             _controller.Index();
-            _unitOfWork.Received().BarterAddRepository.Get();
+            _unitOfWork.Received().UserRepository.Get();
         }
+
         [Test]
         public void ShowBarterAdsOnMap_BarterAddRepository_Get_ToList_IsCalled()
         {
             _controller.Index();
-            _unitOfWork.Received().BarterAddRepository.Get().ToList();
+            _unitOfWork.Received().UserRepository.Get().ToList();
         }
 
         [Test]

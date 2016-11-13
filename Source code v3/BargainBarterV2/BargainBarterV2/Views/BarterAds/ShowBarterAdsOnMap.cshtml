@@ -10,7 +10,11 @@
 
 <div class="row col-md-12">
   <div class="container" id="BarterAdsMap">
-        @(Html.GoogleMap().Name("map").Height(500).ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU").FitToMarkersBounds(true).BindTo<BargainBarterV2.Models.ApplicationUser, Marker>(Model, mappings =>
+        @(Html.GoogleMap()
+        .Name("map")
+        .Height(500).ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
+        .FitToMarkersBounds(true)
+        .BindTo<BargainBarterV2.Models.ApplicationUser, Marker>(Model, mappings =>
               mappings.For<BargainBarterV2.Models.ApplicationUser>(
                   binding =>
                       binding.ItemDataBound(
