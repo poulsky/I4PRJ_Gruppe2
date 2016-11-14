@@ -5,16 +5,11 @@
     ViewBag.Title = "ShowBarterAdsOnMap";
 }
 
-<h2>BarterAds-oversigt på Kort</h2>
-
 
 <div class="row col-md-12">
-  <div class="container" id="BarterAdsMap">
-        @(Html.GoogleMap()
-        .Name("map")
-        .Height(500).ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU")
-        .FitToMarkersBounds(true)
-        .BindTo<BargainBarterV2.Models.ApplicationUser, Marker>(Model, mappings =>
+    <div class="container" id="BarterAdsMap">
+        <h2>BarterAds-oversigt på Kort</h2>
+        @(Html.GoogleMap().Name("map").Height(500).ApiKey("AIzaSyADSBcKyZfoUjYmTqG5hhcfXFjwGoq7rHU").FitToMarkersBounds(true).BindTo<BargainBarterV2.Models.ApplicationUser, Marker>(Model, mappings =>
               mappings.For<BargainBarterV2.Models.ApplicationUser>(
                   binding =>
                       binding.ItemDataBound(
