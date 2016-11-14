@@ -2,11 +2,28 @@
 
 Projektet stiller krav om let udvikling og ikke mindst krav om kvalitet. Automatiserede tests har dermed været et naturligt valg, der konstant og systematisk hjæper os til at sørge for at kvaliteten i vores system opretholdes, foruden at hjælpe udviklingen til ikke at få detektere fejl i tidligere kode, når ny kode tillægges.
 
-\section{Unit Testsing}
+\section{Continous integration}
+Der er i projektet anvendt Continous integration af systemet, således at der ved pushes automatisk kører test af systemmet.
+
+\section{Unit Testsing af controllerne}
+Da der i Bargain Barter systemmet kun er meget minimal buisness-logic, ligger størstedelen af funktionaliteten i controllerne i MVC strukturen. Denne funktionalitet er således også den vigtigste at teste. Desuden er databasen i sig selv svær at teste, og viewsne i MVC'en kan nærmest ikke testes. Det der reelt kan testes er hvad controllerne giver videre til deres views, og således ikke views dem selv. I Controllerne er der flere ting der er væsentligt at teste.
+\begin{itemize}
+	\item Hvad gives med i viewbagen
+	\item Buisness-logic funktioner som controllerne bruger
+	\item At de korrekte fejl bliver kaldt når controllerne giver ugyldige værdier
+	\item De enkelte redirects bliver kaldt korrekt
+	\item At de enkelte controllers returnerer views
+\end{itemize}       
+Disse er de udvalgte ting som er vurderet til at give mening at teste på.
+
+Den fulde liste af test kan ses nedenfor.
+(LAV DENNE LISTE!)
+
+Det er væsentligt at pointere hvordan disse test bliver lavet isoleret, således at controllerne ikke er afhængige af DAL-laget.
 
 \subsection{Unit test igennem DAL}
 
-Som nævnt spiller design og test i høj grad sammen, hvor der som nævnt er anvendt repository pattern. Hvor man på figur \ref{fig:Domaeneanalyse} kan se at det i høj grad spiller sammen med test af systemmet. Der er   
+Som nævnt spiller design og test i høj grad sammen, hvor der som nævnt er anvendt repository pattern. Hvor man på figur \ref{fig:UnitOfWorkMock} kan se at det i høj grad spiller sammen med test af systemmet. Det er muligt at teste systemmet direkte gennem db contexten som ses uden Repository pattern, men dette er ikke en selvfølgelighed, og ved ændring af database teknologi vil alle tests skulle skrives om. Dette er ikke ønsket, da selve unit testen skal teste om der sker kald ned i selve klassen, ikke om de kald rent faktisk virker. Det er ikke controllerne i MVC'en der har ansvar for at db kaldende virker. Derfor bruges en mock af den UnitOfWork som controlleren kalder ned i, og igennem repository patternet, opnås at controllerne kan testes uafhængigt af DAL laget og selve databasen.
 
 \begin{figure}[H]
 	\centering
@@ -16,4 +33,9 @@ Som nævnt spiller design og test i høj grad sammen, hvor der som nævnt er anv
 	\label{fig:UnitOfWorkMock}
 \end{figure}
 
-\input{sections/CI.tex}
+\section{Integrationtesting}
+Efterfulgt af at de enkelte unit tests af controllersne, testes integrationen af controllerne med den relle database. Da samhørigheden af de forskellige controllers er forholdsvis lav er integrationstesten en relativ simpel opgave, hvor der kun er taget de enkelte dele der er vurderet til at give mening med.    
+
+INDSÆT DPTREE
+
+\noindent Det sidste skridt er selvfølgelig at tests viewne, hvor der er lavet en user experience vurdering, og naturligvis en acceptest der kan ses i efterfølgende afsnit

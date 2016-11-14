@@ -1,9 +1,17 @@
 \chapter{Ansvarsbeskrivelse for controllere}\label{ch:Controllere}
 
 \section{Home}
-Denne controller er ansvarlig for at vise de generelle ting for hjemmesiden. Dette vil sige hovedsiden, kontakt og . 
+Denne controller er ansvarlig for at vise de generelle ting for hjemmesiden. Dette vil sige hovedsiden, kontakt og en About section.  
 
 Actions
+\begin{itemize}
+	\item Index
+	Denne action returnere et view indeholdene alle barterads i databasen. 
+	\item About
+	Returnere det view der hedder about med information om den BargainBarter generelt.
+	\item Contact
+	Action der returnere et view med contact info omkring BB.
+\end{itemize}
 
 
 \section{BarterAd}
@@ -23,9 +31,9 @@ Denne controller er ansvarlig for at vise BarterAds fra databasen.
 
 Actions 
 \begin{itemize}
-	\item Index skal vise alle BarterAds i omvendt kronologisk rækkefølge. Der skal være mulighed for at brugeren kan vælge en kategori, der directer til ShowCategori-actionen.
+	\item Index skal vise alle BarterAds i omvendt kronologisk rækkefølge ift. alfabetisk rækkefølge. Der skal være mulighed for at brugeren kan vælge en kategori, der directer til ShowCategori-actionen.
 	\item ShowCategory skal vise alle BarterAds, der er i den valgte kategori.
-	\item EditAd - er siden, hvor brugeren kan opdatere en af sine bytteannoncer.
+	\item EditAd - returnere siden, hvor brugeren kan opdatere en af sine bytteannoncer.
 	\item 
 	\item
 \end{itemize}
