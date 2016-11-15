@@ -13,8 +13,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>BarterAdd</h4>
-            <hr />
+            <br/>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(model => model.Titel,"Titel", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -57,7 +56,7 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "ManageAds")
+        @Html.ActionLink("Tilbage", "ManageAds")
     </div>
 
     @section Scripts {
