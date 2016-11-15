@@ -28,14 +28,16 @@
     <!--Header section -->
 
 <header class="row bargainbarter-header-section">
-    <div class="col-md-4">
-        <h1 class="title-text">BargainBarter</h1>
-    </div>
-    <div class="col-md-7">
+    <a href=@Url.Action("Index", "Home") title="HTML Tutorial">
+        <div class="col-md-3">
+            <h1 class="title-text">BargainBarter</h1>
+        </div>
+    </a>
+    <div class="col-md-8">
         <h4 class="pull-right text-align-bottom text-muted">Det er altså noget andet end den blå avis</h4>
     </div>
     <div class="col-md-1">
-        <img class="pull-right bargainbarter-top-picture" src="~/Content/img/hand-shake-icon-256x256.png" height="63" />
+        <img class="pull-right bargainbarter-top-picture" src="~/Content/img/hand-shake-icon-256x256.png" height="63"/>
     </div>
 </header>
  
@@ -59,9 +61,8 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li> <a href=@Url.Action("Index", "Home") class="active" title="HTML Tutorial">Forside</a></li>
-                        <li> <a href=@Url.Action("ShowBarterAdsOnMap", "BarterAds") class="active" title="HTML">Kort</a></li>
-                        <li> <a href=@Url.Action("About", "Home") class="active" title="HTML">Konceptet</a></li>
+                        <li> <a href=@Url.Action("ShowBarterAdsOnMap", "BarterAds")>Kort</a></li>
+                        <li> <a href=@Url.Action("About", "Home")>Konceptet</a></li>
                         @if (Request.IsAuthenticated)
                         {
                             <li>@Html.ActionLink("Ny annonce", "Create", "BarterAds")</li>
@@ -86,7 +87,6 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profil<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Forside", "Index", "Home")</li>
                                     <li>@Html.ActionLink("Profil", "ShowUserProfile", "UserProfile", new { id = User.Identity.GetUserId() }, new { @class = "" })</li>
                                     <li>@Html.ActionLink("Mine annoncer", "ManageAds", "BarterAds")</li>
                                     <li>@Html.ActionLink("Show Trade Requests", "ShowTrades", "BarterAds")</li>
@@ -143,7 +143,13 @@
                     $('#navbar-main').removeClass('navbar-fixed-top');
                 }
             });
-        });
+
+            $.each($('#navbar-main').find('li'), function () {
+                $(this).toggleClass('active',
+                    window.location.pathname.indexOf($(this).find('a').attr('href')) > -1);
+            });
+
+            });
     </script>
 </body>
 </html>
