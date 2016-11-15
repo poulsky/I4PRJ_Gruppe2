@@ -345,11 +345,12 @@ namespace BargainBarterV2.Controllers
                 tradeRequest.BarterAdds.Add(tradeAdd);
                 tradeRequest.RequestStates = TradeRequest.States.Received;
 
-                ApplicationUser otherUser = db.Users.Find(tradeAdd.ApplicationUserId);
+                ApplicationUser otherUser = unitOfWork.UserRepository.GetByID(tradeAdd.ApplicationUserId);
                 if (otherUser.Id == User.Id)
                     return RedirectToAction("ManageAds");
 
-                User.TradeRequests.Add(tradeRequest);
+               // User.TradeRequests.Add(tradeRequest);
+               
                 otherUser.TradeRequests.Add(tradeRequest);
                 //db.SaveChanges();
                 unitOfWork.Save();
@@ -430,7 +431,7 @@ namespace BargainBarterV2.Controllers
 
                     bool checkMyUser = false;
                     bool checkTheirUser = false;
-                    foreach (var th in db.TradeHistory)
+                    foreach (var th in unitOfWork.TradeHistoryRepository.Get())
                     {
                         if (th.ApplicationUser == myUser)
                         {
@@ -448,16 +449,17 @@ namespace BargainBarterV2.Controllers
                     theirHistory.FinishedTrades.Add(finTrade);
 
                     if (checkMyUser != true)
-
                         myUser.TradeHistory = myHistory;
 
                     if (checkTheirUser != true)
                         theirUser.TradeHistory = theirHistory;
 
                     tradeRequest.RequestStates = TradeRequest.States.Traded;
-                    tradeRequest.BarterAdds.Clear();
-                    db.TradeRequests.Remove(tradeRequest);
-                    db.SaveChanges();
+
+                    // tradeRequest.BarterAdds.Clear();
+                    unitOfWork.TradeRequestRepository.Delete(tradeRequest.TradeRequestId);
+                    // db.TradeRequests.Remove(tradeRequest);
+                    unitOfWork.Save();
                 }
                 return RedirectToAction("ManageAds");
             }
