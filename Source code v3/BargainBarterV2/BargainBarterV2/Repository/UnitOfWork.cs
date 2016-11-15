@@ -3,18 +3,18 @@ using BargainBarterV2.Repository;
 
 namespace BargainBarterV2.Models
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
         private ApplicationDbContext context = ApplicationDbContext.Create();
-        private GenericRepository<BarterAdd> barterAddRepository;
-        private GenericRepository<Address> addressRepository;
-        private GenericRepository<Comment> commentRepository;
-        private GenericRepository<TradeRequest> tradeReqeustRepository;
-        private GenericRepository<ApplicationUser> userRepository;
-        private GenericRepository<TradeHistory> tradeHistoryRepository;
+        private IGenericRepository<BarterAdd> barterAddRepository;
+        private IGenericRepository<Address> addressRepository;
+        private IGenericRepository<Comment> commentRepository;
+        private IGenericRepository<TradeRequest> tradeReqeustRepository;
+        private IGenericRepository<ApplicationUser> userRepository;
+        private IGenericRepository<TradeHistory> tradeHistoryRepository;
 
 
-        public GenericRepository<ApplicationUser> UserRepository
+        public IGenericRepository<ApplicationUser> UserRepository
         {
             get
             {
@@ -26,7 +26,7 @@ namespace BargainBarterV2.Models
             }
         }
 
-        public GenericRepository<BarterAdd> BarterAddRepository
+        public IGenericRepository<BarterAdd> BarterAddRepository
         {
             get
             {
@@ -38,7 +38,7 @@ namespace BargainBarterV2.Models
             }
         }
 
-        public GenericRepository<Address> AddressRepository
+        public IGenericRepository<Address> AddressRepository
         {
             get
             {
@@ -50,7 +50,7 @@ namespace BargainBarterV2.Models
             }
         }
 
-        public GenericRepository<Comment> CommentRepository
+        public IGenericRepository<Comment> CommentRepository
         {
             get
             {
@@ -62,7 +62,7 @@ namespace BargainBarterV2.Models
             }
         }
 
-        public GenericRepository<TradeRequest> TradeRequestRepository
+        public IGenericRepository<TradeRequest> TradeRequestRepository
         {
             get
             {
@@ -75,7 +75,7 @@ namespace BargainBarterV2.Models
             }
         }
 
-        public GenericRepository<TradeHistory> TradeHistoryRepository
+        public IGenericRepository<TradeHistory> TradeHistoryRepository
         {
             get
             {

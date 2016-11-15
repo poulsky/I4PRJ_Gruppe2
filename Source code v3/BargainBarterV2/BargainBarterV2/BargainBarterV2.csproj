@@ -311,8 +311,10 @@
     <Compile Include="Repository\IAddressRepository.cs" />
     <Compile Include="Repository\IBarterAdRepository.cs" />
     <Compile Include="Repository\ICommentRepository.cs" />
+    <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\ITradeHistoryRepository.cs" />
     <Compile Include="Repository\ITradeRequestRepository.cs" />
+    <Compile Include="Repository\IUnitOfWork.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\TradeHistoryRepository.cs" />
     <Compile Include="Repository\TradeRequestRepository.cs" />

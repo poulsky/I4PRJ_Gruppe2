@@ -12,30 +12,35 @@ namespace BargainBarterV2.Controllers
 {
     public class SearchController : Controller
     {
-        private UnitOfWork unitOfWork=new UnitOfWork();
-
-        public SearchController(UnitOfWork unit)
-        {
-            unitOfWork = unit;
-        }
+        private IUnitOfWork unitOfWork=new UnitOfWork();
+        private IGenericRepository<BarterAdd> repository;
 
         public SearchController()
-        { }
+        {
+            repository = unitOfWork.BarterAddRepository;
+        }
+
+
+        public SearchController(IUnitOfWork unit, IGenericRepository<BarterAdd> repository)
+        {
+            unitOfWork = unit;
+            this.repository = repository;
+        }
 
         // GET: Search
         public ActionResult Index(string searchstring)
         {
-            var results = unitOfWork.BarterAddRepository.Get();
+            var results = repository.Get();
 
             if (!String.IsNullOrEmpty(searchstring))
-                results = unitOfWork.BarterAddRepository.Get(p=> p.Titel.Contains(searchstring) && p.Traded != true);
+                results = repository.Get(p=> p.Titel.Contains(searchstring) && p.Traded != true);
            
             return View("Frontpage", results.ToList());
         }
 
         public ActionResult CategorySearch(string searchstring)
         {
-            var results = unitOfWork.BarterAddRepository.Get(a => a.Category == searchstring);
+            var results = repository.Get(a => a.Category == searchstring);
                 
             return View("Frontpage", results.ToList());
         }

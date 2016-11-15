@@ -17,22 +17,18 @@ namespace BargainBarterV2.Tests.Controllers
     public class SearchControllerUnitTest
     {
         private SearchController _controller;
-        private UnitOfWork _unitOfWork;
+        private IUnitOfWork _unitOfWork;
+        private IGenericRepository<BarterAdd> _barterAddRepo;
 
         [SetUp]
         public void Init()
         {
-            _unitOfWork = Substitute.For<UnitOfWork>();
-            _controller = new SearchController(_unitOfWork);
+            _unitOfWork = new UnitOfWork();
+            _barterAddRepo = Substitute.For<IGenericRepository<BarterAdd>>();
+            _controller = new SearchController(_unitOfWork, _barterAddRepo);
         }
 
-        //[Test]
-        //public void Index_NullId_Returns_BadRequest()
-        //{
-        //    var result = _controller.Index("");
-
-        //    Assert.That(result, Is.InstanceOf(typeof(HttpStatusCodeResult)));
-        //}
+        
 
 
     }
