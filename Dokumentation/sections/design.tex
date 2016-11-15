@@ -1,4 +1,4 @@
-\chapter{Design}
+\chapter{Design og Implementering}
 
 \section{Map og distance}
 I forbindelse med implementering af sytemet var en del af annoncen i forhold til projektets rammer, at bytteartiklens position skulle vises på et kort og afstanden til annoncen skulle også vises. Dette blev implementeret ved brug af et googlemap-api.
@@ -21,3 +21,22 @@ Selve kortvisningen udføres ved brug af Jmelosegui.Mvc.GoogleMap, der en Google
 
 Som det fremgår af overstående eksempel kan man linke fra modellen til kortet - i dette eksempel sættes markerens titel=titlen fra den medgivne model. Dette gøres ved brug af normal MVC-struktur, hvor controlleren for dette view giver en model med. Kortet kan siden tilpasses i størrelse, zoom-level og på mange andre måder.
 Jmelosegui.Mvc.GoogleMap er også blevet brugt i forbindelse med visning af samtlige annoncer på et kort. Dette er gjort på samme møde som vist overover dog er der bare linket til en af list indeholder modeller i stedet for en enkel model.
+
+\section{Repository Pattern}
+Repository pattern blev implementeret ved brug af forskellige dele og lag. I dette afsnit vil de forskellige dele blive beskrevet.
+Hver  model blev tilknyttet et repository, der indeholdt de gængse CRUD operationer (Create, Read, Update, Delete) på databasen i forbindelse med hver model. 
+Hvert repository er nedarvet fra et interface, dette er gjort på baggrund ad DIP, der gør at i forbindelse med test kan repositoriet mockes ud.
+Dette repository bliver så tilgået gennem et Generisk repository som benytter sig af en template-baseret implementering af de generelle CRUD-oper
+Et repository bliver tilgået i som et generisk repository. Et generisk repostory er en repository, der indeholder er en template baseret implementering af CRUD-operationerne. 
+Af særlige interesante metoder i GenericRepository kan nævnet Get-metode, der nok også er den mest anvendte metode i forbindelse med DAL. Denne metode retunere en list af objekter af en given klasse.
+Metoden:
+\begin{verbatim}
+ public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> 
+ filter = null,Func<IQueryable<TEntity>, 
+ IOrderedQueryable<TEntity>> orderBy = null,string includeProperties = "")
+\end{verbatim}
+Metoden indeholder en række af filtre, ekspression, orders og includeproperties, der gør, at man kan filtre og udvælge, hvilke data, der kommer tilbage fra get-metoden. Man kan bl.a. gennem brug af includeproperties komme rundt om EF Lazy-loading. 
+
+GenericRepository's template implementering bliver kaldt igennem unitofwork-klassen. UnitOfWork-klassen er den eneste klasse, der kalder ned i databasen gennem GenericRepository. UnitOfWork-klassen indeholder af en af samtlige af de forskellige repositories. 
+
+Dette er blevet valgt for at adskille buisness-logikken fra DAL.

@@ -3,13 +3,13 @@
 I projektet blev det valgt at lave hjemmesiden i ASP.NET MVC. I følgende afsnit redegøres for systemets arkitektur og de anvendte patterns sammen med en begrundelse for deres valg.
 
 \section{MVC}
-Model-View-Controller er et GUI-pattern, der består af 3 dele:
+Model-View-Controller\footnote{https://msdn.microsoft.com/en-us/library/ff649643.aspx} er et GUI-pattern, der forsøger at adskille den grafiske brugergrænseflade fra resten af systemet. MVC består af 3 dele:
 
-Model: 
+Model: er den domænespecifikke kode, der indeholder klasserne g den tilhørende kode for ens application.
 
-Controller:
+View: er den grafiske del af programmet og indeholder præsentationslogikken.
 
-View:
+Controller:er en grænsefladen mellem modellen og viewet. Dens opgave er at opdatere brugergrænsefladen og modellen.
 
 MVC blev valgt på baggrund af, at det er en integreret del af ASP.NET, der blev set som et spændende udfordring og framework af gruppen. 
 
