@@ -24,8 +24,17 @@
 }
 
 .navbar-nav li a.active {
-    background-color: #800000;
+    background-color: #a9a9a9;
     color: #ffffff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.navbar-nav li a.active:hover {
+    background-color: #a9a9a9;
+    color: #000000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .navbar-brand img {
