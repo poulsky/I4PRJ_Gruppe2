@@ -6,37 +6,52 @@ Denne controller er ansvarlig for at vise de generelle ting for hjemmesiden. Det
 Actions
 \begin{itemize}
 	\item Index
-	Denne action returnere et view indeholdene alle barterads i databasen. 
+	- Denne action returnere et view indeholdene alle barterads i databasen. 
 	\item About
-	Returnere det view der hedder about med information om den BargainBarter generelt.
+	- Returnere det view der hedder about med information om den BargainBarter generelt.
 	\item Contact
-	Action der returnere et view med contact info omkring BB.
+	- Action der returnere et view med contact info omkring BB.
 \end{itemize}
 
 
 \subsection{BarterAd}
-Denne controller er overodnet ansvarlig for, at brugeren kan oprette og opdatere Barteradds annoncer på hjemmesiden. Sammenfattet: CRUD operationerne på BarterAds.
+Denne controller er overodnet ansvarlig for, at brugeren kan oprette og opdatere Barteradds annoncer på hjemmesiden. Sammenfattet: CRUD operationerne på BarterAds. UD over dette kan denne controller også hjælpe med at vise enkelte Barteradds.
 
 Actions:
 \begin{itemize}
-	\item Index er siden, hvor den pågældende bruger får vist alle BarterAds og der en knap, der directer brugeren til MakeAd-actionen.
-	\item MakeAd - er siden, hvor brugeren kan oprette en annonce. Det vil sige, at brugeren kan indtaste Annoncenavn, kategori, beskrivelse og uploade et billed til en annonce. I bunden
-	\item EditAd - er siden, hvor brugeren kan opdatere en af sine bytteannoncer.
-	\item 
-	\item
+	\item Index - Returne blot til Home controllerens index, dette er fordi routeconfigen sætter index som standard, så man skal ikke kunne kalde barterads controllerens index.
+	\item ShowBarterAdsOnMap
+	\item Viewphoto - Viser et gemt billede
+	\item Details - Via denne action kan brugeren indspicere en anden brugers  BarterAd. I det returnede view kan det meste info fra barterad modellen findes.
+	\item DetailsOwn - Viser en af dine egne barterads
+	\item Create - returnere viewet med mulighed for at CreateBarterAd
+	\item CreateBarterAd - brugeren opretter annoncer. Det vil sige, at brugeren kan indtaste Annoncenavn, kategori, beskrivelse og uploade et billed til en annonce. 
+	\item Edit - via denne action kan brugeren opdatere en af sine bytteannoncer.
+	\item Comment - Denne action giver mulighed for at tilægge en commentar til en barterad, og gemmer den i databasen
+	\item Delete - Returnere delete viewet, der så giver mulighed for at slette ad'et 
+	\item DeleteConfirmed - Denne action kan slette barterads fra databasen. Naturligvis kun sine egne. 
+	\item Dispose - Lukker databasen
+	\item ManageAds - Returnere et view med alle dine egne ads, og mulighed for at redigere dem. Eller et andet view hvis brugeren ikke har nogen barterads. 
+	\item RequestTrade - Giver mulighed for at kunne anmode om en byttehandel med en anden bruger, hvor du tilknytter en af dine egne ads.
+	\item DeclineTrade - Mulighed for at afvise en byttehandel. 
+	\item AccepTrade - Mulighed for at acceptere en byttehandel
+	\item ShowTrades - Gennem actionen vises de aktuelle Trades
+	\item ShowHistory - Hvis historie over tidligere byttehandler.
+	\item ShowTheirTradeHistory - Viser TradeHistory for en anden bruger
+	
+	\item EditAd - 
 \end{itemize}
 
-\subsection{ShowBarterAds}
-Denne controller er ansvarlig for at vise BarterAds fra databasen.
-
-Actions 
-\begin{itemize}
-	\item Index skal vise alle BarterAds i omvendt kronologisk rækkefølge ift. alfabetisk rækkefølge. Der skal være mulighed for at brugeren kan vælge en kategori, der directer til ShowCategori-actionen.
-	\item ShowCategory skal vise alle BarterAds, der er i den valgte kategori.
-	\item EditAd - returnere siden, hvor brugeren kan opdatere en af sine bytteannoncer.
-	\item 
-	\item
-\end{itemize}
+%\subsection{ShowBarterAds}
+%Denne controller er ansvarlig for at vise BarterAds fra databasen.
+%
+%Actions 
+%\begin{itemize}
+%	\item Index -Viser alle BarterAds i omvendt kronologisk rækkefølge ift. alfabetisk rækkefølge. Der skal være mulighed for at brugeren kan vælge en kategori, der directer til ShowCategori-actionen.
+%	\item ShowCategory skal vise alle BarterAds, der er i den valgte kategori.
+%	\item EditAd - returnere siden, hvor brugeren kan opdatere en af sine bytteannoncer.
+%	
+%\end{itemize}
 
 
 \subsection{Search}
@@ -45,14 +60,15 @@ Search-controlleren er ansvarlig for søgning i annoncerne.
 Actions 
 \begin{itemize}
 	\item Index(bedre navn) skal tage en tekststreng og søge i annoncerne efter match og vise en side med de matchene annoncer.
+	\item CategorySearch - Skal det samme som Index, med den udvidelse at det også søger på katagori
 \end{itemize}
 
 \subsection{UserProfile}
 Denne controller har til ansvar at styre ansvar omkring brugerprofiler. Dette er bl.a. at vise brugerprofiler og rette i brugerprofiler.
 
 \begin{itemize}
-	\item Index Redirector blot til forsiden. Dennegiver ikke mening, da der som regel skal være et brugerId for at vide hvilken brugerprofil det drejer sig om
-	\item Edit (GET) hvis brugerprofilen er den samme som den bruger man tilgår siden med, får man lov at rette i profilen, ellers returneres blot et view hvor man kan se brugerprofilen
+	\item Index Redirector blot til forsiden. Denne giver ikke mening, da der som regel skal være et brugerId for at vide hvilken brugerprofil det drejer sig om, men den er her i tilfældet.
+	\item Edit (GET) hvis brugerprofilen er den samme som den bruger man tilgår siden med, får man lov at rette i profilen, ellers returneres blot et view hvor man kan se brugerprofilen.
 	\item EDIT (POST) De rettede oplysninger i brugerprofilen skrives ned i databasen. Brugerprofilen bliver herefter vist.
 	\item ShowUserProfile sørger for at trække data udfra databasen og sende et pænt View til siden der viser de oplysninger en brugerprofil indeholder. Hvis profilen er den samme som den bruger der tilgår den, får brugeren mulighed for at rette i oplysninger vha. en redigerknap.
 \end{itemize}
