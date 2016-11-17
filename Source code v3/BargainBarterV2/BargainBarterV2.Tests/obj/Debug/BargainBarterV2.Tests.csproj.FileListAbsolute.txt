@@ -1,4 +1,3 @@
-C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\obj\Debug\BargainBarterV2.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\ApplicationInsights.config
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\roslyn\csc.exe
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -38,6 +37,7 @@ C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarte
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.Owin.Security.dll
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Owin.dll
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\SendGrid.SmtpApi.dll
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\BargainBarterV2.pdb
@@ -59,6 +59,8 @@ C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarte
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.Owin.Security.xml
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\obj\Debug\BargainBarterV2.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\obj\Debug\BargainBarterV2.Tests.dll
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\obj\Debug\BargainBarterV2.Tests.pdb

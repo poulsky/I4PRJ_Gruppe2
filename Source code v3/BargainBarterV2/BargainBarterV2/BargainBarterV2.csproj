@@ -230,6 +230,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BarterAdsController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -240,6 +241,7 @@
     </Compile>
     <Compile Include="Helperfunctions\CategoryList.cs" />
     <Compile Include="Helperfunctions\Helper.cs" />
+    <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.cs" />
     <Compile Include="Migrations\201609291319386_AddDomainClasses.Designer.cs">
       <DependentUpon>201609291319386_AddDomainClasses.cs</DependentUpon>
@@ -578,6 +580,7 @@
     <Content Include="Views\BarterAds\ShowTrades.cshtml" />
     <Content Include="Views\BarterAds\ShowHistory.cshtml" />
     <Content Include="Views\BarterAds\ShowTheirTradeHistory.cshtml" />
+    <Content Include="Views\Chat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\SeedingAdsPictures\" />

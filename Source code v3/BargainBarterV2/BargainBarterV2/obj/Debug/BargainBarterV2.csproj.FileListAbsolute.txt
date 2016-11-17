@@ -88,7 +88,6 @@ C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarte
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csprojResolveAssemblyReference.cache
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.AddDomainClasses.resources
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.Manglendemigration.resources
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.Migrations.thumbnails.resources
