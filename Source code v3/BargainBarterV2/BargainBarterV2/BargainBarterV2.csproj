@@ -567,6 +567,7 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\BarterAds\ManageAds.cshtml" />
     <Content Include="Views\BarterAds\DetailsOwn.cshtml" />
+    <Content Include="Views\BarterAds\DefaultNearestView.cshtml" />
     <None Include="Views\BarterAds\ManageAdsNoAds.cshtml" />
     <Content Include="Views\BarterAds\ShowUserProfile.cshtml" />
     <Content Include="Views\BarterAds\ShowOwnUserProfile.cshtml" />

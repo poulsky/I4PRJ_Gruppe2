@@ -7,7 +7,7 @@
         @using (Html.BeginForm("ShowNearest", "BarterAds", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
-            <input id="afstand" type="range" min="0" max="300" step="1" />
+            <input id="afstand" name="afstand" type="range" min="0" max="300" step="1" />
             <input type="submit" value="Søg" class="btn btn-default" />
         }
         <div class="panel panel-default">
