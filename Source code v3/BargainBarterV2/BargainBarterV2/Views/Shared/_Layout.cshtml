@@ -9,10 +9,6 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     
-    
-   
-
-   
     <link rel="shortcort icon" href="@Url.Content("~/favicon.ico")"/>
     <link rel="favicon" sizes="32x32" href="~/favicon-32x32.png" />
     <link rel="favicon" sizes="32x32" href="~/favicon-32x32.png"/>
@@ -20,10 +16,8 @@
     <link href="~/Content/css/default.css" rel="stylesheet">
     <link href="~/Content/css/Home.css" rel="stylesheet" type="text/css" media="screen" runat="server">
     
-
 </head>
 <body>
-
 
     <!--Header section -->
 
@@ -40,11 +34,6 @@
         <img class="pull-right bargainbarter-top-picture" src="~/Content/img/hand-shake-icon-256x256.png" height="63"/>
     </div>
 </header>
- 
-
-@*<div id="Sidebar">
-    @RenderSection("Sidebar", required: false)
-</div>*@
     <div class="menu-wrapper">
         <nav class="navbar navbar-default" id="navbar-main" role="navigation">
             <div class="container-fluid">
@@ -56,8 +45,6 @@
                     </button>
                     <a class="navbar-brand" href=@Url.Action("Index", "Home")><img class="hidden-xs" src="~/Content/img/BargainBarter.png" alt="BargainBarter"><span class="visible-xs">BargainBarter</span> </a>
                 </div>
-
-
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -121,7 +108,8 @@
 
     <footer>
         Copyright &copy; 2016 BargainBarter<br>
-        <a href="mailto:officialbargainbarter@gmail.com">officialbargainbarter@gmail.com</a>
+        @*<a href="mailto:officialbargainbarter@gmail.com">officialbargainbarter@gmail.com</a>*@
+        <a href=@Url.Action("Contact","Home")>Kontakt os her</a>
     </footer>
 
 
