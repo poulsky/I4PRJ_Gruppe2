@@ -2,20 +2,28 @@
 
 
 <div class="container-fluid">
+
     <div class="col-md-3">
+        @using (Html.BeginForm("ShowNearest", "BarterAds", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <input id="afstand" type="range" min="0" max="300" step="1" />
+            <input type="submit" value="Søg" class="btn btn-default" />
+        }
         <div class="panel panel-default">
 
             <div class="panel-heading">Kategorier</div>
 
             <div class="panel-body">
                 <div class="list-group">
-                    
-                   @{var catagories = new BargainBarterV2.Helperfunctions.CategoryList();
-                    foreach(var item in catagories){
-                    
-                    @Html.ActionLink(@item.Text,"CategorySearch","Search",new {searchstring = item.Text},new {@class = "list-group-item"})
-                    }                  
-                }                                     
+
+                    @{var catagories = new BargainBarterV2.Helperfunctions.CategoryList();
+                        foreach (var item in catagories)
+                        {
+
+                            @Html.ActionLink(@item.Text, "CategorySearch", "Search", new {searchstring = item.Text}, new {@class = "list-group-item"})
+                        }
+                    }
                 </div>
             </div>
 
