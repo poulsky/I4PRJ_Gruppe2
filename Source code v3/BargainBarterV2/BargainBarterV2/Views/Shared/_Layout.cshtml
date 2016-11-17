@@ -50,6 +50,7 @@
                     <ul class="nav navbar-nav">
                         <li> <a href=@Url.Action("ShowBarterAdsOnMap", "BarterAds")>Kort</a></li>
                         <li> <a href=@Url.Action("About", "Home")>Konceptet</a></li>
+                        <li> <a href=@Url.Action("Contact", "Home")>Kontakt</a></li>
                         @if (Request.IsAuthenticated)
                         {
                             <li>@Html.ActionLink("Ny annonce", "Create", "BarterAds")</li>

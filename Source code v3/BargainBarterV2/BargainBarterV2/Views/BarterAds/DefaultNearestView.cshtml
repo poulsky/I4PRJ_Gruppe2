@@ -1,8 +1,15 @@
 ﻿
 @{
-    ViewBag.Title = "DefaultNearestView";
+    ViewBag.Title = "Søg";
 }
 
-<h2>DefaultNearestView</h2>
+<div class="container">
 
-<p>Du skal have en bruger for at kunne se hvilke annoncer der er tæt på dig</p>
+
+    <h2>Ups</h2>
+
+    <p>Du skal have en bruger for at kunne se hvilke annoncer der er tæt på dig</p>
+    <p>Hvis du har en bruger så log ind, ellers kan du registrere dig her</p>
+    <input class="btn btn-default" type="button" value="Registrer" onclick="location.href='@Url.Action("Register", "Account" )'" />
+    <input class="btn btn-default" type="button" value="Login" onclick="location.href='@Url.Action("Login", "Account" )'" />
+</div>
