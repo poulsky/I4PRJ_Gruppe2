@@ -5,6 +5,8 @@ Projektet stiller krav om let udvikling og ikke mindst krav om kvalitet. Automat
 \section{Continous integration}
 Der er i projektet anvendt Continous integration af systemet, således at der ved pushes automatisk kører test af systemmet.
 
+\input{sections/CI.tex}
+
 \section{Unit Testsing af controllerne}
 Da der i Bargain Barter systemmet kun er meget minimal buisness-logic, ligger størstedelen af funktionaliteten i controllerne i MVC strukturen. Denne funktionalitet er således også den vigtigste at teste. Desuden er databasen i sig selv svær at teste, og viewsne i MVC'en kan nærmest ikke testes. Det der reelt kan testes er hvad controllerne giver videre til deres views, og således ikke views dem selv. I Controllerne er der flere ting der er væsentligt at teste.
 \begin{itemize}
@@ -37,5 +39,12 @@ Som nævnt spiller design og test i høj grad sammen, hvor der som nævnt er anv
 Efterfulgt af at de enkelte unit tests af controllersne, testes integrationen af controllerne med den relle database. Da samhørigheden af de forskellige controllers er forholdsvis lav er integrationstesten en relativ simpel opgave, hvor der kun er taget de enkelte dele der er vurderet til at give mening med.    
 
 INDSÆT DPTREE
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics
+%	[width=165mm]{figures/DependencyTree.PDF}
+%	\caption{DependencyTree}
+%	\label{fig:DependencyTree}
+%\end{figure}
 
 \noindent Det sidste skridt er selvfølgelig at tests viewne, hvor der er lavet en user experience vurdering, og naturligvis en acceptest der kan ses i efterfølgende afsnit

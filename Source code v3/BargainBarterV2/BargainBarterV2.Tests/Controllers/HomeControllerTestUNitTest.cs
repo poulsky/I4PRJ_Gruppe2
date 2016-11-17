@@ -16,13 +16,13 @@ namespace BargainBarterV2.Tests.Controllers
     [TestFixture]
     public class HomeControllerTestUNitTest
     {
-        private UnitOfWork _unitOfWork;
+        private IUnitOfWork _unitOfWork;
         private HomeController _controller;
        
         [SetUp]
         public void Init()
         {
-            _unitOfWork = Substitute.For<UnitOfWork>();
+            _unitOfWork = Substitute.For<IUnitOfWork>();
             _controller = new HomeController(_unitOfWork);        
         }
 

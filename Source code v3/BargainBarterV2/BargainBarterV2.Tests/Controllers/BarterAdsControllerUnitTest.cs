@@ -19,16 +19,16 @@ namespace BargainBarterV2.Tests.Controllers
     [TestFixture]
     public class BarterAdsControllerUnitTest    
     {
-        private ApplicationDbContext _db;
-        private UnitOfWork _unitOfWork;
+        private IGenericRepository<BarterAdd> _repository;
+        private IUnitOfWork _unitOfWork;
         private BarterAdsController _controller; 
 
         [SetUp]
         public void Init()
         {
-            _unitOfWork = Substitute.For<UnitOfWork>();
-            _db = Substitute.For<ApplicationDbContext>();
-            _controller = new BarterAdsController();
+            _unitOfWork = Substitute.For<IUnitOfWork>();
+            _repository = Substitute.For<IGenericRepository<BarterAdd>>();
+            _controller = new BarterAdsController(_unitOfWork);
         }
 
         [Test]
@@ -41,23 +41,16 @@ namespace BargainBarterV2.Tests.Controllers
 
             Assert.That(result.RouteValues["Controller"], Is.EqualTo("Home"));
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
-
         }
+
         [Test]
         public void ShowBarterAdsOnMap_BarterAddRepository_Get_IsCalled()
         {
-            _controller.Index();
+            _controller.ShowBarterAdsOnMap();
             _unitOfWork.Received().UserRepository.Get();
         }
 
-        [Test]
-        public void ShowBarterAdsOnMap_BarterAddRepository_Get_ToList_IsCalled()
-        {
-            _controller.Index();
-            _unitOfWork.Received().UserRepository.Get().ToList();
-        }
-
-        [Test]
+   [Test]
         public void Details_NullId_Returns_BadRequest()
         {
             var result = _controller.Details(null);
