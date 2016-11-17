@@ -40,7 +40,7 @@ namespace BargainBarterV2.Controllers
         [Authorize]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Oplever du problemer? Så kontakt os her:";
 
             return View();
         }     
