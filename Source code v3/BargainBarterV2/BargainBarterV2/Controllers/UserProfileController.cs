@@ -51,7 +51,9 @@ namespace BargainBarterV2.Controllers
             user.Address.StreetName = postedUser.Address.StreetName;
             user.Address.StreetNumber = postedUser.Address.StreetNumber;
             user.Address.City = postedUser.Address.City;
-            user.Address.PostalCode = user.Address.PostalCode;
+            user.Address.PostalCode = postedUser.Address.PostalCode;
+            Coordinates _Coordinates = CoordinatesDistanceExtensions.GetCoordinates(user.Address);
+            user.Address.Coordinate = _Coordinates;
 
             _unitOfWork.UserRepository.Update(user);
             _unitOfWork.Save();
