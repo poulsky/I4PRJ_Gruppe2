@@ -628,3 +628,7 @@ D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\Bargai
 D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
+D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
