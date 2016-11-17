@@ -20,12 +20,12 @@ namespace BargainBarterV2.Controllers
     public class BarterAdsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        private IUnitOfWork unitOfWork = new UnitOfWork();
 
-        public BarterAdsController(ApplicationDbContext dbase, UnitOfWork unit)
+        public BarterAdsController(IUnitOfWork unit)
         {
             unitOfWork = unit;
-            db = dbase;
+            
         }
 
         public BarterAdsController()
@@ -513,6 +513,33 @@ namespace BargainBarterV2.Controllers
             item.ApplicationUser = db.Users.Find(id);
 
             return View(item);
+        }
+
+
+        public ActionResult ShowNearest(double afstand)
+        {
+            var users = unitOfWork.UserRepository.Get(includeProperties: "BarterAdds, Address");
+            ApplicationUser tempUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var currentUser = unitOfWork.UserRepository.Get(user => user.Id == tempUser.Id,
+                includeProperties: "BarterAdds, Address").Single();
+            List<ApplicationUser> neighbours = new List<ApplicationUser>();
+            List<BarterAdd> barterAdsCloseToYou= new List<BarterAdd>();
+            foreach (var user in users)
+            {
+                double distance = currentUser.Address.Coordinate.DistanceTo(user.Address.Coordinate);
+                if (distance < afstand)
+                {
+                    neighbours.Add(user);
+                }
+            }
+
+            foreach (var user in neighbours)
+            {
+                foreach(var ad in user.BarterAdds)
+                    barterAdsCloseToYou.Add(ad);
+            }
+
+            return View(barterAdsCloseToYou);
         }
     }
 }

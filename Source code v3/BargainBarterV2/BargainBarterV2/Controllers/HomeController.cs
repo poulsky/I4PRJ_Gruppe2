@@ -13,9 +13,9 @@ namespace BargainBarterV2.Controllers
 
     public class HomeController : Controller
     {
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        private IUnitOfWork unitOfWork = new UnitOfWork();
 
-        public HomeController(UnitOfWork unit)
+        public HomeController(IUnitOfWork unit)
         {
             unitOfWork = unit;
         }
@@ -40,7 +40,7 @@ namespace BargainBarterV2.Controllers
         [Authorize]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Oplever du problemer? Så kontakt os her:";
 
             return View();
         }     

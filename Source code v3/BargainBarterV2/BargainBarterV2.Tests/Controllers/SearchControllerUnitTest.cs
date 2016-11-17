@@ -24,18 +24,28 @@ namespace BargainBarterV2.Tests.Controllers
         [SetUp]
         public void Init()
         {
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = Substitute.For<IUnitOfWork>();
             _barterAddRepo = Substitute.For<IGenericRepository<BarterAdd>>();
-            _controller = new SearchController(_unitOfWork, _barterAddRepo);
+            _unitOfWork.BarterAddRepository.Returns(_barterAddRepo);
+            _controller = new SearchController(_unitOfWork);
         }
 
         [Test]
-        public void Index_GetIsCalled()
+        public void CategorySearch_Calls_BarterAdsRepository()
         {
-            _controller.Index("");
-            _barterAddRepo.Received().Get();
+            string searchstring = "Hat";
+            _controller.CategorySearch(searchstring);
+            _unitOfWork.Received().BarterAddRepository.Get(a => a.Category == searchstring);
         }
 
+        [Test]
+        public void Search_Calls_BarterAdsRepository()
+        {
+            string searchstring = "Hat";
+            _controller.Index(searchstring);
+            _unitOfWork.Received().BarterAddRepository.Get(p=> p.Titel.Contains(searchstring) && p.Traded != true);
+        }
+        
         [Test]
         public void Index_DoesNotReturnNull()
         {

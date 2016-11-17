@@ -21,10 +21,10 @@ namespace BargainBarterV2.Controllers
         }
 
 
-        public SearchController(IUnitOfWork unit, IGenericRepository<BarterAdd> repository)
+        public SearchController(IUnitOfWork unit)
         {
             unitOfWork = unit;
-            this.repository = repository;
+            this.repository = unit.BarterAddRepository;
         }
 
         // GET: Search
@@ -40,20 +40,11 @@ namespace BargainBarterV2.Controllers
 
         public ActionResult CategorySearch(string searchstring)
         {
-            var results = repository.Get(a => a.Category == searchstring);
+            var results = unitOfWork.BarterAddRepository.Get(a => a.Category == searchstring);
                 
             return View("Frontpage", results.ToList());
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                unitOfWork.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-
+    
     }
 }
