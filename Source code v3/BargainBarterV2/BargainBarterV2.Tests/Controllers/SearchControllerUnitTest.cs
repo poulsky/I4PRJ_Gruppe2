@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using BargainBarterV2.Models;
 using NSubstitute;
+using NSubstitute.ReturnsExtensions;
 
 namespace BargainBarterV2.Tests.Controllers
 {
@@ -45,5 +46,28 @@ namespace BargainBarterV2.Tests.Controllers
             _unitOfWork.Received().BarterAddRepository.Get(p=> p.Titel.Contains(searchstring) && p.Traded != true);
         }
         
+        [Test]
+        public void Index_DoesNotReturnNull()
+        {
+            ViewResult result = _controller.Index("") as ViewResult;
+            
+            Assert.That(result, Is.Not.Null);
+        }
+
+        [Test]
+        public void Index_SearchstringIsNull_ReturnsNotNull()
+        {
+            string n = null;
+            var result = _controller.Index(n);
+            Assert.That(result, Is.Not.Null);
+        }
+
+        [Test]
+        public void Categorysearch_SearchstringIsNonEmpty_ResultIsNotNull()
+        {
+            var s = "";
+            var result = _controller.CategorySearch(s);
+            Assert.That(result, Is.Not.Null);
+        }
     }
 }
