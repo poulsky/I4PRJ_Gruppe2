@@ -93,7 +93,8 @@ namespace BargainBarterV2.Controllers
 
                 foreach (var Ad in user.BarterAdds)
                 {
-                    items.Add(new SelectListItem { Text = Ad.Titel, Value = Ad.Titel.ToString() });
+                    if(Ad.Traded != true)
+                         items.Add(new SelectListItem { Text = Ad.Titel, Value = Ad.Titel.ToString() });
                 }
                 ViewBag.myAds = items;
             }
