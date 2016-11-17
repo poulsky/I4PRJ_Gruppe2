@@ -12,6 +12,8 @@ namespace BargainBarterV2.Models
         private IGenericRepository<TradeRequest> tradeReqeustRepository;
         private IGenericRepository<ApplicationUser> userRepository;
         private IGenericRepository<TradeHistory> tradeHistoryRepository;
+        private IGenericRepository<FinishedTrade> finishedTradeRepository;
+        private IGenericRepository<Rating> ratingRepository;
 
 
         public IGenericRepository<ApplicationUser> UserRepository
@@ -84,6 +86,30 @@ namespace BargainBarterV2.Models
                     this.tradeHistoryRepository = new GenericRepository<TradeHistory>(context);
                 }
                 return tradeHistoryRepository;
+            }
+        }
+
+        public IGenericRepository<FinishedTrade> FinishedTradeRepository
+        {
+            get
+            {
+                if (this.finishedTradeRepository == null)
+                {
+                    this.finishedTradeRepository = new GenericRepository<FinishedTrade>(context);
+                }
+                return finishedTradeRepository;
+            }
+        }
+
+        public IGenericRepository<Rating> RatingRepository
+        {
+            get
+            {
+                if (this.ratingRepository == null)
+                {
+                    this.ratingRepository = new GenericRepository<Rating>(context);
+                }
+                return ratingRepository;
             }
         }
 

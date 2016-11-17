@@ -42,11 +42,12 @@ namespace BargainBarterV2.Tests.Repository
 
             };
 
+
             _repository = Substitute.For<IGenericRepository<BarterAdd>>();
             _repository.Get().Returns(new List<BarterAdd>
             {
                 new BarterAdd {}
-            })
+            });
         }
     }
 }
