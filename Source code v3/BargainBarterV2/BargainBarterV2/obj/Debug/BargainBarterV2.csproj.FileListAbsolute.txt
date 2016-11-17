@@ -632,3 +632,7 @@ D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.As
 D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.Core.xml
 D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\Microsoft.AspNet.SignalR.SystemWeb.xml

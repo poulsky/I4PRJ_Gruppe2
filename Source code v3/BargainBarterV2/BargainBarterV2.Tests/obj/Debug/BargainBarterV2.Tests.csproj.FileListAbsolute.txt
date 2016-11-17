@@ -259,3 +259,5 @@ D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\
 D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\obj\Debug\BargainBarterV2.Tests.csprojResolveAssemblyReference.cache
 D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\obj\Debug\BargainBarterV2.Tests.dll
 D:\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\obj\Debug\BargainBarterV2.Tests.pdb
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\kaspe\Desktop\Skole\4-semester\PRJ\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
