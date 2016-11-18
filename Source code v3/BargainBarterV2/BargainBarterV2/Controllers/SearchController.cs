@@ -40,7 +40,7 @@ namespace BargainBarterV2.Controllers
 
         public ActionResult CategorySearch(string searchstring)
         {
-            var results = unitOfWork.BarterAddRepository.Get(a => a.Category == searchstring);
+            var results = unitOfWork.BarterAddRepository.Get(a => a.Category == searchstring && a.Traded != true);
                 
             return View("Frontpage", results.ToList());
         }

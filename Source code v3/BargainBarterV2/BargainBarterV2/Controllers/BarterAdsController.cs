@@ -521,11 +521,9 @@ namespace BargainBarterV2.Controllers
             if (User.Identity.GetUserId() != null)
             {
                 var users = unitOfWork.UserRepository.Get(includeProperties: "BarterAdds, Address");
-                ApplicationUser tempUser =
-                    System.Web.HttpContext.Current.GetOwinContext()
-                        .GetUserManager<ApplicationUserManager>()
-                        .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-                var currentUser = unitOfWork.UserRepository.Get(user => user.Id == tempUser.Id,
+                var userid = User.Identity.GetUserId();
+                
+                var currentUser = unitOfWork.UserRepository.Get(user => user.Id == userid,
                     includeProperties: "BarterAdds, Address").Single();
                 List<ApplicationUser> neighbours = new List<ApplicationUser>();
                 List<BarterAdd> barterAdsCloseToYou = new List<BarterAdd>();
@@ -541,7 +539,10 @@ namespace BargainBarterV2.Controllers
                 foreach (var user in neighbours)
                 {
                     foreach (var ad in user.BarterAdds)
-                        barterAdsCloseToYou.Add(ad);
+                    {
+                        if(!ad.Traded)
+                            barterAdsCloseToYou.Add(ad);
+                    }
                 }
 
                 return View("Frontpage", barterAdsCloseToYou);
