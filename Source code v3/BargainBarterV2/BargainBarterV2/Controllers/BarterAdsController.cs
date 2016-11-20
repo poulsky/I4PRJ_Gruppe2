@@ -474,7 +474,7 @@ namespace BargainBarterV2.Controllers
         public ActionResult ShowTrades()
         {
             var userId = User.Identity.GetUserId();
-            var tradeRequests = from r in db.TradeRequests
+            var tradeRequests = from r in db.TradeRequests.Include(u => u.ApplicationUser)
                                 where r.ApplicationUserId == userId && r.RequestStates != TradeRequest.States.Traded
                                 select r;
 
@@ -488,7 +488,7 @@ namespace BargainBarterV2.Controllers
                     System.Web.HttpContext.Current.GetOwinContext()
                         .GetUserManager<ApplicationUserManager>()
              .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var item = db.TradeHistory
+            var item = db.TradeHistory.Include(u => u.ApplicationUser)
                 .FirstOrDefault(b => b.ApplicationUser.Id == user.Id);
 
             if (item == null)
