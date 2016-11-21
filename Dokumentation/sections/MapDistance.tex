@@ -1,10 +1,11 @@
 \section{Map og distance}
 I forbindelse med implementering af sytemet var en del af annoncen i forhold til projektets rammer, at bytteartiklens position skulle vises på et kort og afstanden til annoncen skulle også vises. Dette blev implementeret ved brug af et googlemap-api.
-I det følgende beskrives brugen af googlemap-api'et. API'et er blevet anvendt flere steder i projektet, det blev brugt hvert gang en bruger opretter sig med sin addresse på siden. Den indtastede addresse bliver ved brug af API'et omdannet til koordinater. Koordinaterne er nødvendige for at kunne beregne afstanden til en bytteannonce.
+I det følgende beskrives brugen af googlemap-api'et. API'et er blevet anvendt flere steder i projektet, det blev brugt hvert gang en bruger opretter sig med sin addresse på siden. Den indtastede addresse bliver ved brug af API'et omdannet til koordinater. Koordinaterne er nødvendige for at kunne beregne afstanden til en bytteannonce samt at vise 
 
 Selve beregninen af afstanden gøres ved normal trigonometri og giver derfor afstanden i fugleflugt. Dette blev valgt for overskuelighedens skyld. 
 
-Selve kortvisningen udføres ved brug af Jmelosegui.Mvc.GoogleMap, der en GoogleMap Control udviklet specielt til ASP.NET MVC. Denne kontrol blev tilføjet som en nuget package til projektet og . Kontrollen virker ved, at man i viewet oprettet et map på følgende måde:
+Selve kortvisningen udføres ved brug af Jmelosegui.Mvc.GoogleMap, der en GoogleMap Control udviklet specielt til ASP.NET MVC. Denne kontrol blev tilføjet som en nuget package til projektet og . Kontrollen virker ved, at man i viewet oprettet et map og sætter de basale indstillinger som Bredde- og længdegrad for centrum, zoom-level, størrelse og markers mm.
+Alt dette kan ses på nedenstående kode-eksempel, der viser en positionen af en barteradd på et kort.
 \begin{verbatim}
 	   @(Html.GoogleMap().Name("map")
 	.Height(200)
@@ -17,6 +18,17 @@ Selve kortvisningen udføres ved brug af Jmelosegui.Mvc.GoogleMap, der en Google
 	))
 \end{verbatim}
 
-Som det fremgår af overstående eksempel kan man linke fra modellen til kortet - i dette eksempel sættes markerens titel=titlen fra den medgivne model. Dette gøres ved brug af normal MVC-struktur, hvor controlleren for dette view giver en model med. Kortet kan siden tilpasses i størrelse, zoom-level og på mange andre måder.
-Jmelosegui.Mvc.GoogleMap er også blevet brugt i forbindelse med visning af samtlige annoncer på et kort. Dette er gjort på samme måde som vist overover dog er der bare linket til en af list indeholder modeller i stedet for en enkel model.
+Den overstående kode giver kortet, der kan ses på figur \ref{fig:GoogleMaps}. På kortet er en markerør, der viser annoncens position.
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=165mm]
+	{figures/GoogleMaps.png}
+	\caption{Eksempel på kort, der viser annonces placering}
+	\label{fig:GoogleMaps}
+\end{figure}
+
+
+Som det fremgår af overstående eksempel kan man linke fra modellen til kortet i ligehed med den normale adfærd i MVC. I dette eksempel sættes markerens titel=titlen fra den medgivne model. Dette gøres ved brug af normal MVC-struktur, hvor controlleren for dette view giver en model med. Kortet kan siden tilpasses i størrelse, zoom-level og på mange andre måder.
+Jmelosegui.Mvc.GoogleMap er også blevet brugt i forbindelse med visning af samtlige annoncer på et kort. Dette er gjort på samme måde som vist overover dog er der bare linket til en af liste, der indeholder model-data i stedet for en enkel model.
 

@@ -2,15 +2,15 @@
 Repository pattern blev implementeret ved brug af forskellige dele og lag. I dette afsnit vil de forskellige dele blive beskrevet. 
 I starten var tanken med repository-pattern, at alle klasseren i model blev tilknyttet et repository, der indeholdt de gængse CRUD-operationer (Create, Read, Update, Delete) på databasen i forbindelse med hver model. Hvert repository blev nedarvet fra et interface, dette er gjort på baggrund ad DIP, der gør at i forbindelse med test kan repositoriet mockes ud.
 Men efter implementering af flere repository blev, det observeret at koden for de forskellige repositories var stort set identisk, hvilket også kan se på en tidligere version af klassediagrammerne på figur \ref{fig:Repository}.
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics
-%	[width=165mm]{figures/Repository.PDF}
-%	\caption{Oversigt over alle Repository}
-%	\label{fig:Repository}
-%\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=165mm]{figures/Repository.PDF}
+	\caption{Oversigt over flere meget identiske repositories}
+	\label{fig:Repository}
+\end{figure}
 
-Problemet med den identiske kode i de forskellige repository blev løst ved at lave et generelt template-baseret repository (Generisk repository). Det generiske repository indeholder en template baseret implementering af de enkelte CRUD-operationer. Man kan se metoderne og opbygningen af GenericRepository-klassen på figur \ref{fig:GenericRepository}
+\noindent Problemet med den identiske kode i de forskellige repository blev løst ved at lave et generelt template-baseret repository (Generisk repository). Det generiske repository indeholder en template baseret implementering af de enkelte CRUD-operationer. Man kan se metoderne og opbygningen af GenericRepository-klassen på figur \ref{fig:GenericRepository}
 \begin{figure}[H]
 	\centering
 	\includegraphics
