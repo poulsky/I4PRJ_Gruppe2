@@ -8,7 +8,7 @@ Der er i projektet anvendt Continous integration af systemet, således at der ve
 \input{sections/CI.tex}
 
 \section{Unit Testsing af controllerne}
-Da der i Bargain Barter systemmet kun er meget minimal buisness-logic, ligger størstedelen af funktionaliteten i controllerne i MVC strukturen. Denne funktionalitet er således også den vigtigste at teste. Desuden er databasen i sig selv svær at teste, og viewsne i MVC'en kan nærmest ikke testes. Det der reelt kan testes er hvad controllerne giver videre til deres views, og således ikke views dem selv. I Controllerne er der flere ting der er væsentligt at teste.
+Da der i Bargain Barter systemmet kun er meget minimal buisness-logic, ligger størstedelen af funktionaliteten i controllerne. Denne funktionalitet er således også den vigtigste at teste. Derudover er databasen i sig selv svær at teste, og de forskellige views i MVC'en kan ikke testes. Det der reelt kan testes er hvad controllerne giver videre til deres views og at der bliver kaldt ordentligt ned til projektets repository pattern, der er abstraktionen til databasen. I Controllerne er der flere ting der er væsentligt at teste.
 \begin{itemize}
 	\item Hvad gives med i viewbagen
 	\item Buisness-logic funktioner som controllerne bruger
