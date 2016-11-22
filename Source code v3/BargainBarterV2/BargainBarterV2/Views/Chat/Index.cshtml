@@ -46,6 +46,8 @@
     <!--SignalR script to update the chat page and send messages.-->
     <script>
         $(function () {
+
+            var firsthit = 0;
             // Reference the auto-generated proxy for the hub.
             var chat = $.connection.chatHub;
             // Create a function that the hub can call back to display messages.
@@ -60,11 +62,14 @@
             $('#message').focus();
             // Start the connection.
             $.connection.hub.start().done(function () {
+                if (firsthit === 0) {
+                    chat.server.send($('#displayname').val(), "har joinet chatten!");
+                    firsthit++;
+                }
                 $('#sendmessage').click(function () {
+                    
                     // Call the Send method on the hub.
                     chat.server.send($('#displayname').val(), $('#message').val());
-
-
 
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
