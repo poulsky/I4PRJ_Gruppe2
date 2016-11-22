@@ -471,6 +471,7 @@
     <Content Include="Content\img\hand-shake-icon-256x256.png" />
     <Content Include="Content\img\Koncept.jpg" />
     <Content Include="Content\img\Koncept.svg" />
+    <Content Include="Content\img\TradeArrows.png" />
     <Content Include="favicon-16x16.png">
       <DependentUpon>favicon.ico</DependentUpon>
     </Content>
