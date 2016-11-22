@@ -3,16 +3,37 @@
 I projektet blev det valgt at lave hjemmesiden i ASP.NET MVC. I følgende afsnit redegøres for systemets arkitektur og de anvendte patterns sammen med en begrundelse for deres valg.
 
 \section{ASP.NET}
+ASP.NET er et udviklings framework for web-applikationer.
+Det er en del af .NET Frameworket, der gør at al kode, der er  kompatible med .NET og CLR også er kombatibel i ASP.NET. Dette har været en af de væsentligste grunde til, at ASP.NET er blevet benyttet, da det har gjort at projektet kunne skrives i C\#, der er blevet undervist i på semesterets andre kurser. Gruppen har desuden også modtaget undervisning i ASP.NET i forbindelse med faget I4GUI.
 
 \section{MVC}
-Model-View-Controller\footnote{https://msdn.microsoft.com/en-us/library/ff649643.aspx} er et GUI-pattern, der forsøger at adskille den grafiske brugergrænseflade fra resten af systemet. MVC består af 3 dele:
+Model-View-Controller\footnote{https://msdn.microsoft.com/en-us/library/ff649643.aspx} er et GUI-pattern, der forsøger at adskille den grafiske brugergrænseflade fra resten af systemet. Denne adskille gør, at applikationen bliver mere testbar og samtidig mere skalerbar.
+MVC består af 3 dele:
 \begin{itemize}
 	\item Model: er den domænespecifikke kode, der indeholder klasserne og den tilhørende kode for ens application.
 	\item View: er den grafiske del af programmet og indeholder præsentationslogikken.
 	\item Controller:er en grænsefladen mellem modellen og viewet. Dens opgave er at opdatere brugergrænsefladen og modellen.
 \end{itemize}
 
-MVC blev valgt på baggrund af, at det er en integreret del af ASP.NET, der blev set som et spændende udfordring og framework af gruppen. 
+MVC blev valgt på baggrund af, at det er en integreret del af ASP.NET MVC. ASP.NET MVC er sat op en måde så applikationen bliver router rundt på baggrund af argumenterne i url.
+Dette bliver sat op i RouteConfig.cs, hvor der som standard er følgende opsætning:
+\begin{verbatim}
+public class RouteConfig
+{
+	public static void RegisterRoutes(RouteCollection routes)
+	{
+		routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+		
+		routes.MapRoute(
+		name: "Default",
+		url: "{controller}/{action}/{id}",
+		defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+		);
+	}
+}
+\end{verbatim}
+Overordnede kodeklump viser, hvordan ASP.NET MVC router mellem de forskellige sider på baggrund af url'en. Det første argument i url'en er controlleren, der tager stilling til, hvilken controller, der skal kaldes. Næste argument er actionen, der skal kaldes i den valgte controller og det sidste argument er parametrene actionen skal kaldes med.
+Det kan også ses, at der er opsat nogen default argumenter, hvis der ikke er angivet nogen.
 
 \section{Lag}
 Systemet bygger på en trelagsmodel som kan ses i figur \ref{fig:lagmodel}.
@@ -42,6 +63,7 @@ Repository pattern er blevet anvendt for at opnå en lavere kobling i systemet m
 
 \section{Unit Of Work}
 Unit of Work er et design pattern, der holder styr på in-memory opdateringer og skriver disse opdateringer til databasen. Dette er dermed den eneste klasse, der taler sammen med databasen.
-Dette opnås ved at den vedlige holder en liste af alle objekter, der er bevet ændret i en database-transaction og sørge for at databasen bliver opdateret, når en transaction er færdig.
+Dette er blevet opnået ved at, at unitofWork-klassen indeholder et GenericRepository af alle de forskellige model-klasser. Det er unitofwork, der vedligeholder disse repositories, da unitofwork er den eneste, der tilføjer eller sletter i databasen. Det er dermed unitofwork, der laver de gængse database-transaction og sørge for at databasen bliver opdateret, når en transaction er færdig.
+
 
 \section{Generelle overvejelser i forbindelse med Arkitektur}
