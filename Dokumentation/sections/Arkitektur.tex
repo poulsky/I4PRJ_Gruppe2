@@ -35,10 +35,27 @@ public class RouteConfig
 Overordnede kodeklump viser, hvordan ASP.NET MVC router mellem de forskellige sider på baggrund af url'en. Det første argument i url'en er controlleren, der tager stilling til, hvilken controller, der skal kaldes. Næste argument er actionen, der skal kaldes i den valgte controller og det sidste argument er parametrene actionen skal kaldes med.
 Det kan også ses, at der er opsat nogen default argumenter, hvis der ikke er angivet nogen.
 
-\section{Layers}
-\subsection{Presentationlogic}
-\subsection{Buisness-logic}
-\subsection{Database}
+\section{Lag}
+Systemet bygger på en trelagsmodel som kan ses i figur \ref{fig:lagmodel}.
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=165mm]{figures/lagmodel.png}
+	\caption{Lagmodel for systemet}
+	\label{fig:lagmodel}
+\end{figure}
+
+Hvis man lægger denne model ned over systemet, kan man sige at Viewet er præsentationslogikken, controllers og modellen er business logikken og entity framework samt modellen er vores Data access lag.
+
+\subsection{Presentationlag}
+For et system som dette, og med de ikke-funktionelle krav der er stillet, er brugervenlighed i højsædet. Dette betyder at præsentationslogikken er ekstremt vigtig for systemet. Det skal være let for en bruger at navigere rundt på siden og kunne forstå hvad meningen er med de forskellige handlinger der kan foretages.
+
+Da projektet er en webapplikation præsenteres den grundlæggende i HTML i en given browser. Denne HTML bliver vha. CSS og Javascript stylet så udseendet bliver godt at se på som muligt. I forbindelse med styling af views er front-end frameworket Bootstrap\footnote{http://getbootstrap.com/} anvendt. Bootstrap bliver anvendt på mange hjemmesider, og er derfor en stor hjælp til let at lave et velkendt design.
+
+I  praksis bliver  præsentationslaget i ASP.NET returneret i controllers. Disse controllers foretager en handling med fx et databasekald, hvorefter der returneres et view fra controlleren som brugeren kan se.
+\subsection{Businesslag}
+
+\subsection{Databaselag}
 
 \section{Repository Pattern}
 Repository er et pattern, der indføres et ekstra lag (Repository-lag), der virker som DAL mellem buisness-logikken og databasen. Dette medfører at buisness-logikken ikke skriver direkte ned i databasen, så dette ikke bliver afhængig af databasen. Buisness-laget kalder bare ned i repository-laget, der så sørger for transaktionen med databasen. 
