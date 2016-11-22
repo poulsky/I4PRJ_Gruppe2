@@ -7,6 +7,7 @@ using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -527,14 +528,15 @@ namespace BargainBarterV2.Controllers
                     includeProperties: "BarterAdds, Address").Single();
                 List<ApplicationUser> neighbours = new List<ApplicationUser>();
                 List<BarterAdd> barterAdsCloseToYou = new List<BarterAdd>();
-                foreach (var user in users)
+                Parallel.ForEach(users, user =>
                 {
                     double distance = currentUser.Address.Coordinate.DistanceTo(user.Address.Coordinate);
                     if (distance < afstand)
                     {
                         neighbours.Add(user);
                     }
-                }
+                });
+                
 
                 foreach (var user in neighbours)
                 {

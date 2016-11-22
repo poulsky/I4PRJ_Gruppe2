@@ -41,7 +41,7 @@ namespace BargainBarterV2.Models
             }
             else
             {
-                return query.ToList();
+                return query.ToList().AsParallel();
             }
         }
 
