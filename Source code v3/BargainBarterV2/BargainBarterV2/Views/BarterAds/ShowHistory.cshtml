@@ -1,5 +1,6 @@
 ﻿
 
+@using Microsoft.AspNet.Identity
 @model BargainBarterV2.Models.TradeHistory
 
 
@@ -70,7 +71,20 @@
 
                     </div>
                     <div class="col-md-3">
-                        Indsæt rating knap her
+                        @foreach (var rating in item.Ratings)
+                        {
+                            if (rating.ApplicationUserId == User.Identity.GetUserId())
+                            {
+                                if (rating.RatingValue != 0)
+                                {
+                                    <p>Show Rating</p>
+                                }
+                                else
+                                {
+                                    <p>Ikke anmeldt endnu</p>
+                                }
+                            }
+                        }
                     </div>
 
 

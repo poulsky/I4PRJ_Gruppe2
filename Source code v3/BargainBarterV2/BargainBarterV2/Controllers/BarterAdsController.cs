@@ -551,6 +551,22 @@ namespace BargainBarterV2.Controllers
             }
             return View("DefaultNearestView");
         }
+
+        public ActionResult ShowNeedRating()
+        {
+            ApplicationUser user =
+                    System.Web.HttpContext.Current.GetOwinContext()
+                        .GetUserManager<ApplicationUserManager>()
+             .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var item = db.TradeHistory.Include(u => u.ApplicationUser)
+                .FirstOrDefault(b => b.ApplicationUser.Id == user.Id);
+
+
+            if (item == null)
+                item = new TradeHistory();
+
+            return View(item);
+        }
     }
 }
 

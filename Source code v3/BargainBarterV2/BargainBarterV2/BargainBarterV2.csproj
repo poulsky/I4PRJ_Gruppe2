@@ -584,6 +584,7 @@
     <Content Include="Views\BarterAds\ShowHistory.cshtml" />
     <Content Include="Views\BarterAds\ShowTheirTradeHistory.cshtml" />
     <Content Include="Views\Chat\Index.cshtml" />
+    <Content Include="Views\BarterAds\ShowNeedRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\SeedingAdsPictures\" />

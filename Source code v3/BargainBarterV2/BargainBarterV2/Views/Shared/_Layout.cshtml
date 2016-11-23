@@ -78,8 +78,9 @@
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Profil", "ShowUserProfile", "UserProfile", new { id = User.Identity.GetUserId() }, new { @class = "" })</li>
                                     <li>@Html.ActionLink("Mine annoncer", "ManageAds", "BarterAds")</li>
-                                    <li>@Html.ActionLink("Show Trade Requests", "ShowTrades", "BarterAds")</li>
-                                    <li>@Html.ActionLink("Trade History", "ShowHistory", "BarterAds")</li>
+                                    <li>@Html.ActionLink("Bytteanmodninger", "ShowTrades", "BarterAds")</li>
+                                    <li>@Html.ActionLink("Byttehistorik", "ShowHistory", "BarterAds")</li>
+                                    <li>@Html.ActionLink("Mangler at anmelde", "ShowNeedRating", "BarterAds")</li>
                                     <li role="separator" class="divider"></li>
                                     @*<li class="dropdown-header">Personal settings</li>
                                         <li><a href="#">User Settings</a></li>*@

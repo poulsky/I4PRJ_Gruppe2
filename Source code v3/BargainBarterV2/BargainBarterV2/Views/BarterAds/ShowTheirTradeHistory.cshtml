@@ -1,5 +1,7 @@
 ﻿
 
+@using BargainBarterV2.Models
+@using Microsoft.AspNet.Identity
 @model BargainBarterV2.Models.TradeHistory
 
 
@@ -70,7 +72,31 @@
 
                     </div>
                     <div class="col-md-3">
-                        Indsæt rating knap her
+
+
+                        @for (int j = 0; j < item.Ratings.Count; j++)
+                        {
+                            if (item.Ratings[j].ApplicationUser == item.BarterAdds[i].ApplicationUser)
+                            {
+                                if (item.Ratings[j].RatingValue == 0)
+                                {
+                                    <p> Ikke anmeldt endnu</p>
+                                    if (item.Ratings[1 - j].ApplicationUserId == User.Identity.GetUserId())
+                                    {
+                                        <input type="submit" value="Anmeld" />
+                                    }
+                                }
+                                else
+                                {
+                                    <p> Show Rating</p>
+                                }
+
+
+
+                            }
+
+
+                        }
                     </div>
 
 
