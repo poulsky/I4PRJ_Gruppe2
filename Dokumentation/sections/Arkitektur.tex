@@ -4,7 +4,7 @@ I projektet blev det valgt at lave hjemmesiden i ASP.NET MVC. I følgende afsnit
 
 \section{ASP.NET}
 ASP.NET er et udviklings framework for web-applikationer.
-Det er en del af .NET Frameworket, der gør at al kode, der er  kompatible med .NET og CLR også er kombatibel i ASP.NET. Dette har været en af de væsentligste grunde til, at ASP.NET er blevet benyttet, da det har gjort at projektet kunne skrives i C\#, der er blevet undervist i på semesterets andre kurser. Gruppen har desuden også modtaget undervisning i ASP.NET i forbindelse med faget I4GUI.
+Det er en del af .NET Frameworket, der gør at al kode, der er  kompatible med .NET og CLR også er kombatibelt i ASP.NET. Dette har været en af de væsentligste grunde til, at ASP.NET er blevet benyttet, da det har gjort at projektet kunne skrives i C\#, der er blevet undervist i på semesterets andre kurser. Gruppen har desuden også modtaget undervisning i ASP.NET i forbindelse med faget I4GUI.
 
 \section{MVC}
 Model-View-Controller\footnote{https://msdn.microsoft.com/en-us/library/ff649643.aspx} er et GUI-pattern, der forsøger at adskille den grafiske brugergrænseflade fra resten af systemet. Denne adskille gør, at applikationen bliver mere testbar og samtidig mere skalerbar.
@@ -32,7 +32,7 @@ public class RouteConfig
 	}
 }
 \end{verbatim}
-Overordnede kodeklump viser, hvordan ASP.NET MVC router mellem de forskellige sider på baggrund af url'en. Det første argument i url'en er controlleren, der tager stilling til, hvilken controller, der skal kaldes. Næste argument er actionen, der skal kaldes i den valgte controller og det sidste argument er parametrene actionen skal kaldes med.
+Overordnede kode	 viser, hvordan ASP.NET MVC router mellem de forskellige sider på baggrund af url'en. Det første argument i url'en er controlleren, der tager stilling til, hvilken controller, der skal kaldes. Næste argument er actionen, der skal kaldes i den valgte controller og det sidste argument er parametrene actionen skal kaldes med.
 Det kan også ses, at der er opsat nogen default argumenter, hvis der ikke er angivet nogen.
 
 \section{Lag}
@@ -65,5 +65,7 @@ Repository pattern er blevet anvendt for at opnå en lavere kobling i systemet m
 Unit of Work er et design pattern, der holder styr på in-memory opdateringer og skriver disse opdateringer til databasen. Dette er dermed den eneste klasse, der taler sammen med databasen.
 Dette er blevet opnået ved at, at unitofWork-klassen indeholder et GenericRepository af alle de forskellige model-klasser. Det er unitofwork, der vedligeholder disse repositories, da unitofwork er den eneste, der tilføjer eller sletter i databasen. Det er dermed unitofwork, der laver de gængse database-transaction og sørge for at databasen bliver opdateret, når en transaction er færdig.
 
+\section{SignalR}
+SignalR er et biblotek til ASP.NET miljøet, som giver adgang til at benytte real-time funktioner på det website man udvikler på. Det er meget nyttigt, når man vil have en form for interaktion med brugerne, eller mellem brugere. Det forgår i browseren, men kan stadig lave kald tilbage til severen. Det er dette API som chat roomet, der udviklet er baseret på. 
 
 \section{Generelle overvejelser i forbindelse med Arkitektur}
