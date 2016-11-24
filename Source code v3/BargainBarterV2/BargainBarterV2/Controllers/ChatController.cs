@@ -10,9 +10,10 @@ namespace BargainBarterV2.Controllers
 {
     public class ChatController : Controller
     {
-
+        
         UnitOfWork unitOfWork = new UnitOfWork();
-        // GET: Chat
+        // GET: Chat,
+        [Authorize]
         public ActionResult Index()
         {
             var id = User.Identity.GetUserId();

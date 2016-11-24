@@ -65,5 +65,7 @@ Repository pattern er blevet anvendt for at opnå en lavere kobling i systemet m
 Unit of Work er et design pattern, der holder styr på in-memory opdateringer og skriver disse opdateringer til databasen. Dette er dermed den eneste klasse, der taler sammen med databasen.
 Dette er blevet opnået ved at, at unitofWork-klassen indeholder et GenericRepository af alle de forskellige model-klasser. Det er unitofwork, der vedligeholder disse repositories, da unitofwork er den eneste, der tilføjer eller sletter i databasen. Det er dermed unitofwork, der laver de gængse database-transaction og sørge for at databasen bliver opdateret, når en transaction er færdig.
 
+\section{SignalR}
+SignalR er et biblotek til ASP.NET miljøet, som giver adgang til at benytte real-time funktioner på det website man udvikler på. Det er meget nyttigt, når man vil have en form for interaktion med brugerne, eller mellem brugere. Det forgår i browseren, men kan stadig lave kald tilbage til severen. Det er dette API som chat roomet, der udviklet er baseret på. 
 
 \section{Generelle overvejelser i forbindelse med Arkitektur}
