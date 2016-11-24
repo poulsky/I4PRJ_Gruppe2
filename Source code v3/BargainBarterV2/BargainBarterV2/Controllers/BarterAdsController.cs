@@ -565,6 +565,42 @@ namespace BargainBarterV2.Controllers
 
             return View(item);
         }
+
+        public ActionResult GiveRating(string id, int finishedTradeId)
+        {
+            var theirUser = unitOfWork.UserRepository.GetByID(id);
+            var finishedTrade = unitOfWork.FinishedTradeRepository.Get(x => x.FinishedTradeId == finishedTradeId, includeProperties: "BarterAdds").Single();
+
+            //foreach (var barterAd in finishedTrade.BarterAdds)
+            //{
+            //    if (barterAd.ApplicationUserId == theirUser.Id)
+            //    {
+
+            //        break;
+            //    }
+            //}
+
+            ViewBag.otherUser = theirUser;
+            return View(finishedTrade);
+        }
+
+        public ActionResult ConfirmRating(string ratingComment, int ratingValue, int finishedTradeId)
+        {
+            var finishedTrade = unitOfWork.FinishedTradeRepository.GetByID(finishedTradeId);
+            var myUserId = User.Identity.GetUserId();
+
+            foreach (var rating in finishedTrade.Ratings)
+            {
+                if (rating.ApplicationUserId != myUserId)
+                {
+                    rating.RatingComment = ratingComment;
+                    rating.RatingValue = ratingValue;
+                    unitOfWork.RatingRepository.Update(rating);
+                    unitOfWork.Save();
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
 
