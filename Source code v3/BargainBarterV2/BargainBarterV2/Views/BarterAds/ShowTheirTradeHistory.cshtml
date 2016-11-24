@@ -83,7 +83,13 @@
                                     <p> Ikke anmeldt endnu</p>
                                     if (item.Ratings[1 - j].ApplicationUserId == User.Identity.GetUserId())
                                     {
-                                        <input type="submit" value="Anmeld" />
+                                       using (Html.BeginForm("GiveRating", "BarterAds", new { id = @Model.ApplicationUser.Id }, FormMethod.Get))
+                                       {
+                                           //<button type="button" class="btn btn-primary btn-md">Give rating</button>
+                                        @Html.Hidden("finishedTradeId", item.FinishedTradeId)
+                                        <input type="submit" class="btn btn-primary btn-md" value="Give rating" />
+
+                                       }
                                     }
                                 }
                                 else
