@@ -29,16 +29,16 @@ Den fulde liste af test kan ses nedenfor.
 		\textbf{Controller} & \textbf{Test} & \textbf{Beskrivelse} \\
 		\hline
 		BarterAds-Controller &  Index\_RedirectsToController-\_HomeActionIndex & Tester om controlleren faktisk kalder der rigtige view til Home. \\
-		\hline
+		
 		& ShowBarterAdsOnMap-\_BarterAddRepository-\_Get\_IsCalled & Tester om controller kalder den rigtige metode for at vise alle barteradds på kortet\\
-		\hline
+	
 		& Details\_NullId\_Returns-\_BadRequest & Tester om hvis metoden Details får Null, som id, så returnerer controlleren en BadRequest, kode 400. \\
 		\hline
 		HomeController & Index\_BarterAddRepository-\_Get\_IsCalled & Tester om den metode der viser alle barteradds på Index siden, bliver vist. \\
 		\hline
-		SearchController & Search\_Calls-\_BarterAdsRepository & Tester om den rette metode bliver kaldt når man søger på en bestemt ting. \\
+		SearchController & Search\_Calls-\_BarterAdsRepository & Tester om den BarterAddRepository bliver kaldt når man søger efter en bestemt ting \\
+		& CategorySearch\_Calls-\_BarterAdsRepository & Tester om BarterAdsRepository anvendes at og bliver kaldt når man vælger kategori \\
 		\hline
-		
 		
 		
 	\end{tabular}
@@ -58,16 +58,17 @@ Som nævnt spiller design og test i høj grad sammen, hvor der som nævnt er anv
 	\label{fig:UnitOfWorkMock}
 \end{figure}
 
-\section{Integrationtesting}
-Efterfulgt af at de enkelte unit tests af controllersne, testes integrationen af controllerne med den relle database. Da samhørigheden af de forskellige controllers er forholdsvis lav er integrationstesten en relativ simpel opgave, hvor der kun er taget de enkelte dele der er vurderet til at give mening med.    
-
-INDSÆT DPTREE
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics
-%	[width=165mm]{figures/DependencyTree.PDF}
-%	\caption{DependencyTree}
-%	\label{fig:DependencyTree}
-%\end{figure}
-
-\noindent Det sidste skridt er selvfølgelig at tests viewne, hvor der er lavet en user experience vurdering, og naturligvis en acceptest der kan ses i efterfølgende afsnit
+\section{Integrationstest}
+%Efterfulgt af at de enkelte unit tests af controllersne, testes integrationen af controllerne med den relle database. Da samhørigheden af de forskellige controllers er forholdsvis lav er integrationstesten en relativ simpel opgave, hvor der kun er taget de enkelte dele der er vurderet til at give mening med.    
+%
+%INDSÆT DPTREE
+%%\begin{figure}[H]
+%%	\centering
+%%	\includegraphics
+%%	[width=165mm]{figures/DependencyTree.PDF}
+%%	\caption{DependencyTree}
+%%	\label{fig:DependencyTree}
+%%\end{figure}
+%
+%\noindent Det sidste skridt er selvfølgelig at tests viewne, hvor der er lavet en user experience vurdering, og naturligvis en acceptest der kan ses i efterfølgende afsnit
+Efterfulgt af unit test de enkelte controller, skal integrationen mellem de forskellige dele af systemet testes. Der er dog imidlertid ikke den store afhængighed mellem de forskellige controllers i systemet, hvilket MVC også lægger op til. Det ville derfor ikke give mening at lave en integrationstest af systemet, da der reelt er få dele af systemet, hvor man kan teste for afhængigheden mellem de forskellige dele af systemet. \\
