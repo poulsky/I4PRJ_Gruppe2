@@ -332,8 +332,6 @@ namespace BargainBarterV2.Controllers
                 int tradeId = id;
                 string dropValue = myAds;
 
-
-
                 //BarterAdd myAd = db.BarterAdds
                 //   .Single(p => p.Titel == dropValue);
 
