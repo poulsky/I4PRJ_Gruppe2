@@ -8,6 +8,8 @@
         IGenericRepository<TradeHistory> TradeHistoryRepository { get; }
         IGenericRepository<TradeRequest> TradeRequestRepository { get; }
         IGenericRepository<ApplicationUser> UserRepository { get; }
+        IGenericRepository<FinishedTrade> FinishedTradeRepository { get; }
+        IGenericRepository<Rating> RatingRepository { get; }
 
         void Dispose();
         void Save();
