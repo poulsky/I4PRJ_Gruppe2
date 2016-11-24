@@ -394,7 +394,6 @@
     <Content Include="Content\css\chat.css" />
     <Content Include="Content\css\default.css" />
     <Content Include="Content\css\Home.css" />
-    <Content Include="Content\css\ShowBarterAd.css" />
     <Content Include="Content\img\BargainBarter.png" />
     <Content Include="Content\img\Favicon\android-icon-144x144.png">
       <DependentUpon>favicon.ico</DependentUpon>
