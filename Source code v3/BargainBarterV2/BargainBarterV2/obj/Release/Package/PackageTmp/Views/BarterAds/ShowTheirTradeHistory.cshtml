@@ -1,0 +1,116 @@
+﻿
+
+@using BargainBarterV2.Models
+@using Microsoft.AspNet.Identity
+@model BargainBarterV2.Models.TradeHistory
+
+
+@{
+    ViewBag.Title = "Byttehistorik";
+}
+
+<h3 class="title">@Model.ApplicationUser.Firstname @Model.ApplicationUser.Lastname's byttehistorik</h3>
+
+
+@foreach (var item in Model.FinishedTrades)
+{
+
+
+    for (int i = 0; i < item.BarterAdds.Count; i++)
+    {
+        if (item.BarterAdds[i].ApplicationUser == Model.ApplicationUser)
+        {
+            <div class="container" style="border: 6px solid #8BA870; border-radius: 6px;background:#BCED91">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="bargainbarter-margin-top">
+                            <span class="text-primary">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[i].Titel)
+                            </span>
+                            ,
+                            <span class="text-muted">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[i].Category)
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-3">
+                        <p class="bargainbarter-margin-top">
+                            <span class="text-primary">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].Titel)
+                            </span>
+                            ,
+                            <span class="text-muted">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].Category)
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-3">
+
+
+                        @Html.DisplayFor(modelItem => Model.ApplicationUser.Firstname) @Html.DisplayFor(modelItem => Model.ApplicationUser.Lastname)s annonce
+                        <img class="bargainbarter-margin-all" src='@Url.Action("ViewPhoto", new {id = item.BarterAdds[i].BarterAddId})' width="260" height="200" />
+
+                    </div>
+                    <div class="col-md-3">
+
+                        <img class="bargainbarter-margin-all" src="~/Content/img/hand-shake-icon-256x256.png" width="180" height="120" align="right" verticalalign="bottom" />
+                    </div>
+                    <div class="col-md-3">
+
+
+                        @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].ApplicationUser.Firstname) @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].ApplicationUser.Lastname)s annonce
+                        <img class="bargainbarter-margin-all" src='@Url.Action("ViewPhoto", new {id = item.BarterAdds[1-i].BarterAddId})' width="260" height="200" />
+
+                    </div>
+                    <div class="col-md-3">
+
+
+                        @for (int j = 0; j < item.Ratings.Count; j++)
+                        {
+                            if (item.Ratings[j].ApplicationUser == item.BarterAdds[i].ApplicationUser)
+                            {
+                                if (item.Ratings[j].RatingValue == 0)
+                                {
+                                    <p> Ikke anmeldt endnu</p>
+                                    if (item.Ratings[1 - j].ApplicationUserId == User.Identity.GetUserId())
+                                    {
+                                        <input type="submit" value="Anmeld" />
+                                    }
+                                }
+                                else
+                                {
+                                    <p> Show Rating</p>
+                                }
+
+
+
+                            }
+
+
+                        }
+                    </div>
+
+
+
+
+
+                </div>
+
+
+            </div>
+
+        }
+    }
+
+}
+
+

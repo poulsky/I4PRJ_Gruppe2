@@ -1,0 +1,107 @@
+﻿
+@model IEnumerable<BargainBarterV2.Models.TradeRequest>
+
+
+
+
+
+@{
+    ViewBag.Title = "Bytteanmodninger";
+}
+
+<h3 class="title">Dine bytteanmodninger</h3>
+
+
+
+
+@foreach (var item in Model)
+{
+    for (int i = 0; i < item.BarterAdds.Count; i++)
+    {
+        if (item.BarterAdds[i].ApplicationUser == item.ApplicationUser)
+        {
+            <div class="container" style="border: 6px solid #8BA870; border-radius: 6px; background: #BCED91">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="bargainbarter-margin-top">
+                            <span class="text-primary">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[i].Titel)
+                            </span>
+                            ,
+                            <span class="text-muted">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[i].Category)
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-3">
+                        <p class="bargainbarter-margin-top">
+                            <span class="text-primary">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].Titel)
+                            </span>
+                            ,
+                            <span class="text-muted">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].Category)
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-3">
+
+
+                        Din annonce
+                        <img class="bargainbarter-margin-all" src='@Url.Action("ViewPhoto", new {id = item.BarterAdds[i].BarterAddId})' width="260" height="200" />
+
+                    </div>
+                    <div class="col-md-3">
+
+                        <img class="bargainbarter-margin-all" src="~/Content/img/TradeArrows.png" width="180" height="120" align="right" verticalalign="bottom" />
+                    </div>
+                    <div class="col-md-3">
+
+
+                        @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].ApplicationUser.Firstname) @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].ApplicationUser.Lastname)s annonce
+                        <img class="bargainbarter-margin-all" src='@Url.Action("ViewPhoto", new {id = item.BarterAdds[1 - i].BarterAddId})' width="260" height="200" />
+
+                    </div>
+                    <div class="col-md-3">
+                        <p>
+                            @using (Html.BeginForm("AcceptTrade", "BarterAds", new { Id = item.TradeRequestId }, FormMethod.Get))
+                            {
+
+
+                                <input type="submit" value="Godkend byttehandel" />
+
+                            }
+                        </p>
+                        <p>
+                            @using (Html.BeginForm("DeclineTrade", "BarterAds", new { Id = item.TradeRequestId }, FormMethod.Get))
+                            {
+
+
+                                <input type="submit" value="Afvis byttehandel" />
+
+                            }
+                        </p>
+                    </div>
+
+
+
+
+
+                </div>
+
+
+            </div>
+
+        }
+    }
+}
+
