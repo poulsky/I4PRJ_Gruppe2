@@ -587,7 +587,7 @@ namespace BargainBarterV2.Controllers
             return View(finishedTrade);
         }
 
-        public ActionResult ConfirmRating(string ratingComment, int ratingValue, int finishedTradeId)
+        public ActionResult ConfirmRating(string ratingComment, double ratingValue, int finishedTradeId)
         {
             var finishedTrade = unitOfWork.FinishedTradeRepository.GetByID(finishedTradeId);
             var myUserId = User.Identity.GetUserId();
@@ -598,8 +598,31 @@ namespace BargainBarterV2.Controllers
                 {
                     rating.RatingComment = ratingComment;
                     rating.RatingValue = ratingValue;
-                    unitOfWork.RatingRepository.Update(rating);
-                    unitOfWork.Save();
+
+                    var userToBeRated =
+                        unitOfWork.UserRepository.Get(u => u.Id == rating.ApplicationUserId,
+                            includeProperties: "TradeHistory").FirstOrDefault();
+                    ;
+                    var finTrade = userToBeRated.TradeHistory.FinishedTrades;
+
+                    var curAvg = userToBeRated.Rating;
+                    
+                    //var userRatingAvg =
+                    //    unitOfWork.UserRepository.Get(u => u.Id == rating.ApplicationUserId, includeProperties: "Rating")
+                    //        .FirstOrDefault();
+                    if (curAvg != null)
+                    {
+                        var newUserRatingAvg = Helperfunctions.Helper.CalculateUserAvgRating(rating.RatingValue,
+                            (double) curAvg,
+                            userToBeRated.Id,
+                            finTrade);
+
+                        unitOfWork.RatingRepository.Update(rating);
+                        unitOfWork.Save();
+                        unitOfWork.UserRepository.GetByID(rating.ApplicationUserId).Rating = newUserRatingAvg;
+                        unitOfWork.Save();
+                    }
+                    
                 }
             }
             return RedirectToAction("Index", "Home");

@@ -9,7 +9,12 @@ namespace BargainBarterV2.Repository
     class UserRepository : IUserRepository, IDisposable
     {
         private ApplicationDbContext context;
-        
+
+        public UserRepository(ApplicationDbContext context)
+        {
+            this.context = context;
+        }
+
         public IEnumerable<ApplicationUser> GetUsers()
         {
             return context.Users.ToList();

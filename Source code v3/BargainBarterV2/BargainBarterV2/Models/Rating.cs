@@ -9,7 +9,7 @@ namespace BargainBarterV2.Models
     public class Rating
     {
         public int RatingId { get; set; }
-        public int RatingValue { get; set; }
+        public double RatingValue { get; set; }
         public string RatingComment { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
