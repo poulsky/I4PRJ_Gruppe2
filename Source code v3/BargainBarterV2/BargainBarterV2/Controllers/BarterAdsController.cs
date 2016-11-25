@@ -41,7 +41,7 @@ namespace BargainBarterV2.Controllers
 
         public ActionResult ShowBarterAdsOnMap()
         {
-            IEnumerable<ApplicationUser> users = unitOfWork.UserRepository.Get(includeProperties:"Address, BarterAdds").ToList();
+            IEnumerable<ApplicationUser> users = unitOfWork.UserRepository.Get(u=>u.BarterAdds.Count>0,includeProperties:"Address, BarterAdds").ToList();
             return View(users);
         }
         
