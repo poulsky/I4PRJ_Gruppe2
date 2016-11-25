@@ -10,8 +10,12 @@ namespace BargainBarterV2.Controllers
 {
     public class ChatController : Controller
     {
-        
-        UnitOfWork unitOfWork = new UnitOfWork();
+        private IUnitOfWork unitOfWork=new UnitOfWork();
+
+        public ChatController(IUnitOfWork _unitOfWork)
+        {
+            unitOfWork = _unitOfWork;
+        }
         // GET: Chat,
         [Authorize]
         public ActionResult Index()
