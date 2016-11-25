@@ -46,11 +46,11 @@
 }
 
 
-#navbar-main {
-  /* Added `.affix-top` class css when the element is top */
-  /* Added `.affix` class css when the element is >= 170px (Look: line 8 html) */
-  /* Added `.affix-bottom` class css when the element is footer */
-}
+/*#navbar-main {
+  /* Added `.affix-top` class css when the element is top 
+  /* Added `.affix` class css when the element is >= 170px (Look: line 8 html) 
+  /* Added `.affix-bottom` class css when the element is footer
+}*/
 #navbar-main.affixed-top {
   background: black;
 }
@@ -171,9 +171,9 @@ footer {
     height: 84px;
 }
 
-.bargainbarter-header-section {
+/*.bargainbarter-header-section {
     
-}
+}*/
 
 .bargainbarter-top-picture {
     margin-right: 10px;

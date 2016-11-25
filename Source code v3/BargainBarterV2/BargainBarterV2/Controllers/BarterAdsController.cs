@@ -332,8 +332,6 @@ namespace BargainBarterV2.Controllers
                 int tradeId = id;
                 string dropValue = myAds;
 
-
-
                 //BarterAdd myAd = db.BarterAdds
                 //   .Single(p => p.Titel == dropValue);
 
@@ -430,8 +428,7 @@ namespace BargainBarterV2.Controllers
                     //theirUser = db.Users.Find(theirAd.ApplicationUserId);
                     myUser = unitOfWork.UserRepository.GetByID(myAd.ApplicationUserId);
                     theirUser = unitOfWork.UserRepository.GetByID(theirAd.ApplicationUserId);
-                    finTrade.Ratings.Add(new Rating() {ApplicationUser = myUser});
-                    finTrade.Ratings.Add(new Rating() {ApplicationUser = theirUser});
+
                     bool checkMyUser = false;
                     bool checkTheirUser = false;
                     foreach (var th in unitOfWork.TradeHistoryRepository.Get())
