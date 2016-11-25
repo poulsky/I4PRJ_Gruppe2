@@ -1,8 +1,13 @@
 \chapter{Test}
-I udarbejdelsen af projektet har der været et fokus på test. I dette afsnit beskrives testingen af systemet, men for mere information omkring emnet henvises til dokumentationen.
+I udarbejdelsen af projektet har der været et fokus på at teste systemet, så det hele tiden har blevet verificeret at systemet havde den ønskede funktionalitet. I dette afsnit beskrives testingen af systemet, men for mere information omkring emnet henvises til dokumentationen.
 Systemet er blevet testet ved brug af unittest på de forskellige controllere og opsætning af CI på systemet.
 
-\section{CI}
-Continuous integration blev sat op ved brug af TeamCity. TeamCity-sereven blev sat op til at overvåge gruppens github-repository, så hvert push til repositoriet medførte et build på TeamCity serveren. På TeamCity blev to builds sat op i en pipeline. Det første build byggede projektet, hvis projektet kunne bygges blev testene kørt ved brug af en 
+\section{Unittest}
+Systemets unit test er blevet udarbejdet med brug af NUnit, der et unit testing framework til .Net og NSubstitute. Unittestene er skrevet i et seperat projekt, så det ikke påvirkede projektet.
+Unittestene er generelt blevet skrevet på controllerne for at verificere, at disse retunerer de rigtige Views og kalder rigtigt ned i f.eks. databasen eller ud i andre klasser. I disse test er der blevet anvendt mocks i stedet for de rigtige klasser. Mocksene er blevet genereret af Nsubstitute på baggrund af et interface. Dette kunne gøres, da der i  projektet blev anvendt dependency inversion.
 
-Ved at benytte CI har gruppen opnået, at integrationsproblemer har været nemme og løse, samt at feedback har været hurtig og nem tilgængelig.
+
+\section{CI}
+Continuous integration blev sat op ved brug af TeamCity. TeamCity-sereven blev sat op til at overvåge gruppens github-repository, så hvert push til repositoriet medførte et build på TeamCity serveren. På TeamCity var to builds sat op i en pipeline. Det første build byggede projektet, hvis det første build lykkedes, blev anden build kørt. Dette build kørte alle de tilhørende test til projektet ved brug af et indbygget NUnit-plugin i TeamCity. På baggrund af testene generede TeamCity en rapport, der indeholdt resultatet af de kørte test, samt coverage-analyse, der belyste, hvor stor en del af koden testene dækkede.
+
+\noindent Ved at benytte CI har gruppen opnået, at integrationsproblemer har været nemme og løse, samt at feedback har været hurtig og nem tilgængelig. Coverage-analysen har også givet et overblik over, hvor stor en del af systemet, der bliver testet og denne procentdel er blevet hævet over flere iterationer på baggrund af feedback fra CI.
