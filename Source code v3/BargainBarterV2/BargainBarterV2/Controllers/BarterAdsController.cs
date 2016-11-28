@@ -374,6 +374,7 @@ namespace BargainBarterV2.Controllers
             TradeRequest tradeRequest = unitOfWork.TradeRequestRepository.GetByID(Id);
             tradeRequest.BarterAdds.Clear();
             unitOfWork.TradeRequestRepository.Delete(tradeRequest.TradeRequestId);
+            unitOfWork.Save();
             return RedirectToAction("ShowTrades");
         }
 
@@ -428,6 +429,8 @@ namespace BargainBarterV2.Controllers
                     //theirUser = db.Users.Find(theirAd.ApplicationUserId);
                     myUser = unitOfWork.UserRepository.GetByID(myAd.ApplicationUserId);
                     theirUser = unitOfWork.UserRepository.GetByID(theirAd.ApplicationUserId);
+                    finTrade.Ratings.Add(new Rating() { ApplicationUser = myUser });
+                    finTrade.Ratings.Add(new Rating() { ApplicationUser = theirUser });
 
                     bool checkMyUser = false;
                     bool checkTheirUser = false;
