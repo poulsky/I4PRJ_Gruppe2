@@ -54,11 +54,15 @@ Da projektet er en webapplikation præsenteres den grundlæggende i HTML i en gi
 
 I  praksis bliver  præsentationslaget i ASP.NET returneret i controllers. Disse controllers foretager en handling med fx et databasekald, hvorefter der returneres et view fra controlleren som brugeren kan se.
 \subsection{Businesslag}
+Businesslaget i projektet ligger i høj grad i controllerne. Der er selvfølgelig også truffet nogle forretningsspecifikke valg i Modellen, men dette er primært tomme entiteter. Forretningslogikken ligger derfor som udgangspunkt i controllerne, forsøgt afkoblet så meget som muligt fra præsentationslaget, hvor der helst ikke skal ligge for meget logik. I ASP.NET MVC sender man ofte data til viewet fra controlleren i et enkelt objekt, for bedst at kunne arbejde parallelt med views i mens forretningslogikken bliver implementeret. Derfor går en del af forretningslogikken også udpå at fremstille eller samle et objekt der har et klart interface til at kunne blive anvendt i viewet. 
 
 \subsection{Databaselag}
+I BargainBarter anvendes ADO.Net Entity Framework\footnote{https://msdn.microsoft.com/en-us/library/aa697427(v=vs.80).aspx} som det nederste data access layer. Entity Framework er et stærkt framework der har potentialet til at fjerne det impedans mismatch der ofte opstår mellem en database og objektmodellenn i et projekt. Entity Framework er valgt da man vha. en objekt orienteret tankegang kan operere på en database, og derfor slipper for en del bekymringer og ekstraarbejde man ellers vil have. I brugen af Entity Framework har LINQ \footnote{https://msdn.microsoft.com/en-us/library/bb397906.aspx} været et godt supplement det at operere på databasen. 
+
+Entity Framework var desuden en oplagt mulighed, da der i projektet har været stillet en Microsoft SQL Server Database til rådighed som Entity Framework arbejder bedst på. Udover dette arbejder Entity Framework også godt sammen med ASP.Net MVC frameworket. Dette er derfor også en af grundene til at beslutningen om at anvende Entity Framework blev truffet tidligt i projektet, og i høj grad har inflydelse på arkitekturen. 
 
 \section{Repository Pattern}
-Repository er et pattern, der indføres et ekstra lag (Repository-lag), der virker som DAL mellem buisness-logikken og databasen. Dette medfører at buisness-logikken ikke skriver direkte ned i databasen, så dette ikke bliver afhængig af databasen. Buisness-laget kalder bare ned i repository-laget, der så sørger for transaktionen med databasen. 
+Repository er et pattern, der indføres et ekstra lag (Repository-lag), der virker som DAL mellem buisness-logikken og det oprindelige DAL - i dette tilfælde Entity Framework. Dette medfører at buisness-logikken ikke skriver direkte ned i databasen, så dette ikke bliver afhængig af databasen. Buisness-laget kalder bare ned i repository-laget, der så sørger for transaktionen med databasen. 
 Repository pattern er blevet anvendt for at opnå en lavere kobling i systemet mellem databasen og buisness-logikken. Den lavere kobling gør systemet mere robust for ændre og gør samtidig også, at man kan teste på, at buisness-logikken der skal skrive ned i databasen. Da man kan stubbe/mocke repository-laget ud.
 
 \section{Unit Of Work}

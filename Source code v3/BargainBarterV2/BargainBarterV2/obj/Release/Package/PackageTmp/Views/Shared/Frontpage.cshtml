@@ -1,0 +1,77 @@
+﻿@using System.Globalization
+@model IEnumerable<BargainBarterV2.Models.BarterAdd>
+
+@{
+    ViewBag.Title = "Bargain Barter";
+}
+
+<link href="~/Content/css/Home.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+<link href="~/content/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="~/content/js/star-rating.js" type="text/javascript"></script>
+
+<section class="fill-section">
+
+    @Html.Partial("CatagorySiderbar")
+    <div class="col-md-9" @*id="myscrollwheel"*@>
+        <div class="row text-center">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6" id="thump">
+                    <div class="thumbnail">
+
+                        <img src='@Url.Action("ViewPhoto","BarterAds", new { id = item.BarterAddId })' class="img-rounded" alt="">
+
+                        <div class="caption">
+                            <h3>@Html.ActionLink(item.Titel, "Details", "BarterAds", new { id = item.BarterAddId }, null)</h3>
+                            <p>@Html.DisplayFor(modelItem => item.Description)</p>
+
+
+                        </div>
+                        <hr />
+                        <div>
+                            @{
+                                var rating = item.ApplicationUser.Rating;
+
+                                var itemId = @item.BarterAddId.ToString();
+                                string ratingId = ("rating-id" + itemId);
+
+                                <div class="rating-container rating-cs">
+
+                                </div>
+
+                                <input type="text" id=@ratingId class="rating" data-display-only="true" data-size="xs" data-step="0.1" />
+
+                                <script>
+                                    $('#@ratingId').rating({size:'xs', step:0.1, displayOnly:true, value:@rating});
+                                $('#@ratingId').rating('update', @rating);
+                                $('#@ratingId').rating('refresh', {size:'xs', step:0.1});
+                                </script>
+
+                            }
+                                    </div>
+                       
+                        
+
+
+
+                        @*<div class="ratings">
+                            <p class="pull-left">15 reviews</p>
+
+                            <p>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </p>
+                        </div>*@
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,180 @@
+﻿
+
+@using BargainBarterV2.Models
+@using Microsoft.AspNet.Identity
+@model BargainBarterV2.Models.TradeHistory
+
+
+@{
+    ViewBag.Title = "Byttehistorik";
+}
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+<link href="~/content/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="~/content/js/star-rating.js" type="text/javascript"></script>
+
+<h3 class="title">@Model.ApplicationUser.Firstname @Model.ApplicationUser.Lastname's byttehistorik</h3>
+
+@*<style type="text/css">
+        #hidden {
+            display: none;
+        }
+    </style>*@
+
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        padding: 10px;
+        width: 500px;
+        left: 50%;
+        margin-left: -250px;
+        height: auto;
+        top: 50%;
+        margin-top: -100px;
+        background: #FFF;
+        z-index: 20;
+        -webkit-box-shadow: 2000px 0px 0px 99px rgba(0, 0, 0, 0.5);
+        box-shadow: 1px 2px 3px 9999px rgba(0, 0, 0, 0.5);
+        word-wrap: break-word;
+        border-radius: 20px;
+    }
+</style>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+@*<script type="text/javascript">
+        $(function() {
+            $('#show').click(function() {
+                $('#hidden').show();
+                return false;
+            });
+        });
+    </script>*@
+
+<script>
+    $ = function (id) {
+        return document.getElementById(id);
+    }
+
+    var show = function (id) {
+        $(id).style.display = 'block';
+    }
+    var hide = function (id) {
+        $(id).style.display = 'none';
+    }
+</script>
+
+@foreach (var item in Model.FinishedTrades)
+{
+
+
+    for (int i = 0; i < item.BarterAdds.Count; i++)
+    {
+        if (item.BarterAdds[i].ApplicationUser == Model.ApplicationUser)
+        {
+            <div class="container" style="border: 6px solid #8BA870; border-radius: 6px;background:#BCED91">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="bargainbarter-margin-top">
+                            <span class="text-primary">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[i].Titel)
+                            </span>
+                            ,
+                            <span class="text-muted">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[i].Category)
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-3">
+                        <p class="bargainbarter-margin-top">
+                            <span class="text-primary">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].Titel)
+                            </span>
+                            ,
+                            <span class="text-muted">
+                                @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].Category)
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-3">
+
+
+                        @Html.DisplayFor(modelItem => Model.ApplicationUser.Firstname) @Html.DisplayFor(modelItem => Model.ApplicationUser.Lastname)s annonce
+                        <img class="bargainbarter-margin-all" src='@Url.Action("ViewPhoto", new {id = item.BarterAdds[i].BarterAddId})' width="260" height="200" />
+
+                    </div>
+                    <div class="col-md-3">
+
+                        <img class="bargainbarter-margin-all" src="~/Content/img/hand-shake-icon-256x256.png" width="180" height="120" align="right" verticalalign="bottom" />
+                    </div>
+                    <div class="col-md-3">
+
+
+                        @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].ApplicationUser.Firstname) @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].ApplicationUser.Lastname)s annonce
+                        <img class="bargainbarter-margin-all" src='@Url.Action("ViewPhoto", new {id = item.BarterAdds[1-i].BarterAddId})' width="260" height="200" />
+
+                    </div>
+                    <div class="col-md-3">
+
+
+                        @for (int j = 0; j < item.Ratings.Count; j++)
+                        {
+                            if (item.Ratings[j].ApplicationUser == item.BarterAdds[i].ApplicationUser)
+                            {
+                                if (item.Ratings[j].RatingValue == 0)
+                                {
+                                    <p> Ikke anmeldt endnu</p>
+                                    if (item.Ratings[1 - j].ApplicationUserId == User.Identity.GetUserId())
+                                    {
+                                        using (Html.BeginForm("GiveRating", "BarterAds", new { id = @Model.ApplicationUser.Id }, FormMethod.Get))
+                                        {
+                                            //<button type="button" class="btn btn-primary btn-md">Give rating</button>
+                                            @Html.Hidden("finishedTradeId", item.FinishedTradeId)
+                                            <input type="submit" class="btn btn-primary btn-md" value="Give rating" />
+
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    <input id="input-id" name="input-name" type="number" class="rating" data-size="xs" data-display-only="true" value=@item.Ratings[j].RatingValue>
+
+                                    @*<a id="show" href="#">Kommentar</a>
+                                        <div id="hidden">
+
+                                            <p>@item.Ratings[j].RatingComment</p>
+                                        </div>*@
+                                    <a href="#" onclick="show('popup-@j')">Kommentar</a>
+                                    <div class="popup" id="popup-@j">
+                                        <p>
+                                            <span class="text-primary">
+                                                @item.Ratings[1 - j].ApplicationUser.Firstname @item.Ratings[1 - j].ApplicationUser.Lastname
+                                            </span>
+
+                                            <span>
+                                                har skrevet følgende kommentar:
+                                            </span>
+
+                                        </p>
+                                        <p>@item.Ratings[j].RatingComment</p>
+                                        <a href="#" onclick="hide('popup-@j')">Luk</a>
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
+
+

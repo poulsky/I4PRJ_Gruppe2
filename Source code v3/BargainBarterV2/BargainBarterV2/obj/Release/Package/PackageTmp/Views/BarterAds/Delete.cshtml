@@ -1,0 +1,77 @@
+﻿@model BargainBarterV2.Models.BarterAdd
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Sletning af annonce</h2>
+
+<h3>Er du sikker på, at du vil slette denne annonce?</h3>
+
+    <link href="~/Content/css/BarteradDetails.css" rel="stylesheet">
+
+    <div class="container">
+        <div class="row">
+            <div class="well well-lg col-md-8 col-md-offset-2">
+                <div class="row">
+                    <strong>@Model.Titel</strong>
+                    <i class="pull-right">@Model.Category</i>
+                </div>
+                <hr />
+
+                <div class="row">
+                    @if (Model.ApplicationUser != null)
+                    {
+                        @Html.ActionLink(Model.ApplicationUser.Firstname + " " + Model.ApplicationUser.Lastname, "ShowUserProfile", "UserProfile", new { id = Model.ApplicationUserId }, new { @class = "" })
+                    }
+                </div>
+                <div>
+                    @Html.ActionLink("Se byttehistorik", "ShowTheirTradeHistory", "BarterAds", new { id = Model.ApplicationUserId }, new { @class = "" })
+                </div>
+                <hr />
+
+                <div class="row">
+                    <div class="container">
+                        <img src='@Url.Action("ViewPhoto", new {id = Model.BarterAddId})' width="360" height="300" />
+                    </div>
+
+                </div>
+
+                <hr />
+                <div class="row">
+                    <p id="Barterdetailsaddescription"> @Model.Description</p>
+                    @*<h3> @Html.ActionLink("comment", "Comment", "BarterAds", new { id = Model.BarterAddId }, null)</h3>*@
+                </div>
+                <hr />
+
+                @foreach (var item in Model.Comments)
+                {
+                    <div class="media">
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                @Html.ActionLink(item.ApplicationUser.UserName, "ShowUserProfile", "UserProfile", new { id = item.ApplicationUser.Id }, new { @class = "" })
+                                @*@Html.DisplayFor(modelItem => item.ApplicationUser.UserName)*@
+                                <small>
+                                    @Html.DisplayFor(modelItem => item.CreatedDateTime)
+                                </small>
+                            </h4>
+                            <p>@Html.DisplayFor(modelItem => item.CommentText)</p>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            </div>
+            </div>
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Tilbage til listen", "ManageAds")
+                </div>
+            }
+        </div>
+            
