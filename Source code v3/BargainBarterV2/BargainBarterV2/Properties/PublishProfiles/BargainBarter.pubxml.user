@@ -592,7 +592,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/28/2016 19:43:51</publishTime>
     </File>
     <File Include="Views/Shared/Frontpage.cshtml">
-      <publishTime>11/28/2016 19:43:51</publishTime>
+      <publishTime>11/28/2016 21:08:17</publishTime>
     </File>
     <File Include="Views/Shared/Info.cshtml">
       <publishTime>11/28/2016 19:43:51</publishTime>
