@@ -27,8 +27,19 @@ namespace BargainBarterV2.Controllers
 
         public ActionResult Index()
         {
+            // Gør decimaltal sepereret med '.' i stedet for ','
+            // Er for at stjerne kan vises i som halvt fyldte
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
+
             //var results = from m in db.BarterAdds select m;
-            var results = unitOfWork.BarterAddRepository.Get((p => p.Traded != true));
+            var results = unitOfWork.BarterAddRepository.Get((p => p.Traded != true), includeProperties:"ApplicationUser");
+            ViewBag.Users = unitOfWork.UserRepository.Get((p => p.BarterAdds.Count > 0));
+            
+            
             return View("Frontpage",results.ToList());
         }
 

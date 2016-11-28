@@ -1,11 +1,15 @@
-﻿@model IEnumerable<BargainBarterV2.Models.BarterAdd>
+﻿@using System.Globalization
+@model IEnumerable<BargainBarterV2.Models.BarterAdd>
 
 @{
     ViewBag.Title = "Bargain Barter";
 }
 
 <link href="~/Content/css/Home.css" rel="stylesheet">
-
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+<link href="~/content/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="~/content/js/star-rating.js" type="text/javascript"></script>
 
 <section class="fill-section">
 
@@ -26,7 +30,33 @@
 
                         </div>
                         <hr />
-                        <div class="ratings">
+                        <div>
+                            @{
+                                var rating = item.ApplicationUser.Rating;
+
+                                var itemId = @item.BarterAddId.ToString();
+                                string ratingId = ("rating-id" + itemId);
+
+                                <div class="rating-container rating-cs">
+
+                                </div>
+
+                                <input type="text" id=@ratingId class="rating" data-display-only="true" data-size="xs" data-step="0.1" />
+
+                                <script>
+                                    $('#@ratingId').rating({size:'xs', step:0.1, displayOnly:true, value:@rating});
+                                $('#@ratingId').rating('update', @rating);
+                                $('#@ratingId').rating('refresh', {size:'xs', step:0.1});
+                                </script>
+
+                            }
+                                    </div>
+                       
+                        
+
+
+
+                        @*<div class="ratings">
                             <p class="pull-left">15 reviews</p>
 
                             <p>
@@ -36,7 +66,7 @@
                                 <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star"></span>
                             </p>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             }

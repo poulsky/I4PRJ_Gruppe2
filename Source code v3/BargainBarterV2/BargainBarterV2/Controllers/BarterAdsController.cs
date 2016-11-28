@@ -423,11 +423,16 @@ namespace BargainBarterV2.Controllers
 
                     ApplicationUser myUser = new ApplicationUser();
                     ApplicationUser theirUser = new ApplicationUser();
-
+                   
                     //myUser = db.Users.Find(myAd.ApplicationUserId);
                     //theirUser = db.Users.Find(theirAd.ApplicationUserId);
                     myUser = unitOfWork.UserRepository.GetByID(myAd.ApplicationUserId);
                     theirUser = unitOfWork.UserRepository.GetByID(theirAd.ApplicationUserId);
+                    Rating myRating = new Rating();
+                    Rating theirRating = new Rating();
+
+                    finTrade.Ratings.Add(myRating);
+                    finTrade.Ratings.Add(theirRating);
 
                     bool checkMyUser = false;
                     bool checkTheirUser = false;
