@@ -326,18 +326,12 @@ namespace BargainBarterV2.Controllers
                     System.Web.HttpContext.Current.GetOwinContext()
                         .GetUserManager<ApplicationUserManager>()
                         .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-                //ApplicationUser User = db.Users.Find(user.Id);
+             
                 ApplicationUser User = unitOfWork.UserRepository.GetByID(user.Id);
 
                 int tradeId = id;
                 string dropValue = myAds;
-
-                //BarterAdd myAd = db.BarterAdds
-                //   .Single(p => p.Titel == dropValue);
-
-                //BarterAdd tradeAdd = db.BarterAdds
-                //  .Single(p => p.BarterAddId == tradeId);
-
+                
                 BarterAdd myAd = unitOfWork.BarterAddRepository.Get(p => p.Titel == dropValue).Single();
                 BarterAdd tradeAdd = unitOfWork.BarterAddRepository.Get(p => p.BarterAddId == tradeId).Single();
 
@@ -348,13 +342,11 @@ namespace BargainBarterV2.Controllers
                 ApplicationUser otherUser = unitOfWork.UserRepository.GetByID(tradeAdd.ApplicationUserId);
                 if (otherUser.Id == User.Id)
                     return RedirectToAction("ManageAds");
-
-               // User.TradeRequests.Add(tradeRequest);
                
                 otherUser.TradeRequests.Add(tradeRequest);
-                //db.SaveChanges();
+              
                 unitOfWork.Save();
-                //return View(User.TradeRequests.ToList());
+     
                 return RedirectToAction("ManageAds");
             }
             catch (Exception)
@@ -367,10 +359,6 @@ namespace BargainBarterV2.Controllers
 
         public ActionResult DeclineTrade(int Id)
         {
-            //TradeRequest tradeRequest = db.TradeRequests.Find(Id);
-            //tradeRequest.BarterAdds.Clear();
-            //db.TradeRequests.Remove(tradeRequest);
-            //db.SaveChanges();
             TradeRequest tradeRequest = unitOfWork.TradeRequestRepository.GetByID(Id);
             tradeRequest.BarterAdds.Clear();
             unitOfWork.TradeRequestRepository.Delete(tradeRequest.TradeRequestId);
@@ -382,9 +370,6 @@ namespace BargainBarterV2.Controllers
         {
             try
             {
-
-
-                //TradeRequest tradeRequest = db.TradeRequests.Find(Id);
                 TradeRequest tradeRequest = unitOfWork.TradeRequestRepository.GetByID(Id);
                 if (tradeRequest.RequestStates == TradeRequest.States.Received)
                 {
@@ -395,8 +380,6 @@ namespace BargainBarterV2.Controllers
                         if (ad.ApplicationUserId != tradeRequest.ApplicationUserId)
                         {
                             tradeRequest.ApplicationUserId = ad.ApplicationUserId;
-
-                            //db.SaveChanges();
                             unitOfWork.Save();
                             break;
                         }
@@ -424,9 +407,7 @@ namespace BargainBarterV2.Controllers
 
                     ApplicationUser myUser = new ApplicationUser();
                     ApplicationUser theirUser = new ApplicationUser();
-                   
-                    //myUser = db.Users.Find(myAd.ApplicationUserId);
-                    //theirUser = db.Users.Find(theirAd.ApplicationUserId);
+
                     myUser = unitOfWork.UserRepository.GetByID(myAd.ApplicationUserId);
                     theirUser = unitOfWork.UserRepository.GetByID(theirAd.ApplicationUserId);
                     finTrade.Ratings.Add(new Rating() { ApplicationUser = myUser });
@@ -458,10 +439,14 @@ namespace BargainBarterV2.Controllers
                         theirUser.TradeHistory = theirHistory;
 
                     tradeRequest.RequestStates = TradeRequest.States.Traded;
-
-                    // tradeRequest.BarterAdds.Clear();
-                    unitOfWork.TradeRequestRepository.Delete(tradeRequest.TradeRequestId);
-                    // db.TradeRequests.Remove(tradeRequest);
+                    foreach (var tradeReq in unitOfWork.TradeRequestRepository.Get())
+                    {
+                        if (tradeReq.BarterAdds.Contains(myAd) || tradeReq.BarterAdds.Contains(theirAd))
+                        {
+                            unitOfWork.TradeRequestRepository.Delete(tradeReq.TradeRequestId);
+                        }
+                    }
+                    
                     unitOfWork.Save();
                 }
                 return RedirectToAction("ManageAds");
