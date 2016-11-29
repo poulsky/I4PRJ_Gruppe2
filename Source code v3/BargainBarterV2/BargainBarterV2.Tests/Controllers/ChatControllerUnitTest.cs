@@ -22,7 +22,7 @@ namespace BargainBarterV2.Tests.Controllers
         {
             _unitOfWork = Substitute.For<IUnitOfWork>();
             _repository = Substitute.For<IGenericRepository<ApplicationUser>>();
-            _controller = new ChatController(_unitOfWork);
+            _controller = new ChatController();
         }
 
         [Test]
