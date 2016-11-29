@@ -6,7 +6,7 @@ Dette genericRepository benyttes som et håndtag til databasen, når der skal he
 Over de følgende sider fremlægges sekvensdiagrammerne for, hvordan CRUD-operationerne er blevet udført for en barterad. Dette er et generelt eksempel og viser, hvordan database-trasaktionerne udføres.
 
 \subsection{Create}
-En barterad bliver oprettet i BarterAdsController. BarterAdsController kalder o
+Et sekvensdiagram, for hvordan for eksempel en barterad oprettes og skrives i databasen ved brug af både UnitOfWork og GenericRepository, kan ses på figur \ref{fig:UOFSaveBarterAd}
 
 \begin{figure}[H]
 	\centering
@@ -15,9 +15,11 @@ En barterad bliver oprettet i BarterAdsController. BarterAdsController kalder o
 	\caption{Sekvensdiagram for, hvordan en barterAd bliver oprettet og gemt i DB}
 	\label{fig:UOFSaveBarterAd}
 \end{figure}
+På sekvensdiagrammet figur \ref{fig:UOFSaveBarterAd} ses det, hvordan controlleren kalder over i unitofwork, der opretter et nyt genericrepository. Dette genericrepository gemmer barteraden i databasen.  
+
 
 \subsection{Read} 
-Et sekvensdiagram, for hvordan for eksempel en barterad findes i databasen ved brug af både UnitOfWork og GenericRepository, kan ses på figur \ref{fig:UOFFindBarterAd}
+Et sekvensdiagram, for hvordan for eksempel en barterad findes og læses fra databasen ved brug af både UnitOfWork og GenericRepository, kan ses på figur \ref{fig:UOFFindBarterAd}
 
 \begin{figure}[H]
 	\centering
@@ -30,6 +32,7 @@ På sekvensdiagrammet figur \ref{fig:UOFFindBarterAd} ses det, hvordan controlle
 
 
 \subsection{Update}
+Et sekvensdiagram, for hvordan for eksempel en barterad findes og opdateres i databasen ved brug af både UnitOfWork og GenericRepository, kan ses på figur \ref{fig:UOFUpdateBarterAd}
 \begin{figure}[H]
 	\centering
 	\includegraphics
@@ -37,9 +40,11 @@ På sekvensdiagrammet figur \ref{fig:UOFFindBarterAd} ses det, hvordan controlle
 	\caption{Sekvensdiagram for, hvordan en barterAd bliver opdateret i DB}
 	\label{fig:UOFUpdateBarterAd}
 \end{figure}
+På sekvensdiagrammet figur \ref{fig:UOFUpdateBarterAd} ses det, hvordan controlleren kalder over i unitofwork, der opretter et nyt genericrepository. Dette genericrepository opdatere barteraden i databasen. 
 
 
 \subsection{Delete}
+Et sekvensdiagram, for hvordan for eksempel en barterad findes og slettes i databasen ved brug af både UnitOfWork og GenericRepository, kan ses på figur \ref{fig:UOFDeleteBarterAd}
 \begin{figure}[H]
 	\centering
 	\includegraphics
@@ -47,3 +52,4 @@ På sekvensdiagrammet figur \ref{fig:UOFFindBarterAd} ses det, hvordan controlle
 	\caption{Sekvensdiagram for, hvordan en barterAd bliver slettet i DB}
 	\label{fig:UOFDeleteBarterAd}
 \end{figure}
+På sekvensdiagrammet figur \ref{fig:UODeleteBarterAd} ses det, hvordan controlleren kalder over i unitofwork, der opretter et nyt genericrepository. Dette genericrepository sletter barteraden i databasen. 
