@@ -1,9 +1,9 @@
 \chapter{Design}
-Det er i projektet arbejdet lodret ned igennem lagene når nye features skulle designes. Systemmet er udviklet så featuren fuldstændigt ned igennem lagene. Det er derfor valgt at beskrive en feature hele vejen ned igennem for at eksemplificere selve designet af systemmet. For fuld beskrivelse af systemmetdesignet se dokumentationen. 
+Det er i projektet arbejdet lodret ned igennem lagene ved udvikling af nye features. I dette afsnit er det valgt at beskrive to features igennem lagene, for at eksemplificere selve designet af systemet. For fuld beskrivelse af systemdesignet, se dokumentationen.
 
 \section{Modeldesign}
 
-Ud fra domæneanalysen er dataen der giver mening at persistere fundet, og på fig. \ref{fig:BarteradModel} kan ses hvad der skulle gemmes i forbindelse med barterads.
+Ud fra domæneanalysen er data der giver mening at persistere fundet, og på fig. \ref{fig:BarteradModel} A) kan det ses hvad der fra domæneanalysen skulle gemmes i forbindelse med BarterAds.
 
 \begin{figure}[H]
 	\centering
@@ -13,38 +13,45 @@ Ud fra domæneanalysen er dataen der giver mening at persistere fundet, og på f
 	\label{fig:BarteradModel}
 \end{figure} 
 
-
-Som det kan ses på fig gemmes på 
-I designet bliver det bestemt hvilke sikkerheder som databasen skal indeholde. Til dette konkrete eksempel kan der en række krav til modellen som skal være opfyldt. Disse ses her:
+Efter arbejde, og iterationer igennem den agile arbejdsmetode er der udfærdiget et endeligt modeldesign af barterads, som kan ses på \ref{fig:BarteradModel} B.  
+I designfasen blev det bestemt hvilke sikkerhedskriterier data i databasen skal overholde. Til dette konkrete eksempel er der en række krav til modellen som skal være opfyldt. Disse ses her:
 
 \begin{itemize}
 	\item Barterads skal være tilknyttet en ApplicationUser
 	\item Barterads skal have et oprettelsestidspunkt, men dette laves her
 	\item Barterads må have en maksiaml beskrivelseslængde på 500 tegn
-	\item 
 \end{itemize}
-Derfor skal der være en måde at tilgå selve databasen og opdatere den. Denne gøres igennem det tidligere nævnte repository pattern. Funktionaliteten til at tilgå databasen er således meget standariseret. 
 
-Men selve funktionaliteten af hvad der sker når klienten skal oprette en barterad, sker igennem serverens controller. 
+Modellen opretter igennem Entity Framework databasestrukturen, og derefter tilgås dataene ved det tidligere nævnte repository pattern, der standardiserer måden at tilgå data på.
+
 
 \section{Controller}  
 
-Som tidligere nævnt tilgår klienten controlleren igennem en URL. Det er sat op på en måde hvor klienten bliver returneret et view til creation af barterads, hvis brugeren er logget ind. Controlleren returnerer login viewet, hvis der ikke er logget ind. Dette bliver gjort igennem controllerend Barterads og aktionen create. Denne controller er således designet til blot at give et view tilbage til brugeren. Når dette view returneres til brugeren er der mulighed for igennem viewet at udfylde elemnterne til en barterad og derefter submitte den. Når denne funktion kaldes tjekkes om de enkelte felter er udfyldt og fortæller brugeren hvis påkrævede fleter mangler, dette gøres vha. asdklaslkd.      
+I controllerne ligger selve funktionaliteten af BargainBarter system. Det er controllernes opgave at opdatere det view, som brugeren ser, samt styre kommunikationen mellem viewet og modellen. \\
+ 
+\subsection{Opret annonce}
+\noindent Som det ses på figur \ref{fig:SDOpretBarterAd} trykker brugeren ind for at lave en ny annonce. Systemmet registrerer at der er trykket på en knap, og kalder den til view elementets tilhørende action. Igennem denne action returneres \textit{Create BarterAd} viewet. I dette view kan der indtastes data til BarterAds. Brugeren indtaster data og submitter og controlleren opretter så selve BarterAd'en. I oprettelsen genereres tilhørsbrugeren og oprettelsestidspunkt. \\
 
-Eksemplificeret gennem en use case f.eks. Create BarterAd
-
-\begin{figure}[H]
-	\centering
-	\includegraphics
-	[width=140mm]{figures/SDUOFFindBarterAd.PDF}
-	\caption{Sekvensdiagram for, hvordan en barterAd bliver fundet i DB}
-	\label{fig:UOFFindBarterAd}
-\end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics
-	[width=140mm]{figures/SDUOFSaveBarterAd.PDF}
-	\caption{Sekvensdiagram for, hvordan en barterAd bliver oprettet og gemt i DB}
-	\label{fig:UOFSaveBarterAd}
+	[width=140mm]{../Dokumentation/figures/SDOpretBytteAnnonce.PDF}
+	\caption{Sekvensdiagram for oprettelse af barterads}
+	\label{fig:SDOpretBarterAd}
 \end{figure}
+
+Den tidligere beskrivelse af anonnceoprettelse er en happy path beskrivelse, som ikke tager højde for fejl. I design og implementering af alle controllers skal der holdes styr på mulige fejl. For eksempel er der i oprettelsen sikret at brugeren skal være logget ind. Dette holder controlleren styr på. Desuden tjekker viewet og modellen at alle datafelter er udfyldte, og fortæller brugeren hvad de mangler at udfylde.
+
+\subsection{Søgning}     
+
+
+
+
+
+
+
+
+
+
+
