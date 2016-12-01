@@ -1,9 +1,9 @@
 \chapter{Design}
-Det er i projektet arbejdet lodret ned igennem lagene ved udvikling af nye features. I dette afsnit er det valgt at beskrive to features igennem lagene, for at eksemplificere selve designet af systemmet. For fuld beskrivelse af systemmetdesignet se dokumentationen.
+Det er i projektet arbejdet lodret ned igennem lagene ved udvikling af nye features. I dette afsnit er det valgt at beskrive to features igennem lagene, for at eksemplificere selve designet af systemet. For fuld beskrivelse af systemdesignet, se dokumentationen.
 
 \section{Modeldesign}
 
-Ud fra domæneanalysen er data der giver mening at persistere fundet, og på fig. \ref{fig:BarteradModel} A) kan det ses hvad der fra domæneanalysen skulle gemmes i forbindelse med barterads.
+Ud fra domæneanalysen er data der giver mening at persistere fundet, og på fig. \ref{fig:BarteradModel} A) kan det ses hvad der fra domæneanalysen skulle gemmes i forbindelse med BarterAds.
 
 \begin{figure}[H]
 	\centering
@@ -14,7 +14,7 @@ Ud fra domæneanalysen er data der giver mening at persistere fundet, og på fig
 \end{figure} 
 
 Efter arbejde, og iterationer igennem den agile arbejdsmetode er der udfærdiget et endeligt modeldesign af barterads, som kan ses på \ref{fig:BarteradModel} B.  
-I designetfasen blev det bestemt hvilke sikkerhedskriterier data i databasen skal overholdeholde. Til dette konkrete eksempel er der en række krav til modellen som skal være opfyldt. Disse ses her:
+I designfasen blev det bestemt hvilke sikkerhedskriterier data i databasen skal overholde. Til dette konkrete eksempel er der en række krav til modellen som skal være opfyldt. Disse ses her:
 
 \begin{itemize}
 	\item Barterads skal være tilknyttet en ApplicationUser
@@ -22,15 +22,15 @@ I designetfasen blev det bestemt hvilke sikkerhedskriterier data i databasen ska
 	\item Barterads må have en maksiaml beskrivelseslængde på 500 tegn
 \end{itemize}
 
-Modellen opretter igennem Entity Framework databasestrukturen, og derefter tilgås dataen ved det tidligere nævnte repository pattern, der standardiserer måden at tilgå data på.
+Modellen opretter igennem Entity Framework databasestrukturen, og derefter tilgås dataene ved det tidligere nævnte repository pattern, der standardiserer måden at tilgå data på.
 
 
 \section{Controller}  
 
-I controllerne ligger selve funktionalitet af BargainBarter systemmet. Det er controllernes opgave at opdatere det view, som brugeren ser, samt styre kommunikationen mellem viewet og modellen. \\
+I controllerne ligger selve funktionaliteten af BargainBarter system. Det er controllernes opgave at opdatere det view, som brugeren ser, samt styre kommunikationen mellem viewet og modellen. \\
  
 \subsection{Opret annonce}
-\noindent Som det ses på figur \ref{fig:SDOpretBarterAd} trykker brugeren ind for at lave en ny annonce. Systemmet registrerer at der er trykket på en knap, og kalder den til viewelementet tilhørende action. Igennem denne action returneres create barterad viewet. I dette view kan der indtastes data til barterads. Brugeren indtaster data og submitter, og controlleren opretter så selve barteraden. I oprettelsen genereres tilhørsbrugeren og oprettelsestidspunkt. \\
+\noindent Som det ses på figur \ref{fig:SDOpretBarterAd} trykker brugeren ind for at lave en ny annonce. Systemmet registrerer at der er trykket på en knap, og kalder den til view elementets tilhørende action. Igennem denne action returneres \textit{Create BarterAd} viewet. I dette view kan der indtastes data til BarterAds. Brugeren indtaster data og submitter og controlleren opretter så selve BarterAd'en. I oprettelsen genereres tilhørsbrugeren og oprettelsestidspunkt. \\
 
 
 \begin{figure}[H]
@@ -41,7 +41,7 @@ I controllerne ligger selve funktionalitet af BargainBarter systemmet. Det er co
 	\label{fig:SDOpretBarterAd}
 \end{figure}
 
-Den tidligere beskrivelse af anonnceoprettelse er en happy path beskrivelse, som ikke tager højde for fejl. I design og implementering af alle controllers skal der holdes styr på mulige fejl. For eksempel er der i oprettelsen sikret at brugeren skal være logget ind. Dette holder controlleren styr på. Desuden tjekker viewet og modellen at alle datafelter er udfyldt, og fortæller brugeren hvad de mangler at udfylde.
+Den tidligere beskrivelse af anonnceoprettelse er en happy path beskrivelse, som ikke tager højde for fejl. I design og implementering af alle controllers skal der holdes styr på mulige fejl. For eksempel er der i oprettelsen sikret at brugeren skal være logget ind. Dette holder controlleren styr på. Desuden tjekker viewet og modellen at alle datafelter er udfyldte, og fortæller brugeren hvad de mangler at udfylde.
 
 \subsection{Søgning}     
 
