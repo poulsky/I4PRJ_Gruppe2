@@ -152,8 +152,8 @@
 
                                             <p>@item.Ratings[j].RatingComment</p>
                                         </div>*@
-                                    <a href="#" onclick="show('popup-@j')" style="color:#666666">Kommentar</a>
-                                    <div class="popup" id="popup-@j">
+                                    <a href="#" onclick="show('popup-@item.Ratings[j].RatingId')" style="color:#666666">Kommentar</a>
+                                    <div class="popup" id="popup-@item.Ratings[j].RatingId">
                                         <p>
                                             <span class="text-primary">
                                                 @item.Ratings[1 - j].ApplicationUser.Firstname @item.Ratings[1 - j].ApplicationUser.Lastname
@@ -165,7 +165,7 @@
 
                                         </p>
                                         <p>@item.Ratings[j].RatingComment</p>
-                                        <a href="#" onclick="hide('popup-@j')">Luk</a>
+                                        <a href="#" onclick="hide('popup-@item.Ratings[j].RatingId')">Luk</a>
                                     </div>
                                 }
                             }
