@@ -1,23 +1,38 @@
 \chapter{Diskussion}
-
-
-
+I dette afsnit følger en diskussion omkring udarbejdelsesfasen. Der vil komme ind på, hvilke dele af projektet, der kunne være gjort anderledes. Samt de features i systemet der er særlig vigtige for funktionaliteten i systemet.
 
 \section{Opdeling af controller-ansvar}
-Controllerklassen 'BarterAdsController' har ansvaret for alle actions der har at gøre med BarterAds. Dette virkede i starten ret fornuftigt, at give den dét ansvar. Undervejs i udviklingsprocessen voksede klassen sig imidlertid meget stor, da langt de fleste af handlingerne på websiden har at gøre med manipulering af barterads. Dette gav anledning til problemer ifbm. parallelt arbejde på klassen, da der tit opstod konflikter og fejl da ændringer på klassen lavet af forskellige udviklere, skulle merges i git. Klassen kunne derfor med fordel have været delt op i flere dele, med meget mindre ansvarsområder.
-
+Controllerklassen 'BarterAdsController' har ansvaret for alle actions der har at gøre med BarterAds. Dette virkede i starten fornuftigt, at give den dét ansvar. Men undervejs i udviklingsprocessen voksede klassen sig imidlertid meget stor, da langt de fleste af handlingerne på websiden var centrialiseret omkring manipulering af barterads. Dette gav anledning til problemer ifbm. parallelt arbejde på BarterAdsController-klassen, da der tit opstod konflikter og fejl da ændringer på klassen lavet af forskellige udviklere, skulle merges i git. Klassen kunne derfor med fordel have været delt op i flere dele, med mindre ansvarsområder. \\
+I forbindelse med testningen af systemet blev det erfaret som nævnt i testafsnittet, at controllerne i systemet var for store og komplicerede til, at unit test af disse kunne automatiseres. Dette kunne være undgået ved at flytte logik fra controllerne til seperate buisness logik klasser, der kunne testes automatisk.
 
 \section{Mangelfuldt design af flow på webside}
-I starten af projektet blev der gjort nogle overordnede tanker omkring hvordan websiden skulle se ud, og hvilke menupunkter der skulle være. Der blev dog ikke lavet noget design over hvordan flowet på websiden fungerer, da vi ikke havde lært om nogle værktøjer til at gribe dette an. \\ \\
+I starten af projektet blev der gjort nogle overordnede tanker omkring hvordan websiden skulle se ud, og hvilke menupunkter der skulle være. Der blev dog ikke lavet noget design over hvordan flowet på websiden fungerer, da vi ikke havde lært om nogle værktøjer/metoder til at gribe dette an. \\ \\
 Undervejs i udviklingen blev flowet på hjemmesiden udbygget sammen med de features der blev tilføjet. Dette er kilde til flere problemer. \\
-For det første kan det give en inkonsistent brugeroplevelse, hvilket især er problematisk når brugervenlighed blev vægtet højt i kravene. \\
+For det første kan det give en inkonsistent brugeroplevelse, hvilket især er problematisk på baggrund af, at brugervenlighed blev vægtet højt i gruppens krav til projektet. \\
 For det andet giver det anledning til bugs i systemet. Et eksempel er, at hvis bruger A sender en bytteanmodning til bruger B, og han/hun accepterer, men bruger A ikke bekræfter handlen, så vil disse annoncer hænge i en tilstand, som de aldrig kommer ud af.\\
 
-Hvis systemet skulle udvikles forfra, ville det være en fordel at planlægge flowet på websiden mere nøje, inden man begynder på implementering. Til dette formål ville det være smart at opsøge viden omkring, hvordan dette designes fornuftigt med hensyn til en god og konsistent brugeroplevelse.
+Hvis systemet skulle udvikles forfra, ville det være en fordel at planlægge flowet på websiden mere nøje, inden man begynder på implementeringen. Til dette formål ville det være smart at opsøge viden omkring, hvordan dette designes fornuftigt med hensyn til en god og konsistent brugeroplevelse.
+
+\section{Chat-funktionen}
+Som det fremgår af tabel \ref{fig:Implementeringsstatus} er alle user stories blevet implementeret bortset fra US 8 - 'Kontakt en bruger direkte'. Chat-funktionen er blevet implementeret som en global chat mellem alle brugere, men direkte chat mellem to brugere blev ikke implementeret pga. mangel på tid.
 
 	
 \section{Særlige features}
-(Afsnit om ting vi synes udmærker sig ved projektet/ som vi er særligt stolte af)
+Af de implementerede features i projektet er der et par, der skal fremhæves særligt.
+De features er:
+\begin{itemize}[noitemsep]
+	\item Kortintegration
+	\item Søgefunktionalitet 
+	\item Chat
+\end{itemize}
 
-\section{Chat-funktionen}
-(Vores userstory siger at man skal kunne chatte med en bruger direkte, det kan man ikke. Skal vi lave user story om? Ellers  ved jeg ikke hvad undskyldningen er for at vi ikke har gjort det.)
+Søgefunktionaliteten er et MUST på en hjemmeside, hvor der bliver arbejdet med annoncer. Denne features er noget særligt på grund af rækken af filtre, der kan bruges til at sørge efter annoncer med. Disse filtre er afstand, titel og kategori. \\
+
+Kortintegration er en særlig feature, der gør, at man for en given annonce kan se dens placering og der kan ses et overblik over  placeringen af samtlige annoncer tilknyttet systemet. Kortintegrationen er også noget særligt, da det er gruppens første erfaring i at arbejde med 3. parts API. \\
+
+Chat er særlig feature, som tillader flere brugere at interagere live med hinanden. Chatten har krævet et stort arbejde og brug af signalR, hvilket var nyt for gruppen.
+
+
+
+
+ 
