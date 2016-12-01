@@ -1,9 +1,9 @@
 \chapter{Design}
-Det er i projektet arbejdet lodret ned igennem lagene ved udvikling af nye features. I dette afsnit er det valgt at beskrive to features igennem lagene, for at eksemplificere selve designet af systemet. For fuld beskrivelse af systemdesignet, se dokumentationen.
+Det er i projektet arbejdet lodret ned igennem lagene ved udvikling af nye features. I dette afsnit er det valgt at beskrive to features igennem lagene, for at eksemplificere selve designet af systemet. Disse er \textit{Opret annonce} og \textit{søgning}. \\ For fuld beskrivelse af systemdesignet, se dokumentationen.
 
 \section{Modeldesign}
 
-Ud fra domæneanalysen er data der giver mening at persistere fundet, og på fig. \ref{fig:BarteradModel} A) kan det ses hvad der fra domæneanalysen skulle gemmes i forbindelse med BarterAds.
+Ud fra domæneanalysen er data der giver mening at persistere fundet, og på fig. \ref{fig:BarteradModel} A kan det ses hvad der fra domæneanalysen skulle gemmes i forbindelse med Barterads.
 
 \begin{figure}[H]
 	\centering
@@ -13,13 +13,13 @@ Ud fra domæneanalysen er data der giver mening at persistere fundet, og på fig
 	\label{fig:BarteradModel}
 \end{figure} 
 
-Efter arbejde, og iterationer igennem den agile arbejdsmetode er der udfærdiget et endeligt modeldesign af barterads, som kan ses på \ref{fig:BarteradModel} B.  
-I designfasen blev det bestemt hvilke sikkerhedskriterier data i databasen skal overholde. Til dette konkrete eksempel er der en række krav til modellen som skal være opfyldt. Disse ses her:
+Efter arbejde, og iterationer igennem den agile arbejdsmetode er der udfærdiget et endeligt modeldesign af Barterads, som kan ses på \ref{fig:BarteradModel} B.  
+I designfasen blev det bestemt hvilke sikkerhedskriterier, data i databasen skal overholde. Til dette konkrete eksempel er der en række krav til modellen som skal være opfyldt. Disse ses her:
 
 \begin{itemize}
 	\item Barterads skal være tilknyttet en ApplicationUser
 	\item Barterads skal have et oprettelsestidspunkt, men dette laves her
-	\item Barterads må have en maksiaml beskrivelseslængde på 500 tegn
+	\item Barterads må have en maksimal beskrivelseslængde på 500 tegn
 \end{itemize}
 
 Modellen opretter igennem Entity Framework databasestrukturen, og derefter tilgås dataene ved det tidligere nævnte repository pattern, der standardiserer måden at tilgå data på.
@@ -27,10 +27,10 @@ Modellen opretter igennem Entity Framework databasestrukturen, og derefter tilg�
 
 \section{Controller}  
 
-I controllerne ligger selve funktionaliteten af BargainBarter system. Det er controllernes opgave at opdatere det view, som brugeren ser, samt styre kommunikationen mellem viewet og modellen. \\
+I controllerne ligger selve funktionaliteten af BargainBarter systemet. Det er controllernes opgave at opdatere det view, som brugeren ser, samt styre kommunikationen mellem viewet og modellen. \\
  
 \subsection{Opret annonce}
-\noindent Som det ses på figur \ref{fig:SDOpretBarterAd} trykker brugeren ind for at lave en ny annonce. Systemmet registrerer at der er trykket på en knap, og kalder den til view elementets tilhørende action. Igennem denne action returneres \textit{Create BarterAd} viewet. I dette view kan der indtastes data til BarterAds. Brugeren indtaster data og submitter og controlleren opretter så selve BarterAd'en. I oprettelsen genereres tilhørsbrugeren og oprettelsestidspunkt. \\
+\noindent Som det ses på figur \ref{fig:SDOpretBarterAd} trykker brugeren ind for at lave en ny annonce. Systemmet registrerer at der er trykket på en knap, og kalder den til view elementets tilhørende action. Igennem denne action returneres \textit{Create BarterAd} viewet. I dette view kan der indtastes data til Barterads. Brugeren indtaster data og trykker submit, hvorved controlleren selv opretter BarterAd'en. I oprettelsen genereres tilhørsbrugeren og oprettelsestidspunkt. \\
 
 
 \begin{figure}[H]
@@ -44,10 +44,10 @@ I controllerne ligger selve funktionaliteten af BargainBarter system. Det er con
 \noindent Den tidligere beskrivelse af anonnceoprettelse er en "happy path" beskrivelse, som ikke tager højde for fejl. I design og implementering af alle controllers skal der holdes styr på mulige fejl. For eksempel er der i oprettelsen sikret at brugeren skal være logget ind. Dette holder controlleren styr på. Desuden tjekker viewet og modellen at alle datafelter er udfyldte, og fortæller brugeren hvad de mangler at udfylde.
 
 \subsection{Søgning}     
-Det er valgt også at eksemplificere med søgning af barterads. Denne er taget med da, det er essentielt for funktionalitet af BargainBarter. Helt præcist vælges at uddybe listningen af annoncer inden for en bestemt afstand. Det binder sig op på BargainBarter ide om at være lokalt funderet. Ligeledes er det et glimrende eksempel på hvordan der er et flow igennem modellerne i BargainBarer. \\
+Det er også valgt at eksemplificere med søgning af Barterads. Denne er taget med da, det er essentielt for funktionalitet af BargainBarter. Helt præcist vælges at uddybe listningen af annoncer inden for en bestemt afstand. Det binder sig op på BargainBarter ideen om at være lokalt funderet. Ligeledes er det et glimrende eksempel på hvordan der er et flow igennem modellerne i BargainBarer. \\
 
-\noindent Inden selve søgefunktionen kunne implementeres, krævede det nogle bestemte ting af modellen til brugere. Enhver bruger skulle have en adresse, og et koordinat, som blev besluttet at tildeles ved brugeroprettelsen. Brugeren indtaster i opretelsen en addresse, som systemet udregner et koordinat på, via et google API. Med dette data på plads, kan søgningen af nærtliggende Barterads designes.\\
+\noindent Inden selve søgefunktionen kunne implementeres krævede det, at der var nogle bestemte attributes af modellen til brugere. Enhver bruger skulle have en adresse og et koordinat, som blev besluttet at tildeles ved brugeroprettelsen. Brugeren indtaster i oprettelsen en addresse, som systemet udregner et koordinat på, via et Google Maps API. Med denne data på plads, kan søgningen af nærtliggende Barterads designes.\\
 
-\noindent Selve søgefunktionen kaldes fra et UI element i viewet. Aktionen eager loader alle barterads, og adresser på brugerne. Desuden loades brugerens eget koordinat. Derfter udregnes afstanden mellem brugeren selv og de resterende brugere. Alle der er inden for den af UI elementet valgte parameter bliver gemt i en liste. Derefter findes alle de gemte brugeres barterads, der ikke allerede er byttet. De resterende bliver returneret sammen med frontpage viewet, der således viser dem. Denne funktionalitet giver mulighed for, at man kan finde de barterads der ligger tæt på brugeren. Scenariet her er ligeledes beskrevet som "happy path", hvor situationer som fx. at brugeren ikke er logget ind ikke benævnes.
+\noindent Selve søgefunktionen kaldes fra et UI element i viewet. Aktionen \textit{eager loader}\footnote{Ved eager loading forstås der at når man laver forespørgsel på en entitet, så loades der relateret entiter i samme forespørgsel} alle Barterads, og adresser på brugerne. Desuden loades brugerens eget koordinat. Derefter udregnes afstanden mellem brugeren selv og de resterende brugere. Alle der er inden for den UI elementets valgte parameter bliver gemt i en liste. Derefter findes alle de gemte brugeres Barterads, der ikke allerede er byttet. De resterende bliver returneret sammen med frontpage viewet, der således viser dem. Denne funktionalitet giver mulighed for, at man kan finde de Barterads der ligger tæt på brugeren. Scenariet her er ligeledes beskrevet som "happy path", hvor situationer som fx. at brugeren ikke er logget ind ikke benævnes.
 
 
