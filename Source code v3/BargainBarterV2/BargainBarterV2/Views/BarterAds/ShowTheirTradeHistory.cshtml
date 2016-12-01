@@ -71,11 +71,11 @@
     {
         if (item.BarterAdds[i].ApplicationUser == Model.ApplicationUser)
         {
-            <div class="container" style="border: 6px solid #8BA870; border-radius: 6px;background:#BCED91">
+            <div class="container" style="border: 6px solid #a9a9a9; border-radius: 6px;background:#d3d3d3">
                 <div class="row">
                     <div class="col-md-3">
                         <p class="bargainbarter-margin-top">
-                            <span class="text-primary">
+                            <span style="color:#666666">
                                 @Html.DisplayFor(modelItem => item.BarterAdds[i].Titel)
                             </span>
                             ,
@@ -89,7 +89,7 @@
                     </div>
                     <div class="col-md-3">
                         <p class="bargainbarter-margin-top">
-                            <span class="text-primary">
+                            <span style="color:#666666">
                                 @Html.DisplayFor(modelItem => item.BarterAdds[1 - i].Titel)
                             </span>
                             ,
@@ -152,7 +152,7 @@
 
                                             <p>@item.Ratings[j].RatingComment</p>
                                         </div>*@
-                                    <a href="#" onclick="show('popup-@j')">Kommentar</a>
+                                    <a href="#" onclick="show('popup-@j')" style="color:#666666">Kommentar</a>
                                     <div class="popup" id="popup-@j">
                                         <p>
                                             <span class="text-primary">
