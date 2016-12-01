@@ -1,0 +1,23 @@
+\chapter{Diskussion}
+
+
+
+
+\section{Opdeling af controller-ansvar}
+Controllerklassen 'BarterAdsController' har ansvaret for alle actions der har at gøre med BarterAds. Dette virkede i starten ret fornuftigt, at give den dét ansvar. Undervejs i udviklingsprocessen voksede klassen sig imidlertid meget stor, da langt de fleste af handlingerne på websiden har at gøre med manipulering af barterads. Dette gav anledning til problemer ifbm. parallelt arbejde på klassen, da der tit opstod konflikter og fejl da ændringer på klassen lavet af forskellige udviklere, skulle merges i git. Klassen kunne derfor med fordel have været delt op i flere dele, med meget mindre ansvarsområder.
+
+
+\section{Mangelfuldt design af flow på webside}
+I starten af projektet blev der gjort nogle overordnede tanker omkring hvordan websiden skulle se ud, og hvilke menupunkter der skulle være. Der blev dog ikke lavet noget design over hvordan flowet på websiden fungerer, da vi ikke havde lært om nogle værktøjer til at gribe dette an. \\ \\
+Undervejs i udviklingen blev flowet på hjemmesiden udbygget sammen med de features der blev tilføjet. Dette er kilde til flere problemer. \\
+For det første kan det give en inkonsistent brugeroplevelse, hvilket især er problematisk når brugervenlighed blev vægtet højt i kravene. \\
+For det andet giver det anledning til bugs i systemet. Et eksempel er, at hvis bruger A sender en bytteanmodning til bruger B, og han/hun accepterer, men bruger A ikke bekræfter handlen, så vil disse annoncer hænge i en tilstand, som de aldrig kommer ud af.\\
+
+Hvis systemet skulle udvikles forfra, ville det være en fordel at planlægge flowet på websiden mere nøje, inden man begynder på implementering. Til dette formål ville det være smart at opsøge viden omkring, hvordan dette designes fornuftigt med hensyn til en god og konsistent brugeroplevelse.
+
+	
+\section{Særlige features}
+(Afsnit om ting vi synes udmærker sig ved projektet/ som vi er særligt stolte af)
+
+\section{Chat-funktionen}
+(Vores userstory siger at man skal kunne chatte med en bruger direkte, det kan man ikke. Skal vi lave user story om? Ellers  ved jeg ikke hvad undskyldningen er for at vi ikke har gjort det.)

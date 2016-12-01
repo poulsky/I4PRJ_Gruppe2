@@ -47,17 +47,17 @@ namespace BargainBarterV2.Tests.Controllers
             //Assert.IsNotNull(result);
         }
 
-        [Test]
-        public void AboutViewBagDoesNotContainCorrectString()
-        {
-            // Arrange         
-            // Act
-            ViewResult result = _controller.About() as ViewResult;
+        //[Test]
+        //public void AboutViewBagDoesNotContainCorrectString()
+        //{
+        //    // Arrange         
+        //    // Act
+        //    ViewResult result = _controller.About() as ViewResult;
 
-            // Assert
-            //Assert.AreEqual("Your application description page.", result.ViewBag.Message);
-            Assert.That("Your application description page.", Is.EqualTo(result.ViewBag.Message));
-        }
+        //    // Assert
+        //    //Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+        //    Assert.That("Your application description page.", Is.EqualTo(result.ViewBag.Message));
+        //}
 
         [Test]
         public void ContactDoesNotReturnNull()
@@ -73,12 +73,12 @@ namespace BargainBarterV2.Tests.Controllers
             Assert.That(result,Is.Not.Null);
         }
 
-        [Test]
-        public void ContactViewBagDoesNotContainCorrectString()
-        {           
-            ViewResult result = _controller.Contact() as ViewResult;
+        //[Test]
+        //public void ContactViewBagDoesNotContainCorrectString()
+        //{           
+        //    ViewResult result = _controller.Contact() as ViewResult;
 
-            Assert.That("Your contact page.", Is.EqualTo(result.ViewBag.Message));
-        }
+        //    Assert.That("Your contact page.", Is.EqualTo(result.ViewBag.Message));
+        //}
     }
 }

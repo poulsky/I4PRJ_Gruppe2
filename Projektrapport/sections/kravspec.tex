@@ -1,16 +1,20 @@
 \chapter{Kravspecifikation}
 
-I projektet er det valgt at benytte user stories til at beskrive den ønskede funktionalitet. Disse stories er lavet på baggrund af MoSCoW analysen. Ikke alle userstories er taget med i denne analyse da eksempelificeringen igennem hele rapporten af enkelte user stories, ville være mere beskrivende. På figur. \ref{fig:KontekstDia} ses systemets aktør kontekst diagram. For en fuld liste af User stroies henvises til dokumentationen
+I projektet er der valgt at benytte user stories til at beskrive den ønskede funktionalitet. Disse stories er lavet på baggrund af MoSCoW analysen.
+De enkelte user stories er blevet samlet til en række af epics, der viser systemets overordnede funktionalitet. Disse epics vises på aktør-kontekst diagrammet, der ses på figur. \ref{fig:KontekstDia}. 
 
 \begin{figure}[H]
-	\includegraphics[trim = 6mm 6mm 6mm 6mm, clip, width=100mm]{../Dokumentation/figures/KontekstDiagram.PDF}
-	\caption{Aktør kontekst diagram}
+	\includegraphics[width=140mm,height=140mm]{../Dokumentation/figures/KontekstDiagram.PDF}
+	\caption{Aktør-kontekst diagram for BargainBarter}
 	\label{fig:KontekstDia}
 \end{figure}
+
+Igennem rapporten vil der bliver fokuseret på følgende to user stories: "Oprette en bytteannonce" og "Søg efter bytteannonce". Dette er valgt for at kunne gå i dybden med disse user stories med hensyn til deres arkitektur, design og implementering. Disse user stories er valgt, da det er de to mest centrale funktionaliter for systemet.For en fuld liste af User stroies henvises til dokumentationen \footnote{Se bilag - Dokumentation, sektion XX}\\
+De to user stories kan læses nedenunder:
 
 \input{sections/Userstories/OpretEnBytteannonce.tex}
 \input{sections/Userstories/SoegEfterBytteannoncer.tex}
 
 \section{Ikke-Funktionelle krav}
-BargainBarter indeholder nogle ikke funktionelle, hvor alle her er opskevet.
+I udarbejdelsen af systemet er der blevet fastsat nogle ikke-funktionelle krav til systemet.
 \input{sections/ikke_funktionelle_krav.tex}

@@ -601,13 +601,13 @@ namespace BargainBarterV2.Controllers
                             (double) curAvg,
                             userToBeRated.Id,
                             finTrade);
-
-                        unitOfWork.RatingRepository.Update(rating);
-                        unitOfWork.Save();
                         unitOfWork.UserRepository.GetByID(rating.ApplicationUserId).Rating = newUserRatingAvg;
-                        unitOfWork.Save();
                     }
-                    
+                    else
+                        unitOfWork.UserRepository.GetByID(rating.ApplicationUserId).Rating = rating.RatingValue;
+
+                    unitOfWork.RatingRepository.Update(rating);
+                    unitOfWork.Save();
                 }
             }
             return RedirectToAction("Index", "Home");
