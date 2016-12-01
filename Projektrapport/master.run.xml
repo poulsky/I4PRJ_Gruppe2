@@ -51,16 +51,7 @@
       <file>master.bbl</file>
     </requires>
     <requires type="static">
-      <file>blx-dm.def</file>
       <file>blx-compat.def</file>
-<<<<<<< HEAD
-      <file>blx-bibtex.def</file>
-=======
-<<<<<<< HEAD
-      <file>blx-bibtex.def</file>
-=======
->>>>>>> b6fcb6a1d863ffed13cd27a4de806e875ca42f39
->>>>>>> b636abb5f6b35bb736fc5de9525ab1bedac4fdfd
       <file>biblatex.def</file>
       <file>numeric.bbx</file>
       <file>standard.bbx</file>
