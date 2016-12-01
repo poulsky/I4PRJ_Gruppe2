@@ -36,8 +36,6 @@ namespace BargainBarterV2.Tests.Controllers
         {   
             var result = _controller.Index() as RedirectToRouteResult;
 
-            if (result == null)
-                Assert.Fail("");
 
             Assert.That(result.RouteValues["Controller"], Is.EqualTo("Home"));
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
