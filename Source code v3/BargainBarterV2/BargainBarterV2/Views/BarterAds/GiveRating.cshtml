@@ -38,11 +38,6 @@
 { 
     <input class="rating" id="rating-id" min="1" data-step="1" data-show-caption=false data-size="xl" name="ratingValue"/>
     
-    
-
-    
-    
-        
         <div class="form-group">
             <textarea class="form-control" rows="3" type="text" placeholder="Skriv din kommentar her" name="ratingComment" id="adDetailsCommentTArea"></textarea>
             <div class="input-group-btn pull-left">
@@ -51,19 +46,24 @@
             </div>
         </div>
     }
-    
-    
 
-<script type="text/javascript">
+    <script type="text/javascript">
     $('#rating-id').on('rating.change', function (event, value, caption) {
-            
+
         if (value >= 1) {
             $('#button-id').removeClass("disabled");
         }
-        else if (value < 1) {
+        else
             $('#button-id').addClass("disabled");
-        }
-    });</script></div>
+
+    });</script>
+
+    <script>
+        $('#rating-id').on('rating.clear', function (event) {
+            $('#button-id').addClass("disabled");
+        });
+    </script>
+</div>
     
     
     
