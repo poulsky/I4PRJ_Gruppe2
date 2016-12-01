@@ -1,27 +1,27 @@
 \chapter{Arkitektur}
-Dette afsnit vil forsøge at beskrive de valg der blevet foretaget ifht. arkitekturen bag BargainBarter. Der vil kort blive beskrevet om de enkelte begreber og arkitekturstile der anvendt til at opbygge systemet og hvorfor disse er valgt.
+Dette afsnit vil forsøge at beskrive de valg der blevet foretaget ifht. arkitekturen bag BargainBarter. Der vil kort blive beskrevet om de enkelte begreber og arkitekturstile der blev anvendt til at opbygge systemet og en begrundelse af disse valg.
 
 \section{Arkitektur stile}
-Da der i dette projekt ønskes at skabe en webapplikation, så er derfor nødvendigt at anvende den arkitekturstil, der fungerer bedst til dette formål. 
-Valget faldt på 3-lags modellen, da denne model oftes anvendes i forbindelse med hjemmesider, da disse består af
+Da der i projektet ønskes at udvikle en webapplikation, så er det derfor nødvendigt at anvende en arkitekturstil, der fungerer til dette formål. 
+Dette valg faldt på 3-lags modellen, da denne model anvendes meget i forbindelse med udvikling af hjemmesider. 3-lags modellen består af:
 \begin{enumerate}
-	\item en front-end web-server der leverer statisk eller dynamisk materiale - dvs. al det materiale der vises via webbrowser
-	\item et lag der generer og processere  dynamisk materiale 
-	\item en back-end database til at gemme og hente data fra
+	\item En front-end web-server der leverer statisk eller dynamisk materiale - dvs. al det materiale der vises i webbrowseren.
+	\item Et lag der generer og processere  dynamisk materiale.
+	\item En back-end database til at gemme og hente data fra.
 \end{enumerate}
-Desuden sørger modellen for at der er lav kobling mellem de forskellige dele. Denne model består af et Presentation Layer, Business Logic Layer og et Data Access Layer. Denne model gør det muligt at skifte de forskellige lag ud, hvis det skulle vise sig at være nødvendigt. Det betyder desuden også at det er nemmere at teste de forskellige dele af systemet. \\
-For yderligere information henvises der til dokumentation.
+
+Modellen sørger for lav kobling mellem de forskellige dele/lag. Denne model består af et Presentation Layer, Business Logic Layer og et Data Access Layer. Denne model gør det muligt at skifte de forskellige lag ud, hvis det skulle vise sig at være nødvendigt. Det betyder desuden også at det er nemmere at teste de forskellige dele af systemet. \\
+For yderligere information henvises der til dokumentation. \footnote{Se bilag - Dokumentation, sektion xx}
 
 \section{Teknologivalg}
-I denne sektion vil der blive beskrevet de specifikke teknologier der er anvendt i projektet.
+I denne sektion vil de specifikke teknologier, der er anvendt i projektet, blive beskrevet.
 
 \subsection{ASP.NET MVC}
-Frameworket ASP.NET MVC fra Microsoft blev valgt som platform til webapplikationen, da dette framework har utallige fordele i forhold til dette projekt. 
+Frameworket ASP.NET MVC\footnote{reference} fra Microsoft blev valgt som platform til webapplikationen, da dette framework har utallige fordele i forhold til dette projekt. 
 \begin{enumerate}
-	\item Det er skrevet i C\#, hvilken gruppen har stor erfaring i.
-	\item ASP.NET MVC er baseret på .NET frameworket og har derfor et stort udvalg af forskellige software biblioteker 
-	\item Frameworket har eksisteret i mange år og der findes derfor god support til det
-	\item Gruppen har modtaget undervisning i ASP.NET MVC
+	\item ASP.NET MVC understøtter .NET frameworket, hvilket muliggøre  udvikling i C\#.
+	\item Frameworket har eksisteret i mange år og der findes derfor god support og mange biblioteker til det.
+	\item Gruppen har modtaget undervisning i ASP.NET MVC.
 \end{enumerate}
 Der er desuden en masse andre framework, der kunne have været interessante at anvende, såsom Ruby on Rails, men disse framework anvender ikke .NET eller C\#, hvilket gruppen har opnået god erfaring med.
 
