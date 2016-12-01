@@ -3,7 +3,7 @@ Det er i projektet arbejdet lodret ned igennem lagene når nye features skulle d
 
 \section{Modeldesign}
 
-Ud fra domæneanalysen er dataen der giver mening at persistere fundet, og på fig. \ref{fig:BarteradModel} kan ses hvad der skulle gemmes i forbindelse med barterads.
+Ud fra domæneanalysen er dataen der giver mening at persistere fundet, og på fig. \ref{fig:BarteradModel} A) kan ses hvad der ud fra analysen skulle gemmes i forbindelse med barterads.
 
 \begin{figure}[H]
 	\centering
@@ -13,38 +13,38 @@ Ud fra domæneanalysen er dataen der giver mening at persistere fundet, og på f
 	\label{fig:BarteradModel}
 \end{figure} 
 
-
-Som det kan ses på fig gemmes på 
-I designet bliver det bestemt hvilke sikkerheder som databasen skal indeholde. Til dette konkrete eksempel kan der en række krav til modellen som skal være opfyldt. Disse ses her:
+Efter arbejde, og iterationer igennem den agile arbejdsmetode er der udfærdiget et endeligt modeldesign af barterads som kan ses på \ref{fig:BarteradModel} B.  
+I designetfasen bliver det bestemt hvilke sikkerhedskriterier data i databasen skal overholdeholde. Til dette konkrete eksempel kan der en række krav til modellen som skal være opfyldt. Disse ses her:
 
 \begin{itemize}
 	\item Barterads skal være tilknyttet en ApplicationUser
 	\item Barterads skal have et oprettelsestidspunkt, men dette laves her
 	\item Barterads må have en maksiaml beskrivelseslængde på 500 tegn
-	\item 
 \end{itemize}
-Derfor skal der være en måde at tilgå selve databasen og opdatere den. Denne gøres igennem det tidligere nævnte repository pattern. Funktionaliteten til at tilgå databasen er således meget standariseret. 
 
-Men selve funktionaliteten af hvad der sker når klienten skal oprette en barterad, sker igennem serverens controller. 
+Modellen opretter igennem EF databasestrukturen og til derefter at tilgå de data anvendes det tidligere nævnte repository pattern som standardisere måden at tilgå data på.
+
+Selve funktionaliteten af hvad der sker når klienten skal oprette en barterad, sker igennem serverens controller. 
 
 \section{Controller}  
 
-Som tidligere nævnt tilgår klienten controlleren igennem en URL. Det er sat op på en måde hvor klienten bliver returneret et view til creation af barterads, hvis brugeren er logget ind. Controlleren returnerer login viewet, hvis der ikke er logget ind. Dette bliver gjort igennem controllerend Barterads og aktionen create. Denne controller er således designet til blot at give et view tilbage til brugeren. Når dette view returneres til brugeren er der mulighed for igennem viewet at udfylde elemnterne til en barterad og derefter submitte den. Når denne funktion kaldes tjekkes om de enkelte felter er udfyldt og fortæller brugeren hvis påkrævede fleter mangler, dette gøres vha. asdklaslkd.      
+Klienten tilgår controlleren igennem en URL, og i controllerne ligger funktionalitet af BargainBarter systemmet. Det er controllernes opgave at opdatere det view som brugeren ser, samt styre kommunikationen mellem viewet og modellen. På fig \ref{fig:SDOpretBarterAd} ses en forsimplet udgave af hvad der sker når under oprettelsen af et Barterad. \\
+ 
+\noindent Som det det ses på figur \ref{fig:SDOpretBarterAd} trykker brugeren ind for at lave en ny annonce. Systemmet registrerer at der er trykket på en knap, og kalder den til viewelementet tilhørende action, der returnere til create barterad view. I dette view kan der indtastes data til barterads. Brugeren indtaster data og submitter. Controlleren opretter så selve barteraden og tilføjer de systemgenererede data. Disse inkludere tilhørsbrugeren og oprettelsestidspunkt. I controlleren sørges for at brugeren skal være logget ind, for at kunne oprette annonce. Desuden skal alle felter være udfyldt i oprettelsen, hvilken er sikret både i viewet og modellen.     
 
-Eksemplificeret gennem en use case f.eks. Create BarterAd
 
 \begin{figure}[H]
 	\centering
 	\includegraphics
-	[width=140mm]{figures/SDUOFFindBarterAd.PDF}
+	[width=140mm]{../Dokumentation/figures/SDOpretBytteAnnonce.PDF}
 	\caption{Sekvensdiagram for, hvordan en barterAd bliver fundet i DB}
-	\label{fig:UOFFindBarterAd}
+	\label{fig:SDOpretBarterAd}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics
-	[width=140mm]{figures/SDUOFSaveBarterAd.PDF}
-	\caption{Sekvensdiagram for, hvordan en barterAd bliver oprettet og gemt i DB}
-	\label{fig:UOFSaveBarterAd}
-\end{figure}
+På fig. \ref{SDOpretBarterAd} ses et forsimplet sekvensdiagram af annonceoprettelsen. 
+
+\section{View} 
+
+\section{BLL}
+
+\section{DAL}

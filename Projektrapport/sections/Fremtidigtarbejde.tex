@@ -2,8 +2,10 @@
 
 Til videreudvikling af BargainBarter kunne man ændre det, så en større del af projektet kørte client site som javascript, og at projektet på den måde ville kunne lave færre roundtrips til databasen. 
 
-Algoritmer til foreslåede ads ville også være af stor nytte til brugeren og vil derfor være en af de første ting der skulle tillægges bargainbarter, hvis der skulle ske videre udvikling. Dette medfører at brugeren evt. kan vælge ønskede kategorier.
+Controllerne i projektet har med tiden vokset og er blevet uoverskuelige. Derfor ville implementering af businesslogic være noget af det første i videreudviklingen af Bargainbarter, så funktionerne bliver fordelt i klasser.
 
-På Bargainbarter, er de kun muligt at tilgå brugere ved hjælp af deres annoncer. En optimering af søgefunktionen ville derfor være i højsædet, så man kan søge på brugere.   
+Algoritmer til foreslåede annoncer ville også være af stor nytte til brugeren og vil derfor være en af de første ting der skulle tillægges bargainbarter, hvis der skulle ske videre udvikling. Dette medfører at brugeren evt. kan vælge ønskede kategorier.
+
+På Bargainbarter, er de kun muligt at tilgå brugere ved hjælp af deres annoncer. En optimering af søgefunktionen ville derfor være i højsædet, så man kan søge på brugere.
 
 I tilfælde af at der skulle udvikles flere systemmer der skulle opererer på den samme database, ville det være fordelagtigt at ligge modellen i sit eget projekt. Databasen er tilgængelig, men EF modellen ville kunne bruges til fx en UWP tablet og mobil app. Dette vil dog først gøres hvis omtalte app skulle udvikles.  
