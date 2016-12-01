@@ -41,17 +41,13 @@ I controllerne ligger selve funktionaliteten af BargainBarter system. Det er con
 	\label{fig:SDOpretBarterAd}
 \end{figure}
 
-Den tidligere beskrivelse af anonnceoprettelse er en happy path beskrivelse, som ikke tager højde for fejl. I design og implementering af alle controllers skal der holdes styr på mulige fejl. For eksempel er der i oprettelsen sikret at brugeren skal være logget ind. Dette holder controlleren styr på. Desuden tjekker viewet og modellen at alle datafelter er udfyldte, og fortæller brugeren hvad de mangler at udfylde.
+\noindent Den tidligere beskrivelse af anonnceoprettelse er en "happy path" beskrivelse, som ikke tager højde for fejl. I design og implementering af alle controllers skal der holdes styr på mulige fejl. For eksempel er der i oprettelsen sikret at brugeren skal være logget ind. Dette holder controlleren styr på. Desuden tjekker viewet og modellen at alle datafelter er udfyldte, og fortæller brugeren hvad de mangler at udfylde.
 
 \subsection{Søgning}     
+Det er valgt også at eksemplificere med søgning af barterads. Denne er taget med da, det er essentielt for funktionalitet af BargainBarter. Helt præcist vælges at uddybe listningen af annoncer inden for en bestemt afstand. Det binder sig op på BargainBarter ide om at være lokalt funderet. Ligeledes er det et glimrende eksempel på hvordan der er et flow igennem modellerne i BargainBarer. \\
 
+\noindent Inden selve søgefunktionen kunne implementeres, krævede det nogle bestemte ting af modellen til brugere. Enhver bruger skulle have en adresse, og et koordinat, som blev besluttet at tildeles ved brugeroprettelsen. Brugeren indtaster i opretelsen en addresse, som systemet udregner et koordinat på, via et google API. Med dette data på plads, kan søgningen af nærtliggende Barterads designes.\\
 
-
-
-
-
-
-
-
+\noindent Selve søgefunktionen kaldes fra et UI element i viewet. Aktionen eager loader alle barterads, og adresser på brugerne. Desuden loades brugerens eget koordinat. Derfter udregnes afstanden mellem brugeren selv og de resterende brugere. Alle der er inden for den af UI elementet valgte parameter bliver gemt i en liste. Derefter findes alle de gemte brugeres barterads, der ikke allerede er byttet. De resterende bliver returneret sammen med frontpage viewet, der således viser dem. Denne funktionalitet giver mulighed for, at man kan finde de barterads der ligger tæt på brugeren. Scenariet her er ligeledes beskrevet som "happy path", hvor situationer som fx. at brugeren ikke er logget ind ikke benævnes.
 
 
