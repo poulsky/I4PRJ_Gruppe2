@@ -1,9 +1,9 @@
 \chapter{Test}
 I udarbejdelsen af projektet har der været et fokus på at teste systemet, så det hele tiden har blevet verificeret at systemet havde den ønskede funktionalitet. I dette afsnit beskrives testingen af systemet, men for mere information omkring emnet henvises til dokumentationen.
-Systemet er blevet testet ved brug af unittest på de forskellige controllere og opsætning af CI på systemet.
+Systemet er blevet testet vha. unittest på de forskellige controllere, opsætning af continues integration og manuelle tests.
 
 \section{Unittest}
-Systemets unit test er blevet udarbejdet med brug af NUnit, der et unit testing framework til .Net og NSubstitute. Unittestene er skrevet i et seperat projekt, så det ikke påvirkede projektet.
+Systemets unit test er blevet udarbejdet med brug af NUnit og NSubstitute, som begge er test framework til .Net. Unittestene er skrevet i et seperat projekt, så det ikke påvirkede projektet.
 Unittestene er generelt blevet skrevet på controllerne for at verificere, at disse retunerer de rigtige Views og kalder rigtigt ned i f.eks. databasen eller ud i andre klasser. I disse test er der blevet anvendt mocks i stedet for de rigtige klasser. Mocksene er blevet genereret af Nsubstitute på baggrund af et interface. Dette kunne gøres, da der i designet af systemet var blev anvendt dependency inversion.
 
 
