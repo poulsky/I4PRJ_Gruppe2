@@ -1,9 +1,14 @@
 \section{Map og distance}
 I forbindelse med implementering af sytemet var en del af annoncen i forhold til projektets rammer, at bytteartiklens position skulle vises på et kort og afstanden til annoncen skulle også vises. Dette blev implementeret ved brug af et googlemap-api.
-I det følgende beskrives brugen af googlemap-api'et. API'et er blevet anvendt flere steder i projektet, det blev brugt hvert gang en bruger opretter sig med sin addresse på siden. Den indtastede addresse bliver ved brug af API'et omdannet til koordinater. Koordinaterne er nødvendige for at kunne beregne afstanden til en bytteannonce samt at vise 
+\section{Konvertering til koordinater}
+I det følgende beskrives brugen af googlemap-api'et. API'et er blevet anvendt flere steder i projektet. Det blev anvendt hvert gang en bruger opretter sig med sin addresse på siden. Den indtastede addresse bliver ved brug af API'et omdannet til koordinater, der gemmes i databasen. Koordinaterne er nødvendige for at kunne beregne afstanden til en bytteannonce samt at vise bytteannoncen placering på et kort under den enkelte bytteannonce.
+Det blev valgt, at brugerens adresse skulle konverteres til koordinater under oprettelsen for at undgå at skulle gøre dette runtime. Hvilket ville have indflydelse på systemets performance i forbindelse med visning af annoncer og beregning af afstand.
 
-Selve beregninen af afstanden gøres ved normal trigonometri og giver derfor afstanden i fugleflugt. Dette blev valgt for overskuelighedens skyld. 
+\section{Beregning af afstand}
+Selve beregningen af afstanden gøres ved normal trigonometri og giver derfor afstanden i fugleflugt. Det blev valgt at regne afstanden i fugleflugt, da dette var det mest overskuelige for udviklerne. Afstanden bliver beregnet hver gang denne skal bruges. For at kunne beregne afstanden til annoncen kræves det, at brugerens position er kendt. Det vil sige, at han er oprettet i systemet med en adresse og koordinater.
 
+
+\section{Kortvisning}
 Selve kortvisningen udføres ved brug af Jmelosegui.Mvc.GoogleMap, der en GoogleMap Control udviklet specielt til ASP.NET MVC. Denne kontrol blev tilføjet som en nuget package til projektet og . Kontrollen virker ved, at man i viewet oprettet et map og sætter de basale indstillinger som Bredde- og længdegrad for centrum, zoom-level, størrelse og markers mm.
 Alt dette kan ses på nedenstående kode-eksempel, der viser en positionen af en barteradd på et kort.
 \begin{verbatim}
