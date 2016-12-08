@@ -1,5 +1,42 @@
 \chapter{Design og Implementering}
-Dette afsnit omhandler, hvordan systemet er blevet designet og implementeret.
+Systemmet Bargainbarter er designet ud fra de krav og analyser der er beskrevet i de ovenstående sektioner. Da dette er web applikation lavet i ASP.Net MVC beskrives i denne sektion de forskellige dele af applikationen, hvor der beskrives de normale instancer: controllere, views og Modellen. 
+
+
+
+\input{sections/ControllerAnsvar.tex}
+
+
+\section{Controllere}
+Funktionaliteten i BargainBarter findes i controllerne. 
+
+Systemet indeholder X antal kontrollere. De kontrollere der er implementeret er: 
+\begin{itemize}
+	\item BarterAds
+	\item Chat
+	\item UserProfile
+	\item Search 
+\end{itemize}
+
+\noindent Tilmed er der lavet ændringe til den automatisk genererede Accountcontroller. 
+
+%Da de fleste kontrollere opererer på meget samme måde er der valgt at beskrive nogle generelle typer a kald.
+%
+\subsection{Generelle controller funktioner}
+
+Generelt er der brugt forskellige standardmetoder igennem mange af controllerne. Til adgang til data acces laget kalder alle controllere igennem et Unit of Work pattern, som beskrives senere. Til at finde den aktuelle bruger i systemet bruges HttpContexten hvor brugeren findes på ID.  
+
+
+%
+%Alle kontrollers i ASP.Net MVC tilgås via http protokollen, som sender en request. Der bliver kaldt en kontroller. 
+
+
+\subsection{BarterAdscontroller}
+\subsection{Chat}
+\subsection{UserProfile}
+\subsection{Search}
+
+
+\section{Modellen}
 
 \section{Data fra Database}
 \input{sections/subsection/UOFDB.tex}
