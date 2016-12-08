@@ -1,5 +1,6 @@
 \chapter{Resultater}\label{ch:Resultat og Diskussion}
-Webapplikationen Bargainbarter er blevet udarbejdet, så brugeren kan oprette sig selv og bytteannoncer i systemet. Brugere kan chatte live med andre brugere af systemet. Bytteannoncer kan byttes med brugere, brugere kan kommenterer bytteannoncer og der kan søges efter bytteannoncer på baggrund af afstand eller kategori.
+\section{Implementerede user stories}
+Webapplikationen Bargainbarter er blevet udarbejdet efter prioriteterne beskrevet i MoSCoW-analysen. Tabel \ref{fig:Implementeringsstatus} viser alle user stories og status på deres implementation.
 
 \begin{table}[H]
 	\begin{tabular}{ | l | p{5cm} |}
@@ -12,22 +13,47 @@ Webapplikationen Bargainbarter er blevet udarbejdet, så brugeren kan oprette si
 		US 5 - Kommentere en annonce & Implementeret \\ \hline
 		US 6 - Søg efter bytteannonce & Implementeret \\ \hline
 		US 7 - Se byttehistorik & Implementeret \\ \hline	
-		US 8 - Kontakt en bruger direkte & Ikke implementeret \\ \hline	
+		US 8 - Kontakt en bruger direkte & Delvist implementeret \\ \hline	
 		US 9 -Anmeldelse af en byttehandel & Implementeret \\ \hline	
 	\end{tabular}
 \caption{Implementeringstatus på de forskellige userstories}
 \label{fig:Implementeringsstatus}
 \end{table}
 
-På tabel \ref{fig:Implementeringsstatus} fremgår det, hvilke userstories der er blevet implementeret i projektet. Som det fremgår af tabellen er alle userstories undtagen  US 9 blevet implementeret. Man kan se resultatet af de udførte accepttest i bilagene \footnote{Se bilag - Dokumentation, sektion xx}
-\\ \\
-\noindent Det betød, at følgende moduller/funktionalitet blev udarbejdet i forbindelse med projektet.
-\begin{itemize}[noitemsep]
-	\item Relationel database
-	\item UnitOfWork og Generic Repository til kommunikation med databasen
-	\item Chat 
-	\item Søgefunktionalitet
-	\item Kortintegration med GoogleMaps
-	\item 
-	\item 
-\end{itemize}
+Som det ses i tabel \ref{fig:Implementeringsstatus} fremgår det, at alle userstories undtagen  US 8 blevet fuldt implementeret. Man kan se resultatet af de udførte accepttest i bilagene \footnote{Se bilag - Dokumentation, sektion xx}.
+
+\subsection{Chat-funktion}
+Jævnfør US 8 var der ønske om, at kunne kontakte en anden bruger direkte vha. en chatfunktion\footnote{Se bilag - Dokumentation, sektion xx}. Det var ikke muligt at implementere denne feature fuldt ud, men der er i stedet et åbent chatrum, hvor alle sidens brugere kan kommunikere i realtid i ét stort rum.\\ \\
+
+\section{Teknologier og løsninger i systemet}
+Dett afsnit beskriver hvilke teknologier og frameworks der er brugt til forskellige løsninger i systemet. Tabel \ref{fig:Webapplikation} beskriver de overordnede strukturelle løsninger i systemet, mens tabel \ref{fig:Features} beskriver løsninger på features i systemet.
+\subsection{Webapplikation}
+
+\begin{table}[H]
+	\begin{tabular}{ | l | l |}
+		\hline
+		\textbf{Model i webapplikation}  & \textbf{Beskrivelse af løsning} \\ \hline
+		Webapplikation framework  & ASP.Net MVC \\ \hline
+		Database & Relationel database med Entity Framework \\ \hline
+		Adgang til database & Repository pattern \\ \hline
+		Styling & Bootstrap	 \\ \hline
+	\end{tabular}
+	\caption{Overblik over til webapplikationen}
+	\label{fig:Webapplikation}
+\end{table}
+
+\subsection{Features}
+
+\begin{table}[H]
+	\begin{tabular}{ | l | p{5cm} |}
+		\hline
+		\textbf{Feature på webside}  & \textbf{Beskrivelse af løsning} \\ \hline
+		Sortere/søge i annoncer ud fra geografisk lokation  & Google Maps API \\ \hline
+		Rating med stjerner & Bootstrap Star Rating \\ \hline
+		Chat-funktion & SignalR \\ \hline
+		
+	\end{tabular}
+	\caption{Overblik over løsninger til features}
+	\label{fig:Features}
+\end{table}
+
