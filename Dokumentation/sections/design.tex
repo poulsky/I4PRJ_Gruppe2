@@ -1,5 +1,35 @@
 \chapter{Design og Implementering}
-Dette afsnit omhandler, hvordan systemet er blevet designet og implementeret.
+Systemmet Bargainbarter er designet ud fra de krav og analyser der er beskrevet i de ovenstående sektioner. Da dette er web applikation lavet i ASP.Net MVC beskrives i denne sektion de forskellige dele af applikationen, hvor der beskrives de normale instancer: controllere, views og Modellen. 
+
+
+\section{Controllere}
+Der er en overordnet rollefordeling af controllernes ansvar: 
+
+\input{sections/ControllerAnsvar.tex}
+
+\subsection{Generelle controller funktioner}
+
+Generelt er der brugt forskellige standardmetoder igennem mange af controllerne. Til adgang til data acces laget kalder alle controllere igennem et Unit of Work pattern, som beskrives senere. Til at finde den aktuelle bruger i systemet bruges HttpContext hvor brugeren findes på ID, og generelt tjekkes der ved controllere om de parametre de bliver kaldt med giver mening, og returnere fejl hvis ikke de gør.  
+
+\subsection{Opret annonce aktion}
+
+Aktionen bliver kaldt fra viewet. Denne mulighed optræder kun i viewet hvis brugeren er authentikeret. Når denne funktion bliver kaldt returneres et view der med inputboxe. Denne form group samler de informationer brugeren sætter ind og giver dem som parametre til aktionen. Brugeren videregiver informationen til serveren via en http POST. Create aktionen i controlleren læser billedet brugeren har uploadet ind i et bytearray, der gemmes på serveren. Desuden laves der en thumbnail ud fra selve billedet. Igennem Httpcontext findes den aktuelle bruger, og igennem Unit of Work, gemmes annoncen i databasen. Selve aktionen returnere et redirect til aktionen ManageAds i BarteradsControlleren. Det er væsentligt at bide mærke i at selve aktionen tilhører i kontrolleren anvender ASP.Nets automatiske autherization, der gør at controlleren redirecter til login viewet, hvis der brugeren ikke er logget ind.
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=150mm]{figures/SDOpretBytteAnnonce.PDF}
+	\caption{Sekvensdiagram for, hvordan en barterAd bliver fundet i DB}
+	\label{fig:UOFFindBarterAd}
+\end{figure}   
+
+%Som det ses på figur 8.2 trykker brugeren ind for at lave en ny annonce. Systemet registrerer at der er trykket på en knap, og kalder den til view elementets tilhørende action. Igennem denne action returneres Create BarterAd viewet. I dette view kan der indtastes data til BarterAds. Brugeren indtaster data og submitter og controlleren opretter så selve BarterAd’en. I oprettelsen genereres tilhørsbrugeren og oprettelsestidspunkt.
+
+
+
+\section{Modellen}
 
 \section{Data fra Database}
 \input{sections/subsection/UOFDB.tex}

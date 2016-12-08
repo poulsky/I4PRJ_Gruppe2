@@ -69,3 +69,53 @@ Som nævnt spiller design og test i høj grad sammen, hvor der som nævnt er anv
 %
 %\noindent Det sidste skridt er selvfølgelig at tests viewne, hvor der er lavet en user experience vurdering, og naturligvis en acceptest der kan ses i efterfølgende afsnit
 Efterfulgt af unit test de enkelte controller, skal integrationen mellem de forskellige dele af systemet testes. Der er dog imidlertid ikke den store afhængighed mellem de forskellige controllers i systemet, hvilket MVC også lægger op til. Det ville derfor ikke give mening at lave en integrationstest af systemet, da der reelt er få dele af systemet, hvor man kan teste for afhængigheden mellem de forskellige dele af systemet. \\
+
+\section{Manuelle tests}
+Grundet applikationens GUI og arkitektur har det ikke været muligt at automatisere alle tests. Derfor har de automatiserede unit tests været suppleret meget med manuelle tests. Dette har på simpel vis foregået ved, at en bruger har klikket rundt på hjemmesiden og bekræftet om den nyimplementerede funktionalitet har virket. I dette afsnit vil der følge et par eksempler på, hvordan de manuelle test har fundet sted. Ikke alle manuelle tests er beskrevet her, da det ville være for uoverskueligt. Men generelt gælder det, at stort set alt funktionalitet er blevet testet manuelt.
+
+\subsection{Test af byttehandel}
+Byttehandel funktionaliteten er blevet testet ved, at der for selve byttehandlen er blevet defineret en række af punkter, der skal gennemføres i forbindelse med en byttehandel. Disse punkter udgøre tilsammen et bytteflow. 
+Bytteflowet kan ses på figur \ref{fig:bytteflow}. 
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=140mm]{figures/bytteflow.pdf}
+	\caption{Flow over en byttehandel i BargainBarter}
+	\label{fig:bytteflow}
+\end{figure}
+Når bytteflowet skulle testes blev dette gjort på baggrund af bytteflowet. Bytteflowet blev slavisk gennemført og på baggrund af en byttehandel var gennemført eller ej, kunne byttehandel funktionaliteten be- eller afkræftes.
+
+\subsection{Test af Chat}
+Chat funktionaliteten er skrevet i javascript, hvilket har gjort, at den ikke kunne testes automatisk ved brug af NUnit. 
+Chat funktionaliteten er derfor blevet testet manuelt på baggrund af nedenstående flow, der ses på figur \ref{fig:chatflow}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=140mm]{figures/chatflow.pdf}
+	\caption{Flow over chatten på BargainBarter}
+	\label{fig:chatflow}
+\end{figure}
+
+
+Chatten blev testet på baggrund af flowet fra figur \ref{fig:chatflow}.Resultatet af chat-testen set fra en anden brugers web-klient ses på figur \ref{fig:chattest}.
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=140mm]{figures/ChatTest.png}
+	\caption{Test af chat}
+	\label{fig:chattest}
+\end{figure}
+
+\subsection{Opret annonce}
+Opret annonce funktionaliteten er blevet testet manuelt på baggrund af nedenstående annonceflow, der ses på figur \ref{fig:annonceflow}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=140mm]{figures/annonceflow.pdf}
+	\caption{Flow over oprettelse af annonce på BargainBarter}
+	\label{fig:annonceflow}
+\end{figure}
+
+Overstående flow blev gennemført, hvor det til sidst blev bekræftet, at der var blevet oprettet en annonce for brugeren.
