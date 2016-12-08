@@ -5,12 +5,11 @@ I det følgende beskrives brugen af googlemap-api'et. API'et er blevet anvendt f
 Det blev valgt, at brugerens adresse skulle konverteres til koordinater under oprettelsen for at undgå at skulle gøre dette runtime. Hvilket ville have indflydelse på systemets performance i forbindelse med visning af annoncer og beregning af afstand.
 
 \section{Beregning af afstand}
-Selve beregningen af afstanden gøres ved normal trigonometri og giver derfor afstanden i fugleflugt. Det blev valgt at regne afstanden i fugleflugt, da dette var det mest overskuelige for udviklerne. Afstanden bliver beregnet hver gang denne skal bruges. For at kunne beregne afstanden til annoncen kræves det, at brugerens position er kendt. Det vil sige, at han er oprettet i systemet med en adresse og koordinater.
-
+Selve beregningen af afstanden gøres ved normal trigonometri og giver derfor afstanden i fugleflugt. Det blev valgt at regne afstanden i fugleflugt, da dette var det mest overskuelige for udviklerne. Afstanden bliver beregnet hver gang denne skal bruges. For at kunne beregne afstanden til annoncen kræves det, at brugerens position er kendt. Det vil sige, at han er oprettet i systemet med en adresse og koordinater. Afstanden bliver som tidligere nævnt udregnet som afstanden mellem brugens lokation og annoncens lokation.
 
 \section{Kortvisning}
-Selve kortvisningen udføres ved brug af Jmelosegui.Mvc.GoogleMap, der en GoogleMap Control udviklet specielt til ASP.NET MVC. Denne kontrol blev tilføjet som en nuget package til projektet og . Kontrollen virker ved, at man i viewet oprettet et map og sætter de basale indstillinger som Bredde- og længdegrad for centrum, zoom-level, størrelse og markers mm.
-Alt dette kan ses på nedenstående kode-eksempel, der viser en positionen af en barteradd på et kort.
+Bytteannoncernes placering på et kort vises ved brug af Jmelosegui.Mvc.GoogleMap, der en GoogleMap Control udviklet specielt til ASP.NET MVC. Denne kontrol blev tilføjet som en nuget package til projektet og referet til i de konkrete afsnit. Kontrollen virker ved, at man i viewet oprettet et map. I mappet sættes de basale indstillinger som bredde- og længdegrad for centrum af kortet. Zoom-level, størrelse og markers vælges også.
+I det nedenstående kode-eksempel kan man se, hvordan et map oprettes i viewet. Mappet bliver tilføjet en center-position, zoom-niveau og en marker i midten af korten. Denne kode er taget fra barteradds/detail-viewet.
 \begin{verbatim}
 	   @(Html.GoogleMap().Name("map")
 	.Height(200)
@@ -23,7 +22,7 @@ Alt dette kan ses på nedenstående kode-eksempel, der viser en positionen af en
 	))
 \end{verbatim}
 
-Den overstående kode giver kortet, der kan ses på figur \ref{fig:GoogleMaps}. På kortet er en markerør, der viser annoncens position.
+Den overstående kode giver følgende kort, der kan ses på figur \ref{fig:GoogleMaps}. På kortet er en markerør, der viser annoncens position.
 \begin{figure}[H]
 	\centering
 	\includegraphics
@@ -34,6 +33,6 @@ Den overstående kode giver kortet, der kan ses på figur \ref{fig:GoogleMaps}. 
 \end{figure}
 
 
-Som det fremgår af overstående eksempel kan man linke fra modellen til kortet i ligehed med den normale adfærd i MVC. I dette eksempel sættes markerens titel=titlen fra den medgivne model. Dette gøres ved brug af normal MVC-struktur, hvor controlleren for dette view giver en model med. Kortet kan siden tilpasses i størrelse, zoom-level og på mange andre måder.
-Jmelosegui.Mvc.GoogleMap er også blevet brugt i forbindelse med visning af samtlige annoncer på et kort. Dette er gjort på samme måde som vist overover dog er der bare linket til en af liste, der indeholder model-data i stedet for en enkel model.
+Som det fremgår af overstående eksempel kan man linke fra modellen til kortet i ligehed med den normale adfærd i MVC. I dette eksempel sættes markørens titel=titlen fra den medgivne model. Dette gøres ved brug af normal MVC-struktur, hvor controlleren for dette view giver en model med til viewet. Kortet kan i viewet tilpasses i størrelse, zoom-level og på mange andre måder.
+Jmelosegui.Mvc.GoogleMap er også blevet brugt i forbindelse med visning af samtlige annoncer på et kort. Dette er gjort på samme måde som vist i koden ovenover dog er der bare linket til en af liste af modeller i stedet for en enkel model.
 
