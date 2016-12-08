@@ -13,20 +13,19 @@ Generelt er der brugt forskellige standardmetoder igennem mange af controllerne.
 
 \subsection{Opret annonce aktion}
 
-Aktionen bliver kaldt fra viewet. Denne mulighed optræder kun i viewet hvis brugeren er authentikeret. Når denne funktion bliver kaldt returneres et view der med inputboxe. Denne form group samler de informationer brugeren sætter ind og giver dem som parametre til aktionen. Brugeren videregiver informationen til serveren via en http POST. Create aktionen i controlleren læser billedet brugeren har uploadet ind i et bytearray, der gemmes på serveren. Desuden laves der en thumbnail ud fra selve billedet. Igennem Httpcontext findes den aktuelle bruger, og igennem Unit of Work, gemmes annoncen i databasen. Selve aktionen returnere et redirect til aktionen ManageAds i BarteradsControlleren. Det er væsentligt at bide mærke i at selve aktionen tilhører i kontrolleren anvender ASP.Nets automatiske autherization, der gør at controlleren redirecter til login viewet, hvis der brugeren ikke er logget ind.
-
+Som det kan ses på figur \ref{fig:SDOpretAnnonceFuld} bliver aktionen kaldt fra viewet. Viewet viser kun denne mulighed hvis brugeren er authentikeret. Dette kontrolleres i viewet. Når UI elementet bliver trykker, kalder det et Http request og serveren returnere et view til oprettelsen af BarterAds.
+Viewet indeholder en række forms hvor informationen om barterads kan indsættes. Denne gruppe af forms gives som parametre til aktionen når brugeren submitter. Under dette submit laver clienten et http POST til serveren, der kalder Create barterad aktionen. Aktionen i controlleren læser billedet brugeren har uploadet ind i et bytearray, og laver et thumbnail ud fra billedet. Igennem Httpcontext findes den aktuelle bruger, og igennem Unit of Work, gemmes annoncen i databasen. Selve aktionen returnere et redirect til aktionen ManageAds i BarteradsControlleren. Det er væsentligt at bide mærke i at selve aktionen tilhører i kontrolleren anvender ASP.Nets automatiske autherization, der gør at controlleren redirecter til login viewet, hvis der brugeren ikke er logget ind.
 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics
 	[width=150mm]{figures/SDOpretBytteAnnonce.PDF}
-	\caption{Sekvensdiagram for, hvordan en barterAd bliver fundet i DB}
-	\label{fig:UOFFindBarterAd}
+	\caption{Sekvensdiagram for, hvordan barterAds bliver oprettet}
+	\label{fig:SDOpretAnnonceFuld}
 \end{figure}   
 
-%Som det ses på figur 8.2 trykker brugeren ind for at lave en ny annonce. Systemet registrerer at der er trykket på en knap, og kalder den til view elementets tilhørende action. Igennem denne action returneres Create BarterAd viewet. I dette view kan der indtastes data til BarterAds. Brugeren indtaster data og submitter og controlleren opretter så selve BarterAd’en. I oprettelsen genereres tilhørsbrugeren og oprettelsestidspunkt.
-
+Denne beskrivelse er sigende for mange af de interaktioner der foregår på bargainbarter webstedet, da de essentielle aktions er kaldt igennem UI elementer der laver enten GET eller POST funktioner. Ligeledes anvendes kald ned i Unit of Work, i næsten al interaktion med serveren. 
 
 
 \section{Modellen}
