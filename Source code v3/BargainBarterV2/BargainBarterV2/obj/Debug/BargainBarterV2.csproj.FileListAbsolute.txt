@@ -107,7 +107,6 @@ C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarte
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csproj.GenerateResource.Cache
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.dll
 C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.pdb
-C:\Users\Simon\Desktop\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\obj\Debug\BargainBarterV2.csprojResolveAssemblyReference.cache
 C:\Users\Søren\Desktop\Skole\4. Semester\I4PRJ\Test11\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\ApplicationInsights.config
 C:\Users\Søren\Desktop\Skole\4. Semester\I4PRJ\Test11\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\roslyn\csc.exe
 C:\Users\Søren\Desktop\Skole\4. Semester\I4PRJ\Test11\I4PRJ_Gruppe2\Source code v3\BargainBarterV2\BargainBarterV2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll

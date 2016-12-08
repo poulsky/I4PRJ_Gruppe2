@@ -17,7 +17,7 @@ For yderligere information henvises der til dokumentation. \footnote{Se bilag - 
 I denne sektion vil de specifikke teknologier, der er anvendt i projektet, blive beskrevet.
 
 \subsection{ASP.NET MVC}
-Frameworket ASP.NET MVC\footnote{reference} fra Microsoft blev valgt som platform til webapplikationen, da dette framework har utallige fordele i forhold til dette projekt. 
+Frameworket ASP.NET MVC\cite{MVC} fra Microsoft blev valgt som platform til webapplikationen, da dette framework har utallige fordele i forhold til dette projekt. 
 \begin{enumerate}
 	\item ASP.NET MVC understøtter .NET frameworket, hvilket muliggøre  udvikling i C\#.
 	\item Frameworket har eksisteret i mange år og er derfor veldokumenteret og mange biblioteker understøtter dette framework.
@@ -38,14 +38,14 @@ Controller er bindeleddet mellem Model og Views. Dens opgaave er at manipulere d
 	\label{fig:MVC}
 \end{figure}
 
- \subsection{Data Access Layer}
- I forbindelse med database adgangen blev Entity Framework anvendt.
+\subsection{Data Access Layer}
+I forbindelse med database adgangen blev Entity Framework anvendt.
  
  \subsubsection{Entity Framework}
- Entity framework (EF) var det oplagte valg, når først ASP.NET MVC var valgt. EF kommer som standard når der oprettes et ASP.NET MVC projekt, og opretter selv en skabelon til at oprette database tabeller. EF er et object-relational mapping (ORM) framework til ADO.NET, der understøtter udviklingen af data orienterede applikationer. Det vil sige, at EF sørger for en bekvemmelig og ensartet tilgang til den database man anvender til at gemme og hente data til viewet. \\
+Entity framework (EF)\cite{ADOEF} var det oplagte valg, når først ASP.NET MVC var valgt. EF kommer som standard når der oprettes et ASP.NET MVC projekt, og opretter selv en skabelon til at oprette database tabeller. EF er et object-relational mapping (ORM) framework til ADO.NET, der understøtter udviklingen af data orienterede applikationer. Det vil sige, at EF sørger for en bekvemmelig og ensartet tilgang til den database man anvender til at gemme og hente data til viewet. \\
  \noindent Til selve databasen er der anvendt SQL Server 2016, som IHA har stillet til rådighed.
  
- \subsection{Presentation Layer}
- Til præsentations laget anvendes der HTML/CSS til at præsentere data for brugeren. Da brugervenlighed var centralt for systemet blev Bootstrap anvendt. Bootstrap er et framework, der gør webapplikationen responsive og skalebare. Frameworket gør det nemt at designe et View der kan skaleres til en hvilken som helst skærm - uanset om det er mobil, tablet eller desktop. Desuden indeholder Bootstrap en række temaer, der gør det enkelt at designe et View der er pænt, hvilket ikke gruppens stærke side. \\
- For at gøre View'et mere dynamisk er der anvendt Javascript og mere specifikt JQuery. 
- Dette bibliotek gør det muligt f.eks. at vise popup vinduer, hvis der er brug for det eller i gruppens tilfælde at kunne bedømme en anden bruger.
+\subsection{Presentation Layer}
+Til præsentations laget anvendes der HTML/CSS til at præsentere data for brugeren. Da brugervenlighed var centralt for systemet blev Bootstrap\cite{Bootstrap} anvendt. Bootstrap er et framework, der gør webapplikationen responsive og skalebare. Frameworket gør det nemt at designe et View der kan skaleres til en hvilken som helst skærm - uanset om det er mobil, tablet eller desktop. Desuden indeholder Bootstrap en række temaer, der gør det enkelt at designe et View der er pænt, hvilket ikke gruppens stærke side. \\
+For at gøre View'et mere dynamisk er der anvendt Javascript og mere specifikt JQuery\cite{jQuery}. 
+Dette bibliotek gør det muligt f.eks. at vise popup vinduer, hvis der er brug for det eller i gruppens tilfælde at kunne bedømme en anden bruger.

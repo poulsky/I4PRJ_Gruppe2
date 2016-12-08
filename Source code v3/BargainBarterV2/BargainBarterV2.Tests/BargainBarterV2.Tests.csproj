@@ -106,6 +106,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculateUserAvgTest.cs" />
     <Compile Include="Controllers\BarterAdsControllerUnitTest.cs" />
     <Compile Include="Controllers\ChatControllerUnitTest.cs" />
     <Compile Include="Controllers\HomeControllerTestUNitTest.cs" />
