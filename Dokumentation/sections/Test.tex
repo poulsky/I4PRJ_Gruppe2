@@ -1,6 +1,6 @@
 \chapter{Test}
 
-Projektet stiller krav om let udvikling og ikke mindst krav om kvalitet. Automatiserede tests har dermed været et naturligt valg, der konstant og systematisk hjæper os til at sørge for at kvaliteten i vores system opretholdes, foruden at hjælpe udviklingen til ikke at få detektere fejl i tidligere kode, når ny kode tillægges.
+Projektet stiller krav om løbende udvikling og ikke mindst krav om kvalitet. Automatiserede tests har dermed været et naturligt valg, der konstant og systematisk hjælper os til at sørge for at kvaliteten i vores system opretholdes. Detektion af fejl i tidligere kode, når ny kode tillægges er ligeledes en afgørende faktor for dette valg.
 
 \input{sections/CI.tex}
 
@@ -68,10 +68,10 @@ Som nævnt spiller design og test i høj grad sammen, hvor der som nævnt er anv
 %%\end{figure}
 %
 %\noindent Det sidste skridt er selvfølgelig at tests viewne, hvor der er lavet en user experience vurdering, og naturligvis en acceptest der kan ses i efterfølgende afsnit
-Efterfulgt af unit test de enkelte controller, skal integrationen mellem de forskellige dele af systemet testes. Der er dog imidlertid ikke den store afhængighed mellem de forskellige controllers i systemet, hvilket MVC også lægger op til. Det ville derfor ikke give mening at lave en integrationstest af systemet, da der reelt er få dele af systemet, hvor man kan teste for afhængigheden mellem de forskellige dele af systemet. \\
+Efterfulgt af unit test de enkelte controller, skal integrationen mellem de forskellige dele af systemet testes. Der er dog imidlertid ikke den store afhængighed mellem de forskellige controllers i systemet, hvilket MVC også lægger op til. Det ville derfor valgt ikke at lave en integrationstest af systemet, da der reelt er få dele af systemet, hvor man kan teste for afhængigheden mellem de forskellige dele af systemet. \\
 
 \section{Manuelle tests}
-Grundet applikationens GUI og arkitektur har det ikke været muligt at automatisere alle tests. Derfor har de automatiserede unit tests været suppleret meget med manuelle tests. Dette har på simpel vis foregået ved, at en bruger har klikket rundt på hjemmesiden og bekræftet om den nyimplementerede funktionalitet har virket. I dette afsnit vil der følge et par eksempler på, hvordan de manuelle test har fundet sted. Ikke alle manuelle tests er beskrevet her, da det ville være for uoverskueligt. Men generelt gælder det, at stort set alt funktionalitet er blevet testet manuelt.
+Grundet applikationens GUI og arkitektur har det ikke været muligt at automatisere alle tests. Derfor har de automatiserede unit tests været suppleret meget med manuelle tests. Dette har på simpel vis foregået ved, at en tester har klikket rundt på hjemmesiden og bekræftet om den nyimplementerede funktionalitet har virket. I dette afsnit vil der følge et par eksempler på, hvordan de manuelle test har fundet sted. Ikke alle manuelle tests er beskrevet her, da det ville være for uoverskueligt. Men generelt gælder det, at stort set alt funktionalitet er blevet testet manuelt.
 
 \subsection{Test af byttehandel}
 Byttehandel funktionaliteten er blevet testet ved, at der for selve byttehandlen er blevet defineret en række af punkter, der skal gennemføres i forbindelse med en byttehandel. Disse punkter udgøre tilsammen et bytteflow. 
@@ -98,7 +98,7 @@ Chat funktionaliteten er derfor blevet testet manuelt på baggrund af nedenståe
 \end{figure}
 
 
-Chatten blev testet på baggrund af flowet fra figur \ref{fig:chatflow}.Resultatet af chat-testen set fra en anden brugers web-klient ses på figur \ref{fig:chattest}.
+Chatten blev testet på baggrund af flowet fra figur \ref{fig:chatflow}.Resultatet af chat-testen set fra en anden s web-klient ses på figur \ref{fig:chattest}.
 \begin{figure}[H]
 	\centering
 	\includegraphics
