@@ -1,12 +1,12 @@
-\section{Repository Pattern}
+\section{Repository Pattern}\label{sc:RepositoryPattern}
 Repository pattern blev implementeret ved brug af forskellige dele og lag. I dette afsnit vil de forskellige dele blive beskrevet. 
-I starten var tanken med repository-pattern, at alle klasseren i model blev tilknyttet et repository, der indeholdt de gængse CRUD-operationer (Create, Read, Update, Delete) på databasen i forbindelse med hver model. Hvert repository blev nedarvet fra et interface, dette er gjort på baggrund ad DIP, der gør at i forbindelse med test kan repositoriet mockes ud.
+I starten var tanken med repository-pattern, at alle klasseren i model blev tilknyttet et repository, der indeholdt de gængse CRUD-operationer (Create, Read, Update, Delete) på databasen i forbindelse med hver model. Hvert repository blev nedarvet fra et interface, dette er gjort på baggrund ad DIP\footnote{Dependency Inversion Principle}, der gør at i forbindelse med test kan repositoriet mockes ud.
 Men efter implementering af flere repository blev, det observeret at koden for de forskellige repositories var stort set identisk, hvilket også kan se på en tidligere version af klassediagrammerne på figur \ref{fig:Repository}.
 \begin{figure}[H]
 	\centering
 	\includegraphics
 	[angle=90]{figures/Repository.PDF}
-	\caption{Oversigt over flere meget identiske repositories}
+	\caption{Oversigt over flere næsten identiske repositories}
 	\label{fig:Repository}
 \end{figure}
 
