@@ -1,5 +1,5 @@
-Når data fra databasen skal læses, overskrives eller slettes bliver Repository-pattern og UnitOfWork benyttet - mere information omkring disse kan findes i \ref{Manglende reference}. I dette afsnit bliver det beskrevet, hvordan implementering af de forskellige CRUD-operationer på databasen er lavet. 
-Da UnitOfWork og Repository-Pattern er blevet benyttet, betyder det, at al tilgang til databasen er stortset ens. Da databasen kun tilgås af UnitOfWork og GenericRepository.
+Når data fra databasen skal læses, overskrives eller slettes bliver Repository-pattern og UnitOfWork benyttet - mere information omkring disse kan findes i \ref{sc:RepositoryPattern}. I dette afsnit bliver det beskrevet, hvordan implementering af de forskellige CRUD-operationer på databasen er lavet. 
+Da Unit Of Work og Repository-Pattern er blevet benyttet, betyder det, at al tilgang til databasen er stortset ens. Da databasen kun tilgås af UnitOfWork og GenericRepository.
 Den ens tilgang til databasen betyder, at når data skal hentes i databasen skal der først oprettes et GenericRepository af den benyttede type (f.eks. UserRepository eller BarterAdRepository). 
 Dette genericRepository benyttes som et håndtag til databasen, når der skal hentes data.
 
