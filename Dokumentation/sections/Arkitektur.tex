@@ -68,7 +68,7 @@ I brugen af Entity Framework, anvendes en Code First New Database\cite{EFCodeFir
 Dette er nogle af grundene til at beslutningen om at anvende Entity Framework. Denne beslutning blev truffet tidligt i projektet, og har i høj grad har indflydelse på arkitekturen for systemet.
 
 \section{Repository Pattern}
-Repository pattern er et software mønster \cite{Mønster}, der indfører et ekstra lag (Repository-lag) mellem databasen og buisness-logikken. Det virker som data-access lag mellem buisness-logikken og det oprindelige data-access lag - i dette tilfælde Entity Framework. Dette ekstra lag medfører, at buisness-logikken ikke skriver direkte ned i databasen. Dette sænker i høj grad koblingen i systemet, da buisness-laget ikke er afhængig af databasen. 
+Repository pattern er et software mønster \cite{pattern}, der indfører et ekstra lag (Repository-lag) mellem databasen og buisness-logikken. Det virker som data-access lag mellem buisness-logikken og det oprindelige data-access lag - i dette tilfælde Entity Framework. Dette ekstra lag medfører, at buisness-logikken ikke skriver direkte ned i databasen. Dette sænker i høj grad koblingen i systemet, da buisness-laget ikke er afhængig af databasen. 
 Buisness-laget kalder bare ned i repository-laget, der så sørger for selve transaktionen med databasen. 
 På figur \ref{fig:Repository} kan man se, hvor og hvordan det ekstra lag indføres i arkitekturen.
 
