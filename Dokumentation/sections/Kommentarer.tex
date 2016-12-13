@@ -1,13 +1,14 @@
 \section{Kommentarer}\label{kommentarer}
 
- Som nævnt i userstorien: "Kommentering af annonce" skal der kunne kommenteres annoncer. Der er derfor i modellen oprettet en kommentar klasse, der indeholder \begin{itemize}
+ Som nævnt i userstorien: "Kommentering af annonce" i afsnit \ref{us:Kommentering} skal annoncer i BargainBarter kunne kommenteres. Der er derfor i modellen oprettet en model klasse til kommentarene ,der indeholder: 
+ \begin{itemize}
  	\item Den aktuelle bytteannonce
  	\item Oprettelsestidspunkt
  	\item Kommentarteksten (Maximalt 500 tegn)
  	\item Den kommenterende bruger 
  \end{itemize}    
  
- Controlleren opretter automatisk værdierne, til at gemme i modellen. Viewet er lavet så det benytter et Http POST kald som tager kommentaren i tekstfeltet som ses på figur \ref{fig:Kommentar}. Ved klik på submit sendes dette kald.
+ På figur \ref{fig:Kommentar} kan det ses at brugeren har mulighed for at indtaste og submitte. Controlleren sørger for at der ved et submit, som er en POST action, automatisk bliver fundet alt andet end selve kommentarstrengen og oprettelsestidspunktet. Sidstnævnte bliver oprettet i modellen.
  
  \begin{figure}[H]
  	\centering
@@ -17,4 +18,4 @@
  	\label{fig:Kommentar}
  \end{figure}
  
- Dette gemmes i databasen og alle kommentarer vises i rækkefølge, på viewet. Yderligere information om hvordan logikken i dette virker, kan findes i Design og implemenering.  
+Viewet er lavet så det er intuitivt og nemt at overskue. Til viewet er der anvendt en bootstrap template \cite{kommentare}.
