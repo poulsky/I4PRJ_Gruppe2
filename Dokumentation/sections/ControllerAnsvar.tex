@@ -1,5 +1,3 @@
-\subsection{Ansvarsbeskrivelse for controllers}
-
 \subsection{Home}
 Denne controller er ansvarlig for at vise de generelle ting for hjemmesiden. Dette vil sige hovedsiden, kontakt og en About section.  
 
@@ -20,13 +18,13 @@ Denne controller er overodnet ansvarlig for, at brugeren kan oprette og opdatere
 Actions:
 \begin{itemize}
 	\item Index - Returne blot til Home controllerens index, dette er fordi routeconfigen sætter index som standard, så man skal ikke kunne kalde barterads controllerens index.
-	\item ShowBarterAdsOnMap
-	\item Viewphoto - Viser et gemt billede
+	\item ShowBarterAdsOnMap - 
+	\item Viewphoto - Returnere et billede
 	\item Details - Via denne action kan brugeren indspicere en anden brugers  BarterAd. I det returnede view kan det meste info fra barterad modellen findes.
 	\item DetailsOwn - Viser en af dine egne barterads
 	\item Create - returnere viewet med mulighed for at CreateBarterAd
-	\item CreateBarterAd - brugeren opretter annoncer. Det vil sige, at brugeren kan indtaste Annoncenavn, kategori, beskrivelse og uploade et billed til en annonce. 
-	\item Edit - via denne action kan brugeren opdatere en af sine bytteannoncer.
+	\item Create(BarterAd) - brugeren opretter annoncer. Det vil sige, at brugeren kan indtaste Annoncenavn, kategori, beskrivelse og uploade et billed til en annonce. 
+	\item Edit(BarterAd) - via denne action kan brugeren opdatere en af sine bytteannoncer.
 	\item Comment - Denne action giver mulighed for at tilægge en commentar til en barterad, og gemmer den i databasen
 	\item Delete - Returnere delete viewet, der så giver mulighed for at slette ad'et 
 	\item DeleteConfirmed - Denne action kan slette barterads fra databasen. Naturligvis kun sine egne. 
@@ -39,9 +37,11 @@ Actions:
 	\item ShowHistory - Hvis historie over tidligere byttehandler.
 	\item ShowTheirTradeHistory - Viser TradeHistory for en anden bruger
 	
-	\item EditAd - 
+	\item Edit - Returnere edit viewet
 	\item GiveRating - Returnerer et view med de barterads som indgår i byttehandlen, som skal rates.
 	\item ConfirmRating - Lader brugeren bekræfte sin rating, som indeholder en værdi og eventuelt en kommentar, som gemmes i databasen.
+	\item ShowNearest - 
+	\item ShowNeedRating
 \end{itemize}
 
 %\subsection{ShowBarterAds}

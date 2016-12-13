@@ -1,5 +1,5 @@
 \chapter{Accepttestspecifikation}\label{ch:Accepttestspecifikation}
-I følgende afsnit følger accepttestsepcifikationen for de ikke funktionelle krav.
+I følgende afsnit følger accepttestspecifikationen for de ikke-funktionelle krav.
 
 \setlength{\arrayrulewidth}{0.3mm}
 \setlength{\tabcolsep}{2pt}
@@ -15,8 +15,7 @@ I følgende afsnit følger accepttestsepcifikationen for de ikke funktionelle kr
 		\hline
 		Punkt 3 & Der skrives ''Stol'' i søgefeltet og der trykkes på søg, når der trykkes på søg startes et stop-ur. Uret stoppes når Søgeresultaterne bliver vist på skærmen & Stop-uret viser mindre end 15 sekunder &  &  \\
 		\hline
-		%Punkt 4 & To brugere opretter en annonce samtidig på hver sin computer & Begge annoncer bliver oprettet uden nogen form for påvirkning af hinanden  &  & \\
-		Punkt 4 & En computer tilkoblet et andet netværk end hjemmesidens server, går til hjemmesidens url-adresse (link til hjemmeside) via en Chrome Browseren & Browseren åbner forsiden til systemets hjemmeside  &  & \\
+		Punkt 4 & En computer tilkoblet et andet netværk end hjemmesidens server, går til hjemmesidens url-adresse \url{http://10.29.0.30/bargainbarter} via en Chrome Browseren & Browseren åbner forsiden til systemets hjemmeside  &  & \\
 		\hline
 		Punkt 5 & Der søges efter annoncer inden for 10km & Den annonce, der ligger længst væk fra søgelokationen er mindre end 10100m &  &  \\
 		\hline 
@@ -25,6 +24,8 @@ I følgende afsnit følger accepttestsepcifikationen for de ikke funktionelle kr
 		Punkt 7 & Skriv en brugervurdering på 500 tegn og prøver at skrive videre & Brugeren kan nu ikke tilføje flere tegn &  & \\
 		\hline
 		Punkt 8 & Skriv en brugervurdering på under 500 tegn og tryk ''Send''. Når der trykkes på ''Send'' startes et stop-ur og uret stoppes, når bruger-anmeldelsen offentliggøres & Stop-uret viser mindre end 15 sekunder &  & \\
+		\hline
+		Punkt 9 & Tilgå hjemmesiden fra en af de afgivne enheder i afsnit \ref{ch:Ikkefunktionelle} via \url{http://10.29.0.30/bargainbarter}, log ind og opret en BarterAd  & En BarterAd er blevet opret i systemet & &  \\
 		\hline
 	\end{tabular}
 	\caption{Accepttestspecifikation af ikke-funktionelle krav del 1}

@@ -1,42 +1,40 @@
 \chapter{Software-arkitektur}
 
-I projektet blev det valgt at lave hjemmesiden i ASP.NET MVC. I følgende afsnit redegøres for systemets arkitektur og de anvendte patterns sammen med en begrundelse for deres valg.
-
-\section{ASP.NET}
-ASP.NET er et udviklings framework for web-applikationer.
-Det er en del af .NET Frameworket, der gør at al kode, der er  kompatible med .NET og CLR også er kombatibelt i ASP.NET. Dette har været en af de væsentligste grunde til, at ASP.NET er blevet benyttet, da det har gjort at projektet kunne skrives i C\#, der er blevet undervist i på semesterets andre kurser. Gruppen har desuden også modtaget undervisning i ASP.NET i forbindelse med faget I4GUI.
+I følgende afsnit redegøres for det systemets arkitektur og de anvendte patterns sammen med en begrundelse for deres valg.
 
 \section{MVC}
-Model-View-Controller\cite{MVC} er et GUI-pattern, der forsøger at adskille den grafiske brugergrænseflade fra resten af systemet. Denne adskille gør, at applikationen bliver mere testbar og samtidig mere skalerbar.
-MVC består af 3 dele:
+Model-View-Controller\cite{MVC} er et GUI-pattern, der forsøger at adskille den grafiske brugergrænseflade fra resten af systemet. Denne adskillelse har en række af fordele. De væsentligste fordele er, at applikationen bliver mere testbar, skalerbar samt nemmere at vedligeholde.
+MVC består af tre dele:
 \begin{itemize}
-	\item Model: er den domænespecifikke kode, der indeholder klasserne og den tilhørende kode for ens application.
-	\item View: er den grafiske del af programmet og indeholder præsentationslogikken.
-	\item Controller:er en grænsefladen mellem modellen og viewet. Dens opgave er at opdatere brugergrænsefladen og modellen.
+	\item Model: er den del der arbejder med den data relaterede logik, dvs. Data Acces Lay-
+	er. Det er altså al den data der tages fra databasen og bliver manipuleret af Views
+	eller Controllers.
+	\item View: er den grafiske del af programmet og indeholder præsentationslogikken. Denne del skal være afkoblet fra modellen.
+	\item Controller: er grænsefladen mellem modellen og viewet. Controllerens opgaave er at manipulere
+	data fra modellen og interagere med Views for at vise outputtet og modtage inputs
+	fra viewet
 \end{itemize}
 
-MVC blev valgt på baggrund af, at det er en integreret del af ASP.NET MVC. ASP.NET MVC er sat op en måde så applikationen bliver router rundt på baggrund af argumenterne i url.
-Dette bliver sat op i RouteConfig.cs, hvor der som standard er følgende opsætning:
-\begin{verbatim}
-public class RouteConfig
-{
-	public static void RegisterRoutes(RouteCollection routes)
-	{
-		routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-		
-		routes.MapRoute(
-		name: "Default",
-		url: "{controller}/{action}/{id}",
-		defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-		);
-	}
-}
-\end{verbatim}
-Overordnede kode viser, hvordan ASP.NET MVC router mellem de forskellige sider på baggrund af url'en. Det første argument i url'en er controlleren, der tager stilling til, hvilken controller, der skal kaldes. Næste argument er actionen, der skal kaldes i den valgte controller og det sidste argument er parametrene actionen skal kaldes med.
-Det kan også ses, at der er opsat nogen default argumenter, hvis der ikke er angivet nogen.
+På  figur  \ref{fig:MVC}  kan  der  ses  den  overordnet  struktur for, hvordan de tre dele af MVC kommunikere indbyrdes.
 
-\section{Lag}
-Systemet bygger på en trelagsmodel som kan ses i figur \ref{fig:lagmodel}.
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=140mm]{figures/MVC_drawing.pdf}
+	\caption{MVC struktur}
+	\label{fig:MVC}
+\end{figure}
+
+MVC blev valgt på baggrund af, at det er en integreret del af ASP.NET MVC. ASP.NET MVC er sat op, så applikationens controllere og deres forskellige actions bliver kaldt gennem af url'en.
+Dette bliver sat op i RouteConfig.cs, hvor der som standard er følgende opsætning:\\
+url: "{controller}/{action}/{id}" \\
+
+''Koden'' oven over viser, hvordan ASP.NET MVC router mellem de forskellige sider på baggrund af url'en. Det første argument i url'en router til en controller. Det efterfølgende argument er navnet på actionen, der skal kaldes i den valgte controller, hvis dette ikke er angivet kaldes ''Index''-metoden som default. Det sidste sidste argument er parametrene actionen skal kaldes med.
+Der er opsat en række af default argumenter, som kaldes, hvis der ikke er angivet nogen. Default argumenterne er følgende:\\
+''defaults: new { controller = "Home", action = "Index", id =UrlParameter.Optional }''.
+
+\section{3-lags-modellen}
+Systemet bygger på trelags-modellen \cite{3layer}, som kan ses i figur \ref{fig:lagmodel}.
 \begin{figure}[H]
 	\centering
 	\includegraphics
@@ -45,34 +43,57 @@ Systemet bygger på en trelagsmodel som kan ses i figur \ref{fig:lagmodel}.
 	\label{fig:lagmodel}
 \end{figure}
 
-Hvis man lægger denne model ned over systemet, kan man sige at Viewet er præsentationslogikken, controllers og modellen er business logikken og entity framework samt modellen er vores Data access lag.
+3-lags modellen forsøger som MVC at adskille præsentations-, buisness- og data-access logikken fra hinanden. 3-lags modellen foreskriver, at disse lag skal være fysisk adskilte fra hinanden. Fordelene ved den fysiske adskille basere sig primært på ''separation of concerns'' og ''Single Responsibility'', hvilket medfører et skalerbart og vedligeholdelses venligt system.\\
+ASP.NET MVC baseres på 3-lags modellen, hvilket gør, at systemets arkitektur lægger sig tæt op af 3-lags modellen.
+Systemets views er præsentationslogikken, controllers og modellen er business-logikken og entity framework samt modellen er systemets Data access lag. 
 
-\subsection{Presentationlag}
-For et system som dette, og med de ikke-funktionelle krav der er stillet, er brugervenlighed i højsædet. Dette betyder at præsentationslogikken er ekstremt vigtig for systemet. Det skal være let for en bruger at navigere rundt på siden og kunne forstå hvad meningen er med de forskellige handlinger der kan foretages.
+\subsection{Præsentationslaget}
+For web-applikationen generelt, og for de opstillede ikke-funktionelle krav til systemet, er brugervenlighed en væsentlig faktor. Dette betyder at præsentationslogikken er ekstremt vigtig for systemet. Da det skal være let for en bruger at navigere rundt på siden og kunne forstå, hvad meningen er med de forskellige handlinger der kan foretages.
 
-Da projektet er en webapplikation præsenteres den grundlæggende i HTML i en given browser. Denne HTML bliver vha. CSS og Javascript stylet så udseendet bliver godt at se på som muligt. I forbindelse med styling af views er front-end frameworket Bootstrap\cite{Bootstrap} anvendt. Bootstrap bliver anvendt på mange hjemmesider, og er derfor en stor hjælp til let at lave et velkendt design.
+Da projektet er en webapplikation præsenteres den grundlæggende i HTML i browseren. HTML'en bliver vha. CSS og Javascript stylet for at opnå et mere overskueligt design. I forbindelse med styling af views er front-end frameworket Bootstrap\cite{Bootstrap} anvendt. Bootstrap er blevet anvendt for at give hjemmesiden et mere responsivt design. Således at hjemmesiden kan benyttes fra flere forskellige typer af enheder (Smartphones, PC mm.), der var et af de ikke-funktionelle krav i afsnit \ref{ch:ikkefunktionelle}
+Bootstrap er et framework, der arbejder med relative værdier for skærmstørrelsen, således at layoutet skalere og relativt fylder det samme på forskellige typer af enheder/skærmstørrelser.
 
-I  praksis bliver  præsentationslaget i ASP.NET returneret i controllers. Disse controllers foretager en handling med fx et databasekald, hvorefter der returneres et view fra controlleren som brugeren kan se.
+I  praksis bliver  præsentationslaget i ASP.NET returneret af controllerne til brugeren, der kan se dette i browseren.% Disse controllers foretager en handling med fx et databasekald, hvorefter der returneres et view fra controlleren som brugeren kan se.
+
 \subsection{Businesslag}
-Businesslaget i projektet ligger i høj grad i controllerne. Der er selvfølgelig også truffet nogle forretningsspecifikke valg i Modellen, men dette er primært tomme entiteter. Forretningslogikken ligger derfor som udgangspunkt i controllerne, forsøgt afkoblet så meget som muligt fra præsentationslaget, hvor der helst ikke skal ligge for meget logik. I ASP.NET MVC sender man ofte data til viewet fra controlleren i et enkelt objekt, for bedst at kunne arbejde parallelt med views i mens forretningslogikken bliver implementeret. Derfor går en del af forretningslogikken også udpå at fremstille eller samle et objekt der har et klart interface til at kunne blive anvendt i viewet. 
+Business-laget i projektet er i høj grad controllerne. Der ligger selvfølgelig også nogle forretnings-specifikke valg i Modellen. Forretningslogikken ligger derfor som udgangspunkt i controllerne, hvor der er forsøgt at afkoble så meget som muligt af logikken fra præsentationslage. Da controlleren har den fordel, at disse kan testes i modsætningen til præsentationslaget. I ASP.NET MVC sender man ofte data til viewet fra controlleren som et objekt. Dette gør, at man kan arbejde parallelt på controller og view. Da der i objektet ligger et fast defineret interface. Derfor går en del af forretningslogikken udpå at fremstille eller samle et objekt, der har et klart interface til at kunne blive anvendt i viewet. 
 
-\subsection{Databaselag}
-I BargainBarter anvendes ADO.Net Entity Framework\cite{ADOEF} som det nederste data access layer. Entity Framework er et stærkt framework der har potentialet til at fjerne det impedans mismatch der ofte opstår mellem en database og objektmodellenn i et projekt. Entity Framework er valgt da man vha. en objekt orienteret tankegang kan operere på en database, og derfor slipper for en del bekymringer og ekstraarbejde man ellers vil have. I brugen af Entity Framework har LINQ \cite{LINQ} været et godt supplement det at operere på databasen. 
+\subsection{Database lag}
+I BargainBarter anvendes ADO.NET Entity Framework\cite{ADOEF} som det nederste data access layer. Entity Framework er et framework, der fjerner det impedans mismatch, der ofte opstår mellem databasen og objektmodellen i et projekt. Entity Framework er valgt, da man vha. en objekt orienteret tankegang kan operere på en database. Man slipper derfor for en del bekymringer og ekstraarbejde i form af triviel kode, der skulle skrives i forbindelse med mapningen af database-objekter til kode-objekter. I brugen af Entity Framework har LINQ \cite{LINQ} været et godt hjælpemiddel til at operere på databasen. 
 
-Entity Framework var desuden en oplagt mulighed, da der i projektet har været stillet en Microsoft SQL Server Database til rådighed som Entity Framework arbejder bedst på. Udover dette arbejder Entity Framework også godt sammen med ASP.Net MVC frameworket.  
+Entity Framework var desuden oplagt, da der i projektet har været stillet en Microsoft SQL Server Database til rådighed af AU. Udover dette arbejder Entity Framework også godt sammen med ASP.Net MVC frameworket.  
 
-I brugen af Entity Framework, anvendes en Code First New Database\cite{EFCodeFirst} approach. På denne måde bliver databasen genereret på baggrund af objektmodellen man opstiller i projektet, og man kan via migrations gemme på historikken på databasen. Denne approach er derfor meget fleksibel idet man altid kan rulle databasen tilbage til et tidligere stadie hvis man fortryder. Fordi man uddelegerer mapningen mellem objektmodellen og entitetsmodellen til et framework, med nogle meget strikse regler kommer disse to forskellige modeller til at ligne hinanden og interfacet fra projektet til databasen bliver derfor meget homogent og let anvendeligt. 
+I brugen af Entity Framework, anvendes en Code First New Database\cite{EFCodeFirst} approach. På denne måde bliver databasen genereret på baggrund af objektmodellen man opstiller i projektet. Man kan via migrations udvidde objektmodellen og dermed databasen løbende i projektet. Migrations gemmer også historikken over ændringerne på databasen. Denne approach er derfor meget fleksibel idet, man altid kan rulle databasen tilbage til et tidligere stadie. Da man uddelegerer mapningen mellem objektmodellen og entitetsmodellen til et framework, med nogle meget strikse regler kommer disse to forskellige modeller til at ligne hinanden og interfacet fra projektet til databasen bliver derfor meget homogent og let anvendeligt. Gruppen har desuden modtaget undervisning i brug af frameworket i faget I4DAB.
 
-Dette er derfor også nogen af grundene til at beslutningen om at anvende Entity Framework blev truffet tidligt i projektet, og i høj grad har indflydelse på arkitekturen.
+Dette er nogle af grundene til at beslutningen om at anvende Entity Framework. Denne beslutning blev truffet tidligt i projektet, og har i høj grad har indflydelse på arkitekturen for systemet.
 
 \section{Repository Pattern}
-Repository er et pattern, der indføres et ekstra lag (Repository-lag), der virker som DAL mellem buisness-logikken og det oprindelige DAL - i dette tilfælde Entity Framework. Dette medfører at buisness-logikken ikke skriver direkte ned i databasen, så dette ikke bliver afhængig af databasen. Buisness-laget kalder bare ned i repository-laget, der så sørger for transaktionen med databasen. 
-Repository pattern er blevet anvendt for at opnå en lavere kobling i systemet mellem databasen og buisness-logikken. Den lavere kobling gør systemet mere robust for ændre og gør samtidig også, at man kan teste på, at buisness-logikken der skal skrive ned i databasen. Da man kan stubbe/mocke repository-laget ud.
+Repository pattern er et software mønster \cite{Mønster}, der indfører et ekstra lag (Repository-lag) mellem databasen og buisness-logikken. Det virker som data-access lag mellem buisness-logikken og det oprindelige data-access lag - i dette tilfælde Entity Framework. Dette ekstra lag medfører, at buisness-logikken ikke skriver direkte ned i databasen. Dette sænker i høj grad koblingen i systemet, da buisness-laget ikke er afhængig af databasen. 
+Buisness-laget kalder bare ned i repository-laget, der så sørger for selve transaktionen med databasen. 
+På figur \ref{fig:Repository} kan man se, hvor og hvordan det ekstra lag indføres i arkitekturen.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=140mm]{figures/Repository1.pdf}
+	\caption{Respository Patterns betydning for arkitekturen}
+	\label{fig:Repository}
+\end{figure}
+
+Repository pattern er blevet anvendt for at opnå en lavere kobling i systemet mellem databasen og buisness-logikken. Den lavere kobling i systemet, gør systemet mere robust for ændringer. Systemet bliver også samtidig mere testbart, da systemet på denne måde kan benytte despendency inversion, hvor ved de forskellige database afhængigheder kan mockes ud i forbindelse med testningen af systemet. 
 
 \section{Unit Of Work}
 Unit of Work er et design pattern, der holder styr på in-memory opdateringer og skriver disse opdateringer til databasen. Dette er dermed den eneste klasse, der taler sammen med databasen.
-Dette er blevet opnået ved at, at unitofWork-klassen indeholder et GenericRepository af alle de forskellige model-klasser. Det er unitofwork, der vedligeholder disse repositories, da unitofwork er den eneste, der tilføjer eller sletter i databasen. Det er dermed unitofwork, der laver de gængse database-transaction og sørge for at databasen bliver opdateret, når en transaction er færdig.
+Dette er blevet opnået ved at, at Unit Of Work-klassen indeholder en række GenericRepository's af alle de forskellige model-klasser. Det er Unit Of Work, der vedligeholder disse repositories. Unit Of Work er den eneste, der tilføjer eller sletter i databasen. Det er dermed Unit Of Work, der laver de gængse database-transaktioner og sørge for at databasen bliver opdateret, når en transaktion er afsluttet.
 
-\section{SignalR}
-SignalR er et biblotek til ASP.NET miljøet, som giver adgang til at benytte real-time funktioner på det website man udvikler på. Det er meget nyttigt, når man vil have en form for interaktion med brugerne, eller mellem brugere. Det forgår i browseren, men kan stadig lave kald tilbage til severen. 
+\section{Valg af Teknologier}
+\subsection{ASP.NET}
+ASP.NET er et udviklings framework for web-applikationer.
+Det er en del af .NET Frameworket, der gør at al kode, der er  kompatible med .NET og CLR også er kompatibelt i ASP.NET. Dette har været en af de væsentligste grunde til, at ASP.NET er blevet benyttet, da det har gjort at projektet kunne skrives i C\#, der er blevet undervist i på semesterets andre kurser. Gruppen har desuden også modtaget undervisning i ASP.NET i forbindelse med faget I4GUI.
+
+\subsection{SignalR}
+SignalR er et software-biblotek til ASP.NET miljøet. Biblioteket giver adgang til at benytte real-time funktioner på det website man udvikler på. Det er meget nyttigt, når man vil have en form for interaktion med brugerne, eller mellem brugere. \\
+Det forgår i browseren ved brug af javascript-koden, men der kan stadig laves kald tilbage til serveren. 
+SignalR er blevet anvendt for til at implementere systemets real-time chat.
+
 \section{Generelle overvejelser i forbindelse med Arkitektur}
