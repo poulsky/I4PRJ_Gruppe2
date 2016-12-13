@@ -18,7 +18,7 @@ Denne controller er overodnet ansvarlig for, at brugeren kan oprette og opdatere
 Actions:
 \begin{itemize}
 	\item Index - Returne blot til Home controllerens index, dette er fordi routeconfigen sætter index som standard, så man skal ikke kunne kalde barterads controllerens index.
-	\item ShowBarterAdsOnMap - 
+	\item ShowBarterAdsOnMap - Viser et kort med alle annoncer.
 	\item Viewphoto - Returnere et billede
 	\item Details - Via denne action kan brugeren indspicere en anden brugers  BarterAd. I det returnede view kan det meste info fra barterad modellen findes.
 	\item DetailsOwn - Viser en af dine egne barterads
@@ -40,8 +40,8 @@ Actions:
 	\item Edit - Returnere edit viewet
 	\item GiveRating - Returnerer et view med de barterads som indgår i byttehandlen, som skal rates.
 	\item ConfirmRating - Lader brugeren bekræfte sin rating, som indeholder en værdi og eventuelt en kommentar, som gemmes i databasen.
-	\item ShowNearest - 
-	\item ShowNeedRating
+	\item ShowNearest - Brugeren har mulighed for at sætte en ønsket afstand til annoncer. Returnerer et view med alle annoncer inden for given afstand.
+	\item ShowNeedRating - Viser de byttehandler brugeren mangler at vurdere.
 \end{itemize}
 
 %\subsection{ShowBarterAds}
