@@ -7,7 +7,11 @@ Der er en overordnet rollefordeling af controllernes ansvar:
 
 \input{sections/ControllerAnsvar.tex}
 
+<<<<<<< HEAD
+\subsection{Generelle controller funktioner}\label{sc:GenerelControl}
+=======
 \section{Generel controller-funktionalitet}
+>>>>>>> 1b0e82082ad72c0a50c7d59f5b39b296fa1db54c
 
 Generelt er der anvendt forskellige standardmetoder igennem mange af controllerne. Til data acces kalder alle controllere igennem et Unit of Work pattern, som beskrives i sektion \ref{sc:RepositoryPattern}. Til at finde den aktuelle bruger i systemet bruges HttpContext hvor brugeren findes på ID. Controllerne holder selv styr på at kalde fejl hvis de bliver kaldt med ugyldige parametre. Da dette er et meget ensartet mønster igennnem alle controllers eksemplificeres dette blot ved en enkelt controller.
 
