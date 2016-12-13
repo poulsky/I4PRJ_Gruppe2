@@ -1,11 +1,12 @@
 \chapter{Test}
 
-Projektet stiller krav om løbende udvikling og ikke mindst krav om kvalitet. Automatiserede tests har dermed været et naturligt valg, der konstant og systematisk hjælper os til at sørge for at kvaliteten i vores system opretholdes. Detektion af fejl i tidligere kode, når ny kode tillægges er ligeledes en afgørende faktor for dette valg.
+Projektet stiller krav om løbende udvikling og ikke mindst krav om kvalitet. 
+Automatiserede tests har dermed været et naturligt valg, der konstant og systematisk har hjulpet os som udviklere til at sørge for, at kvaliteten i vores system opretholdes. Detektion af fejl i tidligere kode, når ny kode tillægges er ligeledes en afgørende faktor for dette valg.
 
 \input{sections/CI.tex}
 
 \section{Unit Tests af controllerne}
-Da der i Bargain Barter systemmet kun er meget minimal buisness-logic, ligger størstedelen af funktionaliteten i controllerne i MVC strukturen. Denne funktionalitet er således også den vigtigste at teste. Desuden er databasen i sig selv svær at teste, og views i MVC'en kan nærmest ikke testes. Det der reelt kan testes er hvad controllerne giver videre til deres views, og således ikke views dem selv. I Controllerne er der flere ting der er væsentligt at teste.
+Da der i BargainBarter systemmet kun er meget minimal buisness-logic, ligger størstedelen af funktionaliteten i controllerne i MVC strukturen. Denne funktionalitet er således også den vigtigste at teste. Desuden er databasen i sig selv svær at teste, og views i MVC'en kan nærmest ikke testes. Det der reelt kan testes er hvad controllerne giver videre til deres views, og således ikke views dem selv. I Controllerne er der flere ting der er væsentligt at teste.
 \begin{itemize}
 	\item Hvad gives med i viewbagen
 	\item Buisness-logic funktioner som controllerne bruger
@@ -16,7 +17,6 @@ Da der i Bargain Barter systemmet kun er meget minimal buisness-logic, ligger st
 Disse er de udvalgte ting som er vurderet til at give mening at teste på.
 
 Den fulde liste af test kan ses nedenfor.
-(LAV DENNE LISTE!)
 \setlength{\arrayrulewidth}{0.3mm}
 \setlength{\tabcolsep}{2pt}
 \renewcommand{\arraystretch}{1.5}
@@ -36,8 +36,10 @@ Den fulde liste af test kan ses nedenfor.
 		SearchController & Search\_Calls-\_BarterAdsRepository & Tester om den BarterAddRepository bliver kaldt når man søger efter en bestemt ting \\
 		& CategorySearch\_Calls-\_BarterAdsRepository & Tester om BarterAdsRepository anvendes at og bliver kaldt når man vælger kategori \\
 		\hline
-		
-		
+		HelperFunctions & CalculateAverage\_Test & Tester om CalculateAverage udregner gennemsnittet rigtigt på baggrund af en nogen kontrol-værdier. \\ &  CalculateUserAvg\_Test & Tester om CalculateuserAvgRating kan udregne udregne gennemsnittet rigtig for en bruger på baggrund af en liste af FinishedTrades\\
+		\hline
+		HelperFunctions Distance & GetDistance_Test & Tester om en adresse kan konverteres til koordinater og om distancen mellem koordinaterne er rigtig.\\
+		\hline
 	\end{tabular}
 \end{table}
 
