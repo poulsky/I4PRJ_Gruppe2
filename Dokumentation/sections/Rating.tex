@@ -4,7 +4,7 @@ Jævnfør Moscow-analysen var der ønske om en funktionalitet, så brugere kan v
 Dette plugin gør at man kan vise et antal stjerner, som kan være tomme og fyldte, hvilket vises dynamisk mens brugeren bevæger markøren over. Alt i alt får det stjerne-ratingen til at se æstetisk og lækker ud, og kan både bruges til rating input, og til blot at vise en brugers rating. \\
 Desuden indgik JQuery som pensum på I4GUI, så det var også en mulighed for at få noget erfaring med at arbejde med denne teknologi. \ Af disse årsager passede dette plugin fint ind i en løsning til rating featuren, og blev derfor valgt til anvendelse af løsningen.
 \subsection{Virkemåde}
-Når en byttehandel er accepteret fra begge parter bliver den markeret som en færdiggjort handel, og kan nu rates af begge brugere. Denne rating bidrager til brugernes gennemsnitlige rating, som er den, som vises sammen med deres annoncer som vist på forsiden, som vist i eksemplet nedenfor.
+Når en byttehandel er accepteret fra begge parter, bliver den markeret som en færdiggjort handel, og kan nu rates af begge brugere. Denne rating bidrager til brugernes gennemsnitlige rating, som er den, som vises sammen med deres annoncer som vist på forsiden, som vist i eksemplet nedenfor.
 
 \begin{figure}[H]
 	\centering
@@ -15,7 +15,7 @@ Når en byttehandel er accepteret fra begge parter bliver den markeret som en f�
 	\label{fig:ForsideEksempel}
 \end{figure}
 
-Når brugerne skal rate hinanden, skal de give mindst 1 stjerne. Så længe man prøver at give mindre end 1 stjerne vil det ikke være muligt at bekræfte sin rating. Denne feature er vist nedenfor på figur. Denne feature er implementeret ved hjælp af det anvendte rating plugin, som tilbyder et event, som bliver fyret når ratingens værdi ændrer sig. På den måde kan knappen ændre class mellem disabled og ikke disabled afhængig af ratingens værdi. \ref{fig:RatingEksempel}
+Når brugerne skal rate hinanden, skal de give mindst 1 stjerne. Så længe man prøver at give mindre end 1 stjerne vil det ikke være muligt at bekræfte sin rating. Denne feature er vist på figur \ref{fig:RatingEksempel}. Featuren er implementeret ved hjælp af det anvendte rating plugin, som tilbyder et event, der bliver fyret når ratingens værdi ændrer sig. På den måde kan knappen ændre class mellem disabled og ikke disabled afhængig af ratingens værdi. \ref{fig:RatingEksempel}
 
 \begin{figure}[H]
 	\centering
