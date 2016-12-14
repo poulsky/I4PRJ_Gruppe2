@@ -1,13 +1,13 @@
 \chapter{Software-arkitektur}
 
-I følgende afsnit redegøres for det systemets arkitektur og de anvendte patterns sammen med en begrundelse for deres valg.
+I følgende afsnit redegøres for det systemets arkitektur og de anvendte patterns sammen med en begrundelse for hvorfor de er valgt.
 
 \section{MVC}
 Model-View-Controller\cite{MVC} er et GUI-pattern, der forsøger at adskille den grafiske brugergrænseflade fra resten af systemet. Denne adskillelse har en række af fordele. De væsentligste fordele er, at applikationen bliver mere testbar, skalerbar samt nemmere at vedligeholde. I projektet er der anvendt ASP.NET\cite{ASP} MVC, hvilket er en afart af den rene form for MVC. 
 ASP.NET MVC består af tre dele:
 \begin{itemize}
 	\item Model: er den del der arbejder med den data relaterede logik, dvs. Data Acces Lay-
-	er. Det er altså al den data der tages fra databasen og bliver manipuleret af Views
+	er. Det er alt den data der tages fra databasen og bliver manipuleret af Views
 	eller Controllers.
 	\item View: er den grafiske del af programmet og indeholder præsentationslogikken. Denne del skal være afkoblet fra modellen.
 	\item Controller: er grænsefladen mellem modellen og viewet. Controllerens opgave er at manipulere
@@ -25,7 +25,7 @@ På  figur  \ref{fig:MVC}  kan  der  ses  den  overordnet  struktur for, hvordan
 	\label{fig:MVC}
 \end{figure}
 
-MVC blev valgt på baggrund af, at det er en integreret del af ASP.NET MVC. ASP.NET MVC er sat op, så applikationens controllere og deres forskellige actions bliver kaldt gennem af url'en.
+MVC blev valgt på baggrund af, at det er en integreret del af ASP.NET MVC. ASP.NET MVC er sat op, så applikationens controllere og deres forskellige actions bliver kaldt gennem url'en.
 Dette bliver sat op i RouteConfig.cs, hvor der som standard er følgende opsætning:\\
 \begin{lstlisting}
     public class RouteConfig
@@ -37,7 +37,8 @@ Dette bliver sat op i RouteConfig.cs, hvor der som standard er følgende opsætn
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id
+                 = UrlParameter.Optional }
             );
         }
     }
@@ -69,14 +70,14 @@ Bootstrap er et framework, der arbejder med relative værdier for skærmstørrel
 I  praksis bliver  præsentationslaget i ASP.NET returneret af controllerne til brugeren, der kan se dette i browseren.% Disse controllers foretager en handling med fx et databasekald, hvorefter der returneres et view fra controlleren som brugeren kan se.
 
 \subsection{Businesslag}
-Business-laget i projektet er i høj grad controllerne. Der ligger selvfølgelig også nogle forretnings-specifikke valg i Modellen. Forretningslogikken ligger derfor som udgangspunkt i controllerne, hvor der er forsøgt at afkoble så meget som muligt af logikken fra præsentationslage. Da controlleren har den fordel, at disse kan testes i modsætningen til præsentationslaget. I ASP.NET MVC sender man ofte data til viewet fra controlleren som et objekt. Dette gør, at man kan arbejde parallelt på controller og view. Da der i objektet ligger et fast defineret interface. Derfor går en del af forretningslogikken udpå at fremstille eller samle et objekt, der har et klart interface til at kunne blive anvendt i viewet. 
+Business-laget i projektet er i høj grad controllerne. Der ligger selvfølgelig også nogle forretnings-specifikke valg i modellen. Forretningslogikken ligger derfor som udgangspunkt i controllerne, hvor der er forsøgt at afkoble så meget som muligt af logikken fra præsentationslage. Da controlleren har den fordel, at disse kan testes i modsætningen til præsentationslaget. I ASP.NET MVC sender man ofte data til viewet fra controlleren som et objekt. Dette gør, at man kan arbejde parallelt på controller og view. Da der i objektet ligger et fast defineret interface. Derfor går en del af forretningslogikken udpå at fremstille eller samle et objekt, der har et klart interface til at kunne blive anvendt i viewet. 
 
 \subsection{Database lag}
 I BargainBarter anvendes ADO.NET Entity Framework\cite{ADOEF} som det nederste data access layer. Entity Framework er et framework, der fjerner det impedans mismatch, der ofte opstår mellem databasen og objektmodellen i et projekt. Entity Framework er valgt, da man vha. en objekt orienteret tankegang kan operere på en database. Man slipper derfor for en del bekymringer og ekstraarbejde i form af triviel kode, der skulle skrives i forbindelse med mapningen af database-objekter til kode-objekter. I brugen af Entity Framework har LINQ \cite{LINQ} været et godt hjælpemiddel til at operere på databasen. 
 
 Entity Framework var desuden oplagt, da der i projektet har været stillet en Microsoft SQL Server Database til rådighed af AU. Udover dette arbejder Entity Framework også godt sammen med ASP.Net MVC frameworket.  
 
-I brugen af Entity Framework, anvendes en Code First New Database\cite{EFCodeFirst} approach. På denne måde bliver databasen genereret på baggrund af objektmodellen man opstiller i projektet. Man kan via migrations udvidde objektmodellen og dermed databasen løbende i projektet. Migrations gemmer også historikken over ændringerne på databasen. Denne approach er derfor meget fleksibel idet, man altid kan rulle databasen tilbage til et tidligere stadie. Da man uddelegerer mapningen mellem objektmodellen og entitetsmodellen til et framework, med nogle meget strikse regler kommer disse to forskellige modeller til at ligne hinanden og interfacet fra projektet til databasen bliver derfor meget homogent og let anvendeligt. Gruppen har desuden modtaget undervisning i brug af frameworket i faget I4DAB.
+I brugen af Entity Framework, anvendes en Code First New Database\cite{EFCodeFirst} approach. På denne måde bliver databasen genereret på baggrund af objektmodellen man opstiller i projektet. Man kan via migrations udvidde objektmodellen og dermed databasen løbende i projektet. Migrations gemmer også historikken over ændringerne på databasen. Dette approach er derfor meget fleksibel, idet man altid kan rulle databasen tilbage til et tidligere stadie. Da man uddelegerer mapningen mellem objektmodellen og entitetsmodellen til et framework, med nogle meget strikse regler kommer disse to forskellige modeller til at ligne hinanden og interfacet fra projektet til databasen bliver derfor meget homogent og let anvendeligt. Gruppen har desuden modtaget undervisning i brug af frameworket i faget I4DAB.
 
 Dette er nogle af grundene til at beslutningen om at anvende Entity Framework. Denne beslutning blev truffet tidligt i projektet, og har i høj grad har indflydelse på arkitekturen for systemet.
 
@@ -93,7 +94,7 @@ På figur \ref{fig:Repository} kan man se, hvor og hvordan det ekstra lag indfø
 	\label{fig:Repository}
 \end{figure}
 
-Repository pattern er blevet anvendt for at opnå en lavere kobling i systemet mellem databasen og buisness-logikken. Den lavere kobling i systemet, gør systemet mere robust for ændringer. Systemet bliver også samtidig mere testbart, da systemet på denne måde kan benytte despendency inversion, hvor ved de forskellige database afhængigheder kan mockes ud i forbindelse med testningen af systemet. 
+Repository pattern er blevet anvendt for at opnå en lavere kobling i systemet mellem databasen og buisness-logikken. Den lavere kobling i systemet, gør systemet mere robust for ændringer. Systemet bliver også samtidig mere testbart, da det på denne måde kan benytte despendency inversion, hvor ved de forskellige database afhængigheder kan mockes ud i forbindelse med testningen af systemet. 
 
 \section{Unit Of Work}
 Unit of Work er et design pattern, der holder styr på in-memory opdateringer og skriver disse opdateringer til databasen. Dette er dermed den eneste klasse, der taler sammen med databasen.
@@ -110,10 +111,10 @@ Det forgår i browseren ved brug af javascript-koden, men der kan stadig laves k
 SignalR er blevet anvendt for til at implementere systemets real-time chat.
 
 \section{Generelle overvejelser i forbindelse med Arkitektur}
-I forbindelse med projektet har der været nogle generelle overvejelser, omkring den arkitektur produktet skulle have. NogleEt af de vigtigste key issues har været brugerkvaliteten. Dvs. at brugervenligheden og skalerbarheden til forskellige apparater, har skullet være i top for at produktet har kunnet giver værdi. Dette har vi prøvet ater kommet til livs med at anvende frameworket Bootstrap, som er en stor hjælp til at lave pæne designs, der skalerer til forskellige devicestørrelser devices,  uden alt for meget arbejde. 
+I forbindelse med projektet har der været nogle generelle overvejelser, omkring den arkitektur produktet skulle have. Et af de vigtigste key issues har været brugerkvaliteten. Dvs. at brugervenligheden og skalerbarheden til forskellige apparater, har skullet være i top for at produktet har kunnet giver værdi. Dette er kommet til livs med at anvende frameworket Bootstrap, som er en stor hjælp til at lave pæne designs, der skalerer til forskellige devicestørrelser devices,  uden alt for meget arbejde. 
 
 Et andet kriterie der er tænkt ind i arkitekturen er performance. Dette kan bl.a. ses ved implementeringen af chatten. I chat controlleren er meget af logikken implementeret client side vha. javascript. Dette giver en bedre brugeroplevelse da opdateringerne sker øjeblikkeligt i chatten, da der kan spares nogle kald til serveren.
 
-Af cross cutting concerns i projektet har der bl.a. været verificering af en brugers log in på de forskellige sider. Dvs. at visse dele af hjemmesiden skulle ikkikke skulle være tilgængeligt, med mindre brugeren var logget ind. Til at løse dette problem er ASP.NET identity\cite{Identity} blevet brugt og udvidet ,med de oplysninger der har været nødvendige for at projektet har passet på domænet.
+Af cross cutting concerns i projektet har der bl.a. været verificering af en brugers log in på de forskellige sider. Dvs. at visse dele af hjemmesiden ikke skulle være tilgængelig, med mindre brugeren var logget ind. Til at løse dette problem er ASP.NET identity\cite{Identity} blevet brugt og udvidet, med de oplysninger der har været nødvendige for at projektet har passet på domænet.
 
-En anden cross cutting concern er validering af oplysninger når en brugerprofil oprettes. I projektet er det valgt at brugeren skal oplyse en adresse, fulde navn, email, password og telefonnummer. Adresse og kontaktinformationer er valgt, da disse oplysninger alle er essentielle for at en byttehandel kan finde sted i virkeligheden. Passwordet er valgt til ikke at have særligt strikse krav, idet oplysningerne ikke er særligt kritiske at miste. Det er derfor vigtigere at brugerens indgangsbarriere er mindre vedimal, og at der ikke at skulle bruges for lang tid på at finde på et password, som han/hun alligevel ikke kan huske bagefter.
+En anden cross cutting concern er validering af oplysninger når en brugerprofil oprettes. I projektet er det valgt at brugeren skal oplyse en adresse, fulde navn, email, password og telefonnummer. Adresse og kontaktinformationer er valgt, da disse oplysninger alle er essentielle for at en byttehandel kan finde sted i virkeligheden. Passwordet er valgt til ikke at have særligt strikse krav, idet oplysningerne ikke er særligt kritiske at miste. Det er derfor vigtigere at brugerens indgangsbarriere er minimal, og at der ikke at skulle bruges for lang tid på at finde på et password, som han/hun alligevel ikke kan huske bagefter.
