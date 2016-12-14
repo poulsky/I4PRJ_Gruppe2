@@ -70,7 +70,9 @@ Thumbs.db
 *.synctex.gz
 *.pdf
 
-
+!/Bilag/Dagsorden/*.pdf
+!/Bilag/Retrospektiver/*.pdf
+!/Bilag/Referater/*.pdf
 !/Dokumentation/figures/*.pdf
 !/Dokumentation/figures/*.png
 !/Dokumentation/figures/ApplikationsmodelUC1/*.pdf
