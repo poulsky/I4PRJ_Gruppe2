@@ -7,11 +7,11 @@ Der er en overordnet rollefordeling af controllernes ansvar:
 
 \input{sections/ControllerAnsvar.tex}
 
-<<<<<<< HEAD
+
 \subsection{Generelle controller funktioner}\label{sc:GenerelControl}
-=======
+
 \section{Generel controller-funktionalitet}
->>>>>>> 1b0e82082ad72c0a50c7d59f5b39b296fa1db54c
+
 
 Generelt er der anvendt forskellige standardmetoder igennem mange af controllerne. Til data acces kalder alle controllere igennem et Unit of Work pattern, som beskrives i sektion \ref{sc:RepositoryPattern}. Til at finde den aktuelle bruger i systemet bruges HttpContext hvor brugeren findes på ID. Controllerne holder selv styr på at kalde fejl hvis de bliver kaldt med ugyldige parametre. Da dette er et meget ensartet mønster igennnem alle controllers eksemplificeres dette blot ved en enkelt controller.
 
@@ -32,7 +32,17 @@ Denne beskrivelse er sigende for mange af de interaktioner der foregår på barg
 
 \section{Modellen}
 
-Den endelige model (med undtagelse af den genererede indentitymodel) kan ses på figur. \ref{Manglende }. Denne model genererer databasen, ved hjælp af det tidligere beskrevede EF. Modellen er lavet ud fra domæneanalysen og implementationen af modellen tilgås af controllerne til at hente data.
+Den endelige koceptuelle model (med undtagelse af den genererede indentitymodel) kan ses på figur. \ref{fig:MODEL}. Modellen er lavet ud fra domæneanalysen og implementationen af modellen tilgås af controllerne til at hente data.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=150mm]{figures/Model.PDF}
+	\caption{Samlet model over BargainBarter}
+	\label{fig:MODEL}
+\end{figure}
+
+Den implementerede model har nogle begrænsninger ift. hvad den tillader at gemme.
 
 \section{Data fra Database}
 \input{sections/subsection/UOFDB.tex}
