@@ -13,7 +13,7 @@ Actions
 
 
 \subsection{BarterAd}
-Denne controller er overodnet ansvarlig for, at brugeren kan oprette og opdatere Barteradds annoncer på hjemmesiden. Sammenfattet: CRUD operationerne på BarterAds. UD over dette kan denne controller også hjælpe med at vise enkelte Barteradds.
+Denne controller er overodnet ansvarlig for, at brugeren kan oprette og opdatere Barteradds annoncer på hjemmesiden. Sammenfattet: CRUD operationerne på BarterAds. Ud over dette kan denne controller også hjælpe med at vise enkelte Barteradds.
 
 Actions:
 \begin{itemize}
@@ -74,3 +74,7 @@ Denne controller har til ansvar at styre ansvar omkring brugerprofiler. Dette er
 	\item Edit(postedUser) De rettede oplysninger i brugerprofilen skrives ned i databasen. Brugerprofilen bliver herefter vist.
 	\item ShowUserProfile(id) sørger for at trække data udfra databasen og sende et pænt View til siden der viser de oplysninger en brugerprofil indeholder. Hvis profilen er den samme som den bruger der tilgår den, får brugeren mulighed for at rette i oplysninger vha. en redigerknap.
 \end{itemize}
+
+\subsection{Chat}
+
+Har en index action der returnere et view.
