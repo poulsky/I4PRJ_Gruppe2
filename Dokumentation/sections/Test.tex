@@ -1,12 +1,14 @@
 \chapter{Test}
 
 Projektet stiller krav om løbende udvikling og ikke mindst krav om kvalitet. 
-Automatiserede tests har dermed været et naturligt valg, der konstant og systematisk har hjulpet os som udviklere til at sørge for, at kvaliteten i vores system opretholdes. Detektion af fejl i tidligere kode, når ny kode tillægges er ligeledes en afgørende faktor for dette valg.
+Automatiserede tests har dermed været et naturligt valg. De automatiserede test har konstant og systematisk hjulpet os som udviklere til at sørge for, at kvaliteten i vores system opretholdes, når ny funktionalitet er blevet tilføjet. Der er specielt blevet lagt fokus på unit test i system. Detektion af fejl i tidligere kode, når ny kode tillægges er ligeledes en afgørende faktor for dette valg.
 
 \input{sections/CI.tex}
 
 \section{Unit Tests af controllerne}
-Da der i BargainBarter systemmet kun er meget minimal buisness-logic, ligger størstedelen af funktionaliteten i controllerne i MVC strukturen. Denne funktionalitet er således også den vigtigste at teste. Desuden er databasen i sig selv svær at teste, og views i MVC'en kan nærmest ikke testes. Det der reelt kan testes er hvad controllerne giver videre til deres views, og således ikke views dem selv. I Controllerne er der flere ting der er væsentligt at teste.
+Da systemet i starten af udviklingsfasen kun indeholdt meget minimal buisness-logic, ligger størstedelen af funktionaliteten i controllerne i MVC strukturen. 
+Denne struktur med at lægge funktionalitet i controller blev fastholdt igennem udviklingsfasen. Dette blev erfaret som en dårlig beslutning, da controllerne ofte udover buisness-logikken også benyttede sig af web-specifikke metoder \footnote{HttpContext-metoder}, der gør unit test på disse metoder tæt på umulig. Designet skulle derfor have været refaktoreret, således at mere af buisness-logikken var blevet flyttet til et separat buisness-lag, så denne del af systemet kunne være blevet testet.
+De controllere, som kunne testes, er således også den vigtigste at teste. Databasen i sig selv er svær at teste, og views i MVC'en kan nærmest ikke testes. Det der reelt kan testes er derfor, hvad controllerne giver videre til deres views, og således ikke selve views'ne.\\ I Controllerne er der flere ting der er væsentligt at teste.
 \begin{itemize}
 	\item Hvad gives med i viewbagen
 	\item Buisness-logic funktioner som controllerne bruger
@@ -30,15 +32,27 @@ Den fulde liste af test kan ses nedenfor.
 		& ShowBarterAdsOnMap-\_BarterAddRepository-\_Get\_IsCalled & Tester om controller kalder den rigtige metode for at vise alle barteradds på kortet\\
 	
 		& Details\_NullId\_Returns-\_BadRequest & Tester om hvis metoden Details får Null, som id, så returnerer controlleren en BadRequest, kode 400. \\
+		&Create\_DoesNot\_Return\_Null& Tester, at create controller retunerer et view \\
+		& Edit\_NullId\_Returns\_BadRequest &  Tester om hvis metoden Edit får Null, som parameter, så returnerer controlleren en BadRequest, kode 400. \\
+		& Delete\_NullId\_Returns\_BadRequest & Tester om hvis metoden Delete får Null, som parameter, så returnerer controlleren en BadRequest, kode 400. \\
+		\hline
+		ManageController & ChangePassword\_DoesNotReturnNull &Tester, at ChangePassword metoden retuner et view, der er forskellig fra null\
+		\\
 		\hline
 		HomeController & Index\_BarterAddRepository-\_Get\_IsCalled & Tester om den metode der viser alle barteradds på Index siden, bliver vist. \\
+		& Index\_DoesNotReturnNull & Tester, at index metoden  retuner et view, der er forskellig fra null\\
+		& AboutDoesNotReturnNull & Tester, at About-metoden  retuner et view, der er forskellig fra null \\
+		& ContactDoesNotReturnNull &  Tester, at Contact-metoden retuner et view, der er forskellig fra null  \\
 		\hline
 		SearchController & Search\_Calls-\_BarterAdsRepository & Tester om den BarterAddRepository bliver kaldt når man søger efter en bestemt ting \\
 		& CategorySearch\_Calls-\_BarterAdsRepository & Tester om BarterAdsRepository anvendes at og bliver kaldt når man vælger kategori \\
+		& Index\_DoesNotReturnNull & Tester, at Index-metoden retuner et view, der er forskellig fra null\\
+		& Index\_SearchstringIsNull\_ReturnsNotNull & Tester om, at Index-metoden retunerer et view, der giver mening på trods af  den modtager null som paramter\\
+		& Categorysearch\_SearchstringIsNonEmpty\_ResultIsNotNull & Tester om, at Categorysearch-metoden retunerer et view, der giver mening, når det modtager en paramter\\
 		\hline
 		HelperFunctions & CalculateAverage\_Test & Tester om CalculateAverage udregner gennemsnittet rigtigt på baggrund af en nogen kontrol-værdier. \\ &  CalculateUserAvg\_Test & Tester om CalculateuserAvgRating kan udregne udregne gennemsnittet rigtig for en bruger på baggrund af en liste af FinishedTrades\\
 		\hline
-		HelperFunctions Distance & GetDistance_Test & Tester om en adresse kan konverteres til koordinater og om distancen mellem koordinaterne er rigtig.\\
+		HelperFunctions Distance & GetDistance\_Test & Tester om en adresse kan konverteres til koordinater og om distancen mellem koordinaterne er rigtig.\\
 		\hline
 	\end{tabular}
 \end{table}
@@ -47,13 +61,13 @@ Det er væsentligt at pointere hvordan disse test bliver lavet isoleret, sålede
 
 \subsection{Unit test igennem DAL}
 
-Som nævnt spiller design og test i høj grad sammen, hvor der som nævnt er anvendt repository pattern. Hvor man på figur \ref{fig:UnitOfWorkMock} kan se at det i høj grad spiller sammen med test af systemmet. Det er muligt at teste systemmet direkte gennem db contexten som ses uden Repository pattern, men dette er ikke en selvfølgelighed, og ved ændring af database teknologi vil alle tests skulle skrives om. Dette er ikke ønsket, da selve unit testen skal teste om der sker kald ned i selve klassen, ikke om de kald rent faktisk virker. Det er ikke controllerne i MVC'en der har ansvar for at db kaldende virker. Derfor bruges en mock af den UnitOfWork som controlleren kalder ned i, og igennem repository patternet, opnås at controllerne kan testes uafhængigt af DAL laget og selve databasen.
+Som nævnt spiller design og test i høj grad sammen. Dette er også grunden til, at der i projektet er blevet anvendt repository pattern, der uddybes i afsnit \ref{ch:Design}. På figur \ref{fig:UnitOfWorkMock} kan det ses, hvordan repository-pattern og UnitOfWork i høj grad spiller sammen med test af systemet. Det er muligt at teste systemet direkte gennem dbcontexten som ses uden Repository pattern. Men dette er ikke en selvfølgelighed, og ved ændring af database teknologi vil alle tests skulle skrives om. Dette er ikke ønsket, da selve unit testene skal teste om en klasse kalder korrekt ned i andre klasser. En unit test skal også være genbrugelig, så en god unit test burde ikke skulle skrives om på baggrund af systemændringer. Unit testene skal ikke teste om kaldene ned i de andre klasser rent faktisk virker. Det er ikke controllerne i MVC-mønsteret, der har ansvar for, at database kaldene virker. Derfor bruges UnitOfWork i testene som en mock på baggrund af, at der benyttes dependency injection i systemet. Mocken af UnitOfWork er den, som controlleren kalder ned i. På den måde ved brug af repository pattern opnås, at controllerne kan testes uafhængigt af Data Access Laget og selve databasen.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics
 	[width=165mm]{figures/RepsitoryTestFigure.PDF}
-	\caption{Unit test med UnitOfWorkMock}
+	\caption{Unit test med UnitOfWork-Mock \cite{UOFTest}}
 	\label{fig:UnitOfWorkMock}
 \end{figure}
 
