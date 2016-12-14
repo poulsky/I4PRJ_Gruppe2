@@ -73,12 +73,20 @@ namespace BargainBarterV2.Tests.Controllers
             Assert.That(result,Is.Not.Null);
         }
 
-        //[Test]
-        //public void ContactViewBagDoesNotContainCorrectString()
-        //{           
-        //    ViewResult result = _controller.Contact() as ViewResult;
+        [Test]
+        public void AboutDoesNotReturnNull()
+        {
+            // Arrange
 
-        //    Assert.That("Your contact page.", Is.EqualTo(result.ViewBag.Message));
-        //}
+
+            // Act
+            ViewResult result = _controller.About() as ViewResult;
+
+            // Assert
+            //Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
+        }
+
+
     }
 }
