@@ -9,9 +9,6 @@ Der er lavet en overordnet rollefordeling af controllernes ansvar:
 \input{sections/ControllerAnsvar.tex}
 
 
-
-
-
 \section{Generel controller-funktionalitet}\label{sc:GenerelControl}
 
 
@@ -40,11 +37,10 @@ Den endelige koceptuelle model (med undtagelse af den genererede indentitymodel)
 	\centering
 	\includegraphics
 	[width=150mm]{figures/Model.PDF}
-	\caption{Samlet model over BargainBarter}
+	\caption{Samlet diagram over alle konceptuelle klasser i BargainBarter}
 	\label{fig:MODEL}
 \end{figure}
 
-\noindent Den implementerede model har nogle begrænsninger ift. hvad den tillader at gemme.
-
+\noindent Den implementerede model har nogle begrænsninger i forhold til de definerde krav fra afsnittet omkring ''Ikke-funktionelle krav'' se afsnit \ref{ch:Ikkefunktionelle}. Modellen implementerer på nuværende tidspunkt ikke kravet om, at en kommentar maksimalt kan betå af 500 tegn.
 \section{Data fra Database}
 \input{sections/subsection/UOFDB.tex}
