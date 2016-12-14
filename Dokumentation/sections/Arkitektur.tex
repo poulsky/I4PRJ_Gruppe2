@@ -97,3 +97,10 @@ Det forgår i browseren ved brug af javascript-koden, men der kan stadig laves k
 SignalR er blevet anvendt for til at implementere systemets real-time chat.
 
 \section{Generelle overvejelser i forbindelse med Arkitektur}
+I forbindelse med projektet har der været nogle generelle overvejelser omkring den arkitektur produktet skulle have. Nogle af de vigtigste key issues har været brugerkvaliteten. Dvs. at brugervenligheden og skalerbarheden til forskellige apparater har skullet være i top for at produktet har kunnet give værdi. Dette har vi prøvet at komme til livs med at anvende frameworket Bootstrap som er en stor hjælp til at lave pæne designs der skalerer til forskellige størrelser devices uden alt for meget arbejde. 
+
+Et andet kriterie der er tænkt ind i arkitekturen er performance. Dette kan bl.a. ses ved implementeringen af chatten. I chat controlleren er meget af logikken implementeret client side vha. javascript. Dette giver en bedre brugeroplevelse da opdateringerne sker øjeblikkeligt i chatten, da der kan spares nogle kald til serveren.
+
+Af cross cutting concerns i projektet har der bl.a. været verificering af en brugers log in på de forskellige sider. Dvs. at visse dele af hjemmesiden skulle ikke være tilgængeligt med mindre brugeren var logget ind. Til at løse dette problem er ASP.NET identity blevet brugt og udvidet med de oplysninger der har været nødvendige for at projektet har passet på domænet.
+
+En anden cross cutting concern er validering af oplysninger når en brugerprofil oprettes. I projektet er det valgt at brugeren skal oplyse en adresse, fulde navn, email, password og telefonnummer. Adresse og kontaktinformationer er valgt da disse oplysninger alle er essentielle for at en byttehandel kan finde sted i virkeligheden. Passwordet er valgt til ikke at have særligt strikse krav idet oplysningerne ikke er særligt kritiske at miste. Det er derfor vigtigere at brugerens indgangsbarriere er mindre ved ikke at skulle bruge for lang tid på at finde på et password som han/hun alligevel ikke kan huske bagefter.
