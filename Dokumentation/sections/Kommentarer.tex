@@ -8,7 +8,7 @@
  	\item Den kommenterende bruger 
  \end{itemize}    
  
- På figur \ref{fig:Kommentar} kan det ses at brugeren har mulighed for at indtaste og submitte. Controlleren sørger for at der ved et submit, som er en POST action, automatisk bliver fundet alt andet end selve kommentarstrengen og oprettelsestidspunktet. Sidstnævnte bliver oprettet i modellen.
+ På figur \ref{fig:Kommentar} kan det ses, at brugeren har mulighed for at indtaste og submitte. Controlleren sørger for at der ved et submit, som er en POST action, automatisk bliver fundet alt andet end selve kommentarstrengen og oprettelsestidspunktet. Sidstnævnte bliver oprettet i modellen. Og kommentarstregen bliver retuneret fra viewet igennem Post-actionen, der kalder metoden på serveren.
  
  \begin{figure}[H]
  	\centering
@@ -18,4 +18,4 @@
  	\label{fig:Kommentar}
  \end{figure}
  
-\noindent Viewet er lavet så det er intuitivt og nemt at overskue. Til viewet er der anvendt en bootstrap template \cite{kommentare}. Actionen til kommentering benytter Unit of Work som beskrives i \ref{sc:RepositoryPattern}, og virker efter principerne beskrevet i afsnit \ref{sc:GenerelControl}. Logikken til kommentarer er delvis genbrugt under ratings.
+\noindent Viewet er lavet så det er intuitivt og nemt at overskue. Til viewet er der anvendt en bootstrap template \cite{kommentare}. Actionen til kommentering benytter UnitOfWork som beskrives i \ref{sc:RepositoryPattern}, og virker efter principerne beskrevet i afsnit \ref{sc:GenerelControl}. Logikken til kommentarer er delvis genbrugt under ratings. Da denne funktionalitet bygger meget på den samme logik.
