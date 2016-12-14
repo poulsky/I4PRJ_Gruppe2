@@ -33,10 +33,14 @@ Den fulde liste af test kan ses nedenfor.
 	
 		& Details\_NullId\_Returns-\_BadRequest & Tester om hvis metoden Details får Null, som id, så returnerer controlleren en BadRequest, kode 400. \\
 		&Create\_DoesNot\_Return\_Null& Tester, at create controller retunerer et view \\
-		& Edit\_NullId\_Returns\_BadRequest &  Tester om hvis metoden Edit får Null, som parameter, så returnerer controlleren en BadRequest, kode 400. \\
-		& Delete\_NullId\_Returns\_BadRequest & Tester om hvis metoden Delete får Null, som parameter, så returnerer controlleren en BadRequest, kode 400. \\
+		& Edit\_NullId\_Returns\_Bad
+		Request &  Tester om hvis metoden Edit får Null, som parameter, så returnerer controlleren en BadRequest, kode 400. \\
+		& Delete\_NullId\_Returns\_Bad
+		Request & Tester om hvis metoden Delete får Null, som parameter, så returnerer controlleren en BadRequest, kode 400. \\
 		\hline
-		ManageController & ChangePassword\_DoesNotReturnNull &Tester, at ChangePassword metoden retuner et view, der er forskellig fra null\
+		
+		ManageController & ChangePassword\_DoesNot
+		ReturnNull &Tester, at ChangePassword metoden retuner et view, der er forskellig fra null\
 		\\
 		\hline
 		HomeController & Index\_BarterAddRepository-\_Get\_IsCalled & Tester om den metode der viser alle barteradds på Index siden, bliver vist. \\
@@ -47,8 +51,21 @@ Den fulde liste af test kan ses nedenfor.
 		SearchController & Search\_Calls-\_BarterAdsRepository & Tester om den BarterAddRepository bliver kaldt når man søger efter en bestemt ting \\
 		& CategorySearch\_Calls-\_BarterAdsRepository & Tester om BarterAdsRepository anvendes at og bliver kaldt når man vælger kategori \\
 		& Index\_DoesNotReturnNull & Tester, at Index-metoden retuner et view, der er forskellig fra null\\
-		& Index\_SearchstringIsNull\_ReturnsNotNull & Tester om, at Index-metoden retunerer et view, der giver mening på trods af  den modtager null som paramter\\
-		& Categorysearch\_SearchstringIsNonEmpty\_ResultIsNotNull & Tester om, at Categorysearch-metoden retunerer et view, der giver mening, når det modtager en paramter\\
+		& Index\_SearchstringIsNull\_
+		ReturnsNotNull & Tester om, at Index-metoden retunerer et view, der giver mening på trods af  den modtager null som paramter\\
+		& Categorysearch\_SearchstringIs
+		NonEmpty\_ResultIsNotNull & Tester om, at Categorysearch-metoden retunerer et view, der giver mening, når det modtager en paramter\\
+		\hline
+		\end{tabular}
+\end{table}
+
+\setlength{\arrayrulewidth}{0.3mm}
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[H]
+	\begin{tabular}{ | p{3.0cm} | p{5.5cm} | p{8.0cm} | }
+		\hline
+		\textbf{Controller} & \textbf{Test} & \textbf{Beskrivelse} \\
 		\hline
 		HelperFunctions & CalculateAverage\_Test & Tester om CalculateAverage udregner gennemsnittet rigtigt på baggrund af en nogen kontrol-værdier. \\ &  CalculateUserAvg\_Test & Tester om CalculateuserAvgRating kan udregne udregne gennemsnittet rigtig for en bruger på baggrund af en liste af FinishedTrades\\
 		\hline
@@ -84,7 +101,8 @@ Som nævnt spiller design og test i høj grad sammen. Dette er også grunden til
 %%\end{figure}
 %
 %\noindent Det sidste skridt er selvfølgelig at tests viewne, hvor der er lavet en user experience vurdering, og naturligvis en acceptest der kan ses i efterfølgende afsnit
-Efterfulgt af unit test de enkelte controller, skal integrationen mellem de forskellige dele af systemet testes. Der er dog imidlertid ikke den store afhængighed mellem de forskellige controllers i systemet, hvilket MVC også lægger op til. Det ville derfor valgt ikke at lave en integrationstest af systemet, da der reelt er få dele af systemet, hvor man kan teste for afhængigheden mellem de forskellige dele af systemet. \\
+Efterfulgt af unit test af de enkelte controller, skal integrationen mellem de forskellige dele af systemet testes. Der er dog imidlertid ikke den store afhængighed mellem de forskellige controllers i systemet, hvilket MVC også lægger op til. Da controllerne også indeholder stort set alt buisness-logikken interagere de ikke rigtig med andre dele af systemet. Der er derfor ikke lavet nogen specielle integrationstest i systemet. Da der ikke er de store afhængigheder mellem de forskellige controllere og klasser i systemet. Et bedre design og opslitning af logik ville have gjort systemet nemmere at teste og specielt også at planlægge integrationstest på. Integrationstestene er derfor ikke blev udført som automatiske test, men i stedet som manuelle test, der vil blive beskrevet i det efterfølgende afsnit.
+ \\
 
 \section{Manuelle tests}
 Grundet applikationens GUI og arkitektur har det ikke været muligt at automatisere alle tests. Derfor har de automatiserede unit tests været suppleret meget med manuelle tests. Dette har på simpel vis foregået ved, at en tester har klikket rundt på hjemmesiden og bekræftet om den nyimplementerede funktionalitet har virket. I dette afsnit vil der følge et par eksempler på, hvordan de manuelle test har fundet sted. Ikke alle manuelle tests er beskrevet her, da det ville være for uoverskueligt. Men generelt gælder det, at stort set alt funktionalitet er blevet testet manuelt.
