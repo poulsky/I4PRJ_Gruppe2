@@ -61,8 +61,8 @@ Search-controlleren er ansvarlig for søgning i annoncerne.
 
 Actions 
 \begin{itemize}
-	\item Index(bedre navn) skal tage en tekststreng og søge i annoncerne efter match og vise en side med de matchene annoncer.
-	\item CategorySearch - Skal det samme som Index, med den udvidelse at det også søger på katagori
+	\item Index(searchstring) skal tage en tekststreng og søge i annoncerne efter match og vise en side med de matchene annoncer.
+	\item CategorySearch(searchstring) - Skal det samme som Index, med den udvidelse at det også søger på katagori
 \end{itemize}
 
 \subsection{UserProfile}
@@ -70,7 +70,7 @@ Denne controller har til ansvar at styre ansvar omkring brugerprofiler. Dette er
 
 \begin{itemize}
 	\item Index Redirector blot til forsiden. Denne giver ikke mening, da der som regel skal være et brugerId for at vide hvilken brugerprofil det drejer sig om, men den er her i tilfældet.
-	\item Edit (GET) hvis brugerprofilen er den samme som den bruger man tilgår siden med, får man lov at rette i profilen, ellers returneres blot et view hvor man kan se brugerprofilen.
-	\item EDIT (POST) De rettede oplysninger i brugerprofilen skrives ned i databasen. Brugerprofilen bliver herefter vist.
-	\item ShowUserProfile sørger for at trække data udfra databasen og sende et pænt View til siden der viser de oplysninger en brugerprofil indeholder. Hvis profilen er den samme som den bruger der tilgår den, får brugeren mulighed for at rette i oplysninger vha. en redigerknap.
+	\item Edit(id) hvis brugerprofilen er den samme som den bruger man tilgår siden med, får man lov at rette i profilen, ellers returneres blot et view hvor man kan se brugerprofilen.
+	\item Edit(postedUser) De rettede oplysninger i brugerprofilen skrives ned i databasen. Brugerprofilen bliver herefter vist.
+	\item ShowUserProfile(id) sørger for at trække data udfra databasen og sende et pænt View til siden der viser de oplysninger en brugerprofil indeholder. Hvis profilen er den samme som den bruger der tilgår den, får brugeren mulighed for at rette i oplysninger vha. en redigerknap.
 \end{itemize}
