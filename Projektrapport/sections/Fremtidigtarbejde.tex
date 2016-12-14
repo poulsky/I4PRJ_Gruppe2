@@ -1,11 +1,18 @@
 \chapter{Fremtidig Arbejde}
 
-Til videreudvikling af BargainBarter kunne man ændre det, så en større del af projektet kørte client site som javascript, og at projektet på den måde ville kunne lave færre roundtrips til databasen. 
+Til videreudvikling af BargainBarter er en mulig ændring, at få en større del af projektet til at køre client site som javascript. Det vil have den fordel, at projektet laver færre roundtrips til databasen. 
 
-Controllerne i projektet har med tiden vokset og er blevet uoverskuelige. Derfor ville implementering af businesslogic være noget af det første i videreudviklingen af Bargainbarter, så funktionerne bliver fordelt i klasser.
+\noindent Controllerne i projektet er med tiden vokset og er blevet uoverskuelige. Derfor ville omstrukturering af businesslogic være noget af det første i videreudviklingen af Bargainbarter, så funktionerne bliver fordelt i klasser. 
 
-Algoritmer til foreslåede annoncer ville også være af stor nytte til brugeren og vil derfor være en af de første ting der skulle tillægges bargainbarter, hvis der skulle ske videre udvikling. Dette medfører at brugeren evt. kan vælge ønskede kategorier.
+\noindent Hjemmesiden kan på nuværende tidspunkt ikke skalere perfekt på mobil og tablet enheder. Da et af projektets hovedpunkter er brugervenlighed, vil optimering inden for dette område være optimal.
 
-På Bargainbarter, er de kun muligt at tilgå brugere ved hjælp af deres annoncer. En optimering af søgefunktionen ville derfor være i højsædet, så man kan søge på brugere.
+\noindent I tilfælde af at der skulle udvikles flere systemmer der skulle opererer på den samme database, ville det være fordelagtigt at ligge modellen i sit eget projekt. Databasen er tilgængelig, men EF modellen ville kunne bruges til fx en UWP tablet og mobil app. Dette vil dog først gøres hvis omtalte app skulle udvikles. 
 
-I tilfælde af at der skulle udvikles flere systemmer der skulle opererer på den samme database, ville det være fordelagtigt at ligge modellen i sit eget projekt. Databasen er tilgængelig, men EF modellen ville kunne bruges til fx en UWP tablet og mobil app. Dette vil dog først gøres hvis omtalte app skulle udvikles.  
+\noindent Algoritmer til foreslåede annoncer ville også være af stor nytte for brugeren, og vil derfor være prioriteret højt i forbindelse med videreudvikling af BargainBarter. Dette medfører at brugeren evt. kan vælge ønskede kategorier. 
+
+\noindent Når en bruger uploader et billede til en annonce, bliver billedet, byte for byte, gemt i databasen. Det medfører at når man henter billeder fra databasen, vil systemet bruge unødvendige lang tid på at læse alle bytes. En løsning er at gemme billedet på serveren, og indsætte url'en til billedet i databasen. 
+
+\noindent UC8 blev kun delvist implementeret, derfor ville denne funktionalitet være en naturlig del af fremtidig arbejde.
+
+\noindent På Bargainbarter, er de kun muligt at tilgå brugere ved hjælp af deres annoncer. En optimering af søgefunktionen ville derfor være i højsædet, så man kan søge på brugere. 
+ 
