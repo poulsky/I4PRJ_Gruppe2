@@ -1,18 +1,18 @@
 
 \chapter{Design og Implementering}\label{ch:Design}
-Systemmet Bargainbarter er designet ud fra de krav og analyser der er beskrevet i de ovenstående sektioner. Da web applikation er lavet i ASP.Net MVC beskrives i denne sektion de forskellige dele af MVC'en, hvor der beskrives: controllere, views og Modellen. 
+Systemmet Bargainbarter er designet ud fra de krav og analyser der er beskrevet i de ovenstående sektioner. Da web applikation er lavet i ASP.NET MVC beskrives i denne sektion de forskellige dele af MVC'en, hvor der beskrives: controllere, views og Modellen. 
 
 
 \section{Controllere}
-Der er en overordnet rollefordeling af controllernes ansvar: 
+Der er lavet en overordnet rollefordeling af controllernes ansvar: 
 
 \input{sections/ControllerAnsvar.tex}
 
 
-\subsection{Generelle controller funktioner}\label{sc:GenerelControl}
 
 
-\section{Generel controller-funktionalitet}
+
+\section{Generel controller-funktionalitet}\label{sc:GenerelControl}
 
 
 Generelt er der anvendt forskellige standardmetoder igennem mange af controllerne. Til data acces kalder alle controllere igennem et Unit of Work pattern, som beskrives i sektion \ref{sc:RepositoryPattern}. Til at finde den aktuelle bruger i systemet bruges HttpContext hvor brugeren findes på ID. Controllerne holder selv styr på at kalde fejl hvis de bliver kaldt med ugyldige parametre. Da dette er et meget ensartet mønster igennnem alle controllers eksemplificeres dette blot ved en enkelt controller.
