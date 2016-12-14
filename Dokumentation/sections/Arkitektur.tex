@@ -3,14 +3,14 @@
 I følgende afsnit redegøres for det systemets arkitektur og de anvendte patterns sammen med en begrundelse for deres valg.
 
 \section{MVC}
-Model-View-Controller\cite{MVC} er et GUI-pattern, der forsøger at adskille den grafiske brugergrænseflade fra resten af systemet. Denne adskillelse har en række af fordele. De væsentligste fordele er, at applikationen bliver mere testbar, skalerbar samt nemmere at vedligeholde.
-MVC består af tre dele:
+Model-View-Controller\cite{MVC} er et GUI-pattern, der forsøger at adskille den grafiske brugergrænseflade fra resten af systemet. Denne adskillelse har en række af fordele. De væsentligste fordele er, at applikationen bliver mere testbar, skalerbar samt nemmere at vedligeholde. I projektet er der anvendt ASP.NET\cite{ASP} MVC, hvilket er en afart af den rene form for MVC. 
+ASP.NET MVC består af tre dele:
 \begin{itemize}
 	\item Model: er den del der arbejder med den data relaterede logik, dvs. Data Acces Lay-
 	er. Det er altså al den data der tages fra databasen og bliver manipuleret af Views
 	eller Controllers.
 	\item View: er den grafiske del af programmet og indeholder præsentationslogikken. Denne del skal være afkoblet fra modellen.
-	\item Controller: er grænsefladen mellem modellen og viewet. Controllerens opgaave er at manipulere
+	\item Controller: er grænsefladen mellem modellen og viewet. Controllerens opgave er at manipulere
 	data fra modellen og interagere med Views for at vise outputtet og modtage inputs
 	fra viewet
 \end{itemize}
@@ -25,11 +25,24 @@ På  figur  \ref{fig:MVC}  kan  der  ses  den  overordnet  struktur for, hvordan
 	\label{fig:MVC}
 \end{figure}
 
-MVC blev valgt på baggrund af, at det er en integreret del af ASP.NET\cite{ASP} MVC. ASP.NET MVC er sat op, så applikationens controllere og deres forskellige actions bliver kaldt gennem af url'en.
+MVC blev valgt på baggrund af, at det er en integreret del af ASP.NET MVC. ASP.NET MVC er sat op, så applikationens controllere og deres forskellige actions bliver kaldt gennem af url'en.
 Dette bliver sat op i RouteConfig.cs, hvor der som standard er følgende opsætning:\\
-url: "{controller}/{action}/{id}" \\
+\begin{lstlisting}
+    public class RouteConfig
+    {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-''Koden'' oven over viser, hvordan ASP.NET MVC router mellem de forskellige sider på baggrund af url'en. Det første argument i url'en router til en controller. Det efterfølgende argument er navnet på actionen, der skal kaldes i den valgte controller, hvis dette ikke er angivet kaldes ''Index''-metoden som default. Det sidste sidste argument er parametrene actionen skal kaldes med.
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+        }
+    }
+\end{lstlisting}
+Koden oven over viser, hvordan ASP.NET MVC router mellem de forskellige sider på baggrund af url'en. Det første argument i url'en router til en controller. Det efterfølgende argument er navnet på actionen, der skal kaldes i den valgte controller, hvis dette ikke er angivet kaldes ''Index''-metoden som default. Det sidste sidste argument er parametrene actionen skal kaldes med.
 Der er opsat en række af default argumenter, som kaldes, hvis der ikke er angivet nogen. Default argumenterne er følgende:\\
 ''defaults: new { controller = "Home", action = "Index", id =UrlParameter.Optional }''.
 
@@ -43,14 +56,14 @@ Systemet bygger på trelags-modellen \cite{3layer}, som kan ses i figur \ref{fig
 	\label{fig:lagmodel}
 \end{figure}
 
-3-lags modellen forsøger som MVC at adskille præsentations-, buisness- og data-access logikken fra hinanden. 3-lags modellen foreskriver, at disse lag skal være fysisk adskilte fra hinanden. Fordelene ved den fysiske adskille basere sig primært på ''separation of concerns'' og ''Single Responsibility'', hvilket medfører et skalerbart og vedligeholdelses venligt system.\\
+3-lags modellen forsøger som MVC at adskille præsentations-, business- og data-access logikken fra hinanden. 3-lags modellen foreskriver, at disse lag skal være fysisk adskilte fra hinanden. Fordelene ved den fysiske adskille basere sig primært på ''separation of concerns'' og ''Single Responsibility'', hvilket medfører et skalerbart og vedligeholdelses venligt system.\\
 ASP.NET MVC baseres på 3-lags modellen, hvilket gør, at systemets arkitektur lægger sig tæt op af 3-lags modellen.
 Systemets views er præsentationslogikken, controllers og modellen er business-logikken og entity framework samt modellen er systemets Data access lag. 
 
 \subsection{Præsentationslaget}
 For web-applikationen generelt, og for de opstillede ikke-funktionelle krav til systemet, er brugervenlighed en væsentlig faktor. Dette betyder at præsentationslogikken er ekstremt vigtig for systemet. Da det skal være let for en bruger at navigere rundt på siden og kunne forstå, hvad meningen er med de forskellige handlinger der kan foretages.
 
-Da projektet er en webapplikation præsenteres den grundlæggende i HTML\cite{HTML} i browseren. HTML'en bliver vha. CSS\cite{CSS} og Javascript\cite{JavaScript} stylet for at opnå et mere overskueligt design. I forbindelse med styling af views er front-end frameworket Bootstrap\cite{Bootstrap} anvendt. Bootstrap er blevet anvendt for at give hjemmesiden et mere responsivt design. Således at hjemmesiden kan benyttes fra flere forskellige typer af enheder (Smartphones, PC mm.), der var et af de ikke-funktionelle krav i afsnit \ref{ch:ikkefunktionelle}
+Da projektet er en webapplikation præsenteres den grundlæggende i HTML\cite{HTML} i browseren. HTML'en bliver vha. CSS\cite{CSS} og Javascript\cite{JavaScript} stylet for at opnå et mere overskueligt design. I forbindelse med styling af views er front-end frameworket Bootstrap\cite{Bootstrap} anvendt. Bootstrap er blevet anvendt for at give hjemmesiden et mere responsivt design. Således at hjemmesiden kan benyttes fra flere forskellige typer af enheder (Smartphones, PC mm.), der var et af de ikke-funktionelle krav i afsnit \ref{ch:Ikkefunktionelle}
 Bootstrap er et framework, der arbejder med relative værdier for skærmstørrelsen, således at layoutet skalere og relativt fylder det samme på forskellige typer af enheder/skærmstørrelser.
 
 I  praksis bliver  præsentationslaget i ASP.NET returneret af controllerne til brugeren, der kan se dette i browseren.% Disse controllers foretager en handling med fx et databasekald, hvorefter der returneres et view fra controlleren som brugeren kan se.
