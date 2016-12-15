@@ -1,9 +1,9 @@
 \chapter{Arkitektur}
-Dette afsnit vil forsøge at beskrive de valg, der er blevet foretaget ifht. arkitekturen bag BargainBarter. Der vil kort blive redegjort for de enkelte begreber og arkitekturstile, der blev anvendt til at opbygge systemet. Efterfølgende vil der følge en begrundelse for valget af disse.
+Dette afsnit vil forsøge at beskrive de valg, der er blevet foretaget ifht. arkitekturen bag BargainBarter. Der vil kort blive redegjort for de enkelte begreber og arkitekturstile, der blev anvendt til at opbygge systemet. Der følger ligeledes en analyse af domænet, der ligger til grund for systemets videre design.
 
 \section{Arkitektur stile}
-Da der i projektet ønskes at udvikle en webapplikation, så er det derfor nødvendigt at anvende en arkitekturstil, der understøtter udviklingen af webapplikationen.
-Dette valg faldt på 3-lags modellen, da denne adskillelsen af de enkelte lag, som modellen lægger op til, gør hjemmesiden skalerbar og vedligeholdelses venlig. Modellen er desuden meget anvendt i forbindelse med udvikling af hjemmesider.\\ \\ 3-lags modellen består af:
+Da der i projektet ønskes at udvikle en webapplikation, så er det derfor nødvendigt at anvende en arkitekturstil, der understøtter udviklingen af webapplikationer.
+Dette valg faldt på 3-lags modellen\cite{3-Layer}, da denne models adskillelse af de enkelte lag, gør hjemmesiden skalerbar og vedligeholdelses venlig. Modellen er desuden meget anvendt i forbindelse med udvikling af hjemmesider.\\ \\ 3-lags modellen består af:
 \begin{enumerate}
 	\item En front-end web-server der leverer statisk eller dynamisk materiale - dvs. al det materiale der vises i webbrowseren.
 	\item Et lag der generer og processere dynamisk materiale.
@@ -52,3 +52,14 @@ Entity framework (EF)\cite{ADOEF} var det oplagte valg, da først ASP.NET MVC va
 Til præsentations laget anvendes der HTML/CSS til at præsentere data for brugeren. Da brugervenlighed var centralt for systemet blev Bootstrap\cite{Bootstrap} anvendt. Bootstrap er et framework, der gør webapplikationen responsive og skalerbar. Frameworket gør det nemt at designe et View, der kan skaleres til en hvilken som helst skærm - uanset om det er mobil, tablet eller desktop. Desuden indeholder Bootstrap en række temaer/templates, der gør det enkelt at designe et View, der er pænt, hvilket ikke gruppens stærke side. \\
 For at gøre View'et mere dynamisk er der flere steder anvendt Javascript og mere specifikt JQuery\cite{jQuery}. 
 Dette bibliotek gør det muligt f.eks. at vise popup vinduer, hvis der er brug for det eller i gruppens tilfælde at kunne bedømme en anden bruger.
+
+\section{Domæneanalysen}
+
+På figur \ref{fig:Domaneanalyse} ses domæneanalysen af BargainBarter. Denne analyse er lavet på baggrund af de definerede user stories som kan findes i bilaget\footnote{Se bilag - Dokumentation, sektion 3.2}. Domæneanalysen er det første overordnede udkast til designet af BargainBarter. Dette betyder, at den indeholder afgørende valg for systemets overordnede struktur. I domæneanalysen er alle systemets konceptuelle klasser fundet samt deres grænseflader. Domæneanalysen  kan ses på figur \ref{fig:Domaneanalyse}. Figuren indeholder systemets konceptuelle klasser, som binder problemdomænet sammen med softwarearkitekturen til systemet.    
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=140mm]{../Dokumentation/figures/DomaeneanalyseBargainBarter.pdf}
+	\caption{Domæneanalyse for BargainBarter}
+	\label{fig:Domaneanalyse}
+\end{figure}
