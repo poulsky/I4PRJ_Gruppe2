@@ -26,7 +26,7 @@ Ud fra domæneanalysen er data der giver mening at persistere fundet, og på fig
 \noindent Modellen opretter igennem Entity Framework databasestrukturen, og derefter tilgås dataene vha. et repository pattern\footnote{Se bilag - Dokumentation, sektion 9.8}, der standardiserer måden at tilgå data på.
 
 
-\section{Controller}  
+\section{Controllerdesign}  
 
 I controllerne ligger selve funktionaliteten af BargainBarter systemet. Det er controllernes opgave at opdatere det view, som brugeren ser, samt styre kommunikationen mellem viewet og modellen. \\
  
@@ -70,4 +70,12 @@ Der blev i forundersøgelsen til denne feature overvejet flere løsningsmulighed
 
 Actionen \textit{eager loader}\footnote{Ved eager loading forstås der at når man laver forespørgsel på en entitet, så loades der relateret entiter i samme forespørgsel} alle Barterads, og adresser på brugerne. Desuden loades brugerens egne koordinater. Derefter udregnes afstanden mellem brugeren selv og de resterende brugere. Alle der er inden for den valgte afstand på slideren bliver gemt i en liste. Derefter findes alle de gemte brugeres Barterads, der ikke allerede er byttet. Disse bliver returneret sammen med frontpage viewet, så resultatet af søgningen kan præsenteres. Denne funktionalitet giver mulighed for, at man kan finde de Barterads der ligger tæt på brugeren. Scenariet her er ligeledes beskrevet som "happy path", hvor situationer som fx. at brugeren ikke er logget ind ikke benævnes.
 
+\section{Viewdesign}
 
+Viewet sørger for selve det visuelle udtryk af hjemmesiden, og er præsentationslogikken i systemet. Det bestræbes at undgå at lægge businesslogik i viewet, således at præsentationslaget i højst mulig grad er afkoblet fra resten af systemet.
+
+\subsection{Oprette en bytteannonce}
+Viewet for oprettelsen af en bytteannonce er et meget typisk eksempel på opbygningen af et view. Viewet består af en form, der mapper nogle data til en bestemt post action i controlleren, ved tryk på en submit-knap. Denne post action behandler så disse data.
+
+\subsection{Søg efter bytteannoncer}
+Søgning efter bytteannonce har ikke et separat view, men er et delelement af viewet for forsiden. I forbindelse med implementering af søgning, krævede det en tilføjelse af slideren som ses i figur \ref{fig:slider}. Denne slider fungerer således som en form på samme måde som i viewet, hvor der kan der kan oprettes bytteannoncer. Dette betyder at der skal vælges en bestemt værdi ved brug af slideren, og dernæst trykkes søg. En endnu bedre løsning kunne have været en implementation vha. postback ved ændring af sliderens værdi. Dette ville resultere i at få vist resultatet dynamisk i stedet for at opdatere siden fra ny hver gang. Denne optimering blev ikke implementeret pga. tidspres.
