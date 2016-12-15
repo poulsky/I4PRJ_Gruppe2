@@ -1,9 +1,9 @@
 \chapter{Arkitektur}
-Dette afsnit vil forsøge at beskrive de valg, der er blevet foretaget ifht. arkitekturen bag BargainBarter. Der vil kort blive redegjort for de enkelte begreber og arkitekturstile, der blev anvendt til at opbygge systemet. Der tilhøre ligeledes en analyse af domænet.
+Dette afsnit vil forsøge at beskrive de valg, der er blevet foretaget ifht. arkitekturen bag BargainBarter. Der vil kort blive redegjort for de enkelte begreber og arkitekturstile, der blev anvendt til at opbygge systemet. Der følger ligeledes en analyse af domænet, der ligger til grund for systemets videre design.
 
 \section{Arkitektur stile}
-Da der i projektet ønskes at udvikle en webapplikation, så er det derfor nødvendigt at anvende en arkitekturstil, der understøtter udviklingen af webapplikationen.
-Dette valg faldt på 3-lags modellen, da denne adskillelsen af de enkelte lag, som modellen lægger op til, gør hjemmesiden skalerbar og vedligeholdelses venlig. Modellen er desuden meget anvendt i forbindelse med udvikling af hjemmesider.\\ \\ 3-lags modellen består af:
+Da der i projektet ønskes at udvikle en webapplikation, så er det derfor nødvendigt at anvende en arkitekturstil, der understøtter udviklingen af webapplikationer.
+Dette valg faldt på 3-lags modellen\cite{3-Layer}, da denne models adskillelse af de enkelte lag, gør hjemmesiden skalerbar og vedligeholdelses venlig. Modellen er desuden meget anvendt i forbindelse med udvikling af hjemmesider.\\ \\ 3-lags modellen består af:
 \begin{enumerate}
 	\item En front-end web-server der leverer statisk eller dynamisk materiale - dvs. al det materiale der vises i webbrowseren.
 	\item Et lag der generer og processere dynamisk materiale.
