@@ -47,7 +47,7 @@ I controllerne ligger selve funktionaliteten af BargainBarter systemet. Det er c
 \subsection{Søg efter bytteannoncer}     
 Controllerfunktionaliteten er også valgt at eksemplificere med søgning af Barterads. Denne er taget med da det er en essentiel feature på hjemmesiden.
 
-På hjemmesiden kan der søges efter annoncer på flere måder. Det kan være på kategori, titel og på afstand. I dette eksempel uddybes søgning efter annoncer filtreret efter afstand. Desuden eksemplificerer implementeringen af denne feature den generelle virkemåde af samspillet mellem lagene i systemet.  \\ \\
+\noindent På hjemmesiden kan der søges efter annoncer på flere måder. Det kan være på kategori, titel og på afstand. I dette eksempel uddybes søgning efter annoncer filtreret efter afstand. Desuden eksemplificerer implementeringen af denne feature den generelle virkemåde af samspillet mellem lagene i systemet.  \\ \\
 
 \subsubsection{Valg af løsning}
 Der blev i forundersøgelsen til denne feature overvejet flere løsningsmuligheder. Der var mulighed for at få eksempelvis Google Maps API\cite{googleapi} til at lave en ruteplan, og ud fra den bestemme afstanden til andre brugere. Denne løsning var ikke optimal af flere årsager. For det første kunne det blive meget performance-tungt at lave alle de forespørgsler til Google Maps API. For det andet kunne der let opstå begrænsninger ift. de maksimale antal forespørgsler som Google Maps API tillader. For det tredje blev det vurderet, at det ikke var nødvendigt med meget høj præcision på afstanden til en annonces ejer.  \\ \\
@@ -68,6 +68,6 @@ Der blev i forundersøgelsen til denne feature overvejet flere løsningsmulighed
 	\label{fig:slider}
 \end{figure}
 
-Actionen \textit{eager loader}\footnote{Ved eager loading forstås der at når man laver forespørgsel på en entitet, så loades der relateret entiter i samme forespørgsel} alle Barterads, og adresser på brugerne. Desuden loades brugerens egne koordinater. Derefter udregnes afstanden mellem brugeren selv og de resterende brugere. Alle der er inden for den valgte afstand på slideren bliver gemt i en liste. Derefter findes alle de gemte brugeres Barterads, der ikke allerede er byttet. Disse bliver returneret sammen med frontpage viewet, så resultatet af søgningen kan præsenteres. Denne funktionalitet giver mulighed for, at man kan finde de Barterads der ligger tæt på brugeren. Scenariet her er ligeledes beskrevet som "happy path", hvor situationer som fx. at brugeren ikke er logget ind ikke benævnes.
+\noindent Actionen \textit{eager loader}\footnote{Ved eager loading forstås der at når man laver forespørgsel på en entitet, så loades der relateret entiter i samme forespørgsel} alle Barterads, og adresser på brugerne. Desuden loades brugerens egne koordinater. Derefter udregnes afstanden mellem brugeren selv og de resterende brugere. Alle der er inden for den valgte afstand på slideren bliver gemt i en liste. Derefter findes alle de gemte brugeres Barterads, der ikke allerede er byttet. Disse bliver returneret sammen med frontpage viewet, så resultatet af søgningen kan præsenteres. Denne funktionalitet giver mulighed for, at man kan finde de Barterads der ligger tæt på brugeren. Scenariet her er ligeledes beskrevet som "happy path", hvor situationer som fx. at brugeren ikke er logget ind ikke benævnes.
 
 
