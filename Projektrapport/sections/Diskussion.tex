@@ -1,21 +1,29 @@
 \chapter{Diskussion}
-I dette afsnit følger en diskussion omhandlende udarbejdelsesfasen for projektet. Der vil blive diskuteret, hvilke dele af projektet, som kunne være gjort anderledes, samt de features i systemet der er særlig vigtige for funktionaliteten.
+I dette afsnit diskuteres udviklingen af projektet. Der vil blive diskuteret, hvilke dele af projektet, som kunne være gjort anderledes, samt de features i systemet der er særlig vigtige for funktionaliteten.
 
 %% Start her. Har ikke lavet rettelser herfra.
 \section{Opdeling af controller-ansvar}
-Controller-klassen 'BarterAdsController' har ansvaret for alle actions, der har at gøre med BarterAds. I starten af projektet virkede det fornuftigt, at give den ansvaret, men undervejs i udviklingsprocessen voksede klassen sig imidlertid meget stor. Dette skyldtes at langt de fleste af handlingerne på websiden var centraliseret omkring manipulering af BarterAds. Dette gav endvidere  grund til gitkonflikter i forbindelse med parallelt arbejde, da flere lavede ændringer i samme fil. Klassen kunne med fordel have haft mindre ansvar, og være delt ud i flere dele.
+Controller-klassen 'BarterAdsController' har ansvaret for alle actions, der har at gøre med BarterAds. I starten af projektet virkede det fornuftigt, at give den ansvaret, men undervejs i udviklingsprocessen voksede klassen sig imidlertid meget stor. Dette skyldtes at langt de fleste af handlingerne på hjemmesiden var centraliseret omkring manipulering af BarterAds. Dette gav endvidere grund til Git-konflikter i forbindelse med parallelt arbejde, da flere lavede ændringer i samme fil. Klassen kunne med fordel have haft mindre ansvar, og være delt ud i flere dele.\\ \\
 %Dette gav anledning til problemer ifm. parallelt arbejde på BarterAdsController-klassen, da der ofte opstod konflikter og fejl, når ændringer på controlleren, lavet af forskellige udviklere, skulle merges i git. Klassen kunne derfor med fordel have været delt op i flere dele, med mindre ansvarsområder. \\
-I forbindelse med test af systemet blev det erfaret, at controllerne i systemet var for store og komplicerede til, at unit test af disse kunne automatiseres. Dette kunne være undgået ved at flytte logik fra controllerne til seperate buisness logik klasser, der kunne testes automatisk.
+\noindent I forbindelse med test af systemet blev det erfaret, at controllerne i systemet var for store og komplicerede til, at unit tests af disse kunne automatiseres, som nævnt i afsnit \ref{ch:Test}. Dette kunne være undgået ved at flytte logik fra controllerne til seperate businesslogik-klasser, der kunne testes automatisk.
 
-\section{Mangelfuldt design af flow på webside}
-I starten af projektet blev der gjort nogle overordnede overvejelser omkring hvordan websiden skulle se ud, og hvilke menupunkter der skulle være til stede. Der blev dog ikke lavet noget design over hvordan flowet på websiden skulle fungere, da vi ikke havde lært om nogle værktøjer/metoder til at gribe dette an. \\ \\
-Undervejs i udviklingen blev flowet på hjemmesiden udbygget sammen med de features der blev tilføjet. Dette er kilde til flere problemer, der kan give en inkonsistent brugeroplevelse, hvilket er problematisk når gruppen vægter brugervenlighed højt. 
-Dette giver anledning til fejl i systemet. Et eksempel er, at hvis bruger A sender en bytteanmodning til bruger B, og han/hun accepterer, men bruger A ikke bekræfter handlen, så vil disse annoncer hænge i en tilstand, som de aldrig kommer ud af.\\
+\section{Mangelfuldt design af flow på hjemmeside}
+I starten af projektet blev der gjort nogle overordnede overvejelser omkring hvordan hjemmesiden skulle se ud, og hvilke menupunkter der skulle være til stede. Der blev ikke lavet noget design over hvordan flowet på hjemmesiden skulle fungere, da vi ikke havde lært om nogle værktøjer/metoder til at gribe dette an. \\ \\
+\noindent Undervejs i udviklingen blev flowet på hjemmesiden udbygget sammen med de features der blev tilføjet. Dette kan være kilde til en inkonsistent brugeroplevelse, da flowet ikke bliver lavet efter en fast plan, og i stedet afhænger af den enkelte udvikler. Det kan være problematisk, da kravene til projektet vægtede brugervenlighed højt.\\ \\
 
-\noindent Hvis systemet skulle udvikles forfra, ville det være en fordel at planlægge flowet på websiden mere nøje, inden man begynder på implementeringen. Til dette formål ville det være smart at opsøge viden omkring, hvordan dette designes fornuftigt med hensyn til en god og konsistent brugeroplevelse.
+\noindent Et eksempel på en inkonsistent brugeroplevelse kunne være følgende:
+\begin{enumerate}
+	\item Bruger A sender en bytteanmodning til bruger B på siden
+	\item Bruger B accepterer byttehandlen på siden
+	\item Brugerne bytter deres ting i virkeligheden
+	\item Bruger A bekræfter aldrig byttehandlen på siden
+\end{enumerate}
+\noindent Byttenannoncerne hos begge brugere hænger nu i en tilstand, som de aldrig kommer ud af.
+
+\noindent Hvis systemet skulle udvikles forfra, ville det være en fordel at planlægge flowet på hjemmesiden mere nøje, inden man begynder på implementeringen.
 
 \section{Chat-funktionen}
-Som det fremgår af tabel \ref{fig:Implementeringsstatus} er alle user stories blevet implementeret bortset fra US 8 - 'Kontakt en bruger direkte'. Chat-funktionen er blevet implementeret som en global chat mellem alle brugere, men direkte chat mellem to brugere blev ikke implementeret pga. mangel på tid.
+Som det fremgår af tabel \ref{fig:Implementeringsstatus} er alle user stories blevet implementeret bortset fra ''US 8 - Kontakt en bruger direkte''. Chat-funktionen er blevet implementeret som en global chat mellem alle brugere, men direkte chat mellem to brugere blev ikke implementeret pga. mangel på tid.
 
 	
 \section{Særlige features}
@@ -29,9 +37,9 @@ De features er:
 
 \noindent Søgefunktionaliteten er et MUST på en hjemmeside, hvor der bliver arbejdet med annoncer. Denne feature er noget særligt på grund af rækken af filtre, der kan bruges til at søge efter annoncer med. Disse filtre er afstand, titel og kategori. \\
 
-\noindent Kortintegration er en særlig feature, der gør, at man for en given annonce kan se dens placering og der kan ses et overblik over  placeringen af samtlige annoncer tilknyttet systemet. Kortintegrationen er også noget særligt, da det er gruppens første erfaring i at arbejde med 3. parts API'er. \\
+\noindent Kortintegration er en særlig feature, der gør, at man for en given annonce kan se dens placering. Der kan ses et landkort, som viser placeringen af samtlige annoncer tilknyttet systemet. \\
 
-Chat er en særlig feature, som tillader flere brugere at interagere live med hinanden. Chatten har krævet et stort arbejde og brug af SignalR, hvilket var nyt for gruppen.
+\noindent Chat er en særlig feature, som tillader flere brugere at interagere live med hinanden. Chatten har krævet et stort arbejde og brug af SignalR, hvilket var nyt for gruppen.
 
 
 

@@ -1,6 +1,6 @@
 \chapter{Resultater}\label{ch:Resultat og Diskussion}
 \section{Implementerede user stories}
-Webapplikationen Bargainbarter er blevet udarbejdet efter prioriteterne beskrevet i MoSCoW-analysen. Tabel \ref{fig:Implementeringsstatus} viser alle user stories og status på deres implementation.
+Webapplikationen Bargainbarter er blevet udarbejdet efter prioriteterne beskrevet i MoSCoW-analysen i afsnit \ref{ch:Moscow}. Tabel \ref{fig:Implementeringsstatus} viser alle user stories og status på deres implementation.
 
 \begin{table}[H]
 	\begin{tabular}{ | l | p{5cm} |}
@@ -14,16 +14,16 @@ Webapplikationen Bargainbarter er blevet udarbejdet efter prioriteterne beskreve
 		US 6 - Søg efter bytteannonce & Implementeret \\ \hline
 		US 7 - Se byttehistorik & Implementeret \\ \hline	
 		US 8 - Kontakt en bruger direkte & Delvist implementeret \\ \hline	
-		US 9 -Anmeldelse af en byttehandel & Implementeret \\ \hline	
+		US 9 - Anmeldelse af en byttehandel & Implementeret \\ \hline	
 	\end{tabular}
 \caption{Implementeringstatus på de forskellige userstories}
 \label{fig:Implementeringsstatus}
 \end{table}
 
-Som det ses i tabel \ref{fig:Implementeringsstatus} fremgår det, at alle userstories undtagen  US 8 er blevet fuldt implementeret. Man kan se resultatet af de udførte accepttest i bilagene \footnote{Se bilag - Dokumentation, sektion 11}.
+\noindent Som det ses i tabel \ref{fig:Implementeringsstatus} fremgår det, at alle userstories undtagen  US 8 er blevet fuldt implementeret. Man kan se resultatet af de udførte accepttest i bilagene \footnote{Se bilag - Dokumentation, sektion 11}.
 
 \subsection{Chat-funktion}
-Jævnfør US 8 var der ønske om, at kunne kontakte en anden bruger direkte vha. en chatfunktion\footnote{Se bilag - Dokumentation, sektion 9.5}. Denne funktionalitet viste sig imidlertid at være for tidskrævende at implementere. Resultatet blev i stedet et åbent chatrum, hvor alle sidens brugere kan kommunikere sammen i realtid i ét stort chatrum. 
+Jævnfør US 8 var der ønske om, at kunne kontakte en anden bruger direkte vha. en chatfunktion\footnote{Se bilag - Dokumentation, sektion 9.5}. Resultatet blev i stedet et åbent chatrum, hvor alle sidens brugere kan kommunikere sammen i realtid i ét stort chatrum. 
 
 \section{Teknologier og løsninger i systemet}
 Dette afsnit beskriver hvilke teknologier og frameworks der er anvendt i de forskellige løsninger i systemet. Tabel \ref{fig:Webapplikation} beskriver de overordnede strukturelle løsninger i systemet, mens tabel \ref{fig:Features} beskriver løsninger på features i systemet.
@@ -34,8 +34,8 @@ Dette afsnit beskriver hvilke teknologier og frameworks der er anvendt i de fors
 		\hline
 		\textbf{Model i webapplikation}  & \textbf{Beskrivelse af løsning} \\ \hline
 		Webapplikation framework  & ASP.Net MVC \\ \hline
-		Database & Relationel database med Entity Framework \\ \hline
-		Adgang til database & Repository pattern \\ \hline
+		Database & Microsoft SQL Server 2016 \\ \hline
+		Adgang til database & Entity Framework og repository pattern \\ \hline
 		Styling & Bootstrap	 \\ \hline
 	\end{tabular}
 	\caption{Overblik over til webapplikationen}
@@ -50,7 +50,7 @@ Dette afsnit beskriver hvilke teknologier og frameworks der er anvendt i de fors
 		\textbf{Feature på webside}  & \textbf{Beskrivelse af løsning} \\ \hline
 		Sortere/søge i annoncer ud fra geografisk lokation  & Google Maps API \\ \hline
 		Rating med stjerner & Bootstrap Star Rating \\ \hline
-		Chat-funktion & SignalR \\ \hline
+		Chat-funktion & SignalR\cite{SignalR} \\ \hline
 		
 	\end{tabular}
 	\caption{Overblik over løsninger til features}
