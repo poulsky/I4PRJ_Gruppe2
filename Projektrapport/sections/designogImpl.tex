@@ -50,7 +50,7 @@ Controllerfunktionaliteten er også valgt at eksemplificere med søgning af Bart
 På hjemmesiden kan der søges efter annoncer på flere måder. Det kan være på kategori, titel og på afstand. I dette eksempel uddybes søgning efter annoncer filtreret efter afstand. Desuden eksemplificerer implementeringen af denne feature den generelle virkemåde af samspillet mellem lagene i systemet.  \\ \\
 
 \subsubsection{Valg af løsning}
-Der blev i forundersøgelsen til denne feature overvejet flere løsningsmuligheder. Der var mulighed for at få eksempelvis Google Maps API til at lave en ruteplan, og ud fra den bestemme afstanden til andre brugere. Denne løsning var ikke optimal af flere årsager. For det første kunne det blive meget performance-tungt at lave alle de forespørgsler til Google Maps API. For det andet kunne der let opstå begrænsninger ift. de maksimale antal forespørgsler som Google Maps API tillader. For det tredje blev det vurderet, at det ikke var nødvendigt med meget høj præcision på afstanden til en annonces ejer.  \\ \\
+Der blev i forundersøgelsen til denne feature overvejet flere løsningsmuligheder. Der var mulighed for at få eksempelvis Google Maps API\cite{googleapi} til at lave en ruteplan, og ud fra den bestemme afstanden til andre brugere. Denne løsning var ikke optimal af flere årsager. For det første kunne det blive meget performance-tungt at lave alle de forespørgsler til Google Maps API. For det andet kunne der let opstå begrænsninger ift. de maksimale antal forespørgsler som Google Maps API tillader. For det tredje blev det vurderet, at det ikke var nødvendigt med meget høj præcision på afstanden til en annonces ejer.  \\ \\
 
 \noindent En anden løsning der var på tale, var blot at sortere efter postnumre. Dette blev dog vurderet til at være for upræcist, da arealet af et postnummer kan være meget stort. 
 \\ \\
@@ -63,7 +63,7 @@ Der blev i forundersøgelsen til denne feature overvejet flere løsningsmulighed
 \begin{figure}[H]
 	\centering
 	\includegraphics
-	[width=140mm]{figures/slider.png}
+	[width=90mm]{figures/slider.png}
 	\caption{Slider til søgning filtreret efter afstand}
 	\label{fig:slider}
 \end{figure}
