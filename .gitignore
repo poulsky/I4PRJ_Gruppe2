@@ -70,6 +70,7 @@ Thumbs.db
 *.synctex.gz
 *.pdf
 
+!/Bilag/*.pdf
 !/Bilag/Dagsorden/*.pdf
 !/Bilag/Retrospektiver/*.pdf
 !/Bilag/Referater/*.pdf
