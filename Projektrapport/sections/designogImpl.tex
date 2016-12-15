@@ -28,7 +28,7 @@ Ud fra domæneanalysen er data der giver mening at persistere fundet, og på fig
 
 \section{Controllerdesign}  
 
-I controllerne ligger selve funktionaliteten af BargainBarter systemet. Det er controllernes opgave at opdatere det view, som brugeren ser, samt styre kommunikationen mellem viewet og modellen. \\
+I controllerne ligger selve funktionaliteten af BargainBarter systemet. Det er controllernes opgave at opdatere det view, som brugeren ser, samt styre kommunikationen mellem viewet og modellen.
  
 \subsection{Oprette en bytteannonce}
 \noindent Som det ses på figur \ref{fig:SDOpretBarterAd} trykker brugeren ind for at lave en ny annonce. Systemet registrerer at der er trykket på en knap, og kalder den tilhørende action. Igennem denne action returneres \textit{Create BarterAd} viewet. I dette view kan der indtastes data til Barterads. Brugeren indtaster data og trykker \textit{Opret}, hvorved controlleren opretter og persisterer Barterad'en udfra de indtastede data.  \\
@@ -47,13 +47,13 @@ I controllerne ligger selve funktionaliteten af BargainBarter systemet. Det er c
 \subsection{Søg efter bytteannoncer}     
 Controllerfunktionaliteten er også valgt at eksemplificere med søgning af Barterads. Denne er taget med da det er en essentiel feature på hjemmesiden.
 
-\noindent På hjemmesiden kan der søges efter annoncer på flere måder. Det kan være på kategori, titel og på afstand. I dette eksempel uddybes søgning efter annoncer filtreret efter afstand. Desuden eksemplificerer implementeringen af denne feature den generelle virkemåde af samspillet mellem lagene i systemet.  \\ \\
+\noindent På hjemmesiden kan der søges efter annoncer på flere måder. Det kan være på kategori, titel og på afstand. I dette eksempel uddybes søgning efter annoncer filtreret efter afstand. Desuden eksemplificerer implementeringen af denne feature den generelle virkemåde af samspillet mellem lagene i systemet. 
 
 \subsubsection{Valg af løsning}
-Der blev i forundersøgelsen til denne feature overvejet flere løsningsmuligheder. Der var mulighed for at få eksempelvis Google Maps API\cite{googleapi} til at lave en ruteplan, og ud fra den bestemme afstanden til andre brugere. Denne løsning var ikke optimal af flere årsager. For det første kunne det blive meget performance-tungt at lave alle de forespørgsler til Google Maps API. For det andet kunne der let opstå begrænsninger ift. de maksimale antal forespørgsler som Google Maps API tillader. For det tredje blev det vurderet, at det ikke var nødvendigt med meget høj præcision på afstanden til en annonces ejer.  \\ \\
+Der blev i forundersøgelsen til denne feature overvejet flere løsningsmuligheder. Der var mulighed for at få eksempelvis Google Maps API\cite{googleapi} til at lave en ruteplan, og ud fra den bestemme afstanden til andre brugere. Denne løsning var ikke optimal af flere årsager. For det første kunne det blive meget performance-tungt at lave alle de forespørgsler til Google Maps API. For det andet kunne der let opstå begrænsninger ift. de maksimale antal forespørgsler som Google Maps API tillader. For det tredje blev det vurderet, at det ikke var nødvendigt med meget høj præcision på afstanden til en annonces ejer.  \\
 
 \noindent En anden løsning der var på tale, var blot at sortere efter postnumre. Dette blev dog vurderet til at være for upræcist, da arealet af et postnummer kan være meget stort. 
-\\ \\
+\\
 
 \noindent Løsningen som blev udtænkt baserer sig på beregning af afstand i fugleflugt mellem koordinater. Ved oprettelse af en brugerprofil indtaster brugeren en adresse. Vha. Google Maps API udtrækkes koordinater baseret på adressen, og disse koordinater gemmes som attributter på modellen for en bruger. Selve beregningen af afstand fungerer som en simpel trigonometrisk udregning. Denne løsning er et godt kompromis mellem høj præcision, performance og overskuelig implementering.
 
@@ -75,7 +75,15 @@ Der blev i forundersøgelsen til denne feature overvejet flere løsningsmulighed
 Viewet sørger for selve det visuelle udtryk af hjemmesiden, og er præsentationslogikken i systemet. Det bestræbes at undgå at lægge businesslogik i viewet, således at præsentationslaget i højst mulig grad er afkoblet fra resten af systemet.
 
 \subsection{Oprette en bytteannonce}
-Viewet for oprettelsen af en bytteannonce er et meget typisk eksempel på opbygningen af et view. Viewet består af en form, der mapper nogle data til en bestemt post action i controlleren, ved tryk på en submit-knap. Denne post action behandler så disse data.
+Viewet for oprettelsen af en bytteannonce er et meget typisk eksempel på opbygningen af et view. Viewet består af en form, der mapper nogle data til en bestemt post action i controlleren, ved tryk på en submit-knap. Denne post action behandler så disse data. Figur \ref{fig:postview} illustrerer et eksempel på dette.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=140mm]{figures/viewtocontroller.pdf}
+	\caption{Eksempel på form}
+	\label{fig:postview}
+\end{figure}
 
 \subsection{Søg efter bytteannoncer}
 Søgning efter bytteannonce har ikke et separat view, men er et delelement af viewet for forsiden. I forbindelse med implementering af søgning, krævede det en tilføjelse af slideren som ses i figur \ref{fig:slider}. Denne slider fungerer således som en form på samme måde som i viewet, hvor der kan der kan oprettes bytteannoncer. Dette betyder at der skal vælges en bestemt værdi ved brug af slideren, og dernæst trykkes søg. En endnu bedre løsning kunne have været en implementation vha. postback ved ændring af sliderens værdi. Dette ville resultere i at få vist resultatet dynamisk i stedet for at opdatere siden fra ny hver gang. Denne optimering blev ikke implementeret pga. tidspres.
