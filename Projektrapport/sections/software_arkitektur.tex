@@ -1,5 +1,5 @@
 \chapter{Arkitektur}
-Dette afsnit vil forsøge at beskrive de valg, der er blevet foretaget ifht. arkitekturen bag BargainBarter. Der vil kort blive redegjort for de enkelte begreber og arkitekturstile, der blev anvendt til at opbygge systemet. Efterfølgende vil der følge en begrundelse for valget af disse.
+Dette afsnit vil forsøge at beskrive de valg, der er blevet foretaget ifht. arkitekturen bag BargainBarter. Der vil kort blive redegjort for de enkelte begreber og arkitekturstile, der blev anvendt til at opbygge systemet. Der tilhøre ligeledes en analyse af domænet.
 
 \section{Arkitektur stile}
 Da der i projektet ønskes at udvikle en webapplikation, så er det derfor nødvendigt at anvende en arkitekturstil, der understøtter udviklingen af webapplikationen.
@@ -52,3 +52,14 @@ Entity framework (EF)\cite{ADOEF} var det oplagte valg, da først ASP.NET MVC va
 Til præsentations laget anvendes der HTML/CSS til at præsentere data for brugeren. Da brugervenlighed var centralt for systemet blev Bootstrap\cite{Bootstrap} anvendt. Bootstrap er et framework, der gør webapplikationen responsive og skalerbar. Frameworket gør det nemt at designe et View, der kan skaleres til en hvilken som helst skærm - uanset om det er mobil, tablet eller desktop. Desuden indeholder Bootstrap en række temaer/templates, der gør det enkelt at designe et View, der er pænt, hvilket ikke gruppens stærke side. \\
 For at gøre View'et mere dynamisk er der flere steder anvendt Javascript og mere specifikt JQuery\cite{jQuery}. 
 Dette bibliotek gør det muligt f.eks. at vise popup vinduer, hvis der er brug for det eller i gruppens tilfælde at kunne bedømme en anden bruger.
+
+\section{Domæneanalysen}
+
+På figur \ref{fig:Domaneanalyse} ses domæneanalysen af BargainBarter. Denne analyse er lavet på baggrund af de definerede user stories som kan findes i bilaget\footnote{Se bilag - Dokumentation, sektion 3.2}. Analysen er det første overordnede udkast til BargainBarter, hvilket betyder at den indeholder afgørende valg for systemets overordnede struktur. Figuren indeholder konceptuelle klasser, som binder problemdomænet sammen med softwarearkitekturen.    
+\begin{figure}[H]
+	\centering
+	\includegraphics
+	[width=140mm]{../Dokumentation/figures/DomaeneanalyseBargainBarter.pdf}
+	\caption{Domæneanalyse for BargainBarter}
+	\label{fig:Domaneanalyse}
+\end{figure}
