@@ -1,18 +1,18 @@
 \chapter{Fremtidig Arbejde}
 
-Til videreudvikling af BargainBarter er en mulig ændring, at få en større del af projektet til at køre client site som javascript. Det vil have den fordel, at projektet laver færre roundtrips til databasen. 
+Til videreudvikling af BargainBarter er en mulig ændring, at få en større del af projektet til at køre client site som javascript. Det vil have den fordel, at projektet laver færre roundtrips til databasen og webserveren. 
 
-\noindent Controllerne i projektet er med tiden vokset og er blevet uoverskuelige. Derfor ville omstrukturering af businesslogic være noget af det første i videreudviklingen af Bargainbarter, så funktionerne bliver fordelt i klasser. 
+\noindent Controllerne i projektet er med tiden vokset og er blevet uoverskuelige. Derfor ville omstrukturering af businesslogic være noget af det første i videreudviklingen af BargainBarter, så funktionerne bliver fordelt i klasser. Dette ville give et mere overskueligt og testbart design.
 
-\noindent Hjemmesiden kan på nuværende tidspunkt ikke skalere perfekt på mobil og tablet enheder. Da et af projektets hovedpunkter er brugervenlighed, vil optimering inden for dette område være optimal.
+\noindent Hjemmesiden kan på nuværende tidspunkt ikke skalere perfekt på mobil og tablet enheder. Da et af projektets hovedpunkter er brugervenlighed, vil optimering inden for dette område være ønskværdigt.
 
-\noindent I tilfælde af at der skulle udvikles flere systemmer der skulle opererer på den samme database, ville det være fordelagtigt at ligge modellen i sit eget projekt. Databasen er tilgængelig, men EF modellen ville kunne bruges til fx en UWP tablet og mobil app. Dette vil dog først gøres hvis omtalte app skulle udvikles. 
+\noindent I tilfælde af at der skulle udvikles flere systemer der skulle opererer på den samme database, ville det være fordelagtigt at ligge modellen i sit eget projekt. Databasen er tilgængelig, men EF modellen ville kunne bruges til fx en UWP tablet og mobil app. Dette vil dog først gøres hvis omtalte app skulle udvikles. 
 
-\noindent Algoritmer til foreslåede annoncer ville også være af stor nytte for brugeren, og vil derfor være prioriteret højt i forbindelse med videreudvikling af BargainBarter. Dette medfører at brugeren evt. kan vælge ønskede kategorier. 
+\noindent Algoritmer til foreslåede annoncer ville også være af stor nytte for brugeren, og vil derfor være prioriteret højt i forbindelse med videreudvikling af BargainBarter. 
 
 \noindent Når en bruger uploader et billede til en annonce, bliver billedet, byte for byte, gemt i databasen. Det medfører at når man henter billeder fra databasen, vil systemet bruge unødvendige lang tid på at læse alle bytes. En løsning er at gemme billedet på serveren, og indsætte url'en til billedet i databasen. 
 
 \noindent UC8 blev kun delvist implementeret, derfor ville denne funktionalitet være en naturlig del af fremtidig arbejde.
 
-\noindent På Bargainbarter, er de kun muligt at tilgå brugere ved hjælp af deres annoncer. En optimering af søgefunktionen ville derfor være i højsædet, så man kan søge på brugere. 
+\noindent På BargainBarter er det kun muligt at tilgå brugere gennem deres annoncer. En optimering af søgefunktionen ville derfor være i højsædet, så man kan søge direkte på brugere. 
  
